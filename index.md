@@ -14,7 +14,7 @@
   var button = document.getElementById("double-button");
   var onButtonClick = function() {
     clickerButton.textContent += "Clicked";
-  clickerButton.addEventListener("click", onButtonClick)
+  clickerButton.addEventListener("click", onButtonClick);
 
   </script>
   
