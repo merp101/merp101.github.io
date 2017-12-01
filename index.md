@@ -15,6 +15,7 @@
   var onButtonClick = function() {
     clickerButton.textContent += "Clicked";
   clickerButton.addEventListener("click", onButtonClick);
+  }
 
   </script>
   
