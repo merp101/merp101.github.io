@@ -1,6 +1,5 @@
 # merp101.github.io
-//This is for HTML, formatting the page! Nothing else here!
-
+//This is for JS, only for actual functions. HTML is in index.md
 
 
 
