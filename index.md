@@ -13,7 +13,7 @@
  
   var button = document.getElementById("double-button");
   var onButtonClick = function() {
-    clickerButton.textContent += "Clicked";
+    document.getElementById("double-button").textContent += "Clicked";
   clickerButton.addEventListener("click", onButtonClick);
   }
 
