@@ -14,7 +14,7 @@ var player = {
 
 
 
-
+//f
 //   NUMBERS
 
 var currentLayers = 1;
@@ -24,17 +24,19 @@ if (mousePressed()) {
   if currentLayers > 1 {
   currentLayers = currentLayers * 2 - 1;
   }
- } else {
-  currentLayers = currentLayers *2;
+  else {
+  currentLayers = currentLayers * 2;
   }
-}
-// The variable to display (scientific notation) 
+};
+// The variable to display (scientific notation)
 if var currentLayers >= 1000 {
-  var displayLayerNum = Math.log10(currentLayers);
+
+  var displayLayerNum = Math.log(currentLayers);
  } else {
   var displayLayerNum = currentLayers;
   }
 }
 // Visual boxes to click, or show currentLayers or QLDS? add
 
-//
+//  
+
