@@ -11,7 +11,7 @@ if mousePressed() {
 }
 // The variable to display (scientific notation) 
 if var currentLayers >= 1000 {
-  var displayLayerNum = Math.log(currentLayers);
+  var displayLayerNum = Math.log10(currentLayers);
  } else {
   var displayLayerNum = currentLayers;
   }
