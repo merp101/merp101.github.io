@@ -18,7 +18,7 @@
  </button>
  
  <button id="new-clay-button">
- Reset your progress to get a tougher material, in order to increase the maximum layers you can have.
+ Reset your progress to get a tougher material, in order to increase the maximum layers you can have. <break> Next material: iron
  </button>
  
 <script> 
