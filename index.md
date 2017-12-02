@@ -10,7 +10,7 @@
 </button> <!-- can be changed --->
 
 <button id="d_worker-button">
- Hire a depressed worker   10 layers
+ Hire a depressed worker for 10 layers
  </button>
  
  <button id="s_worker-button">
