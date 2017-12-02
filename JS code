@@ -10,7 +10,7 @@ var player = {
 
 
 //   NUMBERS
-var currentLayers = 1
+var currentLayers = 2
 var displayLayerNum = currentLayers;
 // the "press to double your layers"
 if (mousePressed()) { 
