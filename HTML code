@@ -9,6 +9,18 @@
   Play with some clay
 </button> <!-- can be changed --->
 
+<button id="d_worker-button">
+ Hire a depressed worker   10 layers
+ </button>
+ 
+ <button id="s_worker-button">
+ Hire a satisfied worker
+ </button>
+ 
+ <button id="new-clay-button">
+ Reset your progress to get a tougher material, in order to increase the maximum layers you can have.
+ </button>
+ 
 <script> 
  
   var button = document.getElementById("button");
