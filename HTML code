@@ -11,11 +11,10 @@
 
 <script> 
  
-  var button = document.getElementById("double-button");
-  var onButtonClick = function() {
-    document.getElementById("double-button").textContent += "Clicked";
-  clickerButton.addEventListener("click", onButtonClick);
-  }
-
+  var button = document.getElementById("button");
+  clickerButton.addEventListener("click", function() {
+    document.getElementById("button").textContent += "Clicked";
+    });
+   
   </script>
   
