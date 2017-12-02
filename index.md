@@ -5,7 +5,7 @@
 
 <!--change to a variable, that once you click once, changes the text (story stuff here too, maybe? change block of clay to varMat (material) so it's consistent.--->
 
-<button id="double-button">
+<button id="button">
   Play with some clay
 </button> <!-- can be changed --->
 
@@ -24,7 +24,7 @@
 <script> 
  
   var button = document.getElementById("button");
-  clickerButton.addEventListener("click", function() {
+  button.addEventListener("click", function() {
     document.getElementById("button").textContent += "Clicked";
     });
    
