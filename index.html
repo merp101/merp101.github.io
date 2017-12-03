@@ -25,8 +25,8 @@
 
 
 
-    <button id="d_worker-button">
-    Hire a depressed worker for 10 layers
+    <button id="d-button">
+      Hire a depressed worker for<span id="d_workerCost">10 </span> layers
     </button>
      <p>You have<span id="currentDWorkers">0</span> depressed workers,</p>
 
@@ -43,7 +43,7 @@
  
 
   var d-button = function() {
- document.getElementById("d_worker-button").textContent = "Hire a depressed worker for" + d-workerCost + "layers.";
+ document.getElementById("d_workerCost").textContent = d-workerCost;
  var d-workerAmt ++;
 }
 
@@ -51,7 +51,7 @@
 
 var dWorkerButton =     
   document.getElementById("d-button");
-  d_worker-button.addEventListener("click", 
+  d-button.addEventListener("click", 
   d-button); 
 
 var displayCurrentLayers = document.getElementById("displayLayers");
