@@ -27,18 +27,10 @@ if (mousePressed()) {
 };
 // The variable to display (scientific notation)
 if var currentLayers >= 1000 {
-
   var displayLayerNum = Math.log10(currentLayers);
- } else {
-  var displayLayerNum = currentLayers;
-  }
-}
+} 
 
-//    DISPLAY
 
-forever {
-  text(currentLayers, 1000, 2000, 10, 10)
- }
 //    ACHIEVEMENTS (after everything else, don't do it now until we have ideas and know how to implement them)
 
 if (currentLayers >= 2) {
