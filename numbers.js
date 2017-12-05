@@ -5,8 +5,14 @@
 
 // more achievements!
 var player = {
-  ach = ['r11', 'r12', 'r13','r14'];
-  totalInfinities = 0;
+  money: new Decimal(1),
+  dCost: new Decimal(10),
+  sCost: new Decimal(100),
+  mCost: new Decimal(1000),
+  dBought: 0,
+  sBought: 0,
+  mBought: 0,
+}
   
 //   GLOBAL VARIABLES
 
