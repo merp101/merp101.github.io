@@ -40,3 +40,15 @@ if (currentLayers >= 2) {
   player.ach('r11') = true
   console.log(player.ach('r11'))
 
+  
+  //  SAVES
+  
+  function set_save(name, value) {
+    localStorage.setItem(name, btoa(JSON.stringify(value, function(k, v) { return (v === Infinity) ? "Infinity" : v; })))
+}
+
+function get_save(name) {
+    if (localStorage.getItem("dimensionSave") !== null) {
+        return JSON.parse(atob(localStorage.getItem(name), function(k, v) { return (v === Infinity) ? "Infinity" : v; }))
+    }
+}
