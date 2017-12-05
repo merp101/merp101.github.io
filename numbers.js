@@ -9,22 +9,28 @@ var player = {
   dCost: new Decimal(10),
   sCost: new Decimal(100),
   mCost: new Decimal(1000),
+  dAmount: new Decimal(0),
+  sAmount: new Decimal(0),
+  mAmount: new Decimal(0),
   dBought: 0,
   sBought: 0,
   mBought: 0,
+  achievements: [],
+  infinited: 0,
+  qld: new Decimal(0),
+  totalTimePlayed: 0,
 }
   
 //   GLOBAL VARIABLES
 
-var currentLayers = 1;
-var displayLayerNum = currentLayers;
-
+var displayLayerNum = player.money;
 
 //   NUMBERS
   
-// The variable to display (scientific notation)
+// The variable to display (logarithmic notation)
+
 if var currentLayers >= 1000 {
-  var displayLayerNum = Math.log10(currentLayers);
+  var displayLayerNum = Math.log10(player.money);
 } 
 
 
