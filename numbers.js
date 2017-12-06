@@ -19,12 +19,10 @@ var player = {
   infinited: 0,
   qld: new Decimal(0),
   totalTimePlayed: 0,
-  totalMoney: new Decimal(0)
+  totalMoney: new Decimal(0),
+  currentMaterialNum: 0,
+  currentMaterialWord: ""
 }
-  
-//   GLOBAL VARIABLES
-
-var displayLayerNum = player.money;
 
 //   NUMBERS
   
@@ -34,7 +32,15 @@ if (player.money >= 1000) {
   displayLayerNum = Math.log10(player.money);
 } 
 
+var decideNextMaterial = function(currentMaterialNum) {
+  if (currentMaterialNum > 0) {
+    
+  }
+}
 
+var decideMaterialWord = fucntion(currentMaterialNum) {
+  
+}
 //   ACHIEVEMENTS (after everything else, don't do it now until we have ideas and know how to implement them)
 
 if (currentLayers >= 2) {
@@ -82,8 +88,8 @@ displayCurrentLayers.innerHTML(player.money);
 var displayCurrentDWorkers = document.getElementById("currentDWorkers");
 displayCurrentDWorkers.innerHTML(player.dAmount);
 
-var displayNextMaterial = document.getElementById("new-clay-button");
-displayNextMaterial.innerHTML("Reset your progress to get a tougher material, in order to increase the maximum layers you can have. Next material: " + nextMaterial);
+var displayNextMaterial = document.getElementById("material");
+displayNextMaterial.innerHTML(nextMaterial);
 
   
  function onLoad() {
