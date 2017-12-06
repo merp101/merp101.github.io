@@ -77,10 +77,10 @@ var dWorkerButton =
   d-button); 
 
 var displayCurrentLayers = document.getElementById("displayLayers");
-displayLayers.innerHTML(displayLayerNum);
+displayCurrentLayers.innerHTML(player.money);
 
 var displayCurrentDWorkers = document.getElementById("currentDWorkers");
-displayCurrentDWorkers.innerHTML(d-workerAmt);
+displayCurrentDWorkers.innerHTML(player.dAmount);
 
 var displayNextMaterial = document.getElementById("new-clay-button");
 displayNextMaterial.innerHTML("Reset your progress to get a tougher material, in order to increase the maximum layers you can have. Next material: " + nextMaterial);
