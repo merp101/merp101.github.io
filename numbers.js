@@ -20,8 +20,8 @@ var player = {
   qld: new Decimal(0),
   totalTimePlayed: 0,
   totalMoney: new Decimal(0),
-  currentMaterialNum: 0,
-  currentMaterialWord: ""
+  materialNum: 0,
+  material: ""
 }
 
 //   NUMBERS
@@ -32,21 +32,26 @@ if (player.money >= 1000) {
   displayLayerNum = Math.log10(player.money);
 } 
 
-var decideNextMaterial = function(currentMaterialNum) {
-  if (currentMaterialNum > 0) {
-    
-  }
-}
-
 var decideMaterialWord = fucntion(currentMaterialNum) {
-  
+  if (player.materialNum === 0) {
+    player.material = "clay";
+  } else if (player.materialNum === 1) {
+    player.material = "iron";
+  } else if (player.materialNum === 2) {
+    player.material = "copper";
+  } else if (player.materialNum === 3) {
+    player.material = "tin";
+  } else if (player.materialNum === 4) {
+    player.material = "bronze";
+  } else if (player.materialNum === 5) {
+    player.material = "silver";
+  } else if (player.materialNum === 6) {
+    player.material = "gold";
+  } else if (player.materialNum === 7) {
+    player.material = "platinum";
+  } else if (player.materialNum === 8) {
+    player.material = "diamond";
 }
-//   ACHIEVEMENTS (after everything else, don't do it now until we have ideas and know how to implement them)
-
-if (currentLayers >= 2) {
-  player.ach('r11') = true
-  console.log(player.ach('r11'))
-
   
 //   SAVES
   
@@ -60,16 +65,33 @@ function get_save(name) {
     }
 }
  
+function load_game() {
+    var save_data = get_save('dimensionSave');
+    if (!save_data) return;
+    player = save_data;
+    onLoad()
+}
+
+
+function save_game() {
+    set_save('dimensionSave', player);
+} 
   
 //   HTML EDITING
   
 var layerButton = function() {
     player.money = player.money * 2;
-    return player.money;
+    document.getElementById("displayLayers").innerHTML(player.money);
   }
-    
-  var doubleLayers = function() {
+  
+var displayCurrentLayers = fucntion() {
+  
+  
+}
+
+  var buttonEvent = function() {
     button.addEventListener("click", layerButton);
+    
   }
 
   var d-button = function() {
@@ -82,15 +104,15 @@ var dWorkerButton =
   d-button.addEventListener("click", 
   d-button); 
 
-var displayCurrentLayers = document.getElementById("displayLayers");
-displayCurrentLayers.innerHTML(player.money);
+
 
 var displayCurrentDWorkers = document.getElementById("currentDWorkers");
 displayCurrentDWorkers.innerHTML(player.dAmount);
 
-var displayNextMaterial = document.getElementById("material");
-displayNextMaterial.innerHTML(nextMaterial);
+var displayMaterial = document.getElementById("material");
+displayMaterial.innerHTML(player.material);
 
+// Loading cuz... reasons
   
  function onLoad() {
    
