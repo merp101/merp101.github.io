@@ -88,19 +88,12 @@ document.getElementById("new-clay-button").onclick = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
-}
-
-var d-button = document.getElementById("d_workerCost");
-
-
-  
+}  
 
 button.addEventListener("click", layerButton);
-    
-
-  
+  // still WIP
 var dWorkerButton =     
-  document.getElementById("d-button");
+  document.getElementById("dButton");
   d-button.addEventListener("click", 
   d-button); 
 
