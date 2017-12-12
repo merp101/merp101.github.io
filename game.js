@@ -21,7 +21,11 @@ var player = {
   totalTimePlayed: 0,
   totalMoney: new Decimal(0),
   materialNum: 0,
-  material: ""
+  material: "",
+  options: {
+    notation: "scientific",
+    
+  }
 }
 
 //   NUMBERS
@@ -79,10 +83,8 @@ function save_game() {
   
 //   HTML EDITING
   
-var layerButton = function() {
-    player.money = player.money * 2;
-    document.getElementById("displayLayers").innerHTML(player.money);
-  }
+var clickButton = document.getElementById("money").innerHTML(player.money);
+
   
 var displayCurrentLayers = fucntion() {
   
