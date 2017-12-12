@@ -83,24 +83,19 @@ function save_game() {
   
 //   HTML EDITING
   
-var clickButton = document.getElementById("money").innerHTML(player.money);
+var layers = document.getElementById("money").innerHTML(player.money);
+var d-button = document.getElementById("d_workerCost").textContent = d-workerCost;
+
 
   
 var displayCurrentLayers = fucntion() {
   
   
 }
-
-  var buttonEvent = function() {
-    button.addEventListener("click", layerButton);
+button.addEventListener("click", layerButton);
     
-  }
 
-  var d-button = function() {
- document.getElementById("d_workerCost").textContent = d-workerCost;
- d-workerAmt ++;
-}
-
+  
 var dWorkerButton =     
   document.getElementById("d-button");
   d-button.addEventListener("click", 
