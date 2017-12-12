@@ -83,15 +83,19 @@ function save_game() {
   
 //   HTML EDITING
   
-var layers = document.getElementById("money").innerHTML(player.money);
-var d-button = document.getElementById("d_workerCost").textContent = d-workerCost;
-
-
-  
-var displayCurrentLayers = fucntion() {
-  
-  
+var displayLayers = function() {
+  player.money = player.money * 2;
+  document.getElementById("money").innerHTML(player.money);
 }
+document.getElementById("new_clay-button").onclick = function() {
+   
+}
+
+var d-button = document.getElementById("d_workerCost");
+
+
+  
+
 button.addEventListener("click", layerButton);
     
 
@@ -114,11 +118,6 @@ displayMaterial.innerHTML(player.material);
  function onLoad() {
    
    if (player.totalMoney === undefined || isNaN(player.totalMoney)) player.totalMoney = player.Money;
-    if (player.options === undefined) {
-        player.options = {
-            scientific: false,
-        }
-    }
    if (player.infinitied === undefined) player.infinitied = 0;
   
  }
