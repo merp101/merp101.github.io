@@ -33,29 +33,8 @@ var player = {
 // The variable to display (logarithmic notation)
 
 if (player.money >= 1000) {
-  displayLayerNum = Math.log10(player.money);
+   var displayLayerNum = Math.log10(player.money);
 } 
-
-var decideMaterialWord = fucntion(currentMaterialNum) {
-  if (player.materialNum === 0) {
-    player.material = "clay";
-  } else if (player.materialNum === 1) {
-    player.material = "iron";
-  } else if (player.materialNum === 2) {
-    player.material = "copper";
-  } else if (player.materialNum === 3) {
-    player.material = "tin";
-  } else if (player.materialNum === 4) {
-    player.material = "bronze";
-  } else if (player.materialNum === 5) {
-    player.material = "silver";
-  } else if (player.materialNum === 6) {
-    player.material = "gold";
-  } else if (player.materialNum === 7) {
-    player.material = "platinum";
-  } else if (player.materialNum === 8) {
-    player.material = "diamond";
-}
   
 //   SAVES
   
@@ -87,8 +66,28 @@ var displayLayers = function() {
   player.money = player.money * 2;
   document.getElementById("money").innerHTML(player.money);
 }
-document.getElementById("new_clay-button").onclick = function() {
-   
+document.getElementById("new-clay-button").onclick = function() {
+   if (player.materialNum === 0) {
+    player.material = "clay";
+  } else if (player.materialNum === 1) {
+    player.material = "copper";
+  } else if (player.materialNum === 2) {
+    player.material = "tin";
+  } else if (player.materialNum === 3) {
+    player.material = "bronze";
+  } else if (player.materialNum === 4) {
+    player.material = "iron";
+  } else if (player.materialNum === 5) {
+    player.material = "steel";
+  } else if (player.materialNum === 6) {
+    player.material = "silver";
+  } else if (player.materialNum === 7) {
+    player.material = "gold";
+  } else if (player.materialNum === 8) {
+    player.material = "platinum";
+  } else if (player.materialNum === 9) {
+    player.material = "diamond";
+  }
 }
 
 var d-button = document.getElementById("d_workerCost");
