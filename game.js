@@ -55,7 +55,7 @@ var decideMaterialWord = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
-  document.getElementById("material").textContent(player.material);
+  document.getElementById("material").innnerHTML(player.material);
 }  
 
 var buyDWorker = function() {
