@@ -10,7 +10,8 @@
    <body>
     <h1 id="logo"> Infinite Layers </h1>
      <h2 id="materialDisplay"> You have a block of <span id="material">clay</span>. </h2>
-    <h3 id="currentLayers"> You have <span id="money"> 0</span> layers. </h3>
+    <div id="currentLayers"> You have <span id="money"> 0</span> layers. </div>
+     <div id="mps"> You are getting 0 layers per second. </div>
     
     <button id="button" onclick="layers()">
     Play with some clay
@@ -35,9 +36,12 @@
     <button id="mButton" onclick="buyMWorker()">
       Hire a motivated worker for<span id="mCost"> 0 </span> layers
      </button>
-    <button id="new-clay-button">
-     Reset your progress to get a tougher material, in order to <div>increase the maximum layers you can have. Current material: <span id="material">thing</span>
+    <button id="new-clay-button" onclick="decideMaterialWord()">
+     Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have. Current material: <span id="material">thing</span>
     </button>
+     <button id="infButton" onclick="infinity()">
+       You have used up all the matter in the universe. Now you must transcend the universe....
+     </button>
  
  
    <script type="text/javascript" src="numbers.js"></script>
