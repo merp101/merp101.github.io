@@ -88,11 +88,11 @@ var display = function() {
   document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
   document.getElementById("money").innerHTML(player.money);
   document.getElementById("dCost").innerHTML(player.dCost);
-  document.getElementById("dMaxCost").innerHTML(player.dMaxCost);
+  document.getElementById("dMax").innerHTML(player.dMaxCost);
   document.getElementById("sCost").innerHTML(player.sCost);
-  document.getElementById("sMaxCost").innerHTML(player.sMaxCost);
+  document.getElementById("sMax").innerHTML(player.sMaxCost);
   document.getElementById("mCost").innerHTML(player.mCost); 
-  document.getElementById("mMaxCost").innerHTML(player.mMaxCost");
+  document.getElementById("mMax").innerHTML(player.mMaxCost");
 }
                                            
 var infinity = function() {
