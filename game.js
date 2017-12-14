@@ -17,7 +17,7 @@ var player = {
   infinited: 0,
   qld: 0,
   totalTimePlayed: 0,
-  totalMoney: 0),
+  totalMoney: 0,
   materialNum: 0,
   material: "",
   options: {
@@ -26,29 +26,7 @@ var player = {
   }
 }
   
-//   SAVES
-  
-  function set_save(name, value) {
-    localStorage.setItem(name, btoa(JSON.stringify(value, function(k, v) { return (v === Infinity) ? "Infinity" : v; })))
-}
 
-function get_save(name) {
-    if (localStorage.getItem("dimensionSave") !== null) {
-        return JSON.parse(atob(localStorage.getItem(name), function(k, v) { return (v === Infinity) ? "Infinity" : v; }))
-    }
-}
- 
-function load_game() {
-    var save_data = get_save('dimensionSave');
-    if (!save_data) return;
-    player = save_data;
-    onLoad()
-}
-
-
-function save_game() {
-    set_save('dimensionSave', player);
-} 
   
 //   Stuff
   
