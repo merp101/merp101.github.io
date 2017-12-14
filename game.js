@@ -1,13 +1,4 @@
-//This is for JS, HTML is in index.md - and don't change the name of the file, it won't work
-<script src="https://cdnjs.cloudflare.com/ajax/libs/airbrake-js/0.9.9/client.min.js"></script>
-var airbrake = new airbrakeJs.Client({
-  projectId: <Your project ID>,
-  projectKey: '<Your project API Key>'
-});
-airbrake.addFilter(function (notice) {
-  notice.context.environment = 'production';
-  return notice;
-});
+//This is for JS, HTML is in index.md - and don't change the name of the file, it won't work.
 
 // more achievements!
 var player = {
