@@ -23,7 +23,7 @@
                             <div id="dAmount">0 (0)</div>
                         </td>
                         <td width="10%">
-                            <button id="dCost" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn" align="right">Cost: 10</button>
+                            <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn" align="right">Cost: 10</button>
                         </td>
                         <td width="10%">
                             <button id="dMax" style="color:black; width:210px; height: 25px; font-size: 10px" class="storebtn" align="right">Max buy. Cost: 10</button>
@@ -37,7 +37,7 @@
                         <td>
                             <div id="sAmount" >0 (0)</div>
                         </td>
-                        <td><button id="sCost" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn">Cost: 100</button>
+                        <td><button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn">Cost: 100</button>
                         </td>
                         <td>
                             <button id="sMax" style="color:black; width:210px; height: 25px; font-size: 10px" class="storebtn">Max buy. Cost: 100</button>
@@ -52,7 +52,7 @@
                             <div id="mAmount">0 (0)</div>
                         </td>
                         <td>
-                            <button id="mCost" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn">Cost: 1000</button>
+                            <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px" class="storebtn">Cost: 1000</button>
                         </td>
                         <td>
                             <button id="mMax" style="color:black; width:210px; height: 25px; font-size: 10px" class="storebtn">Max buy. Cost: 1000</button>
@@ -60,17 +60,17 @@
                     </tr>
 
 
-    <button id="dButton" onclick="buyDWorker()" onchange="update()">
+    <button id="dButton" >
       Hire a depressed worker for<span id="dCost"> 0 </span> layers
     </button>
      <p>You have <span id="currentDWorkers">0</span> depressed workers,</p>
 
-    <button id="sButton" onclick="buySWorker()" onchange="update()">
+    <button id="sButton" >
       Hire a satisfied worker for<span id="sCost"> 0 </span> layers
     </button>
      <p>You have <span id="currentSWorkers"> 0 </span> satisfied workers.</p> 
      
-    <button id="mButton" onclick="buyMWorker()" onchange="update()">
+    <button id="mButton" >
       Hire a motivated worker for<span id="mCost"> 0 </span> layers
      </button>
     <button id="new-clay-button" onclick="decideMaterialWord()" onchange="update()">
