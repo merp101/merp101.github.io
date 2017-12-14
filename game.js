@@ -126,6 +126,11 @@ var infinity = function() {
   player.materialNum = 0;
 }
 
+var update = function() {
+  displayLayers();
+  decideMaterialWord();
+  player = player;
+}
 
 
 // Loading cuz... reasons
