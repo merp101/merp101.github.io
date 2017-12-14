@@ -2,7 +2,7 @@
 
 // more achievements!
 var player = {
-  money: 10),
+  money: 10,
   mps: 0,
   dCost: 10,
   sCost: 100,
