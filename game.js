@@ -83,6 +83,7 @@ var getMPS = function() {
 var displayLayers = function() {
   getMPS();
   document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
+  document.getElementById("money").innerHTML(player.money);
 }
                                            
 var infinity = function() {
