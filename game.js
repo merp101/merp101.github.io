@@ -107,7 +107,23 @@ var getMPS = function() {
 
 var displayLayers = function() {
   getMPS();
-  document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.)
+  document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
+}
+                                           
+var infinity = function() {
+  player.money = new Decimal(10);
+  player.dBought = 0;
+  player.sBought = 0;
+  player.mBought = 0;
+  player.dAmount = new Decimal(0);
+  player.sAmount = new Decimal(0);
+  player.mAmount = new Decimal(0);
+  player.dCost = new Decimal(10);
+  player.sCost = new Decimal(100);
+  player.mCost = new Decimal(1000);
+  player.qld ++;
+  player.infinitied ++;
+  player.materialNum = 0;
 }
 
 
