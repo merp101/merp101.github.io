@@ -32,9 +32,7 @@ var player = {
   
 // The variable to display (logarithmic notation)
 
-if (player.money >= 1000) {
-   var displayLayerNum = Math.log10(player.money);
-} 
+
   
 //   SAVES
   
@@ -62,9 +60,8 @@ function save_game() {
   
 //   HTML EDITING
   
-var displayLayers = function() {
+var layers = function() {
   player.money = player.money * 2;
-  document.getElementById("money").innerHTML(player.money);
 }
 var decideMaterialWord = function() {
    if (player.materialNum === 0) {
