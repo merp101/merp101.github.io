@@ -83,39 +83,6 @@ var getMPS = function() {
   player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
 }
 
-var display = function() {
-  getMPS();
-  document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
-  document.getElementById("money").innerHTML(player.money);
-  document.getElementById("dCost").innerHTML(player.dCost);
-  document.getElementById("dMax").innerHTML(player.dMaxCost);
-  document.getElementById("sCost").innerHTML(player.sCost);
-  document.getElementById("sMax").innerHTML(player.sMaxCost);
-  document.getElementById("mCost").innerHTML(player.mCost); 
-  document.getElementById("mMax").innerHTML(player.mMaxCost);
-}
-                                           
-var infinity = function() {
-  player.money = 10;
-  player.dBought = 0;
-  player.sBought = 0;
-  player.mBought = 0;
-  player.dAmount = 0;
-  player.sAmount = 0;
-  player.mAmount = 0;
-  player.dCost = 10;
-  player.sCost = 100;
-  player.mCost = 1000;
-  player.qld ++;
-  player.infinitied ++;
-  player.materialNum = 0;
-}
-
-var update = function() {
-  display();
-  decideMaterialWord();
-}
-
 var getDMaxCost = function() {
   player.dMaxCost = Math.floor(player.money / player.dCost); 
 }
@@ -127,6 +94,48 @@ var getSMaxCost = function() {
 var getMMaxCost = function() {
   player.mMaxCost = Math.floor(player.money / player.mCost);
 }
+
+var display = function() {
+  getMPS();
+  getDMaxCost();
+  getSMaxCost();
+  getMMaxCost();
+  document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
+  document.getElementById("money").innerHTML(player.money);
+  document.getElementById("dCost").innerHTML(player.dCost);
+  document.getElementById("dMax").innerHTML(player.dMaxCost);
+  document.getElementById("sCost").innerHTML(player.sCost);
+  document.getElementById("sMax").innerHTML(player.sMaxCost);
+  document.getElementById("mCost").innerHTML(player.mCost); 
+  document.getElementById("mMax").innerHTML(player.mMaxCost);
+}
+
+var reset = function() {
+  player.money = 10;
+  player.dBought = 0;
+  player.sBought = 0;
+  player.mBought = 0;
+  player.dAmount = 0;
+  player.sAmount = 0;
+  player.mAmount = 0;
+  player.dCost = 10;
+  player.sCost = 100;
+  player.mCost = 1000;
+}
+
+var infinity = function() {
+  reset();
+  player.qld ++;
+  player.infinitied ++;
+  player.materialNum = 0;
+}
+
+var update = function() {
+  display();
+  decideMaterialWord();
+}
+
+
 
 // Loading cuz... reasons
   
