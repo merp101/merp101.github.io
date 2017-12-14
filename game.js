@@ -5,7 +5,8 @@
 
 // more achievements!
 var player = {
-  money: new Decimal(1),
+  money: new Decimal(10),
+  mps: new Decimal(0),
   dCost: new Decimal(10),
   sCost: new Decimal(100),
   mCost: new Decimal(1000),
@@ -27,12 +28,6 @@ var player = {
     
   }
 }
-
-//   NUMBERS
-  
-// The variable to display (logarithmic notation)
-
-
   
 //   SAVES
   
@@ -58,11 +53,8 @@ function save_game() {
     set_save('dimensionSave', player);
 } 
   
-//   HTML EDITING
+//   Stuff
   
-var layers = function() {
-  player.money = player.money * 2;
-}
 var decideMaterialWord = function() {
    if (player.materialNum === 0) {
     player.material = "clay";
@@ -85,28 +77,40 @@ var decideMaterialWord = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
+  document.getElementById("material").textContent(player.material);
 }  
 
 var buyDWorker = function() {
   player.dBought ++;
+  player.dAmount ++;
   player.money = player.money - player.dCost;
+  player.dCost = player.dCost * 10
 }
 
 var buySWorker = function() {
   player.sBought ++;
+  player.sAmount ++;
   player.money = player.money - player.sCost;
+  player.sCost = player.sCost * 100
 }
 
 var buyMWorker = function() {
   player.mBought ++;
+  player.mAmount ++;
   player.money = player.money - player.mCost;
+  player.mCost = player.mCost * 1000
 }
 
-var displayCurrentDWorkers = document.getElementById("currentDWorkers");
-displayCurrentDWorkers.innerHTML(player.dAmount);
+var getMPS = function() {
+  player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
+}
 
-var displayMaterial = document.getElementById("material");
-displayMaterial.innerHTML(player.material);
+var displayLayers = function() {
+  getMPS();
+  document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.)
+}
+
+
 
 // Loading cuz... reasons
   
@@ -114,5 +118,6 @@ displayMaterial.innerHTML(player.material);
    
    if (player.totalMoney === undefined || isNaN(player.totalMoney)) player.totalMoney = player.Money;
    if (player.infinitied === undefined) player.infinitied = 0;
+   if (player.options.notation === undefined) player.options.notation = "scientific";
   
  }
