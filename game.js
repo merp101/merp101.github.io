@@ -7,6 +7,9 @@ var player = {
   dCost: 10,
   sCost: 100,
   mCost: 1000,
+  dMaxCost: 10,
+  sMaxCost: 100,
+  mMaxCost: 1000,
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -80,10 +83,16 @@ var getMPS = function() {
   player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
 }
 
-var displayLayers = function() {
+var display = function() {
   getMPS();
   document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
   document.getElementById("money").innerHTML(player.money);
+  document.getElementById("dCost").innerHTML(player.dCost);
+  document.getElementById("dMaxCost").innerHTML(player.dMaxCost);
+  document.getElementById("sCost").innerHTML(player.sCost);
+  document.getElementById("sMaxCost").innerHTML(player.sMaxCost);
+  document.getElementById("mCost").innerHTML(player.mCost); 
+  document.getElementById("mMaxCost").innerHTML(player.mMaxCost");
 }
                                            
 var infinity = function() {
@@ -103,10 +112,21 @@ var infinity = function() {
 }
 
 var update = function() {
-  displayLayers();
+  display();
   decideMaterialWord();
 }
 
+var getDMaxCost = function() {
+  player.dMaxCost = Math.floor(player.money / player.dCost); 
+}
+
+var getSMaxCost = function() {
+  player.sMaxCost = Math.floor(player.money / player.sCost);
+}
+
+var getMMaxCost = function() {
+  player.mMaxCost = Math.floor(player.money / player.mCost);
+}
 
 // Loading cuz... reasons
   
