@@ -1,4 +1,3 @@
-# merp101.github.io
 //This is for JS, HTML is in index.md - and don't change the name of the file, it won't work
 <script src="https://cdnjs.cloudflare.com/ajax/libs/airbrake-js/0.9.9/client.min.js"></script>
 var airbrake = new airbrakeJs.Client({
