@@ -92,7 +92,7 @@ var display = function() {
   document.getElementById("sCost").innerHTML(player.sCost);
   document.getElementById("sMax").innerHTML(player.sMaxCost);
   document.getElementById("mCost").innerHTML(player.mCost); 
-  document.getElementById("mMax").innerHTML(player.mMaxCost");
+  document.getElementById("mMax").innerHTML(player.mMaxCost);
 }
                                            
 var infinity = function() {
