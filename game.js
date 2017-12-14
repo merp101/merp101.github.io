@@ -66,7 +66,7 @@ var displayLayers = function() {
   player.money = player.money * 2;
   document.getElementById("money").innerHTML(player.money);
 }
-document.getElementById("new-clay-button").onclick = function() {
+var decideMaterialWord = function() {
    if (player.materialNum === 0) {
     player.material = "clay";
   } else if (player.materialNum === 1) {
@@ -90,14 +90,20 @@ document.getElementById("new-clay-button").onclick = function() {
   }
 }  
 
-button.addEventListener("click", layerButton);
-  // still WIP
-var dWorkerButton =     
-  document.getElementById("dButton");
-  d-button.addEventListener("click", 
-  d-button); 
+var buyDWorker = function() {
+  player.dBought ++;
+  player.money = player.money - player.dCost;
+}
 
+var buySWorker = function() {
+  player.sBought ++;
+  player.money = player.money - player.sCost;
+}
 
+var buyMWorker = function() {
+  player.mBought ++;
+  player.money = player.money - player.mCost;
+}
 
 var displayCurrentDWorkers = document.getElementById("currentDWorkers");
 displayCurrentDWorkers.innerHTML(player.dAmount);
