@@ -23,17 +23,17 @@
 
 
 
-    <button id="dButton" onclick="buyDWorker()">
+    <button id="dButton" onclick="buyDWorker()" onchange="update()">
       Hire a depressed worker for<span id="dCost"> 0 </span> layers
     </button>
      <p>You have <span id="currentDWorkers">0</span> depressed workers,</p>
 
-    <button id="sButton" onclick="buySWorker()">
+    <button id="sButton" onclick="buySWorker()" onchange="update()">
       Hire a satisfied worker for<span id="sCost"> 0 </span> layers
     </button>
      <p>You have <span id="currentSWorkers"> 0 </span> satisfied workers.</p> 
      
-    <button id="mButton" onclick="buyMWorker()">
+    <button id="mButton" onclick="buyMWorker()" onchange="update()">
       Hire a motivated worker for<span id="mCost"> 0 </span> layers
      </button>
     <button id="new-clay-button" onclick="decideMaterialWord()">
