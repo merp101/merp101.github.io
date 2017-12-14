@@ -2,22 +2,22 @@
 
 // more achievements!
 var player = {
-  money: new Decimal(10),
-  mps: new Decimal(0),
-  dCost: new Decimal(10),
-  sCost: new Decimal(100),
-  mCost: new Decimal(1000),
-  dAmount: new Decimal(0),
-  sAmount: new Decimal(0),
-  mAmount: new Decimal(0),
+  money: 10),
+  mps: 0,
+  dCost: 10,
+  sCost: 100,
+  mCost: 1000,
+  dAmount: 0,
+  sAmount: 0,
+  mAmount: 0,
   dBought: 0,
   sBought: 0,
   mBought: 0,
   achievements: [],
   infinited: 0,
-  qld: new Decimal(0),
+  qld: 0,
   totalTimePlayed: 0,
-  totalMoney: new Decimal(0),
+  totalMoney: 0),
   materialNum: 0,
   material: "",
   options: {
@@ -108,16 +108,16 @@ var displayLayers = function() {
 }
                                            
 var infinity = function() {
-  player.money = new Decimal(10);
+  player.money = 10;
   player.dBought = 0;
   player.sBought = 0;
   player.mBought = 0;
-  player.dAmount = new Decimal(0);
-  player.sAmount = new Decimal(0);
-  player.mAmount = new Decimal(0);
-  player.dCost = new Decimal(10);
-  player.sCost = new Decimal(100);
-  player.mCost = new Decimal(1000);
+  player.dAmount = 0);
+  player.sAmount = 0);
+  player.mAmount = 0);
+  player.dCost = 10;
+  player.sCost = 100;
+  player.mCost = 1000;
   player.qld ++;
   player.infinitied ++;
   player.materialNum = 0;
@@ -126,7 +126,6 @@ var infinity = function() {
 var update = function() {
   displayLayers();
   decideMaterialWord();
-  player = player;
 }
 
 
