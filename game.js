@@ -1,5 +1,12 @@
 //This is for JS, HTML is in index.md - and don't change the name of the file, it won't work.
-
+var airbrake = new airbrakeJs.Client({
+  projectId: <Your project ID>,
+  projectKey: '<Your project API Key>'
+});
+airbrake.addFilter(function (notice) {
+  notice.context.environment = 'production';
+  return notice;
+});
 // more achievements!
 var player = {
   money: 10,
@@ -33,7 +40,7 @@ var player = {
   
 //   Stuff
   
-var decideMaterialWord = function() {
+var getMaterialWord = function() {
    if (player.materialNum === 0) {
     player.material = "clay";
   } else if (player.materialNum === 1) {
@@ -55,25 +62,21 @@ var decideMaterialWord = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
-  document.getElementById("material").innnerHTML(player.material);
 }  
 
 var buyDWorker = function() {
-  player.dBought ++;
   player.dAmount ++;
   player.money = player.money - player.dCost;
   player.dCost = player.dCost * 10
 }
 
 var buySWorker = function() {
-  player.sBought ++;
   player.sAmount ++;
   player.money = player.money - player.sCost;
   player.sCost = player.sCost * 100
 }
 
 var buyMWorker = function() {
-  player.mBought ++;
   player.mAmount ++;
   player.money = player.money - player.mCost;
   player.mCost = player.mCost * 1000
