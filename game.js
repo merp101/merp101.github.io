@@ -10,6 +10,9 @@ var player = {
   dMaxCost: 10,
   sMaxCost: 100,
   mMaxCost: 1000,
+  dMaxAmt: 0,
+  sMaxAmt: 0,
+  mMaxAmt: 0,
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -56,17 +59,43 @@ var getMaterialWord = function() {
   document.getElementById("material").innerHTML(player.material)
 }  
 
+
+var getDMaxCost = function() {
+  player.dMaxCost = Math.floor(player.money / player.dCost);
+  player.dMaxAmt = player.dMaxCost / 10;  
+}
+
+var getSMaxCost = function() {
+  player.sMaxCost = Math.floor(player.money / player.sCost);
+  player.sMaxAmt = player.sMaxCost / 100;
+}
+
+var getMMaxCost = function() {
+  player.mMaxCost = Math.floor(player.money / player.mCost);
+  player.mMaxAmt = player.sMaxCost / 1000;
+}
+
 var buyDWorker = function() {
   player.dAmount ++;
   player.money = player.money - player.dCost;
   player.dCost = player.dCost * 10
 }
 
+var buyMaxD = function() {
+  player.dAmount += (player.dMaxCost / 10);
+  player.money = player.money - player.dMaxCost
+}
 var buySWorker = function() {
   player.sAmount ++;
   player.money = player.money - player.sCost;
-  player.sCost = player.sCost * 100
+  player.sCost = (player.sCost * 100);
 }
+
+var buyMaxS = function() {
+  player.sAmount += (player.sMaxCost / 100);
+  player.money = player.money - player.sMaxCost;
+}
+  
 
 var buyMWorker = function() {
   player.mAmount ++;
@@ -74,21 +103,14 @@ var buyMWorker = function() {
   player.mCost = player.mCost * 1000
 }
 
+var buyMaxM = function() {
+  player.mAmount += (player.mMaxCost / 1000);
+  player.money = (player.money - player.mCost);
+  player.mCost
 var getMPS = function() {
   player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
 }
 
-var getDMaxCost = function() {
-  player.dMaxCost = Math.floor(player.money / player.dCost); 
-}
-
-var getSMaxCost = function() {
-  player.sMaxCost = Math.floor(player.money / player.sCost);
-}
-
-var getMMaxCost = function() {
-  player.mMaxCost = Math.floor(player.money / player.mCost);
-}
 
 var display = function() {
   getMPS();
