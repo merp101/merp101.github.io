@@ -13,9 +13,6 @@ var player = {
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
-  dBought: 0,
-  sBought: 0,
-  mBought: 0,
   achievements: [],
   infinited: 0,
   qld: 0,
@@ -56,6 +53,7 @@ var getMaterialWord = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
+  document.getElementById("material").innerHTML(player.material)
 }  
 
 var buyDWorker = function() {
@@ -101,17 +99,17 @@ var display = function() {
   document.getElementById("money").innerHTML(player.money);
   document.getElementById("dCost").innerHTML(player.dCost);
   document.getElementById("dMax").innerHTML(player.dMaxCost);
+  document.getElementById("dAmount").innerHTML(player.dAmount);
   document.getElementById("sCost").innerHTML(player.sCost);
   document.getElementById("sMax").innerHTML(player.sMaxCost);
+  document.getElementById("sAmount").innerHTML(player.sAmount);
   document.getElementById("mCost").innerHTML(player.mCost); 
   document.getElementById("mMax").innerHTML(player.mMaxCost);
+  document.getElementById("mAmount").innerHTML(player.mAmount);  
 }
 
 var reset = function() {
   player.money = 10;
-  player.dBought = 0;
-  player.sBought = 0;
-  player.mBought = 0;
   player.dAmount = 0;
   player.sAmount = 0;
   player.mAmount = 0;
