@@ -56,7 +56,7 @@ var getMaterialWord = function() {
   } else if (player.materialNum === 9) {
     player.material = "diamond";
   }
-  document.getElementById("material").innerHTML(player.material)
+  
 }  
 
 
@@ -82,9 +82,11 @@ var buyDWorker = function() {
 }
 
 var buyMaxD = function() {
-  player.dAmount += (player.dMaxCost / 10);
-  player.money = player.money - player.dMaxCost
+  player.dAmount += player.dMaxAmt;
+  player.money = player.money - player.dMaxCost;
+  player.dCost = player.dCost * (player.dMaxAmt * 10);
 }
+
 var buySWorker = function() {
   player.sAmount ++;
   player.money = player.money - player.sCost;
@@ -92,8 +94,9 @@ var buySWorker = function() {
 }
 
 var buyMaxS = function() {
-  player.sAmount += (player.sMaxCost / 100);
+  player.sAmount += player.sMaxAmt;
   player.money = player.money - player.sMaxCost;
+  player.sCost = player.sCost * (player.sMaxAmt * 100);
 }
   
 
@@ -104,9 +107,12 @@ var buyMWorker = function() {
 }
 
 var buyMaxM = function() {
-  player.mAmount += (player.mMaxCost / 1000);
+  player.mAmount += player.mMaxAmt;
   player.money = (player.money - player.mCost);
-  player.mCost
+  player.mCost = player.mCost * (player.mMaxAmt * 1000);
+}
+  
+  
 var getMPS = function() {
   player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
 }
