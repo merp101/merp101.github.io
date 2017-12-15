@@ -14,11 +14,11 @@
      <div id="mps"> You are getting x layers per second. </div>
      
      <div>
-            <button id="workersbtn"  style="font-size:50px" class="tabbtn">Workers</button>
-            <button id="optionsbtn"  style="font-size:50px" class="tabbtn">Options</button>
-            <button id="statisticsbtn" style="font-size:50px" class="tabbtn">Statistics</button>
-            <button id="achievementsbtn"  style="font-size:50px" class="tabbtn">Achievements</button>
-            <button id="infinitybtn" display="none" style="font-size:50px" class="infinitybtn">Infinity</button>
+            <button id="workersbtn"  style="font-size:25px" class="tabbtn">Workers</button>
+            <button id="optionsbtn"  style="font-size:25px" class="tabbtn">Options</button>
+            <button id="statisticsbtn" style="font-size:25px" class="tabbtn">Statistics</button>
+            <button id="achievementsbtn"  style="font-size:25px" class="tabbtn">Achievements</button>
+            <button id="infinitybtn" display="none" style="font-size:25px" class="infinitybtn">Infinity</button>
             
             
         </div>
@@ -31,14 +31,14 @@
        <div id="dAmount">x </div>
     </td>
     <td width="10%">
-      <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: auto; width: 200px; margin:10px" class="storebtn" align="right">Cost: 10</button>
+      <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" align="right">Cost: 10</button>
     </td>
     <td width="10%">
-      <button id="dMax" style="color:black; width:210px; height: auto; font-size: 10px; margin:10px" class="storebtn" align="right">Max buy. Cost: 10</button>
+      <button id="dMax" style="color:black; width:auto; height: auto; font-size: 10px; margin:10px" class="storebtn" align="right">Max buy. Cost: 10</button>
     </td>
    </tr>
      <br>
-   <tr id="sRow" style="display: none; font-size: 15px">
+   <tr id="sRow" style="display: none; font-size: 150%">
     <td id="sWorkers">
        Satisfied workers
     </td>
@@ -46,14 +46,14 @@
       <div id="sAmount" >x </div>
     </td>
     <td>
-      <button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 100</button>
+      <button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: auto;  width: auto; margin: 10px" class="storebtn">Cost: 100</button>
     </td>
     <td>
-      <button id="sMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 100</button>
+      <button id="sMax" style="color:black; width:auto; height: atuto; margin: 10px" class="storebtn">Max buy. Cost: 100</button>
     </td>
   </tr>
      <br>
-   <tr id="mRow" style="display: none; font-size: 15px">
+   <tr id="mRow" style="display: none; font-size: 150%">
     <td id="mWorkers">
       Motivated workers
     </td>
@@ -61,10 +61,10 @@
       <div id="mAmount">x </div>
     </td>
     <td>
-      <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 1000</button>
+      <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: auto;  width: 135px; margin: 10px" class="storebtn">Cost: 1000</button>
     </td>
     <td>
-      <button id="mMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 1000</button>
+      <button id="mMax" style="color:black; width:210px; height: auto; margin: 10px" class="storebtn">Max buy. Cost: 1000</button>
    </td>
   </tr>
 
@@ -74,7 +74,7 @@
      Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have. Current material: <span id="material">thing</span>
     </button>
      <br>
-     <button id="infButton" onclick="infinity()" style="font-size=200%; width=500px; margin=100px">
+     <button id="infButton" onclick="infinity()" style="font-size:200%; width:1000px; height: auto; margin:100px">
        You have used up all the matter in the universe. Now, you must transcend it...
      </button>
  
