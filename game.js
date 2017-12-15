@@ -151,15 +151,3 @@ var update = function() {
   display();
   decideMaterialWord();
 }
-
-
-
-// Loading cuz... reasons
-  
- function onLoad() {
-   
-   if (player.totalMoney === undefined || isNaN(player.totalMoney)) player.totalMoney = player.Money;
-   if (player.infinitied === undefined) player.infinitied = 0;
-   if (player.options.notation === undefined) player.options.notation = "scientific";
-  
- }
