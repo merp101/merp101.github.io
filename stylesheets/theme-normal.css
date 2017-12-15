@@ -6,4 +6,9 @@
 
  #logo {
    color:black;
+   font-size: 250%;
+}
+
+ #money {
+   color: rgb(200, 100, 10);
 }
