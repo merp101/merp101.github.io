@@ -19,53 +19,54 @@
             <button id="statisticsbtn" class="tabbtn">Statistics</button>
             <button id="achievementsbtn"  class="tabbtn">Achievements</button>
             <button id="infinitybtn" display="none" class="infinitybtn">Infinity</button>
-            <button id="eternitystorebtn" style="font-family: Typewriter; font-size: 20px; display: none" class="eternitytabbtn">Eternity</button>
+            
             
         </div>
 
- <tr style="font-size: 15px" id="dRow">
-                        <td id="dWorkers" width="32%">
-                            Depressed workers
-                        </td>
-                        <td >
-                            <div id="dAmount">x </div>
-                        </td>
-                        <td width="10%">
-                            <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin:10px" class="storebtn" align="right">Cost: 10</button>
-                        </td>
-                        <td width="10%">
-                            <button id="dMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin:10px" class="storebtn" align="right">Max buy. Cost: 10</button>
+   <tr style="font-size: 15px" id="dRow"> 
+    <td id="dWorkers" width="32%">
+       Depressed workers
+    </td>
+    <td>
+       <div id="dAmount">x </div>
+    </td>
+    <td width="10%">
+      <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin:10px" class="storebtn" align="right">Cost: 10</button>
+    </td>
+    <td width="10%">
+      <button id="dMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin:10px" class="storebtn" align="right">Max buy. Cost: 10</button>
+    </td>
+   </tr>
+     <br>
+   <tr id="sRow" style="display: none; font-size: 15px">
+    <td id="sWorkers">
+       Satisfied workers
+    </td>
+    <td>
+      <div id="sAmount" >x </div>
+    </td>
+    <td>
+      <button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 100</button>
+    </td>
+    <td>
+      <button id="sMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 100</button>
+    </td>
+  </tr>
+     <br>
+   <tr id="mRow" style="display: none; font-size: 15px">
+    <td id="mWorkers">
+      Motivated workers
+    </td>
+    <td>
+      <div id="mAmount">x </div>
+    </td>
+    <td>
+      <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 1000</button>
+    </td>
+    <td>
+      <button id="mMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 1000</button>
    </td>
-                    </tr>
-     <br>
-                    <tr id="sRow" style="display: none; font-size: 15px">
-                        <td id="sWorkers">
-                            Satisfied workers
-                        </td>
-                        <td>
-                            <div id="sAmount" >x </div>
-                        </td>
-                        <td><button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 100</button>
-                        </td>
-                        <td>
-                            <button id="sMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 100</button>
-                        </td>
-                    </tr>
-     <br>
-                    <tr id="mRow" style="display: none; font-size: 15px">
-                        <td id="mWorkers">
-                            Motivated workers
-                        </td>
-                        <td>
-                            <div id="mAmount">x </div>
-                        </td>
-                        <td>
-                            <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: 25px; font-size: 10px; width: 135px; margin: 10px" class="storebtn">Cost: 1000</button>
-                        </td>
-                        <td>
-                            <button id="mMax" style="color:black; width:210px; height: 25px; font-size: 10px; margin: 10px" class="storebtn">Max buy. Cost: 1000</button>
-                        </td>
-                    </tr>
+  </tr>
 
 <br>
     
