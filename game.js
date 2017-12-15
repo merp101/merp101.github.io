@@ -1,12 +1,5 @@
 //This is for JS, HTML is in index.md - and don't change the name of the file, it won't work.
-var airbrake = new airbrakeJs.Client({
-  projectId: <Your project ID>,
-  projectKey: '<Your project API Key>'
-});
-airbrake.addFilter(function (notice) {
-  notice.context.environment = 'production';
-  return notice;
-});
+
 // more achievements!
 var player = {
   money: 10,
