@@ -17,7 +17,7 @@ var player = {
   sAmount: 0,
   mAmount: 0,
   achievements: [],
-  infinited: 0,
+  infinitied: 0,
   qld: 0,
   totalTimePlayed: 0,
   totalMoney: 0,
