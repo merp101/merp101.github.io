@@ -34,6 +34,7 @@ var player = {
 //   Stuff
   
 var getMaterialWord = function() {
+  player.materialNum ++;
    if (player.materialNum === 0) {
     player.material = "clay";
   } else if (player.materialNum === 1) {
