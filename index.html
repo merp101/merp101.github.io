@@ -34,7 +34,7 @@
       <button id="dCost" onclick="buyDWorker()" onchange="update()" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" align="right">Cost: 10</button>
     </td>
     <td width="10%">
-      <button id="dMax" style="color:black; width:auto; height: auto; font-size: 10px; margin:10px; font-size:150%" class="storebtn" align="right">Max buy. Cost: 10</button>
+      <button id="dMax" onclick="buyMaxD()"style="color:black; width:auto; height: auto; font-size: 10px; margin:10px; font-size:150%" class="storebtn" align="right">Max buy. Cost: 10</button>
     </td>
    </tr>
      <br>
@@ -49,7 +49,7 @@
       <button id="sCost" onclick="buySWorker()" onchange="update()" style="color:black; height: auto;  width: auto; margin: 10px; font-size:150%" class="storebtn">Cost: 100</button>
     </td>
     <td>
-      <button id="sMax" style="color:black; width:auto; height: atuto; margin: 10px; font-size:150%" class="storebtn">Max buy. Cost: 100</button>
+      <button id="sMax"  onclick="buyMaxS()"style="color:black; width:auto; height: atuto; margin: 10px; font-size:150%" class="storebtn">Max buy. Cost: 100</button>
     </td>
   </tr>
      <br>
@@ -61,20 +61,20 @@
       <div id="mAmount">x </div>
     </td>
     <td>
-      <button id="mCost" onclick="buyMWorker()" onchange="update()" style="color:black; height: auto;  width: auto; margin: 10px; font-size:150%" class="storebtn">Cost: 1000</button>
+      <button id="mCost" onclick="buyMWorker()"  style="color:black; height: auto;  width: auto; margin: 10px; font-size:150%" class="storebtn">Cost: 1000</button>
     </td>
     <td>
-      <button id="mMax" style="color:black; width:auto; height: auto; margin: 10px; font-size:150%" class="storebtn">Max buy. Cost: 1000</button>
+      <button id="mMax" onclick"buyMaxM()" style="color:black; width:auto; height: auto; margin: 10px; font-size:150%" class="storebtn">Max buy. Cost: 1000</button>
    </td>
   </tr>
 
 <br>
     
-    <button id="new-clay-button" onclick="getMaterialWord()" onchange="update()" style="margin:10px">
+    <button id="new-clay-button" onclick="getMaterialWord()"  style="margin:10px">
      Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have. Current material: <span id="material">thing</span>
     </button>
      <br>
-     <button id="infButton" onclick="infinity()" style="font-size:200%; width:1000px; height: auto; margin:100px">
+     <button id="infButton" onclick="infinity()" style="font-size:200%; width:1000px; height: auto; margin:100px; display:none;">
        You have used up all the matter in the universe. Now, you must transcend it...
      </button>
  
