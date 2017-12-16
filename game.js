@@ -232,8 +232,9 @@ function reset() {
 }
 
 function newMaterial() {
-   
-  
+   if (player.money === player.moneyMax) {
+     reset();
+   }  
 }
 
 function infinity() {
