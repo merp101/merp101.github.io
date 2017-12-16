@@ -59,6 +59,9 @@ var getMaterialWord = function() {
   
 }  
 
+var getMPS = function() {
+  player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
+}
 
 var getDMaxCost = function() {
   player.dMaxCost = Math.floor(player.money / player.dCost);
@@ -79,24 +82,30 @@ var buyDWorker = function() {
   player.dAmount ++;
   player.money = player.money - player.dCost;
   player.dCost = player.dCost * 10
+  getMPS();
 }
 
 var buyMaxD = function() {
+  getDMaxCost();
   player.dAmount += player.dMaxAmt;
   player.money = player.money - player.dMaxCost;
   player.dCost = player.dCost * (player.dMaxAmt * 10);
+  getMPS();
 }
 
 var buySWorker = function() {
   player.sAmount ++;
   player.money = player.money - player.sCost;
   player.sCost = (player.sCost * 100);
+  getMPS();
 }
 
 var buyMaxS = function() {
+  getSMaxCost();
   player.sAmount += player.sMaxAmt;
   player.money = player.money - player.sMaxCost;
   player.sCost = player.sCost * (player.sMaxAmt * 100);
+  getMPS();
 }
   
 
@@ -104,18 +113,19 @@ var buyMWorker = function() {
   player.mAmount ++;
   player.money = player.money - player.mCost;
   player.mCost = player.mCost * 1000
+  getMPS();
 }
 
 var buyMaxM = function() {
+  getMMaxCost();
   player.mAmount += player.mMaxAmt;
   player.money = (player.money - player.mCost);
   player.mCost = player.mCost * (player.mMaxAmt * 1000);
+  getMPS();
 }
   
   
-var getMPS = function() {
-  player.mps = (this.dAmount) + (this.sAmount * 10) + (this.mAmount * 100);
-}
+
 
 
 var display = function() {
