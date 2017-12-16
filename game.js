@@ -17,6 +17,7 @@ var player = {
   sAmount: 0,
   mAmount: 0,
   achievements: [],
+  resets: 0,
   infinitied: 0,
   qld: 0,
   totalTimePlayed: 0,
@@ -28,7 +29,8 @@ var player = {
     
   }
 }
-  
+Math.min(player.money, 0);
+
 function setTheme(name) {
     document.querySelectorAll("link").forEach( function(e) {
         if (e.href.includes("theme")) e.remove();
@@ -65,52 +67,9 @@ function onLoad() {
   if (player.options.notation === undefined) player.options.notation = "scientific";
 }
 
-function formatValue(notation, value, places, placesUnder1000) {
-
-    if ((value <= Number.MAX_VALUE && (value >= 1000)) {
-        if (isDecimal(value)) {
-           var power = value.e
-           var temp = value.toExponential(4).split("e")
-           var matissa = parseFloat(temp[0])
-           if (parseInt(temp[1]) != power) power++;
-        } else {
-            var matissa = value / Math.pow(10, Math.floor(Math.log10(value)));
-            var power = Math.floor(Math.log10(value));
-        }
-        if (notation.includes("engineering") || notation.includes("Engineering")) pow = power - (power % 3)
-        else pow = power
-        if (power > 100000  && player.options.commas) pow = pow.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        
-        if ((notation === "Standard")) {
-            if (power <= 303) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
-            else return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + getAbbreviation(power)
-        } else if (notation === "Mixed scientific") {
-            if (power < 33) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
-            else return ((matissa).toFixed(places) + "e" + pow);
-        } else if (notation === "Mixed engineering") {
-            if (power < 33) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
-            else return ((matissa * Decimal.pow(10, power % 3)).toFixed(places) + "ᴇ" + pow);
-        } else if (notation === "Scientific") {
-            return ((matissa).toFixed(places) + "e" + pow);
-      
-        } else if (notation === "Letters") {
-            return ((matissa * Decimal.pow(10, power % 3)).toFixed(places)) + letter(power)
-        
-
-        } else {
-            if (power > 100000  && player.options.commas) power = power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            return "1337 H4CK3R"
-        }
-    } else if (value < 1000) {
-        return (value).toFixed(placesUnder1000);
-    } else {
-        return "Infinite";
-    }
-}
 
 
-
-var getMaterialWord = function() {
+function getMaterialWord() {
   player.materialNum ++;
    if (player.materialNum === 0) {
     player.material = "clay";
@@ -136,33 +95,35 @@ var getMaterialWord = function() {
   
 }  
 
-var getMPS = function() {
+function getMPS() {
   player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
 }
 
-var getDMaxCost = function() {
+
+
+function getDMaxCost() {
   player.dMaxCost = Math.floor(player.money / player.dCost);
   player.dMaxAmt = player.dMaxCost / 10;  
 }
 
-var getSMaxCost = function() {
+function getSMaxCost() {
   player.sMaxCost = Math.floor(player.money / player.sCost);
   player.sMaxAmt = player.sMaxCost / 100;
 }
 
-var getMMaxCost = function() {
+function getMMaxCost() {
   player.mMaxCost = Math.floor(player.money / player.mCost);
   player.mMaxAmt = player.sMaxCost / 1000;
 }
 
-var buyDWorker = function() {
+function buyDWorker() {
   player.dAmount ++;
   player.money = player.money - player.dCost;
   player.dCost = player.dCost * 10
   getMPS();
 }
 
-var buyMaxD = function() {
+function buyMaxD() {
   getDMaxCost();
   player.dAmount += player.dMaxAmt;
   player.money = player.money - player.dMaxCost;
@@ -170,14 +131,14 @@ var buyMaxD = function() {
   getMPS();
 }
 
-var buySWorker = function() {
+function buySWorker() {
   player.sAmount ++;
   player.money = player.money - player.sCost;
   player.sCost = (player.sCost * 100);
   getMPS();
 }
 
-var buyMaxS = function() {
+function buyMaxS() {
   getSMaxCost();
   player.sAmount += player.sMaxAmt;
   player.money = player.money - player.sMaxCost;
@@ -186,14 +147,14 @@ var buyMaxS = function() {
 }
   
 
-var buyMWorker = function() {
+function buyMWorker() {
   player.mAmount ++;
   player.money = player.money - player.mCost;
   player.mCost = player.mCost * 1000
   getMPS();
 }
 
-var buyMaxM = function() {
+function buyMaxM() {
   getMMaxCost();
   player.mAmount += player.mMaxAmt;
   player.money = (player.money - player.mCost);
@@ -204,8 +165,7 @@ var buyMaxM = function() {
   
 
 
-
-var display = function() {
+function display() {
   getMPS();
   getDMaxCost();
   getSMaxCost();
@@ -223,7 +183,8 @@ var display = function() {
   document.getElementById("mAmount").innerHTML(player.mAmount);  
 }
 
-var reset = function() {
+function reset() {
+  player.resets ++;
   player.money = 10;
   player.dAmount = 0;
   player.sAmount = 0;
@@ -231,16 +192,28 @@ var reset = function() {
   player.dCost = 10;
   player.sCost = 100;
   player.mCost = 1000;
+  player.mps = 0;
+  player.dMaxCost = 10;
+  player.dMaxAmt = 0;
+  player.sMaxCost = 100;
+  player.sMaxAmt = 0;
+  player.mMaxCost = 1000;
+  player.mMaxAmt = 0;
+  getDMaxCost();
+  getSMaxCost();
+  getMMaxCost();
+  getMaterialWord();
 }
 
-var infinity = function() {
+function infinity() {
   reset();
   player.qld ++;
   player.infinitied ++;
   player.materialNum = 0;
+  player.resets = 0;
 }
 
-var update = function() {
+function update() {
   display();
-  decideMaterialWord();
+  getMaterialWord();
 }
