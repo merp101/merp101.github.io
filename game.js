@@ -225,9 +225,7 @@ function reset() {
   player.sMaxAmt = 0;
   player.mMaxCost = 1000;
   player.mMaxAmt = 0;
-  getDMaxCost();
-  getSMaxCost();
-  getMMaxCost();
+  display();
   getMaterialWord();
 }
 
