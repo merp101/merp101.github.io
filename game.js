@@ -3,6 +3,7 @@
 // more achievements!
 var player = {
   money: 10,
+  moneyMax: undefined,
   mps: 0,
   dCost: 10,
   sCost: 100,
@@ -29,7 +30,6 @@ var player = {
     
   }
 }
-Math.min(player.money, 0);
 
 function setTheme(name) {
     document.querySelectorAll("link").forEach( function(e) {
@@ -38,10 +38,6 @@ function setTheme(name) {
 
     if(name === undefined) {
         document.getElementById("theme").innerHTML="Current theme: Normal";
-    } else if(name === "S1") {
-        document.getElementById("theme").innerHTML="Current theme: " + secretThemeKey;
-    } else if(name === "S2") {
-        document.getElementById("theme").innerHTML="Current theme: " + secretThemeKey;
     } else {
         document.getElementById("theme").innerHTML="Current theme: " + name;
     }
@@ -95,6 +91,36 @@ function getMaterialWord() {
   
 }  
 
+function setMoneyMax() {
+  if (player.material === "clay") {
+    player.moneyMax = 100;
+  } else if (player.material === "copper") {
+    player.moneyMax = 1000;
+  } else if (player.material === "tin") {
+    player.moneyMax = 10000;
+  } else if (player.material === "bronze") {
+    player.moneyMax = 100000;
+  } else if (player.material === "iron") {
+    player.moneyMax = 1000000;
+  } else if (player.material === "steel") {
+    player.moneyMax = 10000000;
+  } else if (player.material === "silver") {
+    player.moneyMax = 100000000;
+  } else if (player.material === "gold") {
+    player.moneyMax = 1000000000;
+  } else if (player.material === "platinum") {
+    player.moneyMax = 10000000000;
+  } else if (player.material === "diamond") {
+    player.moneyMax = 9999999999999;
+  }
+}
+
+function enforceMax() {
+  if (Math.max(player.money, player.moneyMax) === player.money) {
+    player.money = player.moneyMax;
+    player.mps = 0;
+  }
+}
 function getMPS() {
   player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
 }
@@ -203,6 +229,11 @@ function reset() {
   getSMaxCost();
   getMMaxCost();
   getMaterialWord();
+}
+
+function newMaterial() {
+   
+  
 }
 
 function infinity() {
