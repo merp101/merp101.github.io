@@ -29,10 +29,87 @@ var player = {
   }
 }
   
+function setTheme(name) {
+    document.querySelectorAll("link").forEach( function(e) {
+        if (e.href.includes("theme")) e.remove();
+    });
 
+    if(name === undefined) {
+        document.getElementById("theme").innerHTML="Current theme: Normal";
+    } else if(name === "S1") {
+        document.getElementById("theme").innerHTML="Current theme: " + secretThemeKey;
+    } else if(name === "S2") {
+        document.getElementById("theme").innerHTML="Current theme: " + secretThemeKey;
+    } else {
+        document.getElementById("theme").innerHTML="Current theme: " + name;
+    }
+
+    if (name === undefined) return;
+
+    var head = document.head;
+    var link = document.createElement('link');
+
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = "stylesheets/theme-" + name + ".css";
+
+    head.appendChild(link);
+}
   
 //   Stuff
   
+
+
+function onLoad() {
+  if (player.money === undefined || player.money === NaN) player.money = 10;
+  if (player.options.notation === undefined) player.options.notation = "scientific";
+}
+
+function formatValue(notation, value, places, placesUnder1000) {
+
+    if ((value <= Number.MAX_VALUE && (value >= 1000)) {
+        if (isDecimal(value)) {
+           var power = value.e
+           var temp = value.toExponential(4).split("e")
+           var matissa = parseFloat(temp[0])
+           if (parseInt(temp[1]) != power) power++;
+        } else {
+            var matissa = value / Math.pow(10, Math.floor(Math.log10(value)));
+            var power = Math.floor(Math.log10(value));
+        }
+        if (notation.includes("engineering") || notation.includes("Engineering")) pow = power - (power % 3)
+        else pow = power
+        if (power > 100000  && player.options.commas) pow = pow.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        
+        if ((notation === "Standard")) {
+            if (power <= 303) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
+            else return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + getAbbreviation(power)
+        } else if (notation === "Mixed scientific") {
+            if (power < 33) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
+            else return ((matissa).toFixed(places) + "e" + pow);
+        } else if (notation === "Mixed engineering") {
+            if (power < 33) return (matissa * Decimal.pow(10, power % 3)).toFixed(places) + " " + FormatList[(power - (power % 3)) / 3];
+            else return ((matissa * Decimal.pow(10, power % 3)).toFixed(places) + "ᴇ" + pow);
+        } else if (notation === "Scientific") {
+            return ((matissa).toFixed(places) + "e" + pow);
+      
+        } else if (notation === "Letters") {
+            return ((matissa * Decimal.pow(10, power % 3)).toFixed(places)) + letter(power)
+        
+
+        } else {
+            if (power > 100000  && player.options.commas) power = power.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            return "1337 H4CK3R"
+        }
+    } else if (value < 1000) {
+        return (value).toFixed(placesUnder1000);
+    } else {
+        return "Infinite";
+    }
+}
+
+
+
 var getMaterialWord = function() {
   player.materialNum ++;
    if (player.materialNum === 0) {
