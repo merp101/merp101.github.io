@@ -120,6 +120,7 @@ function enforceMax() {
     player.money = player.moneyMax;
     player.mps = 0;
   }
+  
 }
 function getMPS() {
   player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
@@ -143,18 +144,22 @@ function getMMaxCost() {
 }
 
 function buyDWorker() {
-  player.dAmount ++;
-  player.money = player.money - player.dCost;
-  player.dCost = player.dCost * 10
-  getMPS();
+  if (player.money - player.dCost >= 0) {
+    player.dAmount ++;
+    player.money -= player.dCost;
+    player.dCost = player.dCost * 10
+    getMPS();
+  }
 }
 
 function buyMaxD() {
-  getDMaxCost();
-  player.dAmount += player.dMaxAmt;
-  player.money = player.money - player.dMaxCost;
-  player.dCost = player.dCost * (player.dMaxAmt * 10);
-  getMPS();
+   getDMaxCost();
+  if (player.money - player.dMaxCost >= 0) { 
+    player.dAmount += player.dMaxAmt;
+    player.money -= player.dMaxCost;
+    player.dCost = player.dCost * (player.dMaxAmt * 10);
+    getMPS();
+  }
 }
 
 function buySWorker() {
@@ -198,14 +203,14 @@ function display() {
   getMMaxCost();
   document.getElementById("mps").innerHTML("You are getting " + player.mps + " layers per second.");
   document.getElementById("money").innerHTML(player.money);
-  document.getElementById("dCost").innerHTML(player.dCost);
-  document.getElementById("dMax").innerHTML(player.dMaxCost);
+  document.getElementById("dCost").innerHTML("Cost: " + player.dCost);
+  document.getElementById("dMax").innerHTML("Max buy. Buying: " + player.dMaxAmt + ". Cost: " + player.dMaxCost);
   document.getElementById("dAmount").innerHTML(player.dAmount);
-  document.getElementById("sCost").innerHTML(player.sCost);
-  document.getElementById("sMax").innerHTML(player.sMaxCost);
+  document.getElementById("sCost").innerHTML("Cost: " + player.sCost);
+  document.getElementById("sMax").innerHTML("Max buy. Buying: " + player.sMaxAmt + ". Cost: " + player.sMaxCost);
   document.getElementById("sAmount").innerHTML(player.sAmount);
-  document.getElementById("mCost").innerHTML(player.mCost); 
-  document.getElementById("mMax").innerHTML(player.mMaxCost);
+  document.getElementById("mCost").innerHTML("Cost: " + player.mCost); 
+  document.getElementById("mMax").innerHTML("Max buy. Buying: " + player.mMaxAmt + ". Cost: " + player.mMaxCost);
   document.getElementById("mAmount").innerHTML(player.mAmount);  
 }
 
