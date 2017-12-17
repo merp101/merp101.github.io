@@ -67,27 +67,29 @@ function onLoad() {
 
 function getMaterialWord() {
   player.materialNum ++;
-   if (player.materialNum === 0) {
-    player.material = "clay";
-  } else if (player.materialNum === 1) {
-    player.material = "copper";
-  } else if (player.materialNum === 2) {
-    player.material = "tin";
-  } else if (player.materialNum === 3) {
-    player.material = "bronze";
-  } else if (player.materialNum === 4) {
-    player.material = "iron";
-  } else if (player.materialNum === 5) {
-    player.material = "steel";
-  } else if (player.materialNum === 6) {
-    player.material = "silver";
-  } else if (player.materialNum === 7) {
-    player.material = "gold";
-  } else if (player.materialNum === 8) {
-    player.material = "platinum";
-  } else if (player.materialNum === 9) {
-    player.material = "diamond";
-  }
+  if (player.materialNum === 0) {
+    player.material = undefined;
+  } else if(player.materialNum === 1) {
+     player.material = "clay";
+    }  else if (player.materialNum === 2) {
+     player.material = "copper";
+    } else if (player.materialNum === 3) {
+     player.material = "tin";
+    } else if (player.materialNum === 4) {
+     player.material = "bronze";
+    } else if (player.materialNum === 5) {
+     player.material = "iron";
+    } else if (player.materialNum === 6) {
+     player.material = "steel";
+    } else if (player.materialNum === 7) {
+     player.material = "silver";
+    } else if (player.materialNum === 8) {
+     player.material = "gold";
+    } else if (player.materialNum === 9) {
+     player.material = "platinum";
+    } else if (player.materialNum === 10) {
+     player.material = "diamond";
+   }
   document.getElementById("material").innerHTML = player.material;
 }  
 getMaterialWord();
