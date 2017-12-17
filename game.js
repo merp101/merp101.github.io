@@ -203,7 +203,16 @@ function buyMaxM() {
   player.mCost = player.mCost * (player.mMaxAmt * 1000);
   getMPS();
 }
-  
+
+function getMults() {
+  player.nDMult = 2(Math.log10(player.money) ^ 2);
+  player.nSMult = Math.log10(player.money) ^ 2;
+  player.nMMult = (Math.log10(player.money) ^ 2) / 2;
+  if (2(Math.log10(player.money)) >= 1) player.dMult = 2(Math.log10(player.money) ^ 2); 
+  if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
+  if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+}
+getMults();
   
 
 
@@ -259,7 +268,7 @@ function display() {
   mMult.innerHTML = player.mMult;
   
   var nDMult = document.getElementById("dMult");
-  nDMult.innerHTML = 2(Math.log10(player.money) ^ 2);
+  nDMult.innerHTML = player.nDMult;
   
   var nSMult = document.getElementById("sMult");
   nSMult.innerHTML = Math.log10(player.money) ^ 2;
@@ -292,11 +301,7 @@ function reset() {
   getMaterialWord();
 }
 
-function getMults() {
-  if (2(Math.log10(player.money)) >= 1) player.dMult = 2(Math.log10(player.money) ^ 2); 
-  if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
-  if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
-}
+
 
 function newMaterial() {
    if (player.money === player.moneyMax) {
