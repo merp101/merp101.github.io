@@ -320,11 +320,6 @@ function newMaterial() {
    }  
 }
 
-function showInf() {
-  document.getElementById("infButton").display = "inline";
-  document.getElementById("qlds").display = "inline";
-}
-
 function infinity() {
   if (player.money === Infinity && player.material === "diamond") {
     reset();
@@ -332,8 +327,8 @@ function infinity() {
     player.infinitied ++;
     player.materialNum = 0;
     player.resets = 0;
-    showInf();
+    document.getElementById("qlds").display = "inline";
   }
 }
 
-
+if(player.money === Infinity) document.getElementById("infButton").display = "inline";
