@@ -239,7 +239,7 @@ function display() {
   var mAmt = document.getElementById("mAmount");
   mAmt.innerHTML = player.mAmount;  
 }
-
+display();
 
 function reset() {
   player.resets ++;
@@ -264,6 +264,7 @@ function reset() {
 function newMaterial() {
    if (player.money === player.moneyMax) {
      reset();
+     getMaterialWord();
    }  
 }
 
