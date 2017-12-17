@@ -26,7 +26,7 @@
 
    <tr style="font-size: 150%" id="dRow"> 
     <td id="dWorkers" width="32%" font-size="200%">
-       Depressed workers
+       Depressed workers x0
     </td>
     <td>
        <div id="dAmount" font-size="200%">x </div>
@@ -41,7 +41,7 @@
      <br>
    <tr id="sRow" style="display: none; font-size: 150%">
     <td id="sWorkers" font-size="200%">
-       Satisfied workers
+       Satisfied workers x0
     </td>
     <td>
       <div id="sAmount" font-size="200%">x </div>
@@ -56,7 +56,7 @@
      <br>
    <tr id="mRow" style="display: none; font-size: 150%">
     <td id="mWorkers" font-size="200%">
-      Motivated workers
+      Motivated workers x0
     </td>
     <td>
       <div id="mAmount">x </div>
@@ -72,9 +72,12 @@
 <br>
     
     <button id="new-clay-button" onclick="newMaterial(); display();"  style="margin:10px">
-     Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have. Current material: <span id="material">thing</span>
+     Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have.  You can <br>only do this when you are at your limit Current material: <span id="material">thing</span>
     </button>
      <br>
+    <button id="resetbtn" onclick="getMults(); display();">
+      Reset your progress to increase your production. <br> Multiplier on depressed workers: <span id="dMult">0</span>x <br> Multiplier on satisfied workers: <span id="sMult">0</span>x <br> Multiplier on motivated workers: <span id="mMult">0</span>x 
+     </button>
      <button id="infButton" onclick="infinity(); showInf();" style="font-size:200%; width:1000px; height: auto; margin:100px; display:none;">
        You have used up all the matter in the universe. Now, you must transcend it...
      </button>
