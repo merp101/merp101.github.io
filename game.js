@@ -17,6 +17,12 @@ var player = {
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
+  dMult: 1,
+  sMult: 1,
+  mMult: 1,
+  nDMult: 1,
+  nSMult: 1,
+  nMMult: 1,
   achievements: [],
   resets: 0,
   infinitied: 0,
@@ -27,6 +33,7 @@ var player = {
   material: "",
   options: {
     notation: "scientific",
+    theme: "normal",
     
   }
 }
@@ -104,17 +111,17 @@ function setMoneyMax() {
   } else if (player.material === "bronze") {
     player.moneyMax = 100000;
   } else if (player.material === "iron") {
-    player.moneyMax = 1000000;
+    player.moneyMax = 1e+10;
   } else if (player.material === "steel") {
-    player.moneyMax = 10000000;
+    player.moneyMax = 1e+25;
   } else if (player.material === "silver") {
-    player.moneyMax = 100000000;
+    player.moneyMax = 1e+50;
   } else if (player.material === "gold") {
-    player.moneyMax = 1000000000;
+    player.moneyMax = 1e+100;
   } else if (player.material === "platinum") {
-    player.moneyMax = 10000000000;
+    player.moneyMax = 1e+200;
   } else if (player.material === "diamond") {
-    player.moneyMax = 9999999999999;
+    player.moneyMax = 1.8e+308;
   }
 }
 setMoneyMax();
@@ -127,7 +134,7 @@ function enforceMax() {
   
 }
 function getMPS() {
-  player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
+  player.mps = (player.dAmount * player.dMult) + ((player.sAmount * 10) * player.sMult) + ((player.mAmount * 100) * player.mMult);
 }
 getMPS();
 
@@ -241,6 +248,27 @@ function display() {
   
   var mAmt = document.getElementById("mAmount");
   mAmt.innerHTML = player.mAmount;  
+  
+  var dMult = document.getElementById("cDMult");
+  dMult.innerHTML = player.dMult;
+  
+  var sMult = document.getElementById("cSMult");
+  sMult.innerHTML = player.sMult;
+  
+  var mMult = document.getElementById("cMMult");
+  mMult.innerHTML = player.mMult;
+  
+  var nDMult = document.getElementById("dMult");
+  nDMult.innerHTML = 2(Math.log10(player.money) ^ 2);
+  
+  var nSMult = document.getElementById("sMult");
+  nSMult.innerHTML = Math.log10(player.money) ^ 2;
+  
+  var nMMult = document.getElementById("mMult");
+  nMMult.innerHTML = (Math.log10(player.money) ^ 2) / 2;
+  
+  
+  
 }
 display();
 
@@ -264,6 +292,12 @@ function reset() {
   getMaterialWord();
 }
 
+function getMults() {
+  if (2(Math.log10(player.money)) >= 1) player.dMult = 2(Math.log10(player.money) ^ 2); 
+  if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2); 
+  if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+}
+
 function newMaterial() {
    if (player.money === player.moneyMax) {
      reset();
@@ -271,17 +305,20 @@ function newMaterial() {
    }  
 }
 
-function infinity() {
-  reset();
-  player.qld ++;
-  player.infinitied ++;
-  player.materialNum = 0;
-  player.resets = 0;
+function showInf() {
+  document.getElementById("infButton").display = "inline";
+  document.getElementById("qlds").display = "inline";
 }
 
-function showInf() {
-  if (player.money === player.moneyMax && player.material === "diamond") {
-    document.getElementById("infButton").display = "visible";
-    document.getElementById("qlds").display = "visible";
+function infinity() {
+  if (player.money === Infinity && player.material === "diamond") {
+    reset();
+    player.qld ++;
+    player.infinitied ++;
+    player.materialNum = 0;
+    player.resets = 0;
+    showInf();
   }
 }
+
+
