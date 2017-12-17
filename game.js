@@ -90,6 +90,7 @@ function getMaterialWord() {
   }
   
 }  
+getMaterialWord();
 
 function setMoneyMax() {
   if (player.material === "clay") {
@@ -114,6 +115,7 @@ function setMoneyMax() {
     player.moneyMax = 9999999999999;
   }
 }
+setMoneyMax();
 
 function enforceMax() {
   if (Math.max(player.money, player.moneyMax) === player.money) {
@@ -125,7 +127,7 @@ function enforceMax() {
 function getMPS() {
   player.mps = (player.dAmount) + (player.sAmount * 10) + (player.mAmount * 100);
 }
-
+getMPS();
 
 
 function getDMaxCost() {
@@ -214,6 +216,7 @@ function display() {
   document.getElementById("mAmount").innerHTML(player.mAmount);  
 }
 
+
 function reset() {
   player.resets ++;
   player.money = 10;
@@ -252,3 +255,4 @@ function update() {
   display();
   getMaterialWord();
 }
+update();
