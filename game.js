@@ -130,17 +130,17 @@ function getMPS() {
 
 function getDMaxCost() {
   player.dMaxCost = Math.floor(player.money / player.dCost);
-  player.dMaxAmt = player.dMaxCost / 10;  
+  player.dMaxAmt = Math.floor(player.dMaxCost / 10);  
 }
 
 function getSMaxCost() {
   player.sMaxCost = Math.floor(player.money / player.sCost);
-  player.sMaxAmt = player.sMaxCost / 100;
+  player.sMaxAmt = Math.floor(player.sMaxCost / 100);
 }
 
 function getMMaxCost() {
   player.mMaxCost = Math.floor(player.money / player.mCost);
-  player.mMaxAmt = player.sMaxCost / 1000;
+  player.mMaxAmt = Math.floor(player.sMaxCost / 1000);
 }
 
 function buyDWorker() {
