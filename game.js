@@ -275,8 +275,9 @@ function infinity() {
   player.resets = 0;
 }
 
-function update() {
-  display();
-  getMaterialWord();
+function showInf() {
+  if (player.money === player.moneyMax && player.material === "diamond") {
+    document.getElementById("infButton").display = "visible";
+    document.getElementById("qlds").display = "visible";
+  }
 }
-update();
