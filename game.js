@@ -212,6 +212,9 @@ function display() {
   var money = document.getElementById("money");
   money.innerHTML = player.money;
   
+  var qlds = document.getElementById("qlds");
+  qlds.innerHTML = "You have " + player.qld + " Quantum Layering Devices (QLD's).";
+  
   var dCost = document.getElementById("dCost");
   dCost.innerHTML = "Cost: " + player.dCost;
   
