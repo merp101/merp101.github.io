@@ -301,8 +301,13 @@ function reset() {
   player.sMaxAmt = 0;
   player.mMaxCost = 1000;
   player.mMaxAmt = 0;
+  player.dMult = 1;
+  player.sMult = 1;
+  player.mMult = 1;
+  getMults();
   display();
   getMaterialWord();
+  setMoneyMax();
 }
 
 
@@ -310,7 +315,6 @@ function reset() {
 function newMaterial() {
    if (player.money === player.moneyMax) {
      reset();
-     getMaterialWord();
      var multbtn = document.getElementById("resetbtn");
      multbtn.display="inline"; 
    }  
