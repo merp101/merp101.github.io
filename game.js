@@ -205,12 +205,14 @@ function buyMaxM() {
 }
 
 function getMults() {
-  player.nDMult = 2 * (Math.log10(player.money) ^ 2);
-  player.nSMult = Math.log10(player.money) ^ 2;
-  player.nMMult = (Math.log10(player.money) ^ 2) / 2;
-  if (2 * (Math.log10(player.money)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
-  if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
-  if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+  if (player.materialNum > 1) {
+    player.nDMult = 2 * (Math.log10(player.money) ^ 2);
+    player.nSMult = Math.log10(player.money) ^ 2;
+    player.nMMult = (Math.log10(player.money) ^ 2) / 2;
+    if (2 * (Math.log10(player.money)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
+    if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
+    if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+  }
 }
 getMults();
   
@@ -259,13 +261,13 @@ function display() {
   mAmt.innerHTML = player.mAmount;  
   
   var dMult = document.getElementById("cDMult");
-  dMult.innerHTML = player.dMult;
+  dMult.innerHTML = "x" + player.dMult;
   
   var sMult = document.getElementById("cSMult");
-  sMult.innerHTML = player.sMult;
+  sMult.innerHTML = "x" + player.sMult;
   
   var mMult = document.getElementById("cMMult");
-  mMult.innerHTML = player.mMult;
+  mMult.innerHTML = "x" + player.mMult;
   
   var nDMult = document.getElementById("dMult");
   nDMult.innerHTML = player.nDMult;
@@ -275,6 +277,8 @@ function display() {
   
   var nMMult = document.getElementById("mMult");
   nMMult.innerHTML = (Math.log10(player.money) ^ 2) / 2;
+  
+ 
   
   
   
@@ -307,6 +311,8 @@ function newMaterial() {
    if (player.money === player.moneyMax) {
      reset();
      getMaterialWord();
+     var multbtn = document.getElementById("resetbtn");
+     multbtn.display="inline"; 
    }  
 }
 
