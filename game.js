@@ -38,6 +38,8 @@ var player = {
   }
 }
 
+parseFloat(player.money);
+
 function setTheme(name) {
     document.querySelectorAll("link").forEach( function(e) {
         if (e.href.includes("theme")) e.remove();
@@ -121,7 +123,7 @@ function setMoneyMax() {
   } else if (player.material === "platinum") {
     player.moneyMax = 1e+200;
   } else if (player.material === "diamond") {
-    player.moneyMax = 1.8e+308;
+    player.moneyMax = Number.MAX_VALUE;
   }
 }
 setMoneyMax();
@@ -225,10 +227,11 @@ function display() {
   getMMaxCost();
   
   var mps = document.getElementById("mps");
-  mps.innerHTML = "You are getting " + player.mps + " layers per second.";
+  mps.innerHTML = "You are getting " + toExponential(player.mps) + " layers per second.";
+  
   
   var money = document.getElementById("money");
-  money.innerHTML = player.money;
+  money.innerHTML = toExponential(player.money);
   
   var qlds = document.getElementById("qlds");
   qlds.innerHTML = "You have " + player.qld + " Quantum Layering Devices (QLD's).";
