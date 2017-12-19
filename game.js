@@ -8,12 +8,9 @@ var player = {
   dCost: 10,
   sCost: 100,
   mCost: 1000,
-  dMaxCost: 10,
-  sMaxCost: 100,
-  mMaxCost: 1000,
-  dMaxAmt: 0,
-  sMaxAmt: 0,
-  mMaxAmt: 0,
+  dTenCost: 10,
+  sTenCost: 100,
+  mTenCost: 1000,
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -141,21 +138,6 @@ function getMPS() {
 getMPS();
 
 
-function getDMaxCost() {
-  player.dMaxCost = Math.floor(player.money / player.dCost);
-  player.dMaxAmt = Math.floor(player.dMaxCost / 10);  
-}
-
-function getSMaxCost() {
-  player.sMaxCost = Math.floor(player.money / player.sCost);
-  player.sMaxAmt = Math.floor(player.sMaxCost / 100);
-}
-
-function getMMaxCost() {
-  player.mMaxCost = Math.floor(player.money / player.mCost);
-  player.mMaxAmt = Math.floor(player.sMaxCost / 1000);
-}
-
 function buyDWorker() {
   if (player.money - player.dCost >= 0) {
     player.dAmount ++;
@@ -165,13 +147,9 @@ function buyDWorker() {
   }
 }
 
-function buyMaxD() {
-   getDMaxCost();
-  if (player.money - player.dMaxCost >= 0) { 
-    player.dAmount += player.dMaxAmt;
-    player.money -= player.dMaxCost;
-    player.dCost = player.dCost * (player.dMaxAmt * 10);
-    getMPS();
+function buyTenD() {
+  for (var i = 0; i < 11; i++) {
+    buyDWorker();
   }
 }
 
@@ -182,12 +160,9 @@ function buySWorker() {
   getMPS();
 }
 
-function buyMaxS() {
-  getSMaxCost();
-  player.sAmount += player.sMaxAmt;
-  player.money = player.money - player.sMaxCost;
-  player.sCost = player.sCost * (player.sMaxAmt * 100);
-  getMPS();
+function buyTenS() {
+ for (var i = 0; i < 11; i++)
+   buySWorker();
 }
   
 
@@ -258,7 +233,7 @@ function display() {
   mCost.innerHTML = "Cost: " + player.mCost; 
   
   var mMax = document.getElementById("mMax");
-  mMax.innerHTML = "Max buy. Buying: " + player.mMaxAmt + ". Cost: " + player.mMaxCost;
+  mMax.innerHTML = "Until 10, Cost: " + player.tenCost;
   
   var mAmt = document.getElementById("mAmount");
   mAmt.innerHTML = player.mAmount;  
