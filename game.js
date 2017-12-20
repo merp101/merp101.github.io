@@ -131,6 +131,7 @@ function enforceMax() {
 }
 function getMPS() {
   player.mps = (player.dAmount * player.dMult) + ((player.sAmount * 10) * player.sMult) + ((player.mAmount * 100) * player.mMult);
+  return player.mps;
 }
 getMPS();
 
@@ -144,7 +145,7 @@ function buyDWorker() {
   }
 }
 
-function buyTenD() {
+function buyTen(worker) {
   for (var i = 0; i < 11; i++) {
     buyDWorker();
   }
@@ -157,24 +158,12 @@ function buySWorker() {
   getMPS();
 }
 
-function buyTenS() {
- for (var i = 0; i < 11; i++)
-   buySWorker();
-}
   
 
 function buyMWorker() {
   player.mAmount ++;
   player.money = player.money - player.mCost;
   player.mCost = player.mCost * 1000
-  getMPS();
-}
-
-function buyMaxM() {
-  getMMaxCost();
-  player.mAmount += player.mMaxAmt;
-  player.money = (player.money - player.mCost);
-  player.mCost = player.mCost * (player.mMaxAmt * 1000);
   getMPS();
 }
 
