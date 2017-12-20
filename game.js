@@ -8,9 +8,6 @@ var player = {
   dCost: 10,
   sCost: 100,
   mCost: 1000,
-  dTenCost: 10,
-  sTenCost: 100,
-  mTenCost: 1000,
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -273,12 +270,6 @@ function reset() {
   player.sCost = 100;
   player.mCost = 1000;
   player.mps = 0;
-  player.dMaxCost = 10;
-  player.dMaxAmt = 0;
-  player.sMaxCost = 100;
-  player.sMaxAmt = 0;
-  player.mMaxCost = 1000;
-  player.mMaxAmt = 0;
   player.dMult = 1;
   player.sMult = 1;
   player.mMult = 1;
