@@ -145,9 +145,20 @@ function buyDWorker() {
   }
 }
 
-function buyTen(worker) {
-  for (var i = 0; i < 11; i++) {
+function buyTenD() {
+   if (player.money - (player.dCost * (10 ^ 10)) >= 0) {
     buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+    buyDWorker();
+  } else {
+    document.getElementById("dMax").style.color = rgb(10,10,10);
   }
 }
 
@@ -158,13 +169,44 @@ function buySWorker() {
   getMPS();
 }
 
-  
+function buyTenS() {
+  if (player.money - (player.sCost * (100 ^ 10)) >= 0) {
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+    buySWorker();
+  } else {
+    document.getElementById("sMax").style.color = rgb(10,10,10);
+  }
+}  
 
 function buyMWorker() {
   player.mAmount ++;
   player.money = player.money - player.mCost;
   player.mCost = player.mCost * 1000
   getMPS();
+}
+
+function buyTenM() {
+  if (player.money - (player.mCost * (1000 ^ 10)) >= 0) {
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+    buyMWorker();
+  } else {
+    document.getElementById("mMax").style.color = rgb(10,10,10);
 }
 
 function getMults() {
