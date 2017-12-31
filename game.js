@@ -209,9 +209,9 @@ function buyTenM() {
 
 function getMults() {
   if (player.materialNum > 1) {
-    if (2 * (Math.log10(player.money) ^ 2)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
-    if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
-    if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+    if ((2 * (Math.log10(player.money) ^ 2)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
+    if ((Math.log10(player.money) ^ 2) >= 1) player.sMult = Math.log10(player.money) ^ 2; 
+    if (((Math.log10(player.money) ^ 2) / 2) >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
   }
 }
 getMults();
