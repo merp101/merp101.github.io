@@ -160,9 +160,7 @@ function buyTenD() {
     buyDWorker();
     buyDWorker();
     buyDWorker();
-  } else {
-    document.getElementById("dMax").style.color = rgb(10,10,10);
-  }
+  } 
 }
 
 function buySWorker() {
@@ -185,8 +183,6 @@ function buyTenS() {
     buySWorker();
     buySWorker();
   } 
-    
-  }
 }  
 
 function buyMWorker() {
@@ -208,8 +204,7 @@ function buyTenM() {
     buyMWorker();
     buyMWorker();
     buyMWorker();
-  } else {
-    
+  } 
 }
 
 function getMults() {
