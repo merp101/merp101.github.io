@@ -34,6 +34,7 @@ var player = {
 
 parseFloat(player.money);
 
+/*
 function setTheme(name) {
     document.querySelectorAll("link").forEach( function(e) {
         if (e.href.includes("theme")) e.remove();
@@ -56,7 +57,9 @@ function setTheme(name) {
 
     head.appendChild(link);
 }
-  
+*/
+
+
 //   Stuff
   
 
@@ -181,8 +184,8 @@ function buyTenS() {
     buySWorker();
     buySWorker();
     buySWorker();
-  } else {
-    document.getElementById("sMax").style.color = rgb(10,10,10);
+  } 
+    
   }
 }  
 
@@ -206,18 +209,16 @@ function buyTenM() {
     buyMWorker();
     buyMWorker();
   } else {
-    document.getElementById("mMax").style.color = rgb(10,10,10);
+    
 }
 
 function getMults() {
   if (player.materialNum > 1) {
-    player.nDMult = 2 * (Math.log10(player.money) ^ 2);
-    player.nSMult = Math.log10(player.money) ^ 2;
-    player.nMMult = (Math.log10(player.money) ^ 2) / 2;
     if (2 * (Math.log10(player.money) ^ 2)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
     if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
     if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
   }
+  display();
 }
 getMults();
   
@@ -229,12 +230,17 @@ function display() {
   getSMaxCost();
   getMMaxCost();
   
+  player.nDMult = 2 * (Math.log10(player.money) ^ 2);
+  player.nSMult = Math.log10(player.money) ^ 2;
+  player.nMMult = (Math.log10(player.money) ^ 2) / 2;
+  
+  
   var mps = document.getElementById("mps");
-  mps.innerHTML = "You are getting " + toExponential(player.mps) + " layers per second.";
+  mps.innerHTML = "You are getting " + player.mps + " layers per second.";
   
   
   var money = document.getElementById("money");
-  money.innerHTML = toExponential(player.money);
+  money.innerHTML = player.money;
   
   var qlds = document.getElementById("qlds");
   qlds.innerHTML = "You have " + player.qld + " Quantum Layering Devices (QLD's).";
@@ -279,10 +285,10 @@ function display() {
   nDMult.innerHTML = player.nDMult;
   
   var nSMult = document.getElementById("sMult");
-  nSMult.innerHTML = Math.log10(player.money) ^ 2;
+  nSMult.innerHTML = player.nSMult;
   
   var nMMult = document.getElementById("mMult");
-  nMMult.innerHTML = (Math.log10(player.money) ^ 2) / 2;
+  nMMult.innerHTML = player.nMMult;
   
  
   
