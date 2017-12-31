@@ -218,7 +218,6 @@ function getMults() {
     if (Math.log10(player.money) ^ 2 >= 1) player.sMult = Math.log10(player.money) ^ 2; 
     if ((Math.log10(player.money) ^ 2) / 2 >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
   }
-  display();
 }
 getMults();
   
