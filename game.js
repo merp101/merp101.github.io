@@ -73,32 +73,6 @@ function save() {
   localStorage.setItem("funsave",JSON.stringify(game));
 }
 
-function load() {
-  var save = JSON.parse(localStorage.getItem("funsave"))
-  if (save) game = save
-  var elem = document.getElementById("1")
-  for (var i=1; i<game.costs.length; i++) {
-    var btn = document.createElement("button")
-    var br = document.createElement("br")
-    btn.innerHTML = "Amount: 0<br>Cost:"+formatValue(game.costs[i])
-    btn.id = i+1
-    btn.className = "btn"
-    btn.onclick = function() {buyStuff(parseInt(this.id));}
-    insertAfter(br, elem)
-    insertAfter(btn, br)
-    elem = btn
-  }
-  for (var i=1; i<game.costs.length-5; i++) {
-    var pbtn = document.createElement("button")
-    var otherbtn = document.getElementById(i)
-    pbtn.innerHTML = "Reset to increase bonus to "+Math.max(game.costs.length-id-5, game.prestige[id-1])+"x boost."
-    pbtn.id = i+"prestige"
-    pbtn.className = "prestigebtn"
-    pbtn.onclick = function() {prestige(parseInt(this.id));}
-    insertAfter(pbtn, otherbtn)
-  }
-}
-
 //   Stuff
   
 
