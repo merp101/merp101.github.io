@@ -221,66 +221,59 @@ function display() {
   player.nMMult = (Math.log10(player.money) ^ 2) / 2;
   
   var dMult = document.getElementById("cDMult");
-  dMult.innerHTML = "x" + formatValue(player.dMult, 2);
+  dMult.innerHTML = "x" + formatValue(player.dMult, 0);
   
   var sMult = document.getElementById("cSMult");
-  sMult.innerHTML = "x" + formatValue(player.sMult, 2);
+  sMult.innerHTML = "x" + formatValue(player.sMult, 0);
   
   var mMult = document.getElementById("cMMult");
-  mMult.innerHTML = "x" + formatValue(player.mMult, 2);
+  mMult.innerHTML = "x" + formatValue(player.mMult, 0);
   
   var nDMult = document.getElementById("dMult");
-  nDMult.innerHTML = formatValue(player.nDMult, 2);
+  nDMult.innerHTML = formatValue(player.nDMult, 0);
   
   var nSMult = document.getElementById("sMult");
-  nSMult.innerHTML = formatValue(player.nSMult, 2);
+  nSMult.innerHTML = formatValue(player.nSMult, 0);
   
   var nMMult = document.getElementById("mMult");
-  nMMult.innerHTML = formatValue(player.nMMult, 2);
-  
+  nMMult.innerHTML = formatValue(player.nMMult, 0);
   
   var mps = document.getElementById("mps");
-  mps.innerHTML = "You are getting " + formatValue(player.mps, 2) + " layers per second.";
+  mps.innerHTML = "You are getting " + formatValue(player.mps, 0) + " layers per second.";
   
   
   var money = document.getElementById("money");
-  money.innerHTML = formatValue(player.money, 2);
+  money.innerHTML = formatValue(player.money, 0);
   
   var qlds = document.getElementById("qlds");
-  qlds.innerHTML = "You have " + formatValue(player.qld, 2) + " Quantum Layering Devices (QLD's).";
+  qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
   
   var dCost = document.getElementById("dCost");
-  dCost.innerHTML = "Cost: " + formatValue(player.dCost, 2);
+  dCost.innerHTML = "Cost: " + formatValue(player.dCost, 0);
   
   var dMax = document.getElementById("dMax");
-  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.dTenCost, 2);
+  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.dTenCost, 0);
   
   var dAmt = document.getElementById("dAmount");
-  dAmt.innerHTML = formatValue(player.dAmount, 2);
+  dAmt.innerHTML = formatValue(player.dAmount, 0);
   
   var sCost = document.getElementById("sCost");
-  sCost.innerHTML = "Cost: " + formatValue(player.sCost, 2);
+  sCost.innerHTML = "Cost: " + formatValue(player.sCost, 0);
   
   var sMax = document.getElementById("sMax");
-  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.sTenCost, 2);
+  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.sTenCost, 0);
   
   var sAmt = document.getElementById("sAmount");
-  sAmt.innerHTML = formatValue(player.sAmount, 2);
+  sAmt.innerHTML = formatValue(player.sAmount, 0);
   
   var mCost = document.getElementById("mCost");
-  mCost.innerHTML = "Cost: " + formatValue(player.mCost, 2); 
+  mCost.innerHTML = "Cost: " + formatValue(player.mCost, 0); 
   
   var mMax = document.getElementById("mMax");
-  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.mTenCost, 2);
+  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.mTenCost, 0);
   
   var mAmt = document.getElementById("mAmount");
-  mAmt.innerHTML = formatValue(player.mAmount, 2);  
-  
-
- 
-  
-  
-  
+  mAmt.innerHTML = formatValue(player.mAmount, 0);    
 }
 display();
 
