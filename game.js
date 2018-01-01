@@ -181,7 +181,7 @@ function buyDWorker() {
     player.money -= player.dCost;
     player.dCost = player.dCost * 10
     getMPS();
-  }
+  } 
 }
 
 function buyTenD() {
