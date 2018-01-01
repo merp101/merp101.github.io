@@ -80,6 +80,7 @@ function save() {
 function onLoad() {
   if (player.money === undefined || player.money === NaN) player.money = 10;
   if (player.options.notation === undefined) player.options.notation = "scientific";
+  if (player.money === Infinity) document.getElementById("infButton").display = "inline";
 }
 
 
@@ -201,16 +202,7 @@ function buyTenM() {
      }
   } 
 }
-
-function getMults() {
-  if (player.materialNum > 1) {
-    player.dMult = 2 * (Math.log10(player.money) ^ 2); 
-    player.sMult = Math.log10(player.money) ^ 2; 
-    player.mMult = (Math.log10(player.money) ^ 2) / 2;
-  }
-}
-
-  
+ 
 
 
 function display() {
@@ -280,23 +272,34 @@ display();
 function reset() {
   player.resets ++;
   player.money = 10;
-  player.dAmount = 0;
-  player.sAmount = 0;
-  player.mAmount = 0;
+  player.moneyMax = undefined;
+  player.mps = 0;
   player.dCost = 10;
   player.sCost = 100;
   player.mCost = 1000;
-  player.mps = 0;
+  player.dTenCost = this.dCost * (10 ^ 10);
+  player.sTenCost = this.sCost * (10 ^ 10);
+  player.mTenCost = this.mCost * (10 ^ 10);
+  player.dAmount = 0;
+  player.sAmount = 0;
+  player.mAmount = 0;
   player.dMult = 1;
   player.sMult = 1;
   player.mMult = 1;
-  getMults();
   display();
   getMaterialWord();
   setMoneyMax();
 }
 
-
+function getMults() {
+   if (player.materialNum > 1) {
+     player.dMult = 2 * (Math.log10(player.money) ^ 2);
+     player.sMult = Math.log10(player.money) ^ 2;
+     player.mMult = (Math.log10(player.money) ^ 2) / 2;
+     reset();
+     player.resets --;
+   }
+}
 
 function newMaterial() {
    if (player.money === player.moneyMax) {
@@ -307,14 +310,15 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money === Infinity && player.material === "diamond") {
+  if (player.money === player.moneyMax && player.material === "diamond") {
     reset();
     player.qld ++;
     player.infinitied ++;
     player.materialNum = 0;
     player.resets = 0;
     document.getElementById("qlds").display = "inline";
+    
   }
 }
 
-if(player.money === Infinity) document.getElementById("infButton").display = "inline";
+
