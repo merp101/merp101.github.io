@@ -209,24 +209,39 @@ function buyTenM() {
 
 function getMults() {
   if (player.materialNum > 1) {
-    if ((2 * (Math.log10(player.money) ^ 2)) >= 1) player.dMult = 2 * (Math.log10(player.money) ^ 2); 
-    if ((Math.log10(player.money) ^ 2) >= 1) player.sMult = Math.log10(player.money) ^ 2; 
-    if (((Math.log10(player.money) ^ 2) / 2) >= 1) player.mMult = (Math.log10(player.money) ^ 2) / 2;
+    player.dMult = 2 * (Math.log10(player.money) ^ 2); 
+    player.sMult = Math.log10(player.money) ^ 2; 
+    player.mMult = (Math.log10(player.money) ^ 2) / 2;
   }
 }
-getMults();
+
   
 
 
 function display() {
   getMPS();
-  getDMaxCost();
-  getSMaxCost();
-  getMMaxCost();
   
   player.nDMult = 2 * (Math.log10(player.money) ^ 2);
   player.nSMult = Math.log10(player.money) ^ 2;
   player.nMMult = (Math.log10(player.money) ^ 2) / 2;
+  
+    var dMult = document.getElementById("cDMult");
+  dMult.innerHTML = "x" + player.dMult;
+  
+  var sMult = document.getElementById("cSMult");
+  sMult.innerHTML = "x" + player.sMult;
+  
+  var mMult = document.getElementById("cMMult");
+  mMult.innerHTML = "x" + player.mMult;
+  
+  var nDMult = document.getElementById("dMult");
+  nDMult.innerHTML = player.nDMult;
+  
+  var nSMult = document.getElementById("sMult");
+  nSMult.innerHTML = player.nSMult;
+  
+  var nMMult = document.getElementById("mMult");
+  nMMult.innerHTML = player.nMMult;
   
   
   var mps = document.getElementById("mps");
@@ -266,24 +281,7 @@ function display() {
   var mAmt = document.getElementById("mAmount");
   mAmt.innerHTML = player.mAmount;  
   
-  var dMult = document.getElementById("cDMult");
-  dMult.innerHTML = "x" + player.dMult;
-  
-  var sMult = document.getElementById("cSMult");
-  sMult.innerHTML = "x" + player.sMult;
-  
-  var mMult = document.getElementById("cMMult");
-  mMult.innerHTML = "x" + player.mMult;
-  
-  var nDMult = document.getElementById("dMult");
-  nDMult.innerHTML = player.nDMult;
-  
-  var nSMult = document.getElementById("sMult");
-  nSMult.innerHTML = player.nSMult;
-  
-  var nMMult = document.getElementById("mMult");
-  nMMult.innerHTML = player.nMMult;
-  
+
  
   
   
