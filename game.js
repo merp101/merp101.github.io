@@ -8,6 +8,9 @@ var player = {
   dCost: 10,
   sCost: 100,
   mCost: 1000,
+  dTenCost: this.dCost * (10 ^ 10),
+  sTenCost: this.sCost * (10 ^ 10),
+  mTenCost: this.mCost * (10 ^ 10),
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -170,7 +173,6 @@ function enforceMax() {
 }
 function getMPS() {
   player.mps = (player.dAmount * player.dMult) + ((player.sAmount * 10) * player.sMult) + ((player.mAmount * 100) * player.mMult);
-  return player.mps;
 }
 getMPS();
 
@@ -185,17 +187,10 @@ function buyDWorker() {
 }
 
 function buyTenD() {
-   if (player.money - (player.dCost * (10 ^ 10)) >= 0) {
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
-    buyDWorker();
+   if (player.money - player.dTenCost >= 0) {
+     for (var i = 0; i < 10; i++) {
+       buyDWorker();
+     }
   } 
 }
 
@@ -207,17 +202,10 @@ function buySWorker() {
 }
 
 function buyTenS() {
-  if (player.money - (player.sCost * (100 ^ 10)) >= 0) {
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
-    buySWorker();
+  if (player.money - player.sTenCost >= 0) {
+    for (var i = 0; i < 10; i++) {
+       buySWorker();
+     }
   } 
 }  
 
@@ -229,17 +217,10 @@ function buyMWorker() {
 }
 
 function buyTenM() {
-  if (player.money - (player.mCost * (1000 ^ 10)) >= 0) {
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
-    buyMWorker();
+  if (player.money - player.mTenCost >= 0) {
+    for (var i = 0; i < 10; i++) {
+       buyMWorker();
+     }
   } 
 }
 
