@@ -70,7 +70,7 @@ function formatValue(x, places) {
 }
 
 function save() {
-  localStorage.setItem("funsave",JSON.stringify(game));
+  localStorage.setItem("layers",JSON.stringify(game));
 }
 
 //   Stuff
@@ -169,10 +169,12 @@ function buyTenD() {
 }
 
 function buySWorker() {
-  player.sAmount ++;
-  player.money = player.money - player.sCost;
-  player.sCost = (player.sCost * 100);
-  getMPS();
+  if (player.money - player.sCost >= 0) {
+    player.sAmount ++;
+    player.money = player.money - player.sCost;
+    player.sCost = (player.sCost * 100);
+    getMPS();
+  }
 }
 
 function buyTenS() {
@@ -184,10 +186,12 @@ function buyTenS() {
 }  
 
 function buyMWorker() {
-  player.mAmount ++;
-  player.money = player.money - player.mCost;
-  player.mCost = player.mCost * 1000
-  getMPS();
+  if (player.money - player.mCost >= 0) {
+    player.mAmount ++;
+    player.money = player.money - player.mCost;
+    player.mCost = player.mCost * 1000
+    getMPS();
+  }
 }
 
 function buyTenM() {
