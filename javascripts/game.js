@@ -83,7 +83,45 @@ function onLoad() {
   if (player.money === Infinity) document.getElementById("infButton").display = "inline";
 }
 
+function showStats() {
+  document.getElementById("statstab").display = "inline";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none";
+}
 
+function showWorkers() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "inline";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none";
+}
+
+function showOptions() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "inline";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none"; 
+}
+
+function showAchieves() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "inline";
+  document.getElementById("inftab").display = "none"; 
+}
+
+function showInfTab() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "inline";
+}
 
 function getMaterialWord() {
   player.materialNum ++;
