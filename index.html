@@ -37,8 +37,8 @@
             
             
         </div>
-
-   <tr style="font-size: 150%" id="dRow"> 
+  <div id="workertab">
+   <tr style="font-size: 150%" class="workerRow" id="dRow"> 
     <td id="dWorkers" width="32%" font-size="200%">
       Depressed workers <span id="cDMult">0</span>
     </td>
@@ -53,7 +53,7 @@
     </td>
    </tr>
      <br>
-   <tr id="sRow" style="display: none; font-size: 150%">
+   <tr id="sRow" class="workerRow" style="display: none; font-size: 150%">
     <td id="sWorkers" font-size="200%">
       Satisfied workers <span id="cSMult">0</span>
     </td>
@@ -68,7 +68,7 @@
     </td>
   </tr>
      <br>
-   <tr id="mRow" style="display: none; font-size: 150%">
+   <tr id="mRow" class="workerRow" style="display: none; font-size: 150%">
     <td id="mWorkers" font-size="200%">
       Motivated workers <span id="cMMult">0</span>
     </td>
@@ -82,21 +82,38 @@
       <button id="mMax" onclick"buyTenM(); display();" style="color:black; width:auto; height: auto; margin: 10px; font-size:150%" class="storebtn">Until 10. Cost: x</button>
    </td>
   </tr>
-
-<br>
     
+<button id="resetbtn" onclick="getMults(); display();" display="none">
+      Reset your progress to increase your production. <br> Multiplier on depressed workers: <span id="dMult">0</span>x <br> Multiplier on satisfied workers: <span id="sMult">0</span>x <br> Multiplier on motivated workers: <span id="mMult">0</span>x 
+     </button>
+    
+<br>
+     </div> 
+  <div id="statstab" display="none">
+  
+    <div> Total time played: <div id="totalTimeStat">x</div> </div>
+    <div> Time in this infinity: <div id="currentInfTimeStat">x</div> </div>
+    <div> Total amount of layers made: <div id="totalLayerStat">x</div> </div>
+    <div> Times infinitied: <div id="infinitiedStat">x</div> </div>
+    <div> You have reset <div id="resetStat">x</div> times. </div>
+    
+     </div>
+  <div id="optionstab" display="none">
+    
+    
+     </div>
     <button id="new-clay-button" onclick="newMaterial(); display();"  style="margin:10px">
      Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have.  You can <br>only do this when you are at your current limit. Current material: <span id="material">thing</span>
     </button>
      <br>
-    <button id="resetbtn" onclick="getMults(); display();" display="none">
-      Reset your progress to increase your production. <br> Multiplier on depressed workers: <span id="dMult">0</span>x <br> Multiplier on satisfied workers: <span id="sMult">0</span>x <br> Multiplier on motivated workers: <span id="mMult">0</span>x 
-     </button>
-     <button id="infButton" onclick="infinity(); showInf();" style="font-size:200%; width:1000px; height: auto; margin:100px; display:none;">
+  <div id="emptytab" display="none">
+     <button id="infButton" onclick="infinity(); showInf();" style="font-size:200%; width:1000px; height: auto; margin:100px; ">
        You have used up all the matter in the universe. Now, you must transcend it...
      </button>
- <br>
-    
+     </div>
+     
+
+  
    <script  type="text/javascript" src="javascripts/game.js">"></script>
 </body>
 </html>
