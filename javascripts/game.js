@@ -265,7 +265,23 @@ function display() {
   mMax.innerHTML = "Until 10, Cost: " + formatValue(player.mTenCost, 0);
   
   var mAmt = document.getElementById("mAmount");
-  mAmt.innerHTML = formatValue(player.mAmount, 0);    
+  mAmt.innerHTML = formatValue(player.mAmount, 0); 
+  
+  var totalTime = document.getElementById("totalTimeStat");
+  totalTime.innerHTML = player.totalTimePlayed;
+  
+  var currentTime = document.getElementById("currentTimeStat");
+ // currentTime.innerHTML = player.currentTimePlayed;
+  // I commented that line out because player.currentTimePlayed doesn't exist, and I don't feel like making it
+  
+  var totalLayers = document.getElementById("totalLayersStats");
+  totalLayers.innerHTML = formatValue(player.totalMoney, 1);
+  
+  var infinitied = document.getElementById("infinitiedStat");
+  infinitied.innerHTML = formatValue(player.infinitied, 1);
+  
+  var resetStat = document.getElementById("resetStat");
+  resetStat.innerHTML = formatValue(player.resets, 1);
 }
 display();
 
