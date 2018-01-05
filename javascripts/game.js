@@ -35,6 +35,7 @@ var player = {
   }
 }
 
+const TIER_NAMES = [d, s, m];
 parseFloat(player.money);
 
 /*
@@ -190,6 +191,43 @@ function getMPS() {
 getMPS();
 
 
+function buyWorker(tier) {
+  var level = TIER_NAMES[tier];
+  if (player.money - player.[level]Cost >= 0) {
+    player.[level]Amount ++;
+    player.money -= player.[level]Cost;
+    if (tier == 1) {
+      player.dCost *= 10;
+    } else if (tier == 2) {
+      player.sCost *= 100;
+    } else if (tier == 3) {
+      player.mCost *= 1000;
+    }
+    getMPS();
+  } 
+}
+
+function buyTen(tier) {
+  var level = TIER_NAMES[tier];
+ 
+     for (var i = 0; i < 10; i++) {
+       if (player.money - player.[level]Cost >= 0) {
+        player.[level]Amount ++;
+        player.money -= player.[level]Cost;
+        if (tier == 1) {
+         player.dCost *= 10;
+        } else if (tier == 2) {
+          player.sCost *= 100;
+        } else if (tier == 3) {
+          player.mCost *= 1000;
+        }
+          getMPS();
+       } 
+
+     }
+}
+
+/*
 function buyDWorker() {
   if (player.money - player.dCost >= 0) {
     player.dAmount ++;
@@ -241,7 +279,7 @@ function buyTenM() {
   } 
 }
  
-
+*/
 
 function display() {
   getMPS();
