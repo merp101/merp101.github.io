@@ -331,7 +331,8 @@ function display() {
   totalTime.innerHTML = player.totalTimePlayed;
   
   var currentTime = document.getElementById("currentInfStat");
-  currentTime.innerHTML = player.currentTimePlayed;
+  //currentTime.innerHTML = player.currentTimePlayed;
+  // it doesn't work for some reason, don't remove the "//"
   
   var totalLayers = document.getElementById("totalLayerStat");
   totalLayers.innerHTML = formatValue(player.totalMoney, 1);
