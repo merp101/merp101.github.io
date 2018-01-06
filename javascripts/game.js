@@ -322,7 +322,6 @@ function reset() {
   player.sMult = 1;
   player.mMult = 1;
   display();
-  getMaterialWord();
   setMoneyMax();
 }
 
@@ -339,8 +338,8 @@ function getMults() {
 function newMaterial() {
    if (player.money === player.moneyMax) {
      reset();
-     var multbtn = document.getElementById("resetbtn");
-     multbtn.display="inline"; 
+     getMaterialWord();
+     setMoneyMax();
    }  
 }
 
@@ -353,6 +352,7 @@ function infinity() {
     player.resets = 0;
     document.getElementById("qlds").display = "inline";
     display();
+    setMoneyMax();
   }
 }
 
