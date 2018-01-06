@@ -328,11 +328,11 @@ function display() {
   var totalTime = document.getElementById("totalTimeStat");
   totalTime.innerHTML = player.totalTimePlayed;
   
-  var currentTime = document.getElementById("currentTimeStat");
+  var currentTime = document.getElementById("currentInfStat");
  // currentTime.innerHTML = player.currentTimePlayed;
   // I commented that line out because player.currentTimePlayed doesn't exist, and I don't feel like making it
   
-  var totalLayers = document.getElementById("totalLayersStats");
+  var totalLayers = document.getElementById("totalLayerStat");
   totalLayers.innerHTML = formatValue(player.totalMoney, 1);
   
   var infinitied = document.getElementById("infinitiedStat");
