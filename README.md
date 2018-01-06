@@ -2,4 +2,6 @@
 This is a game.
 
 
-##Infinite Layers!
+Infinite Layers!
+
+There's stuff in the wiki tab too
