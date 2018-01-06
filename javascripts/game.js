@@ -8,9 +8,9 @@ var player = {
   dCost: 10,
   sCost: 100,
   mCost: 1000,
-  dTenCost: this.dCost * (10 ^ 10),
-  sTenCost: this.sCost * (10 ^ 10),
-  mTenCost: this.mCost * (10 ^ 10),
+  dTenCost: player.dCost * (10 ^ 10),
+  sTenCost: player.sCost * (10 ^ 10),
+  mTenCost: player.mCost * (10 ^ 10),
   dAmount: 0,
   sAmount: 0,
   mAmount: 0,
@@ -81,9 +81,10 @@ function save() {
 
 
 function onLoad() {
-  if (player.money === undefined || player.money === NaN) player.money = 10;
-  if (player.options.notation === undefined) player.options.notation = "scientific";
-  if (player.money === Infinity) document.getElementById("infButton").display = "inline";
+  if (player.money == undefined || player.money === NaN) player.money = 10;
+  if (player.options.notation == undefined) player.options.notation = "scientific";
+  if (player.money == Infinity) document.getElementById("infButton").display = "inline";
+  if (player.moneyMax == undefined) setMoneyMax();
 }
 
 function showStats() {
@@ -152,6 +153,7 @@ function getMaterialWord() {
      player.material = "diamond";
    }
   document.getElementById("material").innerHTML = player.material;
+  getMults();
 }  
 getMaterialWord();
 
@@ -204,66 +206,17 @@ function buyWorker(tier) {
 }
 
 function buyManyWorkers(tier) {
-  for (var i = 0; i < 10; i++) {
-    buyWorker(tier);
-  }
-}
-
-
-
-/*
-function buyDWorker() {
-  if (player.money - player.dCost >= 0) {
-    player.dAmount ++;
-    player.money = player.money - player.dCost;
-    player.dCost = (player.dCost * 10);
-    getMPS();
-  }
-}
-
-function buyTenD() {
-   if (player.money - player.dTenCost >= 0) {
-     for (var i = 0; i < 10; i++) {
-       buyDWorker();
-     }
-  } 
-}
-
-function buySWorker() {
-  if (player.money - player.sCost >= 0) {
-    player.sAmount ++;
-    player.money = player.money - player.sCost;
-    player.sCost = (player.sCost * 100);
-    getMPS();
-  }
-}
-
-function buyTenS() {
-  if (player.money - player.sTenCost >= 0) {
+  var level = TIER_NAMES[tier];
+  if (player.money - player[level + "TenCost"] >== 0) {
     for (var i = 0; i < 10; i++) {
-       buySWorker();
-     }
-  } 
-}  
-
-function buyMWorker() {
-  if (player.money - player.mCost >= 0) {
-    player.mAmount ++;
-    player.money = player.money - player.mCost;
-    player.mCost = player.mCost * 1000
-    getMPS();
+      buyWorker(tier);
+    }
   }
 }
 
-function buyTenM() {
-  if (player.money - player.mTenCost >= 0) {
-    for (var i = 0; i < 10; i++) {
-       buyMWorker();
-     }
-  } 
-}
- 
-*/
+
+
+
 
 function display() {
   getMPS();
