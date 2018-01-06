@@ -225,6 +225,20 @@ function display() {
   player.nSMult = Math.log10(player.money) ^ 2;
   player.nMMult = (Math.log10(player.money) ^ 2) / 2;
   
+  if (player.materialNum > 1) {
+    var resetbtn = document.getElementById("resetbtn");
+    resetbtn.style.display = "inline";
+    
+    var nDMult = document.getElementById("dMult");
+    nDMult.innerHTML = formatValue(player.nDMult, 0);
+  
+    var nSMult = document.getElementById("sMult");
+    nSMult.innerHTML = formatValue(player.nSMult, 0);
+  
+    var nMMult = document.getElementById("mMult");
+    nMMult.innerHTML = formatValue(player.nMMult, 0);
+  } 
+  
   var dMult = document.getElementById("cDMult");
   dMult.innerHTML = "x" + formatValue(player.dMult, 0);
   
@@ -234,15 +248,7 @@ function display() {
   var mMult = document.getElementById("cMMult");
   mMult.innerHTML = "x" + formatValue(player.mMult, 0);
   
-  var nDMult = document.getElementById("dMult");
-  nDMult.innerHTML = formatValue(player.nDMult, 0);
-  
-  var nSMult = document.getElementById("sMult");
-  nSMult.innerHTML = formatValue(player.nSMult, 0);
-  
-  var nMMult = document.getElementById("mMult");
-  nMMult.innerHTML = formatValue(player.nMMult, 0);
-  
+
   var mps = document.getElementById("mps");
   mps.innerHTML = "You are getting " + formatValue(player.mps, 0) + " layers per second.";
   
