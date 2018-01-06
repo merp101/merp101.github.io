@@ -34,7 +34,7 @@ var player = {
     
   }
 }
-
+const TIER_NAMES = ["d", "s", "m"];
 
 parseFloat(player.money);
 
