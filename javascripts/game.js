@@ -74,6 +74,7 @@ function save() {
   localStorage.setItem("layers",JSON.stringify(game));
 }
 
+
 //   Stuff
   
 
@@ -384,14 +385,14 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money === player.moneyMax && player.material === "diamond") {
+  if (player.money === player.moneyMax && player.material == "diamond") {
     reset();
     player.qld ++;
     player.infinitied ++;
     player.materialNum = 0;
     player.resets = 0;
     document.getElementById("qlds").display = "inline";
-    
+    display();
   }
 }
 
