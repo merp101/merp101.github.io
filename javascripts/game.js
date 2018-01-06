@@ -207,7 +207,7 @@ function buyWorker(tier) {
 
 function buyManyWorkers(tier) {
   var level = TIER_NAMES[tier];
-  if (player.money - player[level + "TenCost"] >== 0) {
+  if (player.money - player[level + "TenCost"] >= 0) {
     for (var i = 0; i < 10; i++) {
       buyWorker(tier);
     }
