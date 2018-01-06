@@ -191,16 +191,32 @@ function getMPS() {
 getMPS();
 
 
+function buyWorker(tier) {
+  var level = TIER_NAMES[tier];
+  if (player.money - player[level + "Cost"] >= 0) {
+    player[level + "Amount"] ++;
+    player.money -= player[level + "Cost"];
+    player[level + "Cost"] = player[level + "Cost"] * 10
+    getMPS();
+  } 
+}
+
+function buyManyWorkers(tier) {
+  for (var i = 0; i < 10; i++) {
+    buyWorker(tier);
+  }
+}
 
 
 
+/*
 function buyDWorker() {
   if (player.money - player.dCost >= 0) {
     player.dAmount ++;
-    player.money -= player.dCost;
-    player.dCost = player.dCost * 10
+    player.money = player.money - player.dCost;
+    player.dCost = (player.dCost * 10);
     getMPS();
-  } 
+  }
 }
 
 function buyTenD() {
@@ -245,7 +261,7 @@ function buyTenM() {
   } 
 }
  
-
+*/
 
 function display() {
   getMPS();
