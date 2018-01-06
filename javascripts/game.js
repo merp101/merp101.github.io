@@ -24,6 +24,7 @@ var player = {
   resets: 0,
   infinitied: 0,
   qld: 0,
+  currentTimePlayed: 0,
   totalTimePlayed: 0,
   totalMoney: 0,
   materialNum: 0,
@@ -330,8 +331,7 @@ function display() {
   totalTime.innerHTML = player.totalTimePlayed;
   
   var currentTime = document.getElementById("currentInfStat");
- // currentTime.innerHTML = player.currentTimePlayed;
-  // I commented that line out because player.currentTimePlayed doesn't exist, and I don't feel like making it
+  currentTime.innerHTML = player.currentTimePlayed;
   
   var totalLayers = document.getElementById("totalLayerStat");
   totalLayers.innerHTML = formatValue(player.totalMoney, 1);
