@@ -1,6 +1,6 @@
 //This is for JS, HTML is in index.md - and don't change the name of the file, it won't work.
 
-// more achievements!
+
 var player = {
   money: 10,
   moneyMax: undefined,
@@ -225,6 +225,7 @@ function display() {
   player.nSMult = Math.log10(player.money) ^ 2;
   player.nMMult = (Math.log10(player.money) ^ 2) / 2;
   
+  /*
   if (player.materialNum > 1) {
     var resetbtn = document.getElementById("resetbtn");
     resetbtn.style.display = "inline";
@@ -238,6 +239,7 @@ function display() {
     var nMMult = document.getElementById("mMult");
     nMMult.innerHTML = formatValue(player.nMMult, 0);
   } 
+  */
   
   var dMult = document.getElementById("cDMult");
   dMult.innerHTML = "x" + formatValue(player.dMult, 0);
