@@ -9,9 +9,9 @@ var player = {
     d: 10,
     s: 100,
     m: 1000,
-    dTenCost: this.costs.d * (10 ^ 10),
-    sTenCost: this.costs.s * (10 ^ 10),
-    mTenCost: this.costs.m * (10 ^ 10),
+    dTen: this.costs.d * (10 ^ 10),
+    sTen: this.costs.s * (10 ^ 10),
+    mTen: this.costs.m * (10 ^ 10),
   },
   amounts: {
     d: 0,
@@ -196,24 +196,23 @@ function enforceMax() {
   
 }
 function getMPS() {
-  player.mps = (player.dAmount * player.dMult) + ((player.sAmount * 10) * player.sMult) + ((player.mAmount * 100) * player.mMult);
+  player.mps = (player.amounts.d * player.mults.d) + ((player.amounts.s * 10) * player.mults.s) + ((player.amounts.m * 100) * player.mults.m);
 }
 getMPS();
 
 
 function buyWorker(tier) {
-  var level = TIER_NAMES[tier];
-  if (player.money - player[level + "Cost"] >= 0) {
-    player[level + "Amount"] ++;
-    player.money -= player[level + "Cost"];
-    player[level + "Cost"] = player[level + "Cost"] * 10
+  if (player.money - player.costs[tier] >= 0) {
+    player.amounts[tier] ++;
+    player.money -= player.costs[tier];
+    player.costs[tier] = player.costs[tier] * 10
     getMPS();
   } 
 }
 
 function buyManyWorkers(tier) {
   var level = TIER_NAMES[tier];
-  if (player.money - player[level + "TenCost"] >= 0) {
+  if (player.money - player.costs[tier + "Ten"] >= 0) {
     for (var i = 0; i < 10; i++) {
       buyWorker(tier);
     }
@@ -227,9 +226,9 @@ function buyManyWorkers(tier) {
 function display() {
   getMPS();
   
-  player.nDMult = 2 * (Math.log10(player.money) ^ 2);
-  player.nSMult = Math.log10(player.money) ^ 2;
-  player.nMMult = (Math.log10(player.money) ^ 2) / 2;
+  player.mults.nD = 2 * (Math.log10(player.money) ^ 2);
+  player.mults.nS = Math.log10(player.money) ^ 2;
+  player.mults.nM = (Math.log10(player.money) ^ 2) / 2;
   
   /*
   if (player.materialNum > 1) {
@@ -237,24 +236,24 @@ function display() {
     resetbtn.style.display = "inline";
     
     var nDMult = document.getElementById("dMult");
-    nDMult.innerHTML = formatValue(player.nDMult, 0);
+    nDMult.innerHTML = formatValue(player.mults.nD, 0);
   
     var nSMult = document.getElementById("sMult");
-    nSMult.innerHTML = formatValue(player.nSMult, 0);
+    nSMult.innerHTML = formatValue(player.mults.nS, 0);
   
     var nMMult = document.getElementById("mMult");
-    nMMult.innerHTML = formatValue(player.nMMult, 0);
+    nMMult.innerHTML = formatValue(player.mults.nM, 0);
   } 
   */
   
   var dMult = document.getElementById("cDMult");
-  dMult.innerHTML = "x" + formatValue(player.dMult, 0);
+  dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
   
   var sMult = document.getElementById("cSMult");
-  sMult.innerHTML = "x" + formatValue(player.sMult, 0);
+  sMult.innerHTML = "x" + formatValue(player.mults.s, 0);
   
   var mMult = document.getElementById("cMMult");
-  mMult.innerHTML = "x" + formatValue(player.mMult, 0);
+  mMult.innerHTML = "x" + formatValue(player.mults.m, 0);
   
 
   var mps = document.getElementById("mps");
@@ -268,31 +267,31 @@ function display() {
   qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
   
   var dCost = document.getElementById("dCost");
-  dCost.innerHTML = "Cost: " + formatValue(player.dCost, 0);
+  dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
   
   var dMax = document.getElementById("dMax");
-  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.dTenCost, 0);
+  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.costs.dTen, 0);
   
   var dAmt = document.getElementById("dAmount");
-  dAmt.innerHTML = formatValue(player.dAmount, 0);
+  dAmt.innerHTML = formatValue(player.amounts.d, 0);
   
   var sCost = document.getElementById("sCost");
-  sCost.innerHTML = "Cost: " + formatValue(player.sCost, 0);
+  sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
   
   var sMax = document.getElementById("sMax");
-  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.sTenCost, 0);
+  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.costs.sTen, 0);
   
   var sAmt = document.getElementById("sAmount");
-  sAmt.innerHTML = formatValue(player.sAmount, 0);
+  sAmt.innerHTML = formatValue(player.amounts.s, 0);
   
   var mCost = document.getElementById("mCost");
-  mCost.innerHTML = "Cost: " + formatValue(player.mCost, 0); 
+  mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
   
   var mMax = document.getElementById("mMax");
-  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.mTenCost, 0);
+  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.costs.mTen, 0);
   
   var mAmt = document.getElementById("mAmount");
-  mAmt.innerHTML = formatValue(player.mAmount, 0); 
+  mAmt.innerHTML = formatValue(player.amounts.m, 0); 
   
   var totalTime = document.getElementById("totalTimeStat");
   totalTime.innerHTML = player.totalTimePlayed;
@@ -317,27 +316,28 @@ function reset() {
   player.money = 10;
   player.moneyMax = undefined;
   player.mps = 0;
-  player.dCost = 10;
-  player.sCost = 100;
-  player.mCost = 1000;
-  player.dTenCost = this.dCost * (10 ^ 10);
-  player.sTenCost = this.sCost * (10 ^ 10);
-  player.mTenCost = this.mCost * (10 ^ 10);
-  player.dAmount = 0;
-  player.sAmount = 0;
-  player.mAmount = 0;
-  player.dMult = 1;
-  player.sMult = 1;
-  player.mMult = 1;
+  player.costs.d = 10;
+  player.costs.s = 100;
+  player.costs.m = 1000;
+  player.costs.dTen = this.dCost * (10 ^ 10);
+  player.costs.sTen = this.sCost * (10 ^ 10);
+  player.costs.mTen = this.mCost * (10 ^ 10);
+  player.amounts.d = 0;
+  player.amounts.s = 0;
+  player.amounts.m = 0;
+  player.mults.d = 1;
+  player.mults.d = 1;
+  player.mults.d = 1;
   display();
   setMoneyMax();
 }
 
 function getMults() {
+   display();
    if (player.materialNum > 1) {
-     player.dMult = 2 * (Math.log10(player.money) ^ 2);
-     player.sMult = Math.log10(player.money) ^ 2;
-     player.mMult = (Math.log10(player.money) ^ 2) / 2;
+     player.mults.d = player.mults.nD;
+     player.mults.s = player.mults.nS;
+     player.mults.m = player.mults.nM;
      reset();
      player.resets --;
    }
