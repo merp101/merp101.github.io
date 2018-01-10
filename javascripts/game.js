@@ -26,7 +26,7 @@ var player = {
     m: 1,
     nD: 1,
     nS: 1,
-    nM: 1
+    nM: 1,
   },
   achievements: [],
   resets: 0,
