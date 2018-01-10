@@ -346,10 +346,10 @@ function reset() {
 function getMults() {
    display();
    if (player.materialNum > 1) {
+     reset();
      player.mults.d = player.mults.nD;
      player.mults.s = player.mults.nS;
      player.mults.m = player.mults.nM;
-     reset();
      player.resets --;
    }
 }
