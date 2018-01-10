@@ -330,9 +330,9 @@ function reset() {
   player.costs.d = 10;
   player.costs.s = 100;
   player.costs.m = 1000;
-  player.tenCosts.dTen = this.dCost * (10 ^ 10);
-  player.tenCosts.sTen = this.sCost * (10 ^ 10);
-  player.tenCosts.mTen = this.mCost * (10 ^ 10);
+  player.tenCosts.dTen = player.dCost * (10 ^ 10);
+  player.tenCosts.sTen = player.sCost * (10 ^ 10);
+  player.tenCosts.mTen = player.mCost * (10 ^ 10);
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
