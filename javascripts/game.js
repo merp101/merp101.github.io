@@ -9,6 +9,8 @@ var player = {
     d: 10,
     s: 100,
     m: 1000,
+  },
+  tenCosts: {
     dTen: this.costs.d * (10 ^ 10),
     sTen: this.costs.s * (10 ^ 10),
     mTen: this.costs.m * (10 ^ 10),
@@ -212,7 +214,7 @@ function buyWorker(tier) {
 
 function buyManyWorkers(tier) {
   var level = TIER_NAMES[tier];
-  if (player.money - player.costs[tier + "Ten"] >= 0) {
+  if (player.money - player.tenCosts[tier + "Ten"] >= 0) {
     for (var i = 0; i < 10; i++) {
       buyWorker(tier);
     }
@@ -279,7 +281,7 @@ function display() {
   sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
   
   var sMax = document.getElementById("sMax");
-  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.costs.sTen, 0);
+  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.sTen, 0);
   
   var sAmt = document.getElementById("sAmount");
   sAmt.innerHTML = formatValue(player.amounts.s, 0);
@@ -288,7 +290,7 @@ function display() {
   mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
   
   var mMax = document.getElementById("mMax");
-  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.costs.mTen, 0);
+  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.tenCosts.mTen, 0);
   
   var mAmt = document.getElementById("mAmount");
   mAmt.innerHTML = formatValue(player.amounts.m, 0); 
@@ -319,9 +321,9 @@ function reset() {
   player.costs.d = 10;
   player.costs.s = 100;
   player.costs.m = 1000;
-  player.costs.dTen = this.dCost * (10 ^ 10);
-  player.costs.sTen = this.sCost * (10 ^ 10);
-  player.costs.mTen = this.mCost * (10 ^ 10);
+  player.tenCosts.dTen = this.dCost * (10 ^ 10);
+  player.tenCosts.sTen = this.sCost * (10 ^ 10);
+  player.tenCosts.mTen = this.mCost * (10 ^ 10);
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
