@@ -11,9 +11,9 @@ var player = {
     m: 1000,
   },
   tenCosts: {
-    dTen: this.costs.d * (10 ^ 10),
-    sTen: this.costs.s * (10 ^ 10),
-    mTen: this.costs.m * (10 ^ 10),
+    dTen: player.costs.d * (10 ^ 10),
+    sTen: player.costs.s * (10 ^ 10),
+    mTen: player.costs.m * (10 ^ 10),
   },
   amounts: {
     d: 0,
