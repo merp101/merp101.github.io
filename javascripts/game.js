@@ -207,13 +207,12 @@ function buyWorker(tier) {
   if (player.money - player.costs[tier] >= 0) {
     player.amounts[tier] ++;
     player.money -= player.costs[tier];
-    player.costs[tier] = player.costs[tier] * 10
     getMPS();
+    changeCostAtTen();
   } 
 }
 
 function buyManyWorkers(tier) {
-  var level = TIER_NAMES[tier];
   if (player.money - player.tenCosts[tier + "Ten"] >= 0) {
     for (var i = 0; i < 10; i++) {
       buyWorker(tier);
@@ -221,7 +220,17 @@ function buyManyWorkers(tier) {
   }
 }
 
-
+function changeCostAtTen() {
+  if (player.amounts.d % 10 == 0) {
+    player.costs.d *= 10;
+  }
+  if (player.amounts.s % 10 == 0) {
+    player.costs.s *= 100;
+  }
+  if (player.amounts.m % 10 == 0) {
+    player.costs.m *= 1e+3;
+  }
+}
 
 
 
