@@ -18,7 +18,7 @@ var player = {
   amounts: {
     d: 0,
     s: 0,
-    m: 0
+    m: 0,
   },
   mults: {
     d: 1,
