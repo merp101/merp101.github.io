@@ -384,5 +384,30 @@ function infinity() {
   }
 }
 
+document.getElementById("dCost").onclick = function() {
+  buyWorker(0);
+}
 
+document.getElementById("sCost").onclick = function() {
+  buyWorker(1);
+}
+                        
+document.getElementById("mCost").onclick = function() {
+  buyWorker(2);
+}
 
+document.getElementById("dMax").onclick = function() {
+  buyManyWorkers(0);
+}
+
+document.getElementById("sMax").onclick = function() {
+  buyManyWorkers(1);
+}
+
+document.getElementById("mMax").onclick = function() {
+  buyManyWorkers(2);
+}
+
+document.getElementById("resetbtn").onclick = function() {
+  getMults();
+}
