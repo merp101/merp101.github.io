@@ -21,6 +21,11 @@ var player = {
     1: 0,
     2: 0,
   },
+  bought: {
+    0: 0,
+    1: 0,
+    2: 0,
+  },
   mults: {
     d: 1,
     s: 1,
@@ -204,37 +209,11 @@ function setMoneyMax() {
   }
 }
 setMoneyMax();
-
-function enforceMax() {
-  if (Math.max(player.money, player.moneyMax) === player.money) {
-    player.money = player.moneyMax;
-    player.mps = 0;
-  }
-  
-}
+ 
 function getMPS() {
   player.mps = (player.amounts.d * player.mults.d) + ((player.amounts.s * 10) * player.mults.s) + ((player.amounts.m * 100) * player.mults.m);
 }
 getMPS();
-
-
-function buyWorker(tier) {
-  if (player.money - player.costs[tier] >= 0) {
-    player.amounts[tier] ++;
-    player.money -= player.costs[tier];
-    getMPS();
-    changeCostAtTen(tier);
-  } 
-}
-
-function buyManyWorkers(tier) {
-  getTenCosts();
-  if (player.money - player.tenCosts[tier] >= 0) {
-    if (player.amounts[tier] % 10 == 0)  for (var i = 0; i < 10; i++) buyWorker(tier);
-    else for ( ; ; ) buyWorker(tier);
-    }
-  }
-}
 
 function changeCostAtTen(tier) {
   if (player.amounts[tier] % 10 == 0) {
@@ -242,6 +221,25 @@ function changeCostAtTen(tier) {
     player.costs[tier] *= player.costUp;
   } 
 }
+
+
+function buyWorker(tier) {
+  if (player.money - player.costs[tier] >= 0) {
+    player.amounts[tier] ++;
+    player.bought[tier] ++;
+    player.money -= player.costs[tier];
+    getMPS();
+    changeCostAtTen(tier);
+  } 
+}
+
+function buyManyWorkers(tier) {
+  var cost = player.costs[tier].times(10 - player.bought[tier]);
+  player.amounts[tier] = player.amount[tier].plus(10 - player.bought[tier]);
+  player.bought[tier]  = 0;
+  player.money.minus(cost);
+}
+
 
 
 
