@@ -99,11 +99,15 @@ function formatValue(x, places) {
   else return ((matissa).toFixed(places) + "e" + power)
 }
 
-function save() {
+function setSave() {
   localStorage.setItem("layers",JSON.stringify(game));
 }
 
-
+function getSave() {
+   if (localStorage.getItem("layers") !== null) {
+        return JSON.parse(localStorage.getItem("layers"));
+    }
+}
 //   Stuff
   
 
