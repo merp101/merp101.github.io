@@ -209,6 +209,7 @@ function buyWorker(tier) {
     player.money -= player.costs[level];
     getMPS();
     changeCostAtTen(tier);
+    display();
   } 
 }
 
@@ -219,6 +220,7 @@ function buyManyWorkers(tier) {
   player.bought[level] = 0;
   player.money -= cost;
   changeCostAtTen();
+  display();
 }
 
 
