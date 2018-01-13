@@ -375,7 +375,7 @@ document.getElementById("resetbtn").onclick = function() {
   getMults();
 }
 
-document.getElementById("statstab").onclick = function() {
+document.getElementById("statsbtn").onclick = function() {
   document.getElementById("statstab").display = "inline";
   document.getElementById("workerstab").display = "none";
   document.getElementById("optionstab").display = "none";
@@ -383,7 +383,7 @@ document.getElementById("statstab").onclick = function() {
   document.getElementById("inftab").display = "none";
 }
 
-document.getElementById("workerstab").onclick = function() {
+document.getElementById("workersbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
   document.getElementById("workerstab").display = "inline";
   document.getElementById("optionstab").display = "none";
@@ -391,7 +391,7 @@ document.getElementById("workerstab").onclick = function() {
   document.getElementById("inftab").display = "none";
 }
 
-document.getElementById("optionstab").onclick = function() {
+document.getElementById("optionsbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
   document.getElementById("workerstab").display = "none";
   document.getElementById("optionstab").display = "inline";
@@ -399,7 +399,7 @@ document.getElementById("optionstab").onclick = function() {
   document.getElementById("inftab").display = "none"; 
 }
 
-document.getElementById("achievestab").onclick = function() {
+document.getElementById("achievesbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
   document.getElementById("workerstab").display = "none";
   document.getElementById("optionstab").display = "none";
@@ -407,7 +407,7 @@ document.getElementById("achievestab").onclick = function() {
   document.getElementById("inftab").display = "none"; 
 }
 
-document.getElementById("inftab").onclick = function() {
+document.getElementById("infinitybtn").onclick = function() {
   document.getElementById("statstab").display = "none";
   document.getElementById("workerstab").display = "none";
   document.getElementById("optionstab").display = "none";
