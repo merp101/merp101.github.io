@@ -216,11 +216,13 @@ function buyWorker(tier) {
 function buyManyWorkers(tier) {
   var level = TIER_NAMES[tier];
   var cost = player.costs[level] * (10 - player.bought[level]);
-  player.amounts[level] = player.amounts[level] + (10 - player.bought[level]);
-  player.bought[level] = 0;
-  player.money -= cost;
-  changeCostAtTen();
-  display();
+  if (player.money - cost >= 0) {
+    player.amounts[level] = player.amounts[level] + (10 - player.bought[level]);
+    player.bought[level] = 0;
+    player.money -= cost;
+    changeCostAtTen();
+    display();
+  }
 }
 
 
