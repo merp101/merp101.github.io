@@ -193,9 +193,10 @@ getMPS();
 
 function changeCostAtTen(tier) {
   var level = TIER_NAMES[tier];
-  if (player.amounts[level] % 10 == 0) {
+  if (player.bought[level] == 10) {
     changeCostUp(tier);
     player.costs[tier] *= player.costUp;
+    player.bought[level] = 0;
   } 
 }
 
@@ -213,10 +214,11 @@ function buyWorker(tier) {
 
 function buyManyWorkers(tier) {
   var level = TIER_NAMES[tier];
-  var cost = player.costs[level].times(10 - player.bought[level]);
-  player.amounts[level] = player.amount[level].plus(10 - player.bought[level]);
-  player.bought[level]  = 0;
-  player.money.minus(cost);
+  var cost = player.costs[level] * (10 - player.bought[level]);
+  player.amounts[level] = player.amount[level] + (10 - player.bought[level]);
+  player.bought[level] = 0;
+  player.money -= cost;
+  changeCostAtTen();
 }
 
 
