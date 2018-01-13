@@ -6,25 +6,25 @@ var player = {
   moneyMax: undefined,
   mps: 0,
   costs: {
-    0: 10,
-    1: 100,
-    2: 1000,
+    d: 10,
+    s: 100,
+    m: 1000,
   },
   tenCosts: {
-    0: 0,
-    1: 0,
-    2: 0,
+    d: 0,
+    s: 0,
+    m: 0,
   },
   costUp: 0,
   amounts: {
-    0: 0,
-    1: 0,
-    2: 0,
+    d: 0,
+    s: 0,
+    m: 0,
   },
   bought: {
-    0: 0,
-    1: 0,
-    2: 0,
+    d: 0,
+    s: 0,
+    m: 0,
   },
   mults: {
     d: 1,
@@ -158,7 +158,6 @@ function getMaterialWord() {
      player.material = "diamond";
    }
   document.getElementById("material").innerHTML = player.material;
-  getMults();
 }  
 getMaterialWord();
 
@@ -193,7 +192,8 @@ function getMPS() {
 getMPS();
 
 function changeCostAtTen(tier) {
-  if (player.amounts[tier] % 10 == 0) {
+  var level = TIER_NAMES[tier];
+  if (player.amounts[level] % 10 == 0) {
     changeCostUp(tier);
     player.costs[tier] *= player.costUp;
   } 
@@ -201,19 +201,21 @@ function changeCostAtTen(tier) {
 
 
 function buyWorker(tier) {
-  if (player.money - player.costs[tier] >= 0) {
+  var level = TIER_NAMES[tier];
+  if (player.money - player.costs[level] >= 0) {
     player.amounts[tier] ++;
     player.bought[tier] ++;
-    player.money -= player.costs[tier];
+    player.money -= player.costs[level];
     getMPS();
     changeCostAtTen(tier);
   } 
 }
 
 function buyManyWorkers(tier) {
-  var cost = player.costs[tier].times(10 - player.bought[tier]);
-  player.amounts[tier] = player.amount[tier].plus(10 - player.bought[tier]);
-  player.bought[tier]  = 0;
+  var level = TIER_NAMES[tier];
+  var cost = player.costs[level].times(10 - player.bought[level]);
+  player.amounts[level] = player.amount[level].plus(10 - player.bought[level]);
+  player.bought[level]  = 0;
   player.money.minus(cost);
 }
 
