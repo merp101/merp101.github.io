@@ -117,6 +117,18 @@ function onLoad() {
   if (player.options.notation == undefined) player.options.notation = "scientific";
   if (player.money == Infinity) document.getElementById("infButton").display = "inline";
   if (player.moneyMax == undefined) setMoneyMax();
+  if (player.costs.d == undefined || player.costs.d == NaN) player.costs.d = 10;
+  if (player.costs.s == undefined || player.costs.s == NaN) player.costs.s = 100;
+  if (player.costs.m == undefined || player.costs.m == NaN) player.costs.m = 1000;
+  if (player.amounts.d == undefined || player.amounts.d == NaN) player.amounts.d = 0;
+  if (player.amounts.s == undefined || player.amounts.s == NaN) player.amounts.s = 0;
+  if (player.amounts.m == undefined || player.amounts.m == NaN) player.amounts.m = 0;
+  if (player.tenCosts.d == undefined || player.tenCosts.d == NaN) getTenCosts();
+  if (player.tenCosts.s == undefined || player.tenCosts.s == NaN) getTenCosts();
+  if (player.tenCosts.m == undefined || player.tenCosts.m == NaN) getTenCosts();
+  if (player.mults.d == undefined || player.mults.d == NaN) player.mults.d = 1;
+  if (player.mults.s == undefined || player.mults.s == NaN) player.mults.s = 1;
+  if (player.mults.m == undefined || player.mults.m == NaN) player.mults.m = 1;
 }
 
 
