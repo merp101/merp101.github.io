@@ -58,7 +58,7 @@ function getTenCosts() {
 }
 getTenCosts();
 
-changeCostUp(tier) {
+function changeCostUp(tier) {
   if (tier == 0) player.costUp = 10;
   if (tier == 1) player.costUp = 100;
   if (tier == 2) player.costUp = 1000;
