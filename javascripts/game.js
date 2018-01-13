@@ -271,7 +271,7 @@ function display() {
   dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
   
   var dMax = document.getElementById("dMax");
-  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.costs.dTen, 0);
+  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.dTen, 0);
   
   var dAmt = document.getElementById("dAmount");
   dAmt.innerHTML = formatValue(player.amounts.d, 0);
