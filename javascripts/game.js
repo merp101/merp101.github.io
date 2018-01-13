@@ -119,45 +119,6 @@ function onLoad() {
   if (player.moneyMax == undefined) setMoneyMax();
 }
 
-function showStats() {
-  document.getElementById("statstab").display = "inline";
-  document.getElementById("workerstab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none";
-}
-
-function showWorkers() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "inline";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none";
-}
-
-function showOptions() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
-  document.getElementById("optionstab").display = "inline";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none"; 
-}
-
-function showAchieves() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "inline";
-  document.getElementById("inftab").display = "none"; 
-}
-
-function showInfTab() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "inline";
-}
 
 function getMaterialWord() {
   player.materialNum ++;
@@ -343,9 +304,7 @@ function reset() {
   player.costs.d = 10;
   player.costs.s = 100;
   player.costs.m = 1000;
-  player.tenCosts.dTen = player.dCost * (10 ^ 10);
-  player.tenCosts.sTen = player.sCost * (10 ^ 10);
-  player.tenCosts.mTen = player.mCost * (10 ^ 10);
+  getTenCosts();
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
@@ -414,4 +373,44 @@ document.getElementById("mMax").onclick = function() {
 
 document.getElementById("resetbtn").onclick = function() {
   getMults();
+}
+
+document.getElementById("statstab").onclick = function() {
+  document.getElementById("statstab").display = "inline";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none";
+}
+
+document.getElementById("workerstab").onclick = function() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "inline";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none";
+}
+
+document.getElementById("optionstab").onclick = function() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "inline";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "none"; 
+}
+
+document.getElementById("achievestab").onclick = function() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "inline";
+  document.getElementById("inftab").display = "none"; 
+}
+
+document.getElementById("inftab").onclick = function() {
+  document.getElementById("statstab").display = "none";
+  document.getElementById("workerstab").display = "none";
+  document.getElementById("optionstab").display = "none";
+  document.getElementById("achievestab").display = "none";
+  document.getElementById("inftab").display = "inline";
 }
