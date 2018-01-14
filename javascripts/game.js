@@ -204,8 +204,8 @@ function changeCostAtTen(tier) {
 function buyWorker(tier) {
   var level = TIER_NAMES[tier];
   if (player.money - player.costs[level] >= 0) {
-    player.amounts[tier] ++;
-    player.bought[tier] ++;
+    player.amounts[level] ++;
+    player.bought[level] ++;
     player.money -= player.costs[level];
     getMPS();
     changeCostAtTen(tier);
