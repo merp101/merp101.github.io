@@ -264,8 +264,10 @@ function display() {
   
 
   var mps = document.getElementById("mps");
-  mps.innerHTML = "You are getting " + formatValue(player.mps, 2) + " layers per second.";
+  mps.innerHTML = formatValue(player.mps, 2);
   
+  var moneyMax = document.getElementById("moneyMax");
+  moneyMax.innerHTML = formatValue(player.moneyMax, 0);
   
   var money = document.getElementById("money");
   money.innerHTML = formatValue(player.money, 2);
@@ -333,18 +335,20 @@ function reset() {
   player.mults.d = 1;
   player.mults.d = 1;
   player.mults.d = 1;
+  changeCostUp(0);
   display();
   setMoneyMax();
 }
 
 function getMults() {
    display();
-   if (player.materialNum > 1) {
+   if (player.materialNum > 1 && player.money >= 100) {
      reset();
      player.mults.d = player.mults.nD;
      player.mults.s = player.mults.nS;
      player.mults.m = player.mults.nM;
      player.resets --;
+     display();
    }
 }
 
@@ -357,7 +361,7 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money === player.moneyMax && player.material == "diamond") {
+  if (player.money == player.moneyMax && player.material == "diamond") {
     reset();
     player.qld ++;
     player.infinitied ++;
@@ -451,11 +455,19 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
-setInterval(function(){
-    if (player.money + player.mps <= player.moneyMax) {
+document.getElementById("infButton").onclick = function() {
+  infinity();
+}
+
+function increaseMoney() {
+   if (player.money + player.mps <= player.moneyMax) {
      player.money += player.mps; 
     } else player.money = player.moneyMax;
      display();
+}
+
+setInterval(function(){
+   increaseMoney();
  }, player.tickspeed);   
 
 
