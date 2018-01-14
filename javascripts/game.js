@@ -237,7 +237,7 @@ function display() {
   player.mults.nS = Math.log10(player.money) ^ 2;
   player.mults.nM = (Math.log10(player.money) ^ 2) / 2;
   
-  /*
+
   if (player.materialNum > 1) {
     var resetbtn = document.getElementById("resetbtn");
     resetbtn.style.display = "inline";
@@ -251,8 +251,8 @@ function display() {
     var nMMult = document.getElementById("mMult");
     nMMult.innerHTML = formatValue(player.mults.nM, 0);
   } 
-  */
-  
+ 
+
   var dMult = document.getElementById("cDMult");
   dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
   
