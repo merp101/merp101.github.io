@@ -448,9 +448,13 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
+document.getElementById("moneybtn").onclick = function() {
+  increaseMoney();
+}
+
 function increaseMoney() {
-   player.money += player.mps;
+  setInterval(function(){player.money += player.mps;}, player.tickspeed);   
 }
-while (true) {
-  setInterval(function(){increaseMoney();}, player.tickspeed);
-}
+
+
+
