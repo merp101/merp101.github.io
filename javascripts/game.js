@@ -368,6 +368,8 @@ function infinity() {
   }
 }
 
+
+
 document.getElementById("dCost").onclick = function() {
   buyWorker(0);
   display();
@@ -448,13 +450,8 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
-document.getElementById("moneybtn").onclick = function() {
-  increaseMoney();
-}
+setInterval(function(){player.money += player.mps;}, player.tickspeed);   
 
-function increaseMoney() {
-  setInterval(function(){player.money += player.mps;}, player.tickspeed);   
-}
 
 
 
