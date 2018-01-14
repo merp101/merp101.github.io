@@ -5,6 +5,7 @@ var player = {
   money: 10,
   moneyMax: undefined,
   mps: 0,
+  tickspeed: 1000,
   costs: {
     d: 10,
     s: 100,
@@ -445,4 +446,11 @@ document.getElementById("infinitybtn").onclick = function() {
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "inline";
   display();
+}
+
+function increaseMoney() {
+   player.money += player.mps;
+}
+while (true) {
+  setInterval(function(){increaseMoney();}, player.tickspeed);
 }
