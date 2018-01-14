@@ -115,6 +115,7 @@ function getSave() {
 
 
 function onLoad() {
+  getSave();
   if (player.money == undefined || player.money === NaN) player.money = 10;
   if (player.options.notation == undefined) player.options.notation = "scientific";
   if (player.money == Infinity) document.getElementById("infButton").display = "inline";
@@ -455,6 +456,10 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
+document.getElementById("savebtn").onclick = function() {
+  setSave();
+}
+
 document.getElementById("infButton").onclick = function() {
   infinity();
 }
@@ -470,6 +475,6 @@ setInterval(function(){
    increaseMoney();
  }, player.tickspeed);   
 
-
+setInterval(function(){setSave();}, 15000);
 
 
