@@ -473,8 +473,9 @@ function increaseMoney() {
 
 setInterval(function(){
    increaseMoney();
+   
  }, player.tickspeed);   
 
-setInterval(function(){setSave();}, 15000);
+// setInterval(function(){setSave();}, 15000); Autosaving, except for some reason it stops the above interval
 
 
