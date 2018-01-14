@@ -397,7 +397,7 @@ document.getElementById("resetbtn").onclick = function() {
 
 document.getElementById("statsbtn").onclick = function() {
   document.getElementById("statstab").display = "inline";
-  document.getElementById("workerstab").display = "none";
+  document.getElementById("workertab").display = "none";
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none";
@@ -405,7 +405,7 @@ document.getElementById("statsbtn").onclick = function() {
 
 document.getElementById("workersbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "inline";
+  document.getElementById("workertab").display = "inline";
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none";
@@ -413,7 +413,7 @@ document.getElementById("workersbtn").onclick = function() {
 
 document.getElementById("optionsbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
+  document.getElementById("workertab").display = "none";
   document.getElementById("optionstab").display = "inline";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none"; 
@@ -421,7 +421,7 @@ document.getElementById("optionsbtn").onclick = function() {
 
 document.getElementById("achievesbtn").onclick = function() {
   document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
+  document.getElementById("workertab").display = "none";
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "inline";
   document.getElementById("inftab").display = "none"; 
@@ -429,7 +429,7 @@ document.getElementById("achievesbtn").onclick = function() {
 
 document.getElementById("infinitybtn").onclick = function() {
   document.getElementById("statstab").display = "none";
-  document.getElementById("workerstab").display = "none";
+  document.getElementById("workertab").display = "none";
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "inline";
