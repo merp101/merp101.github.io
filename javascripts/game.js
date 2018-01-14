@@ -233,6 +233,7 @@ function buyManyWorkers(tier) {
 
 function display() {
   getMPS();
+  getTenCosts();
   
   player.mults.nD = 2 * (Math.log10(player.money) ^ 2);
   player.mults.nS = Math.log10(player.money) ^ 2;
