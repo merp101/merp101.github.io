@@ -450,7 +450,7 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
-setInterval(function(){player.money += player.mps;}, player.tickspeed);   
+setInterval(function(){player.money += player.mps; display();}, player.tickspeed);   
 
 
 
