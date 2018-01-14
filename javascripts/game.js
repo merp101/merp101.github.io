@@ -334,12 +334,12 @@ function reset() {
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
-  player.mults.d = 1;
+  /*player.mults.d = 1;
   player.mults.s = 1;
-  player.mults.m = 1;
+  player.mults.m = 1;*/
   changeCostUp(0);
-  display();
   setMoneyMax();
+  display();
 }
 
 function getMults() {
