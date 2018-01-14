@@ -163,25 +163,25 @@ function getMaterialWord() {
 getMaterialWord();
 
 function setMoneyMax() {
-  if (player.material === "clay") {
+  if (player.material == "clay") {
     player.moneyMax = 100;
-  } else if (player.material === "copper") {
+  } else if (player.material == "copper") {
     player.moneyMax = 1000;
-  } else if (player.material === "tin") {
+  } else if (player.material == "tin") {
     player.moneyMax = 10000;
-  } else if (player.material === "bronze") {
+  } else if (player.material == "bronze") {
     player.moneyMax = 100000;
-  } else if (player.material === "iron") {
+  } else if (player.material == "iron") {
     player.moneyMax = 1e+10;
-  } else if (player.material === "steel") {
+  } else if (player.material == "steel") {
     player.moneyMax = 1e+25;
-  } else if (player.material === "silver") {
+  } else if (player.material == "silver") {
     player.moneyMax = 1e+50;
-  } else if (player.material === "gold") {
+  } else if (player.material == "gold") {
     player.moneyMax = 1e+100;
-  } else if (player.material === "platinum") {
+  } else if (player.material == "platinum") {
     player.moneyMax = 1e+200;
-  } else if (player.material === "diamond") {
+  } else if (player.material == "diamond") {
     player.moneyMax = Number.MAX_VALUE;
   }
 }
@@ -196,7 +196,7 @@ function changeCostAtTen(tier) {
   var level = TIER_NAMES[tier];
   if (player.bought[level] == 10) {
     changeCostUp(tier);
-    player.costs[tier] *= player.costUp;
+    player.costs[level] *= player.costUp;
     player.bought[level] = 0;
   } 
 }
@@ -263,11 +263,11 @@ function display() {
   
 
   var mps = document.getElementById("mps");
-  mps.innerHTML = "You are getting " + formatValue(player.mps, 0) + " layers per second.";
+  mps.innerHTML = "You are getting " + formatValue(player.mps, 2) + " layers per second.";
   
   
   var money = document.getElementById("money");
-  money.innerHTML = formatValue(player.money, 0);
+  money.innerHTML = formatValue(player.money, 2);
   
   var qlds = document.getElementById("qlds");
   qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
