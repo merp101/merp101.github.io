@@ -346,9 +346,9 @@ function getMults() {
    display();
    if (player.materialNum > 1 && player.money >= 100) {
      reset();
-     player.mults.d = player.mults.nD;
-     player.mults.s = player.mults.nS;
-     player.mults.m = player.mults.nM;
+     player.mults.d *= player.mults.nD;
+     player.mults.s *= player.mults.nS;
+     player.mults.m *= player.mults.nM;
      player.resets --;
      display();
    }
