@@ -369,30 +369,37 @@ function infinity() {
 
 document.getElementById("dCost").onclick = function() {
   buyWorker(0);
+  display();
 }
 
 document.getElementById("sCost").onclick = function() {
   buyWorker(1);
+  display();
 }
                         
 document.getElementById("mCost").onclick = function() {
   buyWorker(2);
+  display();
 }
 
 document.getElementById("dMax").onclick = function() {
   buyManyWorkers(0);
+  display();
 }
 
 document.getElementById("sMax").onclick = function() {
   buyManyWorkers(1);
+  display();
 }
 
 document.getElementById("mMax").onclick = function() {
   buyManyWorkers(2);
+  display();
 }
 
 document.getElementById("resetbtn").onclick = function() {
   getMults();
+  display();
 }
 
 document.getElementById("statsbtn").onclick = function() {
@@ -401,6 +408,7 @@ document.getElementById("statsbtn").onclick = function() {
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none";
+  display();
 }
 
 document.getElementById("workersbtn").onclick = function() {
@@ -409,6 +417,7 @@ document.getElementById("workersbtn").onclick = function() {
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none";
+  display();
 }
 
 document.getElementById("optionsbtn").onclick = function() {
@@ -417,6 +426,7 @@ document.getElementById("optionsbtn").onclick = function() {
   document.getElementById("optionstab").display = "inline";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "none"; 
+  display();
 }
 
 document.getElementById("achievesbtn").onclick = function() {
@@ -425,6 +435,7 @@ document.getElementById("achievesbtn").onclick = function() {
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "inline";
   document.getElementById("inftab").display = "none"; 
+  display();
 }
 
 document.getElementById("infinitybtn").onclick = function() {
@@ -433,4 +444,5 @@ document.getElementById("infinitybtn").onclick = function() {
   document.getElementById("optionstab").display = "none";
   document.getElementById("achievestab").display = "none";
   document.getElementById("inftab").display = "inline";
+  display();
 }
