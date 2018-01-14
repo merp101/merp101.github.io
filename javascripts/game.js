@@ -60,13 +60,14 @@ function getTenCosts() {
 getTenCosts();
 
 function changeCostUp(tier) {
-  if (tier == 0) player.costUp = 10;
-  else if (tier == 1) player.costUp = 100;
-  else if (tier == 2) player.costUp = 1000;
+  if (tier == 0) {
+    player.costUp = 10;
+  } else if (tier == 1) {
+    player.costUp = 100;
+  } else if (tier == 2) {
+    player.costUp = 1000;
+  }
 }
-  
-
-parseFloat(player.money);
 
 /*
 function setTheme(name) {
@@ -450,7 +451,12 @@ document.getElementById("infinitybtn").onclick = function() {
   display();
 }
 
-setInterval(function(){player.money += player.mps; display();}, player.tickspeed);   
+setInterval(function(){
+    if (player.money + player.mps <= player.moneyMax) {
+     player.money += player.mps; 
+    } else player.money = player.moneyMax;
+     display();
+ }, player.tickspeed);   
 
 
 
