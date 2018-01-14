@@ -447,7 +447,7 @@ document.getElementById("infinitybtn").onclick = function() {
   document.getElementById("inftab").display = "inline";
   display();
 }
-
+/*
 document.getElementById("moneybtn").onclick = function() {
   increaseMoney();
 }
@@ -455,6 +455,6 @@ document.getElementById("moneybtn").onclick = function() {
 function increaseMoney() {
   setInterval(function(){player.money += player.mps;}, player.tickspeed);   
 }
-
+*/
 
 
