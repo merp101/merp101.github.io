@@ -36,6 +36,7 @@ var player = {
     nM: 1,
   },
   minLayerForMult: 1e+5,
+  currentPage: 0,
   achievements: [],
   resets: 0,
   infinitied: 0,
@@ -222,7 +223,6 @@ function buyManyWorkers(tier) {
   var cost = player.costs[level] * (10 - player.bought[level]);
   if (player.money - cost >= 0) {
     player.amounts[level] = player.amounts[level] + (10 - player.bought[level]);
-    player.bought[level] = 0;
     player.money -= cost;
     changeCostAtTen();
     display();
@@ -241,36 +241,9 @@ function display() {
   getTenCosts();
   getNextMults();
 
+  var qlds = document.getElementById("qlds");
+  qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
   
-
-  if (player.materialNum > 1) {
-    var resetbtn = document.getElementById("resetbtn");
-    resetbtn.style.display = "inline";
-    
-    var minMult = document.getElementById("minMult");
-    minMult.innerHTML = formatValue(player.minLayerForMult, 0);
-    
-    var nDMult = document.getElementById("dMult");
-    nDMult.innerHTML = formatValue(player.mults.nD, 0);
-  
-    var nSMult = document.getElementById("sMult");
-    nSMult.innerHTML = formatValue(player.mults.nS, 0);
-  
-    var nMMult = document.getElementById("mMult");
-    nMMult.innerHTML = formatValue(player.mults.nM, 0);
-  } 
- 
-
-  var dMult = document.getElementById("cDMult");
-  dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
-  
-  var sMult = document.getElementById("cSMult");
-  sMult.innerHTML = "x" + formatValue(player.mults.s, 0);
-  
-  var mMult = document.getElementById("cMMult");
-  mMult.innerHTML = "x" + formatValue(player.mults.m, 0);
-  
-
   var mps = document.getElementById("mps");
   mps.innerHTML = formatValue(player.mps, 2);
   
@@ -279,52 +252,118 @@ function display() {
   
   var money = document.getElementById("money");
   money.innerHTML = formatValue(player.money, 2);
+
   
-  var qlds = document.getElementById("qlds");
-  qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
+ 
   
-  var dCost = document.getElementById("dCost");
-  dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
+  if (player.currentPage == 0) {
+     document.getElementById("statstab").display = "none";
+     document.getElementById("workertab").display = "inline";
+     document.getElementById("optionstab").display = "none";
+     document.getElementById("achievestab").display = "none";
+     document.getElementById("inftab").display = "none";
   
-  var dMax = document.getElementById("dMax");
-  dMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.dTen, 0);
+    if (player.materialNum > 1) {
+      var resetbtn = document.getElementById("resetbtn");
+      resetbtn.style.display = "inline";
+    
+      var minMult = document.getElementById("minMult");
+      minMult.innerHTML = formatValue(player.minLayerForMult, 0);
+    
+      var nDMult = document.getElementById("dMult");
+      nDMult.innerHTML = formatValue(player.mults.nD, 0);
   
-  var dAmt = document.getElementById("dAmount");
-  dAmt.innerHTML = formatValue(player.amounts.d, 0);
+      var nSMult = document.getElementById("sMult");
+      nSMult.innerHTML = formatValue(player.mults.nS, 0);
   
-  var sCost = document.getElementById("sCost");
-  sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
+      var nMMult = document.getElementById("mMult");
+      nMMult.innerHTML = formatValue(player.mults.nM, 0);
+    } 
+    
+    var dMult = document.getElementById("cDMult");
+    dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
   
-  var sMax = document.getElementById("sMax");
-  sMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.sTen, 0);
+    var sMult = document.getElementById("cSMult");
+    sMult.innerHTML = "x" + formatValue(player.mults.s, 0);
   
-  var sAmt = document.getElementById("sAmount");
-  sAmt.innerHTML = formatValue(player.amounts.s, 0);
+    var mMult = document.getElementById("cMMult");
+    mMult.innerHTML = "x" + formatValue(player.mults.m, 0);
   
-  var mCost = document.getElementById("mCost");
-  mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
+    var dCost = document.getElementById("dCost");
+    dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
   
-  var mMax = document.getElementById("mMax");
-  mMax.innerHTML = "Until 10, Cost: " + formatValue(player.tenCosts.mTen, 0);
+    var dMax = document.getElementById("dMax");
+    dMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.dTen, 0);
   
-  var mAmt = document.getElementById("mAmount");
-  mAmt.innerHTML = formatValue(player.amounts.m, 0); 
+    var dAmt = document.getElementById("dAmount");
+    dAmt.innerHTML = formatValue(player.amounts.d, 0);
   
-  var totalTime = document.getElementById("totalTimeStat");
-  totalTime.innerHTML = player.totalTimePlayed;
+    var sCost = document.getElementById("sCost");
+    sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
   
-  var currentTime = document.getElementById("currentInfStat");
-  //currentTime.innerHTML = player.currentTimePlayed;
-  // it doesn't work for some reason, so it's a comment
+    var sMax = document.getElementById("sMax");
+    sMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.sTen, 0);
   
-  var totalLayers = document.getElementById("totalLayerStat");
-  totalLayers.innerHTML = formatValue(player.totalMoney, 1);
+    var sAmt = document.getElementById("sAmount");
+    sAmt.innerHTML = formatValue(player.amounts.s, 0);
   
-  var infinitied = document.getElementById("infinitiedStat");
-  infinitied.innerHTML = formatValue(player.infinitied, 1);
+    var mCost = document.getElementById("mCost");
+    mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
   
-  var resetStat = document.getElementById("resetStat");
-  resetStat.innerHTML = formatValue(player.resets, 1);
+    var mMax = document.getElementById("mMax");
+    mMax.innerHTML = "Until 10, Cost: " + formatValue(player.tenCosts.mTen, 0);
+  
+    var mAmt = document.getElementById("mAmount");
+    mAmt.innerHTML = formatValue(player.amounts.m, 0); 
+  }
+  
+  if (player.currentPage == 1) { //stats tab
+    document.getElementById("statstab").display = "inline";
+    document.getElementById("workertab").display = "none";
+    document.getElementById("optionstab").display = "none";
+    document.getElementById("achievestab").display = "none";
+    document.getElementById("inftab").display = "none";
+    
+    var totalTime = document.getElementById("totalTimeStat");
+    totalTime.innerHTML = player.totalTimePlayed;
+  
+    var currentTime = document.getElementById("currentInfStat");
+    //currentTime.innerHTML = player.currentTimePlayed;
+    // it doesn't work for some reason, so it's a comment
+  
+    var totalLayers = document.getElementById("totalLayerStat");
+    totalLayers.innerHTML = formatValue(player.totalMoney, 1);
+  
+    var infinitied = document.getElementById("infinitiedStat");
+    infinitied.innerHTML = formatValue(player.infinitied, 1);
+  
+    var resetStat = document.getElementById("resetStat");
+    resetStat.innerHTML = formatValue(player.resets, 1);
+  }
+  
+  if (player.currentPage == 2) { //options tab
+    document.getElementById("statstab").display = "none";
+    document.getElementById("workertab").display = "none";
+    document.getElementById("optionstab").display = "inline";
+    document.getElementById("achievestab").display = "none";
+    document.getElementById("inftab").display = "none"; 
+  }
+  
+  if (player.currentPage == 3) { //achieves tab
+    document.getElementById("statstab").display = "none";
+    document.getElementById("workertab").display = "none";
+    document.getElementById("optionstab").display = "none";
+    document.getElementById("achievestab").display = "inline";
+    document.getElementById("inftab").display = "none";
+  }
+  
+  if (player.currentPage == 4) { //infinity tab
+    document.getElementById("statstab").display = "none";
+    document.getElementById("workertab").display = "none";
+    document.getElementById("optionstab").display = "none";
+    document.getElementById("achievestab").display = "none";
+    document.getElementById("inftab").display = "inline";
+  }
 }
 display();
 
@@ -424,48 +463,29 @@ document.getElementById("resetbtn").onclick = function() {
   display();
 }
 
-document.getElementById("statsbtn").onclick = function() {
-  document.getElementById("statstab").display = "inline";
-  document.getElementById("workertab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none";
+
+document.getElementById("workersbtn").onclick = function() {
+  player.currentPage = 0;
   display();
 }
 
-document.getElementById("workersbtn").onclick = function() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workertab").display = "inline";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none";
+document.getElementById("statsbtn").onclick = function() {
+  player.currentPage = 1;
   display();
 }
 
 document.getElementById("optionsbtn").onclick = function() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workertab").display = "none";
-  document.getElementById("optionstab").display = "inline";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "none"; 
+  player.currentPage = 2;
   display();
 }
 
 document.getElementById("achievesbtn").onclick = function() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workertab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "inline";
-  document.getElementById("inftab").display = "none"; 
+  player.currentPage = 3;
   display();
 }
 
 document.getElementById("infinitybtn").onclick = function() {
-  document.getElementById("statstab").display = "none";
-  document.getElementById("workertab").display = "none";
-  document.getElementById("optionstab").display = "none";
-  document.getElementById("achievestab").display = "none";
-  document.getElementById("inftab").display = "inline";
+  player.currentPage = 4;
   display();
 }
 
@@ -489,6 +509,6 @@ setInterval(function(){
    
  }, player.tickspeed);   
 
-// setInterval(function(){setSave();}, 15000); Autosaving, except for some reason it stops the above interval
+// setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
 
 
