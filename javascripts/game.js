@@ -257,12 +257,12 @@ function display() {
   
  
   
-  /*if (player.currentPage == 0) {
+  if (player.currentPage == 0) {
      document.getElementById("statstab").display = "none";
      document.getElementById("workertab").display = "inline";
      document.getElementById("optionstab").display = "none";
      document.getElementById("achievestab").display = "none";
-     document.getElementById("inftab").display = "none";*/
+     document.getElementById("inftab").display = "none";
   
     if (player.materialNum > 1) {
       var resetbtn = document.getElementById("resetbtn");
@@ -316,9 +316,9 @@ function display() {
   
     var mAmt = document.getElementById("mAmount");
     mAmt.innerHTML = formatValue(player.amounts.m, 0); 
-  //}
+  } else
   
-  /*if (player.currentPage == 1) { //stats tab
+   if (player.currentPage == 1) { //stats tab
     document.getElementById("statstab").display = "inline";
     document.getElementById("workertab").display = "none";
     document.getElementById("optionstab").display = "none";
@@ -340,7 +340,7 @@ function display() {
   
     var resetStat = document.getElementById("resetStat");
     resetStat.innerHTML = formatValue(player.resets, 1);
-  }
+  } else
   
   if (player.currentPage == 2) { //options tab
     document.getElementById("statstab").display = "none";
@@ -348,7 +348,7 @@ function display() {
     document.getElementById("optionstab").display = "inline";
     document.getElementById("achievestab").display = "none";
     document.getElementById("inftab").display = "none"; 
-  }
+  } else
   
   if (player.currentPage == 3) { //achieves tab
     document.getElementById("statstab").display = "none";
@@ -356,7 +356,7 @@ function display() {
     document.getElementById("optionstab").display = "none";
     document.getElementById("achievestab").display = "inline";
     document.getElementById("inftab").display = "none";
-  }
+  } else
   
   if (player.currentPage == 4) { //infinity tab
     document.getElementById("statstab").display = "none";
@@ -364,7 +364,7 @@ function display() {
     document.getElementById("optionstab").display = "none";
     document.getElementById("achievestab").display = "none";
     document.getElementById("inftab").display = "inline";
-  }*/
+  }
 }
 display();
 
