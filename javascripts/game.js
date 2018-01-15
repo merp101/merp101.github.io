@@ -35,6 +35,7 @@ var player = {
     nS: 1,
     nM: 1,
   },
+  minLayerForMult: 100,
   achievements: [],
   resets: 0,
   infinitied: 0,
@@ -166,23 +167,23 @@ getMaterialWord();
 
 function setMoneyMax() {
   if (player.material == "clay") {
-    player.moneyMax = 100;
+    player.moneyMax = 1e+4;
   } else if (player.material == "copper") {
-    player.moneyMax = 1000;
-  } else if (player.material == "tin") {
-    player.moneyMax = 10000;
-  } else if (player.material == "bronze") {
-    player.moneyMax = 100000;
-  } else if (player.material == "iron") {
     player.moneyMax = 1e+10;
-  } else if (player.material == "steel") {
-    player.moneyMax = 1e+25;
-  } else if (player.material == "silver") {
+  } else if (player.material == "tin") {
+    player.moneyMax = 1e+20;
+  } else if (player.material == "bronze") {
     player.moneyMax = 1e+50;
-  } else if (player.material == "gold") {
+  } else if (player.material == "iron") {
     player.moneyMax = 1e+100;
-  } else if (player.material == "platinum") {
+  } else if (player.material == "steel") {
+    player.moneyMax = 1e+150;
+  } else if (player.material == "silver") {
     player.moneyMax = 1e+200;
+  } else if (player.material == "gold") {
+    player.moneyMax = 1e+250;
+  } else if (player.material == "platinum") {
+    player.moneyMax = 1e+300;
   } else if (player.material == "diamond") {
     player.moneyMax = Number.MAX_VALUE;
   }
@@ -245,6 +246,9 @@ function display() {
   if (player.materialNum > 1) {
     var resetbtn = document.getElementById("resetbtn");
     resetbtn.style.display = "inline";
+    
+    var minMult = document.getElementById("minMult");
+    minMult.innerHTML = formatValue(player.minLayersForMult, 0);
     
     var nDMult = document.getElementById("dMult");
     nDMult.innerHTML = formatValue(player.mults.nD, 0);
