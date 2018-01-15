@@ -248,7 +248,7 @@ function display() {
     resetbtn.style.display = "inline";
     
     var minMult = document.getElementById("minMult");
-    minMult.innerHTML = formatValue(player.minLayersForMult, 0);
+    minMult.innerHTML = formatValue(player.minLayerForMult, 0);
     
     var nDMult = document.getElementById("dMult");
     nDMult.innerHTML = formatValue(player.mults.nD, 0);
