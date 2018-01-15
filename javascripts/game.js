@@ -395,7 +395,7 @@ function reset() {
 }
 
 function getMults() {
-   if (player.materialNum > 1 && player.money >= 100) {
+   if (player.materialNum > 1 && player.money >= player.minLayerForMult) {
      reset();
      player.mults.d = player.mults.nD;
      player.mults.s = player.mults.nS;
