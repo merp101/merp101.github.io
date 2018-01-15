@@ -256,12 +256,12 @@ function display() {
   
  
   
-  if (player.currentPage == 0) {
+  /*if (player.currentPage == 0) {
      document.getElementById("statstab").display = "none";
      document.getElementById("workertab").display = "inline";
      document.getElementById("optionstab").display = "none";
      document.getElementById("achievestab").display = "none";
-     document.getElementById("inftab").display = "none";
+     document.getElementById("inftab").display = "none";*/
   
     if (player.materialNum > 1) {
       var resetbtn = document.getElementById("resetbtn");
@@ -315,9 +315,9 @@ function display() {
   
     var mAmt = document.getElementById("mAmount");
     mAmt.innerHTML = formatValue(player.amounts.m, 0); 
-  }
+  //}
   
-  if (player.currentPage == 1) { //stats tab
+  /*if (player.currentPage == 1) { //stats tab
     document.getElementById("statstab").display = "inline";
     document.getElementById("workertab").display = "none";
     document.getElementById("optionstab").display = "none";
@@ -363,7 +363,7 @@ function display() {
     document.getElementById("optionstab").display = "none";
     document.getElementById("achievestab").display = "none";
     document.getElementById("inftab").display = "inline";
-  }
+  }*/
 }
 display();
 
