@@ -1,5 +1,5 @@
 //This is for JS, HTML is in index.md - and don't change the name of the file, it won't work.
-
+//Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
   money: 10,
