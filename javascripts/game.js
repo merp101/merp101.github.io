@@ -61,11 +61,11 @@ getTenCosts();
 
 function changeCostUp(tier) {
   if (tier == 0) {
-    player.costUp = 10;
-  } else if (tier == 1) {
-    player.costUp = 100;
-  } else if (tier == 2) {
     player.costUp = 1000;
+  } else if (tier == 1) {
+    player.costUp = 10000;
+  } else if (tier == 2) {
+    player.costUp = 100000;
   }
 }
 
@@ -228,16 +228,18 @@ function buyManyWorkers(tier) {
   }
 }
 
-
+function getNextMults() {
+  player.mults.nD = 2 * (Math.log10(player.money) ^ 2);
+  player.mults.nS = Math.log10(player.money) ^ 2;
+  player.mults.nM = (Math.log10(player.money) ^ 2) / 2;
+}
 
 
 function display() {
   getMPS();
   getTenCosts();
-  
-  player.mults.nD = 2 * (Math.log10(player.money) ^ 2);
-  player.mults.nS = Math.log10(player.money) ^ 2;
-  player.mults.nM = (Math.log10(player.money) ^ 2) / 2;
+  getNextMults();
+
   
 
   if (player.materialNum > 1) {
@@ -309,7 +311,7 @@ function display() {
   
   var currentTime = document.getElementById("currentInfStat");
   //currentTime.innerHTML = player.currentTimePlayed;
-  // it doesn't work for some reason, don't remove the "//"
+  // it doesn't work for some reason, so it's a comment
   
   var totalLayers = document.getElementById("totalLayerStat");
   totalLayers.innerHTML = formatValue(player.totalMoney, 1);
@@ -323,6 +325,9 @@ function display() {
 display();
 
 function reset() {
+  var nD = player.mults.nD;
+  var nS = player.mults.nS;
+  var nM = player.mults.nM;
   player.resets ++;
   player.money = 10;
   player.moneyMax = undefined;
@@ -334,21 +339,23 @@ function reset() {
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
-  /*player.mults.d = 1;
+  player.mults.d = 1;
   player.mults.s = 1;
-  player.mults.m = 1;*/
+  player.mults.m = 1; 
   changeCostUp(0);
   setMoneyMax();
   display();
+  player.mults.nD = nD;
+  player.mults.nS = nS;
+  player.mults.nM = nM;
 }
 
 function getMults() {
-   display();
    if (player.materialNum > 1 && player.money >= 100) {
      reset();
-     player.mults.d *= player.mults.nD;
-     player.mults.s *= player.mults.nS;
-     player.mults.m *= player.mults.nM;
+     player.mults.d = player.mults.nD;
+     player.mults.s = player.mults.nS;
+     player.mults.m = player.mults.nM;
      player.resets --;
      display();
    }
@@ -359,6 +366,7 @@ function newMaterial() {
      reset();
      getMaterialWord();
      setMoneyMax();
+     getNextMults();
    }  
 }
 
