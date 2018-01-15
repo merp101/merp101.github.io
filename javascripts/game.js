@@ -224,7 +224,7 @@ function buyManyWorkers(tier) {
   if (player.money - cost >= 0) {
     player.amounts[level] = player.amounts[level] + (10 - player.bought[level]);
     player.money -= cost;
-    changeCostAtTen();
+    changeCostAtTen(tier);
     display();
   }
 }
