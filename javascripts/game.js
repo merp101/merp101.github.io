@@ -231,9 +231,9 @@ function buyManyWorkers(tier) {
 }
 
 function getNextMults() {
-  player.mults.nD = 2 * (Math.log10(player.money) ^ 2);
-  player.mults.nS = Math.log10(player.money) ^ 2;
-  player.mults.nM = (Math.log10(player.money) ^ 2) / 2;
+  player.mults.nD = Math.log10(player.money) ^ 2;
+  player.mults.nS = (Math.log10(player.money) ^ 2) / 2;
+  player.mults.nM = Math.log10(player.money) ^ -2;
 }
 
 
