@@ -35,7 +35,7 @@ var player = {
     nS: 1,
     nM: 1,
   },
-  minLayerForMult: 100,
+  minLayerForMult: 1e+5,
   achievements: [],
   resets: 0,
   infinitied: 0,
@@ -167,7 +167,7 @@ getMaterialWord();
 
 function setMoneyMax() {
   if (player.material == "clay") {
-    player.moneyMax = 1e+4;
+    player.moneyMax = 1e+5;
   } else if (player.material == "copper") {
     player.moneyMax = 1e+10;
   } else if (player.material == "tin") {
