@@ -183,7 +183,9 @@ function setCosts() {
   if (player.costs.m == undefined) {
     player.costs.m = 1000;
   } else player.costs.m = .89 * (player.amounts.m ^ 2);
+  display();
 }
+setCosts();
 
 function getMPS() {
   player.mps = (player.amounts.d * player.mults.d) + ((player.amounts.s * 10) * player.mults.s) + ((player.amounts.m * 100) * player.mults.m);
