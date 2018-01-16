@@ -5,24 +5,15 @@ var player = {
   money: 10,
   moneyMax: undefined,
   mps: 0,
+  buyMult: 1,
   tickspeed: 1000,
   costs: {
     d: 10,
     s: 100,
     m: 1000,
   },
-  tenCosts: {
-    d: 0,
-    s: 0,
-    m: 0,
-  },
   costUp: 0,
   amounts: {
-    d: 0,
-    s: 0,
-    m: 0,
-  },
-  bought: {
     d: 0,
     s: 0,
     m: 0,
@@ -53,13 +44,6 @@ var player = {
   }
 }
 const TIER_NAMES = ["d", "s", "m"];
-
-function getTenCosts() {
-  player.tenCosts.dTen = player.costs.d * 10;
-  player.tenCosts.sTen = player.costs.s * 10;
-  player.tenCosts.mTen = player.costs.m * 10;
-}
-getTenCosts();
 
 function changeCostUp(tier) {
   if (tier == 0) {
@@ -208,26 +192,12 @@ function changeCostAtTen(tier) {
 
 function buyWorker(tier) {
   var level = TIER_NAMES[tier];
-  if (player.money - player.costs[level] >= 0) {
-    player.amounts[level] ++;
-    player.bought[level] ++;
-    player.money -= player.costs[level];
-    getMPS();
-    changeCostAtTen(tier);
+  var buyAmt = player.buyMult - (player.amounts[level] % player.buyMult);
+  if (player.money - (player.costs[level] * buyAmt) >= 0) {
+    player.amounts[level] += buyAmt;    
+    player.money -= (player.costs[level] * buyAmt);
     display();
   } 
-}
-
-function buyManyWorkers(tier) {
-  var level = TIER_NAMES[tier];
-  var cost = player.costs[level] * (10 - player.bought[level]);
-  if (player.money - cost >= 0) {
-    player.amounts[level] = player.amounts[level] + (10 - player.bought[level]);
-    player.money -= cost;
-    player.bought[level] = 10;
-    changeCostAtTen(tier);
-    display();
-  }
 }
 
 function getNextMults() {
@@ -281,6 +251,9 @@ function display() {
       nMMult.innerHTML = formatValue(player.mults.nM, 0);
     } 
     
+    var buyMult = document.getElementById("buyMult");
+    buyMult.innerHTML = "x" + player.buyMult;
+  
     var dMult = document.getElementById("cDMult");
     dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
   
@@ -293,26 +266,17 @@ function display() {
     var dCost = document.getElementById("dCost");
     dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
   
-    var dMax = document.getElementById("dMax");
-    dMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.dTen, 0);
-  
     var dAmt = document.getElementById("dAmount");
     dAmt.innerHTML = formatValue(player.amounts.d, 0);
   
     var sCost = document.getElementById("sCost");
     sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
   
-    var sMax = document.getElementById("sMax");
-    sMax.innerHTML = "Until 10. Cost: " + formatValue(player.tenCosts.sTen, 0);
-  
     var sAmt = document.getElementById("sAmount");
     sAmt.innerHTML = formatValue(player.amounts.s, 0);
   
     var mCost = document.getElementById("mCost");
     mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
-  
-    var mMax = document.getElementById("mMax");
-    mMax.innerHTML = "Until 10, Cost: " + formatValue(player.tenCosts.mTen, 0);
   
     var mAmt = document.getElementById("mAmount");
     mAmt.innerHTML = formatValue(player.amounts.m, 0); 
@@ -498,14 +462,25 @@ document.getElementById("infButton").onclick = function() {
   infinity();
 }
 
+document.getElementById("buyMult").onclick = function() {
+  if (player.buyMult == 1) player.buyMult = 5; else
+  if (player.buyMult == 5) player.buyMult = 10; else
+  if (player.buyMult == 10) player.buyMult = 25; else
+  if (player.buyMult == 25) player.buyMult = 50; else
+  if (player.buyMult == 50) player.buyMult = 100; else
+  if (player.buyMult == 100) player.buyMult = 1;
+}
+
 function increaseMoney() {
    if (player.money + player.mps <= player.moneyMax) {
      player.money += player.mps; 
+     player.totalMoney += player.mps;
     } else player.money = player.moneyMax;
      display();
 }
 
 setInterval(function(){
+   getMPS();
    increaseMoney();
    
  }, player.tickspeed);   
