@@ -176,13 +176,13 @@ setMoneyMax();
 function setCosts() {
   if (player.costs.d == undefined) {
     player.costs.d = 10;
-  } else if (player.amounts.d > 10) player.costs.d = .57 * (player.amounts.d ^ 2);
+  } else if (player.amounts.d > 10) player.costs.d = .99 * (player.amounts.d ^ 2);
   if (player.costs.s == undefined) {
     player.costs.s = 100;
-  } else if (player.amounts.s > 10) player.costs.s = .69 * (player.amounts.s ^ 2);
+  } else if (player.amounts.s > 10) player.costs.s = 2 * (player.amounts.s ^ 2);
   if (player.costs.m == undefined) {
     player.costs.m = 1000;
-  } else if (player.amounts.m > 10) player.costs.m = .89 * (player.amounts.m ^ 2);
+  } else if (player.amounts.m > 10) player.costs.m = 4 * (player.amounts.m ^ 2);
   display();
 }
 setCosts();
