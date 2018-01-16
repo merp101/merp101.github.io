@@ -9,9 +9,9 @@ var player = {
   buyMult: 1,
   tickspeed: 1000,
   costs: {
-    d: 10,
-    s: 100,
-    m: 1000,
+    d: undefined,
+    s: undefined,
+    m: undefined,
   },
   costUp: 0,
   amounts: {
@@ -173,6 +173,18 @@ function setMoneyMax() {
 }
 setMoneyMax();
  
+function setCosts() {
+  if (player.costs.d == undefined) {
+    player.costs.d = 10;
+  } else player.costs.d = .57 * (player.amounts.d ^ 2);
+  if (player.costs.s == undefined) {
+    player.costs.s = 100;
+  } else player.costs.s = .69 * (player.amounts.s ^ 2);
+  if (player.costs.m == undefined) {
+    player.costs.m = 1000;
+  } else player.costs.m = .89 * (player.amounts.m ^ 2);
+}
+
 function getMPS() {
   player.mps = (player.amounts.d * player.mults.d) + ((player.amounts.s * 10) * player.mults.s) + ((player.amounts.m * 100) * player.mults.m);
 }
@@ -180,6 +192,7 @@ getMPS();
 
 function buyWorker(tier) {
   var level = TIER_NAMES[tier];
+  setCosts();
   var buyAmt = player.buyMult - (player.amounts[level] % player.buyMult);
   if (player.money - (player.costs[level] * buyAmt) >= 0) {
     player.amounts[level] += buyAmt;    
