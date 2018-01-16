@@ -448,12 +448,19 @@ document.getElementById("infButton").onclick = function() {
 }
 
 document.getElementById("buyMult").onclick = function() {
-  if (player.buyMult == 1) player.buyMult = 5; else
-  if (player.buyMult == 5) player.buyMult = 10; else
-  if (player.buyMult == 10) player.buyMult = 25; else
-  if (player.buyMult == 25) player.buyMult = 50; else
-  if (player.buyMult == 50) player.buyMult = 100; else
-  if (player.buyMult == 100) player.buyMult = 1;
+  if (player.buyMult == 1) {
+    player.buyMult = 5;
+  } else if (player.buyMult == 5) {
+    player.buyMult = 10;
+  } else if (player.buyMult == 10) {
+    player.buyMult = 25;
+  } else if (player.buyMult == 25) {
+    player.buyMult = 50;
+  } else if (player.buyMult == 50) {
+    player.buyMult = 100;
+  } else if (player.buyMult == 100) {
+    player.buyMult = 1;
+  }
   display();
 }
 
