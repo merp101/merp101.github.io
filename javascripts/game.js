@@ -393,26 +393,10 @@ document.getElementById("mCost").onclick = function() {
   display();
 }
 
-document.getElementById("dMax").onclick = function() {
-  buyManyWorkers(0);
-  display();
-}
-
-document.getElementById("sMax").onclick = function() {
-  buyManyWorkers(1);
-  display();
-}
-
-document.getElementById("mMax").onclick = function() {
-  buyManyWorkers(2);
-  display();
-}
-
 document.getElementById("resetbtn").onclick = function() {
   getMults();
   display();
 }
-
 
 document.getElementById("workersbtn").onclick = function() {
   player.currentPage = 0;
