@@ -112,9 +112,6 @@ function onLoad() {
   if (player.amounts.d == undefined || player.amounts.d == NaN) player.amounts.d = 0;
   if (player.amounts.s == undefined || player.amounts.s == NaN) player.amounts.s = 0;
   if (player.amounts.m == undefined || player.amounts.m == NaN) player.amounts.m = 0;
-  if (player.tenCosts.d == undefined || player.tenCosts.d == NaN) getTenCosts();
-  if (player.tenCosts.s == undefined || player.tenCosts.s == NaN) getTenCosts();
-  if (player.tenCosts.m == undefined || player.tenCosts.m == NaN) getTenCosts();
   if (player.mults.d == undefined || player.mults.d == NaN) player.mults.d = 1;
   if (player.mults.s == undefined || player.mults.s == NaN) player.mults.s = 1;
   if (player.mults.m == undefined || player.mults.m == NaN) player.mults.m = 1;
@@ -209,7 +206,6 @@ function getNextMults() {
 
 function display() {
   getMPS();
-  getTenCosts();
   getNextMults();
 
   var qlds = document.getElementById("qlds");
@@ -343,7 +339,6 @@ function reset() {
   player.costs.d = 10;
   player.costs.s = 100;
   player.costs.m = 1000;
-  getTenCosts();
   player.amounts.d = 0;
   player.amounts.s = 0;
   player.amounts.m = 0;
