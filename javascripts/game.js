@@ -177,16 +177,6 @@ function getMPS() {
 }
 getMPS();
 
-function changeCostAtTen(tier) {
-  var level = TIER_NAMES[tier];
-  if (player.bought[level] == 10) {
-    changeCostUp(tier);
-    player.costs[level] *= player.costUp;
-    player.bought[level] = 0;
-  } 
-}
-
-
 function buyWorker(tier) {
   var level = TIER_NAMES[tier];
   var buyAmt = player.buyMult - (player.amounts[level] % player.buyMult);
@@ -464,6 +454,7 @@ document.getElementById("buyMult").onclick = function() {
   if (player.buyMult == 25) player.buyMult = 50; else
   if (player.buyMult == 50) player.buyMult = 100; else
   if (player.buyMult == 100) player.buyMult = 1;
+  display();
 }
 
 function increaseMoney() {
