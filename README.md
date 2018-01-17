@@ -6,3 +6,4 @@ Infinite Layers!
 
 There's stuff in the wiki tab too
 
+Link to the game: https://merp101.github.io/
