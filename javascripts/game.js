@@ -29,6 +29,7 @@ var player = {
   }
 }
 const TIER_NAMES = ["d", "s", "m"];
+var places = 1;
 
 /*
 function setTheme(name) {
@@ -203,41 +204,41 @@ function display() {
       minMult.innerHTML = formatValue(player.minLayerForMult, 0);
     
       var nDMult = document.getElementById("dMult");
-      nDMult.innerHTML = formatValue(player.mults[3], 0);
+      nDMult.innerHTML = formatValue(player.mults[3], places);
   
       var nSMult = document.getElementById("sMult");
-      nSMult.innerHTML = formatValue(player.mults[4], 0);
+      nSMult.innerHTML = formatValue(player.mults[4], places);
   
       var nMMult = document.getElementById("mMult");
-      nMMult.innerHTML = formatValue(player.mults[5], 0);
+      nMMult.innerHTML = formatValue(player.mults[5], places);
     } 
     
     var buyMult = document.getElementById("buyMult");
     buyMult.innerHTML = "x" + player.buyMult;
   
     var dMult = document.getElementById("cDMult");
-    dMult.innerHTML = "x" + formatValue(player.mults[0], 0);
+    dMult.innerHTML = "x" + formatValue(player.mults[0], places);
   
     var sMult = document.getElementById("cSMult");
-    sMult.innerHTML = "x" + formatValue(player.mults[1], 0);
+    sMult.innerHTML = "x" + formatValue(player.mults[1], places);
   
     var mMult = document.getElementById("cMMult");
-    mMult.innerHTML = "x" + formatValue(player.mults[2], 0);
+    mMult.innerHTML = "x" + formatValue(player.mults[2], places);
   
     var dCost = document.getElementById("dCost");
-    dCost.innerHTML = "Cost: " + formatValue(player.costs[0], 0);
+    dCost.innerHTML = "Cost: " + formatValue(player.costs[0], places);
   
     var dAmt = document.getElementById("dAmount");
     dAmt.innerHTML = formatValue(player.amounts[0], 0);
   
     var sCost = document.getElementById("sCost");
-    sCost.innerHTML = "Cost: " + formatValue(player.costs[1], 0);
+    sCost.innerHTML = "Cost: " + formatValue(player.costs[1], places);
   
     var sAmt = document.getElementById("sAmount");
     sAmt.innerHTML = formatValue(player.amounts[1], 0);
   
     var mCost = document.getElementById("mCost");
-    mCost.innerHTML = "Cost: " + formatValue(player.costs[2], 0); 
+    mCost.innerHTML = "Cost: " + formatValue(player.costs[2], places); 
   
     var mAmt = document.getElementById("mAmount");
     mAmt.innerHTML = formatValue(player.amounts[2], 0); 
