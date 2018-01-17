@@ -8,7 +8,7 @@ var player = {
   buyMult: 1,
   tickspeed: 1000,
   costs: [10,100,1000],
-  costMults: [2,2.5,4],
+  costMults: [2,3,4],
   amounts: [0,0,0],
   mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
