@@ -138,19 +138,7 @@ function setMoneyMax() {
 }
 setMoneyMax();
  
-function setCosts() {
-  if (player.costs[0] == undefined) {
-    player.costs[0] = 10;
-  } else if (player.amounts[0] > 10) player.costs[0] *= player.costMults[0];
-  if (player.costs[1] == undefined) {
-    player.costs[1] = 100;
-  } else if (player.amounts[1] > 10) player.costs[1] *= player.costMults[1];
-  if (player.costs[2] == undefined) {
-    player.costs[2] = 1000;
-  } else if (player.amounts[2] > 10) player.costs[2] *= player.costMults[2];
-  display();
-}
-setCosts();
+
 
 function getMPS() {
   player.mps = (player.amounts[0] * player.mults[0]) + ((player.amounts[1] * 10) * player.mults[1]) + ((player.amounts[2] * 100) * player.mults[2]);
@@ -158,12 +146,12 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  setCosts();
   var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
   if (player.money >= (player.costs[tier] * buyAmt)) {
     for (i = 0; i < buyAmt; i++) {
       player.amounts[tier] += buyAmt;    
       player.money -= (player.costs[tier] * buyAmt);
+      player.costs[tier] *= player.costMults[tier];
       display();
     }
   } 
