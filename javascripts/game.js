@@ -7,25 +7,10 @@ var player = {
   mps: 0,
   buyMult: 1,
   tickspeed: 1000,
-  costs: {
-    d: undefined,
-    s: undefined,
-    m: undefined,
-  },
-  costUp: 0,
-  amounts: {
-    d: 0,
-    s: 0,
-    m: 0,
-  },
-  mults: {
-    d: 1,
-    s: 1,
-    m: 1,
-    nD: 1,
-    nS: 1,
-    nM: 1,
-  },
+  costs: [10,100,1000],
+  costMults: [2,2.5,4],
+  amounts: [0,0,0],
+  mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
   currentPage: 0,
   achievements: [],
@@ -88,7 +73,7 @@ function formatValue(x, places) {
 }
 
 function setSave() {
-  localStorage.setItem("layers",JSON.stringify(game));
+  localStorage.setItem("layers",JSON.stringify(player));
 }
 
 function getSave() {
@@ -101,20 +86,11 @@ function getSave() {
 
 
 function onLoad() {
-  getSave();
+  player = getSave();
   if (player.money == undefined || player.money === NaN) player.money = 10;
   if (player.options.notation == undefined) player.options.notation = "scientific";
   if (player.money == Infinity) document.getElementById("infButton").display = "inline";
   if (player.moneyMax == undefined) setMoneyMax();
-  if (player.costs.d == undefined || player.costs.d == NaN) player.costs.d = 10;
-  if (player.costs.s == undefined || player.costs.s == NaN) player.costs.s = 100;
-  if (player.costs.m == undefined || player.costs.m == NaN) player.costs.m = 1000;
-  if (player.amounts.d == undefined || player.amounts.d == NaN) player.amounts.d = 0;
-  if (player.amounts.s == undefined || player.amounts.s == NaN) player.amounts.s = 0;
-  if (player.amounts.m == undefined || player.amounts.m == NaN) player.amounts.m = 0;
-  if (player.mults.d == undefined || player.mults.d == NaN) player.mults.d = 1;
-  if (player.mults.s == undefined || player.mults.s == NaN) player.mults.s = 1;
-  if (player.mults.m == undefined || player.mults.m == NaN) player.mults.m = 1;
 }
 
 
@@ -174,13 +150,13 @@ setMoneyMax();
  
 function setCosts() {
   if (player.costs.d == undefined) {
-    player.costs.d = 10;
+    player.costs[0] = 10;
   } else if (player.amounts.d > 10) player.costs.d = 10 * (player.amounts.d / 2);
   if (player.costs.s == undefined) {
-    player.costs.s = 100;
+    player.costs[1] = 100;
   } else if (player.amounts.s > 10) player.costs.s = 100 * (player.amounts.s / 2);
   if (player.costs.m == undefined) {
-    player.costs.m = 1000;
+    player.costs[2] = 1000;
   } else if (player.amounts.m > 10) player.costs.m = 1000 * (player.amounts.m / 2);
   display();
 }
@@ -194,18 +170,18 @@ getMPS();
 function buyWorker(tier) {
   var level = TIER_NAMES[tier];
   setCosts();
-  var buyAmt = player.buyMult - (player.amounts[level] % player.buyMult);
-  if (player.money - (player.costs[level] * buyAmt) >= 0) {
-    player.amounts[level] += buyAmt;    
-    player.money -= (player.costs[level] * buyAmt);
+  var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
+  if (player.money - (player.costs[tier] * buyAmt) >= 0) {
+    player.amounts[tier] += buyAmt;    
+    player.money -= (player.costs[tier] * buyAmt);
     display();
   } 
 }
 
 function getNextMults() {
-  player.mults.nD = Math.log10(player.money) ^ 2;
-  player.mults.nS = (Math.log10(player.money) / 2) ^ 2;
-  player.mults.nM = Math.log10(player.money) / 2;
+  player.mults[3] = Math.log10(player.money) ^ 2;
+  player.mults[4] = (Math.log10(player.money) / 2) ^ 2;
+  player.mults[5] = Math.log10(player.money) / 2;
 }
 
 
@@ -243,44 +219,44 @@ function display() {
       minMult.innerHTML = formatValue(player.minLayerForMult, 0);
     
       var nDMult = document.getElementById("dMult");
-      nDMult.innerHTML = formatValue(player.mults.nD, 0);
+      nDMult.innerHTML = formatValue(player.mults[3], 0);
   
       var nSMult = document.getElementById("sMult");
-      nSMult.innerHTML = formatValue(player.mults.nS, 0);
+      nSMult.innerHTML = formatValue(player.mults[4], 0);
   
       var nMMult = document.getElementById("mMult");
-      nMMult.innerHTML = formatValue(player.mults.nM, 0);
+      nMMult.innerHTML = formatValue(player.mults[5], 0);
     } 
     
     var buyMult = document.getElementById("buyMult");
     buyMult.innerHTML = "x" + player.buyMult;
   
     var dMult = document.getElementById("cDMult");
-    dMult.innerHTML = "x" + formatValue(player.mults.d, 0);
+    dMult.innerHTML = "x" + formatValue(player.mults[0], 0);
   
     var sMult = document.getElementById("cSMult");
-    sMult.innerHTML = "x" + formatValue(player.mults.s, 0);
+    sMult.innerHTML = "x" + formatValue(player.mults[1], 0);
   
     var mMult = document.getElementById("cMMult");
-    mMult.innerHTML = "x" + formatValue(player.mults.m, 0);
+    mMult.innerHTML = "x" + formatValue(player.mults[2], 0);
   
     var dCost = document.getElementById("dCost");
-    dCost.innerHTML = "Cost: " + formatValue(player.costs.d, 0);
+    dCost.innerHTML = "Cost: " + formatValue(player.costs[0], 0);
   
     var dAmt = document.getElementById("dAmount");
-    dAmt.innerHTML = formatValue(player.amounts.d, 0);
+    dAmt.innerHTML = formatValue(player.amounts[0], 0);
   
     var sCost = document.getElementById("sCost");
-    sCost.innerHTML = "Cost: " + formatValue(player.costs.s, 0);
+    sCost.innerHTML = "Cost: " + formatValue(player.costs[1], 0);
   
     var sAmt = document.getElementById("sAmount");
-    sAmt.innerHTML = formatValue(player.amounts.s, 0);
+    sAmt.innerHTML = formatValue(player.amounts[1], 0);
   
     var mCost = document.getElementById("mCost");
-    mCost.innerHTML = "Cost: " + formatValue(player.costs.m, 0); 
+    mCost.innerHTML = "Cost: " + formatValue(player.costs[2], 0); 
   
     var mAmt = document.getElementById("mAmount");
-    mAmt.innerHTML = formatValue(player.amounts.m, 0); 
+    mAmt.innerHTML = formatValue(player.amounts[2], 0); 
   /*} else
   
    if (player.currentPage == 1) { //stats tab
@@ -334,36 +310,36 @@ function display() {
 display();
 
 function reset() {
-  var nD = player.mults.nD;
-  var nS = player.mults.nS;
-  var nM = player.mults.nM;
+  var nD = player.mults[3];
+  var nS = player.mults[4];
+  var nM = player.mults[5];
   player.resets ++;
   player.money = 10;
   player.moneyMax = undefined;
   player.mps = 0;
-  player.costs.d = 10;
-  player.costs.s = 100;
-  player.costs.m = 1000;
-  player.amounts.d = 0;
-  player.amounts.s = 0;
-  player.amounts.m = 0;
-  player.mults.d = 1;
-  player.mults.s = 1;
-  player.mults.m = 1; 
+  player.costs[0] = 10;
+  player.costs[1] = 100;
+  player.costs[2] = 1000;
+  player.amounts[0] = 0;
+  player.amounts[1] = 0;
+  player.amounts[2] = 0;
+  player.mults[0] = 1;
+  player.mults[1] = 1;
+  player.mults[2] = 1; 
   changeCostUp(0);
   setMoneyMax();
   display();
-  player.mults.nD = nD;
-  player.mults.nS = nS;
-  player.mults.nM = nM;
+  player.mults[3] = nD;
+  player.mults[4] = nS;
+  player.mults[5] = nM;
 }
 
 function getMults() {
    if (player.materialNum > 1 && player.money >= player.minLayerForMult) {
      reset();
-     player.mults.d = player.mults.nD;
-     player.mults.s = player.mults.nS;
-     player.mults.m = player.mults.nM;
+     player.mults[0] = player.mults[3];
+     player.mults[1] = player.mults[4];
+     player.mults[2] = player.mults[5];
      player.resets --;
      display();
    }
