@@ -76,7 +76,7 @@ function getSave() {
   
 
 
-function onLoad() {
+function load() {
   player=getSave();
   if (player.money==undefined||player.money==NaN)player.money=10;
   if (player.options.notation==undefined) player.options.notation="scientific";
@@ -435,7 +435,7 @@ function increaseMoney() {
 setInterval(function(){
    getMPS();
    increaseMoney();
-   onLoad();
+   load();
  }, player.tickspeed);   
 
 // setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
