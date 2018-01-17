@@ -30,16 +30,6 @@ var player = {
 }
 const TIER_NAMES = ["d", "s", "m"];
 
-function changeCostUp(tier) {
-  if (tier == 0) {
-    player.costUp = 1000;
-  } else if (tier == 1) {
-    player.costUp = 10000;
-  } else if (tier == 2) {
-    player.costUp = 100000;
-  }
-}
-
 /*
 function setTheme(name) {
     document.querySelectorAll("link").forEach( function(e) {
@@ -149,29 +139,28 @@ function setMoneyMax() {
 setMoneyMax();
  
 function setCosts() {
-  if (player.costs.d == undefined) {
+  if (player.costs[0] == undefined) {
     player.costs[0] = 10;
-  } else if (player.amounts.d > 10) player.costs.d = 10 * (player.amounts.d / 2);
-  if (player.costs.s == undefined) {
+  } else if (player.amounts[0] > 10) player.costs[0] *= player.costMults[0];
+  if (player.costs[1] == undefined) {
     player.costs[1] = 100;
-  } else if (player.amounts.s > 10) player.costs.s = 100 * (player.amounts.s / 2);
-  if (player.costs.m == undefined) {
+  } else if (player.amounts[1] > 10) player.costs[1] *= player.costMults[1];
+  if (player.costs[2] == undefined) {
     player.costs[2] = 1000;
-  } else if (player.amounts.m > 10) player.costs.m = 1000 * (player.amounts.m / 2);
+  } else if (player.amounts[2] > 10) player.costs[2] *= player.costMults[2];
   display();
 }
 setCosts();
 
 function getMPS() {
-  player.mps = (player.amounts.d * player.mults.d) + ((player.amounts.s * 10) * player.mults.s) + ((player.amounts.m * 100) * player.mults.m);
+  player.mps = (player.amounts[0] * player.mults[0]) + ((player.amounts[1] * 10) * player.mults[1]) + ((player.amounts[2] * 100) * player.mults[2]);
 }
 getMPS();
 
 function buyWorker(tier) {
-  var level = TIER_NAMES[tier];
   setCosts();
   var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
-  if (player.money - (player.costs[tier] * buyAmt) >= 0) {
+  if (player.money >= (player.costs[tier] * buyAmt)) {
     player.amounts[tier] += buyAmt;    
     player.money -= (player.costs[tier] * buyAmt);
     display();
