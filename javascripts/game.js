@@ -161,9 +161,11 @@ function buyWorker(tier) {
   setCosts();
   var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
   if (player.money >= (player.costs[tier] * buyAmt)) {
-    player.amounts[tier] += buyAmt;    
-    player.money -= (player.costs[tier] * buyAmt);
-    display();
+    for (i = 0; i < buyAmt; i++) {
+      player.amounts[tier] += buyAmt;    
+      player.money -= (player.costs[tier] * buyAmt);
+      display();
+    }
   } 
 }
 
