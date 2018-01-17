@@ -76,11 +76,16 @@ function getSave() {
 
 
 function onLoad() {
-  player = getSave();
-  if (player.money == undefined || player.money === NaN) player.money = 10;
-  if (player.options.notation == undefined) player.options.notation = "scientific";
-  if (player.money == Infinity) document.getElementById("infButton").display = "inline";
-  if (player.moneyMax == undefined) setMoneyMax();
+  player=getSave();
+  if (player.money==undefined||player.money==NaN)player.money=10;
+  if (player.options.notation==undefined) player.options.notation="scientific";
+  if (player.money==Infinity)document.getElementById("infButton").display="inline";
+  if (player.moneyMax==undefined)setMoneyMax();
+  for (var i=0;i<3;i++) {
+    if (player.amounts[i] == undefined || player.amounts[i] == NaN) player.amounts[i] = 0;
+  }
+  for (var i=0;i<3;i++) {
+    if(player.costs[i]==undefined||player.costs[i]==NaN)if(i==0)player.costs[i]=10; if(i==1)player.costs[i]=100; if(i==2)player.costs[i]=1000;
 }
 
 
@@ -147,11 +152,11 @@ getMPS();
 
 function buyWorker(tier) {
   var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
-  if (player.money >= (player.costs[tier] * buyAmt)) {
-    for (i = 0; i < buyAmt; i++) {
-      player.amounts[tier] += buyAmt;    
-      player.money -= (player.costs[tier] * buyAmt);
-      player.costs[tier] *= player.costMults[tier];
+  if (player.money>=(player.costs[tier]*buyAmt)) {
+    for (i=0;i<buyAmt;i++) {
+      player.amounts[tier]+=buyAmt;    
+      player.money-=(player.costs[tier]*buyAmt);
+      player.costs[tier]*=player.costMults[tier];
       display();
     }
   } 
@@ -429,7 +434,7 @@ function increaseMoney() {
 setInterval(function(){
    getMPS();
    increaseMoney();
-   
+   onLoad();
  }, player.tickspeed);   
 
 // setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
