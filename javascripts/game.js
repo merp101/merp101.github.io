@@ -17,7 +17,6 @@ var player = {
   resets: 0,
   infinitied: 0,
   qld: 0,
-  currentTimePlayed: 0,
   totalTimePlayed: 0,
   totalMoney: 0,
   materialNum: 0,
@@ -28,8 +27,10 @@ var player = {
     
   }
 }
-const TIER_NAMES = ["d", "s", "m"];
-var places = 1;
+var tab="workers"
+const TIER_NAMES=["d", "s", "m"]
+const costMults=[2,2.5,3]
+
 
 /*
 function setTheme(name) {
@@ -63,7 +64,7 @@ function formatValue(x, places) {
   else return ((matissa).toFixed(places) + "e" + power)
 }
 
-function setSave() {
+function save() {
   localStorage.setItem("layers",JSON.stringify(player));
 }
 
@@ -72,10 +73,19 @@ function getSave() {
         return JSON.parse(localStorage.getItem("layers"));
     }
 }
-//   Stuff
+
+function updateElement(elementID,value) {
+	document.getElementById(elementID).innerHTML=value
+}
+	
+function showElement(elementID) {
+	document.getElementById(elementID).style.display="inline"
+}
+	
+function hideElement(elementID) {
+	document.getElementById(elementID).style.display='none'
+}
   
-
-
 function load() {
   player=getSave();
   if (player.money==undefined||player.money==NaN)player.money=10;
@@ -144,7 +154,11 @@ function setMoneyMax() {
 }
 setMoneyMax();
  
-
+function switchTab(tabid) {
+	hideElement(tab+'Tab')
+	showElement(tabid+'Tab','block')
+	tab=tabid
+}
 
 function getMPS() {
   player.mps = (player.amounts[0] * player.mults[0]) + ((player.amounts[1] * 10) * player.mults[1]) + ((player.amounts[2] * 100) * player.mults[2]);
@@ -152,9 +166,9 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
   if (player.money>=(player.costs[tier]*buyAmt)) {
     for (i=0;i<buyAmt;i++) {
+      var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
       player.amounts[tier]+=buyAmt;    
       player.money-=(player.costs[tier]*buyAmt);
       player.costs[tier]*=player.costMults[tier];
@@ -174,22 +188,12 @@ function display() {
   getMPS();
   getNextMults();
 
-  var qlds = document.getElementById("qlds");
-  qlds.innerHTML = "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).";
-  
-  var mps = document.getElementById("mps");
-  mps.innerHTML = formatValue(player.mps, 2);
-  
-  var moneyMax = document.getElementById("moneyMax");
-  moneyMax.innerHTML = formatValue(player.moneyMax, 0);
-  
-  var money = document.getElementById("money");
-  money.innerHTML = formatValue(player.money, 2);
+  updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
+  updateElement("mps", formatValue(player.mps, 2));
+  updateElement("moneyMax", formatValue(player.moneyMax, 0));
+  updateElement("money", formatValue(player.money, 2));
 
-  
- 
-  
-  /*if (player.currentPage == 0) {
+  if (tab == "workers") {
      document.getElementById("statstab").display = "none";
      document.getElementById("workertab").display = "inline";
      document.getElementById("optionstab").display = "none";
@@ -197,104 +201,65 @@ function display() {
      document.getElementById("inftab").display = "none";*/
   
     if (player.materialNum > 1) {
-      var resetbtn = document.getElementById("resetbtn");
-      resetbtn.style.display = "inline";
-    
-      var minMult = document.getElementById("minMult");
-      minMult.innerHTML = formatValue(player.minLayerForMult, 0);
-    
-      var nDMult = document.getElementById("dMult");
-      nDMult.innerHTML = formatValue(player.mults[3], places);
-  
-      var nSMult = document.getElementById("sMult");
-      nSMult.innerHTML = formatValue(player.mults[4], places);
-  
-      var nMMult = document.getElementById("mMult");
-      nMMult.innerHTML = formatValue(player.mults[5], places);
+      showElement("resetbtn")
+      updateElement("minMult", formatValue(player.minLayerForMult, 0));
+      updateElement("dMult", formatValue(player.mults[3], places));
+      updateELement("sMult", formatValue(player.mults[4], places));
+      updateElement("mMult", formatValue(player.mults[5], places));
     } 
+    updateElement("buyMult", "x" + player.buyMult));
+    updateElement("cDMult", "x" + formatValue(player.mults[0], places));
+    updateElement("cSMult", "x" + formatValue(player.mults[1], places));
+    updateELement("cMMult", "x" + formatValue(player.mults[2], places));
+    updateElement("dCost", "Cost: " + formatValue(player.costs[0], places));
+    updateElement("dAmount", formatValue(player.amounts[0], 0));
+    updateElement("sCost", "Cost: " + formatValue(player.costs[1], places));
+    updateElement("sAmount", formatValue(player.amounts[1], 0));
+    updateElement("mCost", "Cost: " + formatValue(player.costs[2], places)); 
+    updateElement("mAmount", formatValue(player.amounts[2], 0)); 
+  } else
+  
+   if (tab == "stats") { //stats tab
+    showElement("statstab");
+    hideElement("workertab");
+    hideElement("optionstab");
+    hideElement("achievestab");
+    hideElement("inftab");
     
-    var buyMult = document.getElementById("buyMult");
-    buyMult.innerHTML = "x" + player.buyMult;
-  
-    var dMult = document.getElementById("cDMult");
-    dMult.innerHTML = "x" + formatValue(player.mults[0], places);
-  
-    var sMult = document.getElementById("cSMult");
-    sMult.innerHTML = "x" + formatValue(player.mults[1], places);
-  
-    var mMult = document.getElementById("cMMult");
-    mMult.innerHTML = "x" + formatValue(player.mults[2], places);
-  
-    var dCost = document.getElementById("dCost");
-    dCost.innerHTML = "Cost: " + formatValue(player.costs[0], places);
-  
-    var dAmt = document.getElementById("dAmount");
-    dAmt.innerHTML = formatValue(player.amounts[0], 0);
-  
-    var sCost = document.getElementById("sCost");
-    sCost.innerHTML = "Cost: " + formatValue(player.costs[1], places);
-  
-    var sAmt = document.getElementById("sAmount");
-    sAmt.innerHTML = formatValue(player.amounts[1], 0);
-  
-    var mCost = document.getElementById("mCost");
-    mCost.innerHTML = "Cost: " + formatValue(player.costs[2], places); 
-  
-    var mAmt = document.getElementById("mAmount");
-    mAmt.innerHTML = formatValue(player.amounts[2], 0); 
-  /*} else
-  
-   if (player.currentPage == 1) { //stats tab
-    document.getElementById("statstab").display = "inline";
-    document.getElementById("workertab").display = "none";
-    document.getElementById("optionstab").display = "none";
-    document.getElementById("achievestab").display = "none";
-    document.getElementById("inftab").display = "none";
-    
-    var totalTime = document.getElementById("totalTimeStat");
-    totalTime.innerHTML = player.totalTimePlayed;
-  
-    var currentTime = document.getElementById("currentInfStat");
-    //currentTime.innerHTML = player.currentTimePlayed;
-    // it doesn't work for some reason, so it's a comment
-  
-    var totalLayers = document.getElementById("totalLayerStat");
-    totalLayers.innerHTML = formatValue(player.totalMoney, 1);
-  
-    var infinitied = document.getElementById("infinitiedStat");
-    infinitied.innerHTML = formatValue(player.infinitied, 1);
-  
-    var resetStat = document.getElementById("resetStat");
-    resetStat.innerHTML = formatValue(player.resets, 1);
+    updateElement("totalTimeStat", player.totalTimePlayed);
+    updateELement("totalLayerStat", formatValue(player.totalMoney, 1));
+    updateElement("infinitiedStat", formatValue(player.infinitied, 1));
+    updateELement("resetStat", formatValue(player.resets, 1));
   } else
   
-  if (player.currentPage == 2) { //options tab
-    document.getElementById("statstab").display = "none";
-    document.getElementById("workertab").display = "none";
-    document.getElementById("optionstab").display = "inline";
-    document.getElementById("achievestab").display = "none";
-    document.getElementById("inftab").display = "none"; 
+  if (tab == "options") { //options tab
+    hideElement("statstab");
+    hideElement("workertab");
+    showElement("optionstab");
+    hideElement("achievestab");
+    hideElement("inftab"); 
   } else
   
-  if (player.currentPage == 3) { //achieves tab
-    document.getElementById("statstab").display = "none";
-    document.getElementById("workertab").display = "none";
-    document.getElementById("optionstab").display = "none";
-    document.getElementById("achievestab").display = "inline";
-    document.getElementById("inftab").display = "none";
+  if (tab == "achieves") { //achieves tab
+    hideElement("statstab");
+    hideElement("workertab");
+    hideElement("optionstab");
+    showElement("achievestab");
+    hideElement("inftab");
   } else
   
-  if (player.currentPage == 4) { //infinity tab
-    document.getElementById("statstab").display = "none";
-    document.getElementById("workertab").display = "none";
-    document.getElementById("optionstab").display = "none";
-    document.getElementById("achievestab").display = "none";
-    document.getElementById("inftab").display = "inline";
-  }*/
+  if (tab == "inf") { //infinity tab
+    hideElement("statstab");
+    hideElement("workertab");
+    hideElement("optionstab");
+    hideElement("achievestab");
+    showElement("inftab");
+  }
 }
 display();
 
 function reset() {
+  getNextMults();
   var nD = player.mults[3];
   var nS = player.mults[4];
   var nM = player.mults[5];
@@ -375,27 +340,27 @@ document.getElementById("resetbtn").onclick = function() {
 }
 
 document.getElementById("workersbtn").onclick = function() {
-  player.currentPage = 0;
+  switchTab("worker")
   display();
 }
 
 document.getElementById("statsbtn").onclick = function() {
-  player.currentPage = 1;
+  switchTab("stats");
   display();
 }
 
 document.getElementById("optionsbtn").onclick = function() {
-  player.currentPage = 2;
+  switchTab("options");
   display();
 }
 
 document.getElementById("achievesbtn").onclick = function() {
-  player.currentPage = 3;
+  switchTab("achieves");
   display();
 }
 
 document.getElementById("infinitybtn").onclick = function() {
-  player.currentPage = 4;
+  switchTab("inf");
   display();
 }
 
