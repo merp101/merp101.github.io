@@ -198,7 +198,7 @@ function display() {
      document.getElementById("workertab").display = "inline";
      document.getElementById("optionstab").display = "none";
      document.getElementById("achievestab").display = "none";
-     document.getElementById("inftab").display = "none";*/
+     document.getElementById("inftab").display = "none";
   
     if (player.materialNum > 1) {
       showElement("resetbtn")
