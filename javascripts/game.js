@@ -65,13 +65,33 @@ function formatValue(x, places) {
 }
 
 function save() {
-  localStorage.setItem("layers",JSON.stringify(player));
+	localStorage.setItem('layerSave',btoa(JSON.stringify(player)))
 }
 
-function getSave() {
-   if (localStorage.getItem("layers") !== null) {
-        return JSON.parse(localStorage.getItem("layers"));
+
+function load(savefile) {
+  try {
+	  player=JSON.parse(atob(savefile));
+    
+	  if (player.money==undefined||player.money==NaN)player.money=10;
+ 	  if (player.options.notation==undefined) player.options.notation="scientific";
+	  if (player.money==Infinity)document.getElementById("infButton").display="inline";
+	  if (player.moneyMax==undefined)setMoneyMax();
+  	for (var i=0;i<3;i++) {
+     if (player.amounts[i] == undefined || player.amounts[i] == NaN) player.amounts[i] = 0;
+ 	  }
+    for (var i=0;i<3;i++) {
+      if(player.costs[i]==undefined||player.costs[i]==NaN)if(i==0)player.costs[i]=10; if(i==1)player.costs[i]=100; if(i==2)player.costs[i]=1000;
     }
+	  //if the value is a Decimal, set it to be a Decimal here.
+	  player.money = new Decimal(player.money)
+	  player.totalMoney = new Decimal(player.totalMoney)
+	  
+	  increaseErrors()
+	  console.log('Game loaded!')
+  } catch (e) {
+	  console.log('Your save failed to load:\n'+e)
+  }
 }
 
 function updateElement(elementID,value) {
@@ -84,19 +104,6 @@ function showElement(elementID) {
 	
 function hideElement(elementID) {
 	document.getElementById(elementID).style.display='none'
-}
-  
-function load() {
-  player=getSave();
-  if (player.money==undefined||player.money==NaN)player.money=10;
-  if (player.options.notation==undefined) player.options.notation="scientific";
-  if (player.money==Infinity)document.getElementById("infButton").display="inline";
-  if (player.moneyMax==undefined)setMoneyMax();
-  for (var i=0;i<3;i++) {
-    if (player.amounts[i] == undefined || player.amounts[i] == NaN) player.amounts[i] = 0;
-  }
-  for (var i=0;i<3;i++) {
-    if(player.costs[i]==undefined||player.costs[i]==NaN)if(i==0)player.costs[i]=10; if(i==1)player.costs[i]=100; if(i==2)player.costs[i]=1000;
 }
 
 
@@ -400,7 +407,7 @@ function increaseMoney() {
 setInterval(function(){
    getMPS();
    increaseMoney();
-   load();
+   load("layerSave");
  }, player.tickspeed);   
 
 // setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
