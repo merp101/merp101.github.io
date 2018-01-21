@@ -207,7 +207,7 @@ function display() {
       updateELement("sMult", formatValue(player.mults[4], places));
       updateElement("mMult", formatValue(player.mults[5], places));
     } 
-    updateElement("buyMult", "x" + player.buyMult));
+    updateElement("buyMult", "x" + player.buyMult);
     updateElement("cDMult", "x" + formatValue(player.mults[0], places));
     updateElement("cSMult", "x" + formatValue(player.mults[1], places));
     updateELement("cMMult", "x" + formatValue(player.mults[2], places));
