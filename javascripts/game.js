@@ -398,11 +398,12 @@ document.getElementById("buyMult").onclick = function() {
 }
 
 function increaseMoney() {
+   getMPS();
    if (player.money + player.mps <= player.moneyMax) {
      player.money += player.mps; 
      player.totalMoney += player.mps;
-    } else player.money = player.moneyMax;
-     display();
+   } else player.money = player.moneyMax;
+   display();
 }
 
 function gameInit() {
@@ -416,7 +417,7 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				try {
-					increaseErrors()
+					increaseMoney()
 				} catch (e) {
 					console.log('A game error has been occured: '+e)
 				}
@@ -429,7 +430,6 @@ function gameInit() {
 }
 
 setInterval(function(){
-   getMPS();
    increaseMoney();
  }, player.tickspeed);   
 
