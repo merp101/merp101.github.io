@@ -30,7 +30,7 @@ var player = {
 var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 const costMults=[2,2.5,3]
-
+var save;
 
 /*
 function setTheme(name) {
@@ -66,6 +66,7 @@ function formatValue(x, places) {
 
 function save() {
 	localStorage.setItem('layerSave',btoa(JSON.stringify(player)))
+  saved=true
 }
 
 
@@ -404,10 +405,32 @@ function increaseMoney() {
      display();
 }
 
+function gameInit() {
+	load(localStorage.getItem("layerSave"))
+	
+	var tickspeed=0
+	updated=true
+	setInterval(function(){
+		if (updated) {
+			updated=false
+			setTimeout(function(){
+				var startTime=new Date().getTime()
+				try {
+					increaseErrors()
+				} catch (e) {
+					console.log('A game error has been occured: '+e)
+				}
+				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
+				updated=true
+			},tickspeed)
+		}
+	},0)
+	setInterval(save,10000);
+}
+
 setInterval(function(){
    getMPS();
    increaseMoney();
-   load("layerSave");
  }, player.tickspeed);   
 
 // setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
