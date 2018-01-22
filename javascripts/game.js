@@ -82,12 +82,13 @@ function load(savefile) {
   	for (var i=0;i<3;i++) {
      if (player.amounts[i] == undefined || player.amounts[i] == NaN) player.amounts[i] = 0;
  	  }
-    for (var i=0;i<3;i++) {
-      if(player.costs[i]==undefined||player.costs[i]==NaN)if(i==0)player.costs[i]=10; if(i==1)player.costs[i]=100; if(i==2)player.costs[i]=1000;
-    }
+	  player.costs[0]=10;
+	  player.costs[1]=100;
+	  player.costs[2]=1000;
 	  //if the value is a Decimal, set it to be a Decimal here.
 	  player.money = new Decimal(player.money)
 	  player.totalMoney = new Decimal(player.totalMoney)
+	  for (var i=0;i<3;i++) player.costs[i]=new Decimal(player.costs[i])
 	  
 	  increaseMoney()
 	  console.log('Game loaded!')
@@ -409,7 +410,7 @@ function increaseMoney() {
 function gameInit() {
 	load(localStorage.getItem("layerSave"))
 	
-	var tickspeed=0
+	var tickspeed=0 //speed at which it increases money
 	updated=true
 	setInterval(function(){
 		if (updated) {
@@ -426,13 +427,11 @@ function gameInit() {
 			},tickspeed)
 		}
 	},0)
-	setInterval(save,10000);
+	setInterval(setSave,15000);
 }
 
 setInterval(function(){
    increaseMoney();
  }, player.tickspeed);   
-
-// setInterval(function(){setSave();}, 15000); Autosaving every 15 seconds, except for some reason it stops the above interval
 
 
