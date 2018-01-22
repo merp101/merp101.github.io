@@ -285,7 +285,6 @@ function reset() {
   player.mults[0] = 1;
   player.mults[1] = 1;
   player.mults[2] = 1; 
-  changeCostUp(0);
   setMoneyMax();
   display();
   player.mults[3] = nD;
