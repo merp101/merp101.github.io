@@ -31,6 +31,7 @@ var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 const costMults=[2,2.5,3]
 var save;
+var places=1;
 
 /*
 function setTheme(name) {
