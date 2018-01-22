@@ -213,13 +213,13 @@ function display() {
       showElement("resetbtn")
       updateElement("minMult", formatValue(player.minLayerForMult, 0));
       updateElement("dMult", formatValue(player.mults[3], places));
-      updateELement("sMult", formatValue(player.mults[4], places));
+      updateElement("sMult", formatValue(player.mults[4], places));
       updateElement("mMult", formatValue(player.mults[5], places));
     } 
     updateElement("buyMult", "x" + player.buyMult);
     updateElement("cDMult", "x" + formatValue(player.mults[0], places));
     updateElement("cSMult", "x" + formatValue(player.mults[1], places));
-    updateELement("cMMult", "x" + formatValue(player.mults[2], places));
+    updateElement("cMMult", "x" + formatValue(player.mults[2], places));
     updateElement("dCost", "Cost: " + formatValue(player.costs[0], places));
     updateElement("dAmount", formatValue(player.amounts[0], 0));
     updateElement("sCost", "Cost: " + formatValue(player.costs[1], places));
@@ -236,9 +236,9 @@ function display() {
     hideElement("inftab");
     
     updateElement("totalTimeStat", player.totalTimePlayed);
-    updateELement("totalLayerStat", formatValue(player.totalMoney, 1));
+    updateElement("totalLayerStat", formatValue(player.totalMoney, 1));
     updateElement("infinitiedStat", formatValue(player.infinitied, 1));
-    updateELement("resetStat", formatValue(player.resets, 1));
+    updateElement("resetStat", formatValue(player.resets, 1));
   } else
   
   if (tab == "options") { //options tab
