@@ -152,7 +152,7 @@ function switchTab(tabid) {
 
 function getMPS() {
   let ret=0;
-  for (var i=0;i<player.amounts.length;i++) ret+=(player.amounts[i] * Math.pow(10,i))*player.mults[i]
+  for (var i=0;i<player.amounts.length;i++) ret+=(player.amounts[i] * Math.pow(10,i+1))*player.mults[i]
   return ret;
 }
 getMPS();
