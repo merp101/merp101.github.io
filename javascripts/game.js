@@ -67,7 +67,7 @@ function formatValue(x, places) {
 
 function save() {
 	localStorage.setItem('layerSave',btoa(JSON.stringify(player)))
-  saved=true
+  save=true
 }
 
 
@@ -168,10 +168,13 @@ function switchTab(tabid) {
 	hideElement(tab+'Tab')
 	showElement(tabid+'Tab','block')
 	tab=tabid
+  display()
 }
 
 function getMPS() {
-  player.mps = (player.amounts[0] * player.mults[0]) + ((player.amounts[1] * 10) * player.mults[1]) + ((player.amounts[2] * 100) * player.mults[2]);
+  let ret=0;
+  for (var i=0;i<player.amounts.length;i++) ret+=(player.amounts[i] * Math.pow(10,i))*player.mults[i]
+  return ret;
 }
 getMPS();
 
@@ -182,9 +185,9 @@ function buyWorker(tier) {
       player.amounts[tier]+=buyAmt;    
       player.money-=(player.costs[tier]*buyAmt);
       player.costs[tier]*=player.costMults[tier];
-      display();
     }
   } 
+  display();
 }
 
 function getNextMults() {
@@ -204,11 +207,11 @@ function display() {
   updateElement("money", formatValue(player.money, 2));
 
   if (tab == "workers") {
-     document.getElementById("statstab").display = "none";
-     document.getElementById("workertab").display = "inline";
-     document.getElementById("optionstab").display = "none";
-     document.getElementById("achievestab").display = "none";
-     document.getElementById("inftab").display = "none";
+     hideElement('statstab')
+     showElement('workertab')
+     hideElement('optionstab')
+     hideElement('achievestab')
+     hideElement('inftab')
   
     if (player.materialNum > 1) {
       showElement("resetbtn")
@@ -314,13 +317,13 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money == player.moneyMax && player.material == "diamond") {
+  if (player.money == player.moneyMax && player.materialNum == 9) {
     reset();
     player.qld ++;
     player.infinitied ++;
     player.materialNum = 0;
     player.resets = 0;
-    document.getElementById("qlds").display = "inline";
+    showElement('qlds')
     display();
     setMoneyMax();
   }
@@ -344,10 +347,10 @@ document.getElementById("buyMult").onclick = function() {
 }
 
 function increaseMoney() {
-   getMPS();
-   if (player.money + player.mps <= player.moneyMax) {
-     player.money += player.mps; 
-     player.totalMoney += player.mps;
+   
+   if (player.money + getMPS() <= player.moneyMax) {
+     player.money += getMPS(); 
+     player.totalMoney += getMPS();
    } else player.money = player.moneyMax;
    display();
 }
