@@ -91,7 +91,6 @@ function load(savefile) {
 	  player.totalMoney = new Decimal(player.totalMoney)
 	  for (var i=0;i<3;i++) player.costs[i]=new Decimal(player.costs[i])
 	  
-	  increaseMoney()
 	  console.log('Game loaded!')
   } catch (e) {
 	  console.log('Your save failed to load:\n'+e)
