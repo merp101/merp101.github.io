@@ -4,9 +4,7 @@
 var player = {
   money: 10,
   moneyMax: undefined,
-  mps: 0,
   buyMult: 1,
-  tickspeed: 1000,
   costs: [10,100,1000],
   costMults: [2,3,4],
   amounts: [0,0,0],
