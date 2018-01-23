@@ -32,6 +32,7 @@ const TIER_NAMES=["d", "s", "m"]
 const costMults=[2,2.5,3]
 var save;
 var places=1;
+var buyAmt=1;
 
 /*
 function setTheme(name) {
@@ -112,54 +113,35 @@ function hideElement(elementID) {
 
 function getMaterialWord() {
   player.materialNum ++;
-  if (player.materialNum === 0) {
-    player.material = undefined;
-  } else if(player.materialNum === 1) {
-     player.material = "clay";
-    }  else if (player.materialNum === 2) {
-     player.material = "copper";
-    } else if (player.materialNum === 3) {
-     player.material = "tin";
-    } else if (player.materialNum === 4) {
-     player.material = "bronze";
-    } else if (player.materialNum === 5) {
-     player.material = "iron";
-    } else if (player.materialNum === 6) {
-     player.material = "steel";
-    } else if (player.materialNum === 7) {
-     player.material = "silver";
-    } else if (player.materialNum === 8) {
-     player.material = "gold";
-    } else if (player.materialNum === 9) {
-     player.material = "platinum";
-    } else if (player.materialNum === 10) {
-     player.material = "diamond";
-   }
+  switch (player.materialNum) {
+    case 0: player.material = undefined;
+    case 1: player.material = "clay";
+    case 2: player.material = "copper";
+    case 3: player.material = "tin";
+    case 4: player.material = "bronze";
+    case 5: player.material = "iron";
+    case 6: player.material = "steel";
+    case 7: player.material = "silver";
+    case 8: player.material = "gold";
+    case 9: player.material = "platinum";
+    case 10: player.material = "diamond";
+  }
   document.getElementById("material").innerHTML = player.material;
 }  
 getMaterialWord();
 
 function setMoneyMax() {
-  if (player.material == "clay") {
-    player.moneyMax = 1e+5;
-  } else if (player.material == "copper") {
-    player.moneyMax = 1e+10;
-  } else if (player.material == "tin") {
-    player.moneyMax = 1e+20;
-  } else if (player.material == "bronze") {
-    player.moneyMax = 1e+50;
-  } else if (player.material == "iron") {
-    player.moneyMax = 1e+100;
-  } else if (player.material == "steel") {
-    player.moneyMax = 1e+150;
-  } else if (player.material == "silver") {
-    player.moneyMax = 1e+200;
-  } else if (player.material == "gold") {
-    player.moneyMax = 1e+250;
-  } else if (player.material == "platinum") {
-    player.moneyMax = 1e+300;
-  } else if (player.material == "diamond") {
-    player.moneyMax = Number.MAX_VALUE;
+  switch (player.material) {
+    case "clay": player.moneyMax = 1e+5;
+    case "copper": player.moneyMax = 1e+10;
+    case "tin": player.moneyMax = 1e+20;
+    case "bronze": player.moneyMax = 1e+50;
+    case "iron": player.moneyMax = 1e+100;
+    case "steel": player.moneyMax = 1e+150;
+    case "silver": player.moneyMax = 1e+200;
+    case "gold": player.moneyMax = 1e+250;
+    case "platinum": player.moneyMax = 1e+300;
+    case "diamond": player.moneyMax = Number.MAX_VALUE;
   }
 }
 setMoneyMax();
@@ -181,7 +163,7 @@ getMPS();
 function buyWorker(tier) {
   if (player.money>=(player.costs[tier]*buyAmt)) {
     for (i=0;i<buyAmt;i++) {
-      var buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
+      buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
       player.amounts[tier]+=buyAmt;    
       player.money-=(player.costs[tier]*buyAmt);
       player.costs[tier]*=player.costMults[tier];
