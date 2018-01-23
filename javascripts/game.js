@@ -326,61 +326,6 @@ function infinity() {
   }
 }
 
-
-
-document.getElementById("dCost").onclick = function() {
-  buyWorker(0);
-  display();
-}
-
-document.getElementById("sCost").onclick = function() {
-  buyWorker(1);
-  display();
-}
-                        
-document.getElementById("mCost").onclick = function() {
-  buyWorker(2);
-  display();
-}
-
-document.getElementById("resetbtn").onclick = function() {
-  getMults();
-  display();
-}
-
-document.getElementById("workersbtn").onclick = function() {
-  switchTab("worker")
-  display();
-}
-
-document.getElementById("statsbtn").onclick = function() {
-  switchTab("stats");
-  display();
-}
-
-document.getElementById("optionsbtn").onclick = function() {
-  switchTab("options");
-  display();
-}
-
-document.getElementById("achievesbtn").onclick = function() {
-  switchTab("achieves");
-  display();
-}
-
-document.getElementById("infinitybtn").onclick = function() {
-  switchTab("inf");
-  display();
-}
-
-document.getElementById("savebtn").onclick = function() {
-  setSave();
-}
-
-document.getElementById("infButton").onclick = function() {
-  infinity();
-}
-
 document.getElementById("buyMult").onclick = function() {
   if (player.buyMult == 1) {
     player.buyMult = 5;
@@ -427,11 +372,5 @@ function gameInit() {
 			},tickspeed)
 		}
 	},0)
-	setInterval(setSave,15000);
+	setInterval(save(),15000);
 }
-
-setInterval(function(){
-   increaseMoney();
- }, player.tickspeed);   
-
-
