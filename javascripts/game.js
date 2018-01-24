@@ -181,7 +181,7 @@ function display() {
   getNextMults();
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
-  updateElement("mps", formatValue(player.mps, 2));
+  updateElement("mps", formatValue(getMPS(), 2));
   updateElement("moneyMax", formatValue(player.moneyMax, 0));
   updateElement("money", formatValue(player.money, 2));
 
@@ -230,6 +230,7 @@ function display() {
     showElement("optionstab");
     hideElement("achievestab");
     hideElement("inftab"); 
+
   } else
   
   if (tab == "achieves") { //achieves tab
