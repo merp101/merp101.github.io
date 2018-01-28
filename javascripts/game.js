@@ -80,9 +80,9 @@ function load(savefile) {
   	for (var i=0;i<3;i++) {
      if (player.amounts[i]==(undefined)||player.amounts[i]==(NaN)) player.amounts[i] = 0;
  	  }
-	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=10;
-	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=100;
-	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=1000;
+	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=new Decimal(10);
+	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=new Decimal(100);
+	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=new Decimal(1000);
 	  //if the value is a Decimal, set it to be a Decimal here.
 	  player.money = new Decimal(player.money)
 	  player.totalMoney = new Decimal(player.totalMoney)
@@ -157,11 +157,9 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  if (player.money>=(player.costs[tier]*(buyAmt))) {
-    for (i=0;i<buyAmt;i++) {
-      buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
-      player.amounts[tier]+=buyAmt;    
-      player.money = player.money-(player.costs[tier]*(buyAmt));
+  if (player.money>=player.costs[tier]) {
+      player.amounts[tier]++;    
+      player.money = player.money-(player.costs[tier];
       player.costs[tier] = player.costs[tier]*(costMults[tier]);
     }
   } 
