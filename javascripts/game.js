@@ -160,7 +160,7 @@ function buyWorker(tier) {
   if (player.money.gte(player.costs[tier].times(buyAmt))) {
     for (i=0;i<buyAmt;i++) {
       buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
-      player.amounts[tier].add(buyAmt);    
+      player.amounts[tier]+=buyAmt;    
       player.money = player.money.sub(player.costs[tier].mul(buyAmt));
       player.costs[tier] = player.costs[tier].mul(costMults[tier]);
     }
@@ -318,7 +318,7 @@ function gameInit() {
 				var startTime=new Date().getTime()
 				try {
 					var increase=(getMPS())/tickspeed;
-					player.money.add(increase);
+					player.money+=increase;
 				} catch (e) {
 					console.log('A game error has occured: '+e)
 				}
