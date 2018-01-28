@@ -5,9 +5,8 @@ var player = {
   money: new Decimal(10),
   moneyMax: undefined,
   buyMult: 1,
-  costs: [10,100,1000],
-  costMults: [new Decimal(2),new Decimal(3),new Decimal(4)],
-  amounts: [0,0,0],
+  costs: [new Decimal(10),new Decimal(100),new Decimal(1000)],
+  amounts: [new Decimal(0),new Decimal(0),new Decimal(0)],
   mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
   currentPage: 0,
@@ -27,7 +26,7 @@ var player = {
 }
 var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
-const costMults=[2,2.5,3]
+const costMults=[2,3,4]
 var save;
 var places=1;
 var buyAmt=1;
@@ -74,16 +73,16 @@ function load(savefile) {
   try {
 	  player=JSON.parse(atob(savefile));
     
-	  if (player.money==undefined||player.money==NaN)player.money=new Decimal(10);
+	  if (player.money.equals(undefined)||player.money.equals(NaN))player.money=new Decimal(10);
  	  if (player.options.notation==undefined) player.options.notation="scientific";
-	  if (player.money==Infinity)document.getElementById("infButton").display="inline";
+	  if (player.money.equals(Infinity))document.getElementById("infButton").display="inline";
 	  if (player.moneyMax==undefined)setMoneyMax();
   	for (var i=0;i<3;i++) {
-     if (player.amounts[i] == undefined || player.amounts[i] == NaN) player.amounts[i] = 0;
+     if (player.amounts[i].equals(undefined)||player.amounts[i].equals(NaN)) player.amounts[i] = 0;
  	  }
-	  player.costs[0]=10;
-	  player.costs[1]=100;
-	  player.costs[2]=1000;
+	  if (player.costs[0].equals(undefined)||player.costs[0].equals(NaN)) player.costs[0]=10;
+	  if (player.costs[1].equals(undefined)||player.costs[1].equals(NaN)) player.costs[1]=100;
+	  if (player.costs[2].equals(undefined)||player.costs[2].equals(NaN)) player.costs[2]=1000;
 	  //if the value is a Decimal, set it to be a Decimal here.
 	  player.money = new Decimal(player.money)
 	  player.totalMoney = new Decimal(player.totalMoney)
@@ -158,12 +157,12 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  if (player.money.gte(player.costs[tier]*buyAmt)) {
+  if (player.money.gte(player.costs[tier].times(buyAmt))) {
     for (i=0;i<buyAmt;i++) {
-      buyAmt = player.buyMult.sub(player.amounts[tier] % player.buyMult);
-      player.amounts[tier] += buyAmt;    
+      buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
+      player.amounts[tier].add(buyAmt);    
       player.money = player.money.sub(player.costs[tier].mul(buyAmt));
-      player.costs[tier] = player.costs[tier].mul(player.costMults[tier]);
+      player.costs[tier] = player.costs[tier].mul(costMults[tier]);
     }
   } 
   display();
@@ -252,43 +251,24 @@ function display() {
 display();
 
 function reset() {
-  getNextMults();
-  var nD = player.mults[3];
-  var nS = player.mults[4];
-  var nM = player.mults[5];
   player.resets ++;
-  player.money = 10;
+  player.money = new Decimal(10);
   player.moneyMax = undefined;
-  player.mps = 0;
-  player.costs[0] = 10;
-  player.costs[1] = 100;
-  player.costs[2] = 1000;
-  player.amounts[0] = 0;
-  player.amounts[1] = 0;
-  player.amounts[2] = 0;
+  player.costs[0] = new Decimal(10);
+  player.costs[1] = new Decimal(100);
+  player.costs[2] = new Decimal(1000);
+  player.amounts[0] = new Decimal(0);
+  player.amounts[1] = new Decimal(0);
+  player.amounts[2] = new Decimal(0);
   player.mults[0] = 1;
   player.mults[1] = 1;
   player.mults[2] = 1; 
   setMoneyMax();
   display();
-  player.mults[3] = nD;
-  player.mults[4] = nS;
-  player.mults[5] = nM;
-}
-
-function getMults() {
-   if (player.materialNum > 1 && player.money >= player.minLayerForMult) {
-     reset();
-     player.mults[0] = player.mults[3];
-     player.mults[1] = player.mults[4];
-     player.mults[2] = player.mults[5];
-     player.resets --;
-     display();
-   }
 }
 
 function newMaterial() {
-   if (player.money === player.moneyMax) {
+   if (player.money.equals(player.moneyMax)) {
      reset();
      getMaterialWord();
      setMoneyMax();
@@ -297,7 +277,7 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money == player.moneyMax && player.materialNum == 9) {
+  if (player.money.equals(player.moneyMax) && player.materialNum == 9) {
     reset();
     player.qld ++;
     player.infinitied ++;
@@ -338,7 +318,7 @@ function gameInit() {
 				var startTime=new Date().getTime()
 				try {
 					var increase=(getMPS())/tickspeed;
-					player.money+=increase;
+					player.money.add(increase);
 				} catch (e) {
 					console.log('A game error has occured: '+e)
 				}
