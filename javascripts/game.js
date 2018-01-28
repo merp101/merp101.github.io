@@ -2,11 +2,11 @@
 //Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
-  money: 10,
+  money: new Decimal(10),
   moneyMax: undefined,
   buyMult: 1,
   costs: [10,100,1000],
-  costMults: [2,3,4],
+  costMults: [new Decimal(2),new Decimal(3),new Decimal(4)],
   amounts: [0,0,0],
   mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
@@ -16,7 +16,7 @@ var player = {
   infinitied: 0,
   qld: 0,
   totalTimePlayed: 0,
-  totalMoney: 0,
+  totalMoney: new Decimal(0),
   materialNum: 0,
   material: "",
   options: {
@@ -74,7 +74,7 @@ function load(savefile) {
   try {
 	  player=JSON.parse(atob(savefile));
     
-	  if (player.money==undefined||player.money==NaN)player.money=10;
+	  if (player.money==undefined||player.money==NaN)player.money=new Decimal(10);
  	  if (player.options.notation==undefined) player.options.notation="scientific";
 	  if (player.money==Infinity)document.getElementById("infButton").display="inline";
 	  if (player.moneyMax==undefined)setMoneyMax();
@@ -158,12 +158,12 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  if (player.money>=(player.costs[tier]*buyAmt)) {
+  if (player.money.gte(player.costs[tier]*buyAmt)) {
     for (i=0;i<buyAmt;i++) {
-      buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
-      player.amounts[tier]+=buyAmt;    
-      player.money-=(player.costs[tier]*buyAmt);
-      player.costs[tier]*=player.costMults[tier];
+      buyAmt = player.buyMult.sub(player.amounts[tier] % player.buyMult);
+      player.amounts[tier] += buyAmt;    
+      player.money = player.money.sub(player.costs[tier].mul(buyAmt));
+      player.costs[tier] = player.costs[tier].mul(player.costMults[tier]);
     }
   } 
   display();
@@ -337,8 +337,8 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				try {
-					var increase=getMPS()
-					player.money+=increase/tickspeed;
+					var increase=(getMPS())/tickspeed;
+					player.money+=increase;
 				} catch (e) {
 					console.log('A game error has occured: '+e)
 				}
