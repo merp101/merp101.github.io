@@ -73,16 +73,16 @@ function load(savefile) {
   try {
 	  player=JSON.parse(atob(savefile));
     
-	  if (player.money.equals(undefined)||player.money.equals(NaN))player.money=new Decimal(10);
+	  if (player.money==(undefined)||player.money==(NaN))player.money=new Decimal(10);
  	  if (player.options.notation==undefined) player.options.notation="scientific";
-	  if (player.money.equals(Infinity))document.getElementById("infButton").display="inline";
+	  if (player.money==(Infinity))document.getElementById("infButton").display="inline";
 	  if (player.moneyMax==undefined)setMoneyMax();
   	for (var i=0;i<3;i++) {
-     if (player.amounts[i].equals(undefined)||player.amounts[i].equals(NaN)) player.amounts[i] = 0;
+     if (player.amounts[i]==(undefined)||player.amounts[i]==(NaN)) player.amounts[i] = 0;
  	  }
-	  if (player.costs[0].equals(undefined)||player.costs[0].equals(NaN)) player.costs[0]=10;
-	  if (player.costs[1].equals(undefined)||player.costs[1].equals(NaN)) player.costs[1]=100;
-	  if (player.costs[2].equals(undefined)||player.costs[2].equals(NaN)) player.costs[2]=1000;
+	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=10;
+	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=100;
+	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=1000;
 	  //if the value is a Decimal, set it to be a Decimal here.
 	  player.money = new Decimal(player.money)
 	  player.totalMoney = new Decimal(player.totalMoney)
@@ -157,12 +157,12 @@ function getMPS() {
 getMPS();
 
 function buyWorker(tier) {
-  if (player.money.gte(player.costs[tier].mul(buyAmt))) {
+  if (player.money.gte(player.costs[tier]*(buyAmt))) {
     for (i=0;i<buyAmt;i++) {
       buyAmt = player.buyMult - (player.amounts[tier] % player.buyMult);
       player.amounts[tier]+=buyAmt;    
-      player.money = player.money.sub(player.costs[tier].mul(buyAmt));
-      player.costs[tier] = player.costs[tier].mul(costMults[tier]);
+      player.money = player.money-(player.costs[tier]*(buyAmt));
+      player.costs[tier] = player.costs[tier]*(costMults[tier]);
     }
   } 
   display();
@@ -268,7 +268,7 @@ function reset() {
 }
 
 function newMaterial() {
-   if (player.money.equals(player.moneyMax)) {
+   if (player.money==(player.moneyMax) && player.moneyMax != Number.MAX_VALUE) {
      reset();
      getMaterialWord();
      setMoneyMax();
@@ -277,8 +277,7 @@ function newMaterial() {
 }
 
 function infinity() {
-  if (player.money.equals(player.moneyMax) && player.materialNum == 9) {
-    reset();
+  if (player.money==Number.MAX_VALUE) {
     player.qld ++;
     player.infinitied ++;
     player.materialNum = 0;
