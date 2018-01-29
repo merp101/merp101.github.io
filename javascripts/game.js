@@ -154,7 +154,7 @@ getMPS();
 function buyWorker(tier) {
   if (player.money>=player.costs[tier]) {
       player.amounts[tier]++;    
-      player.money = player.money-(player.costs[tier];
+      player.money = player.money-player.costs[tier];
       player.costs[tier] = player.costs[tier]*(costMults[tier]);
     }
   } 
