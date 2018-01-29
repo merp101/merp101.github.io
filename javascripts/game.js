@@ -156,7 +156,7 @@ function buyWorker(tier) {
       player.amounts[tier]++;    
       player.money = player.money-player.costs[tier];
       player.costs[tier] = player.costs[tier]*(costMults[tier]);
-    }
+    
   } 
   display();
 }
