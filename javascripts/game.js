@@ -117,7 +117,6 @@ function getMaterialWord() {
     case 9: player.material = "platinum";
     case 10: player.material = "diamond";
   }
-  document.getElementById("material").innerHTML = player.material;
 }  
 getMaterialWord();
 
@@ -201,6 +200,7 @@ function display() {
     updateElement("sAmount", formatValue(player.amounts[1], 0));
     updateElement("mCost", "Cost: " + formatValue(player.costs[2], places)); 
     updateElement("mAmount", formatValue(player.amounts[2], 0)); 
+    updateElement("material", player.material);
   } else
   
    if (tab == "stats") { //stats tab
@@ -281,7 +281,7 @@ function infinity() {
   }
 }
 
-document.getElementById("buyMult").onclick = function() {
+function changeBuyMult() {
   if (player.buyMult == 1) {
     player.buyMult = 5;
   } else if (player.buyMult == 5) {
