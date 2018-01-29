@@ -190,7 +190,7 @@ function display() {
       updateElement("sMult", formatValue(player.mults[4], places));
       updateElement("mMult", formatValue(player.mults[5], places));
     } 
-    updateElement("buyMult", "x" + player.buyMult);
+    updateElement("buyMult", "Until " + buyMult);
     updateElement("cDMult", "x" + formatValue(player.mults[0], places));
     updateElement("cSMult", "x" + formatValue(player.mults[1], places));
     updateElement("cMMult", "x" + formatValue(player.mults[2], places));
@@ -282,18 +282,18 @@ function infinity() {
 }
 
 function changeBuyMult() {
-  if (player.buyMult == 1) {
-    player.buyMult = 5;
-  } else if (player.buyMult == 5) {
-    player.buyMult = 10;
-  } else if (player.buyMult == 10) {
-    player.buyMult = 25;
-  } else if (player.buyMult == 25) {
-    player.buyMult = 50;
-  } else if (player.buyMult == 50) {
-    player.buyMult = 100;
-  } else if (player.buyMult == 100) {
-    player.buyMult = 1;
+  if (buyMult == 1) {
+    buyMult = 5;
+  } else if (buyMult == 5) {
+    buyMult = 10;
+  } else if (buyMult == 10) {
+    buyMult = 25;
+  } else if (buyMult == 25) {
+    buyMult = 50;
+  } else if (buyMult == 50) {
+    buyMult = 100;
+  } else if (buyMult == 100) {
+    buyMult = 1;
   }
   display();
 }
