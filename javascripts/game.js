@@ -2,11 +2,11 @@
 //Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
-  money: new Decimal(10),
+  money: 10,
   moneyMax: undefined,
   buyMult: 1,
-  costs: [new Decimal(10),new Decimal(100),new Decimal(1000)],
-  amounts: [new Decimal(0),new Decimal(0),new Decimal(0)],
+  costs: [10,100,1000],
+  amounts: [0),0,0],
   mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
   currentPage: 0,
@@ -15,7 +15,7 @@ var player = {
   infinitied: 0,
   qld: 0,
   totalTimePlayed: 0,
-  totalMoney: new Decimal(0),
+  totalMoney:0F,
   materialNum: 0,
   material: "",
   options: {
@@ -73,20 +73,17 @@ function load(savefile) {
   try {
 	  player=JSON.parse(atob(savefile));
     
-	  if (player.money==(undefined)||player.money==(NaN))player.money=new Decimal(10);
+	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
  	  if (player.options.notation==undefined) player.options.notation="scientific";
 	  if (player.money==(Infinity))document.getElementById("infButton").display="inline";
 	  if (player.moneyMax==undefined)setMoneyMax();
   	for (var i=0;i<3;i++) {
      if (player.amounts[i]==(undefined)||player.amounts[i]==(NaN)) player.amounts[i] = 0;
  	  }
-	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=new Decimal(10);
-	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=new Decimal(100);
-	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=new Decimal(1000);
-	  //if the value is a Decimal, set it to be a Decimal here.
-	  player.money = new Decimal(player.money)
-	  player.totalMoney = new Decimal(player.totalMoney)
-	  for (var i=0;i<3;i++) player.costs[i]=new Decimal(player.costs[i])
+	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=10;
+	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=100;
+	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=1000;
+	 
 	  
 	  console.log('Game loaded!')
   } catch (e) {
@@ -250,14 +247,14 @@ display();
 
 function reset() {
   player.resets ++;
-  player.money = new Decimal(10);
+  player.money = 10;
   player.moneyMax = undefined;
-  player.costs[0] = new Decimal(10);
-  player.costs[1] = new Decimal(100);
-  player.costs[2] = new Decimal(1000);
-  player.amounts[0] = new Decimal(0);
-  player.amounts[1] = new Decimal(0);
-  player.amounts[2] = new Decimal(0);
+  player.costs[0] = 10;
+  player.costs[1] = 100;
+  player.costs[2] = 1000;
+  player.amounts[0] = 0;
+  player.amounts[1] = 0;
+  player.amounts[2] = 0;
   player.mults[0] = 1;
   player.mults[1] = 1;
   player.mults[2] = 1; 
@@ -266,12 +263,12 @@ function reset() {
 }
 
 function newMaterial() {
-   if (player.money==(player.moneyMax) && player.moneyMax != Number.MAX_VALUE) {
+   if (player.money==player.moneyMax && player.moneyMax != Number.MAX_VALUE) {
      reset();
      getMaterialWord();
      setMoneyMax();
      getNextMults();
-   }  
+   }  else if (player.moneyMax == Number.MAX_VALUE && player.money==player.moneyMax) infinity();
 }
 
 function infinity() {
