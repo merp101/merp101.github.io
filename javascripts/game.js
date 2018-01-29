@@ -241,7 +241,7 @@ function display() {
     showElement("inftab");
   }
 }
-display();
+
 
 function reset() {
   player.resets ++;
