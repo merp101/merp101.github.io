@@ -4,18 +4,16 @@
 var player = {
   money: 10,
   moneyMax: undefined,
-  buyMult: 1,
   costs: [10,100,1000],
-  amounts: [0),0,0],
+  amounts: [0,0,0],
   mults: [1,1,1,1,1,1], 
   minLayerForMult: 1e+5,
-  currentPage: 0,
   achievements: [],
   resets: 0,
   infinitied: 0,
   qld: 0,
   totalTimePlayed: 0,
-  totalMoney:0F,
+  totalMoney:0,
   materialNum: 0,
   material: "",
   options: {
@@ -29,7 +27,8 @@ const TIER_NAMES=["d", "s", "m"]
 const costMults=[2,3,4]
 var save;
 var places=1;
-var buyAmt=1;
+var buyAmt;
+var buyMult=1;
 
 /*
 function setTheme(name) {
@@ -65,7 +64,6 @@ function formatValue(x, places) {
 
 function save() {
 	localStorage.setItem('layerSave',btoa(JSON.stringify(player)))
-  save=true
 }
 
 
