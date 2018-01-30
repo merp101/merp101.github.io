@@ -25,7 +25,6 @@ var player = {
 var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 const costMults=[2,3,4]
-var save;
 var places=1;
 var buyAmt;
 var buyMult=1;
@@ -153,9 +152,8 @@ getMPS();
 function buyWorker(tier) {
   if (player.money>=player.costs[tier]) {
       player.amounts[tier]++;    
-      player.money = player.money-player.costs[tier];
-      player.costs[tier] = player.costs[tier]*(costMults[tier]);
-    
+      player.money -= player.costs[tier];
+      player.costs[tier] *= costMults[tier];
   } 
   display();
 }
