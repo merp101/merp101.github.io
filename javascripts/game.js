@@ -77,7 +77,7 @@ function load(savefile) {
     if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
  	 
 	  if (player.workers.cost==undefined||player.workers.cost==NaN) player.workers.cost=10;
-  }
+  
 }
 
 function updateElement(elementID,value) {
@@ -227,6 +227,7 @@ function gameInit() {
 					player.money+=increase
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
+				display();
 			},tickspeed)
 		}
 	},0)
