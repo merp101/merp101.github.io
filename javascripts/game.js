@@ -154,6 +154,9 @@ function display() {
   
     updateElement("wCost", "Cost: " + formatValue(player.workers.cost, places));
     updateElement("wAmount", formatValue(player.workers.amount, 0));
+		if (player.workplace == "home") {
+			updateElement("workplace", "your home.");
+		} else updateElement("workplace", "a " + player.workplace);
   } else
   
    if (tab == "stats") { //stats tab
