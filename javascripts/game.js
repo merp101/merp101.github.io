@@ -2,11 +2,15 @@
 //Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
-  money: 10,
-  moneyMax: undefined,
-  costs: [10,100,1000],
-  amounts: [0,0,0],
-  mults: [1,1,1,1,1,1], 
+  money: 0,
+  layers: 0,
+  workers: {
+	  cost: 10,
+    affection: 0,
+    amount: 0,
+    mult: 1,
+    max: 1,
+  },
   minLayerForMult: 1e+5,
   achievements: [],
   resets: 0,
@@ -14,20 +18,16 @@ var player = {
   qld: 0,
   totalTimePlayed: 0,
   totalMoney:0,
-  materialNum: 0,
-  material: "",
+  totalLayers:0,
+  workplace:"home",
   options: {
     notation: "scientific",
     theme: "normal",
-    
   }
 }
 var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
-const costMults=[2,3,4]
 var places=1;
-var buyAmt;
-var buyMult=1;
 
 /*
 function setTheme(name) {
@@ -72,7 +72,7 @@ function load(savefile) {
     
 	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
  	  if (player.options.notation==undefined) player.options.notation="scientific";
-	  if (player.money==(Infinity))document.getElementById("infButton").display="inline";
+	  if (player.money==(Infinity))switchTab('empty');
 	  if (player.moneyMax==undefined)setMoneyMax();
   	for (var i=0;i<3;i++) {
      if (player.amounts[i]==(undefined)||player.amounts[i]==(NaN)) player.amounts[i] = 0;
@@ -101,39 +101,18 @@ function hideElement(elementID) {
 }
 
 
-function getMaterialWord() {
-  player.materialNum ++;
-  switch (player.materialNum) {
-    case 0: player.material = undefined;
-    case 1: player.material = "clay";
-    case 2: player.material = "copper";
-    case 3: player.material = "tin";
-    case 4: player.material = "bronze";
-    case 5: player.material = "iron";
-    case 6: player.material = "steel";
-    case 7: player.material = "silver";
-    case 8: player.material = "gold";
-    case 9: player.material = "platinum";
-    case 10: player.material = "diamond";
+function changeWorkplace() {
+  switch (player.workplace) {
+    case "home": player.workplace = "small office"; player.workers.max = 5;
+    case "small office": player.workplace = "bigger office"; player.workers.max = 10;
+    case "bigger office": player.workplace = "office complex"; player.workers.max = 25;
+    case "office complex": player.workplace = "factory"; player.workers.max = 100;
+    case "factory": player.workplace = "government facility"; player.workers.max = 1000;
+    case "government facility": player.workplace = "Martian facility"; player.workers.max = 10000;
   }
 }  
-getMaterialWord();
 
-function setMoneyMax() {
-  switch (player.material) {
-    case "clay": player.moneyMax = 1e+5;
-    case "copper": player.moneyMax = 1e+10;
-    case "tin": player.moneyMax = 1e+20;
-    case "bronze": player.moneyMax = 1e+50;
-    case "iron": player.moneyMax = 1e+100;
-    case "steel": player.moneyMax = 1e+150;
-    case "silver": player.moneyMax = 1e+200;
-    case "gold": player.moneyMax = 1e+250;
-    case "platinum": player.moneyMax = 1e+300;
-    case "diamond": player.moneyMax = Number.MAX_VALUE;
-  }
-}
-setMoneyMax();
+
  
 function switchTab(tabid) {
 	hideElement(tab+'Tab')
@@ -143,27 +122,19 @@ function switchTab(tabid) {
 }
 
 function getMPS() {
-  let ret=0;
-  for (var i=0;i<player.amounts.length;i++) ret+=(player.amounts[i] * Math.pow(10,i+1))*player.mults[i]
+  let ret=player.workers.amount * (player.workers.mult * (player.workers.affection * 1.1))
   return ret;
 }
 getMPS();
 
-function buyWorker(tier) {
-  if (player.money>=player.costs[tier]) {
-      player.amounts[tier]++;    
-      player.money -= player.costs[tier];
-      player.costs[tier] *= costMults[tier];
+function buyWorker() {
+  if (player.money>=player.workers.cost) {
+      player.workers.amount++;    
+      player.money -= player.workers.cost;
+      player.workers.cost = Math.pow(1.1,player.workers.cost);
   } 
   display();
 }
-
-function getNextMults() {
-  player.mults[3] = Math.log10(player.money) ^ 2;
-  player.mults[4] = (Math.log10(player.money) / 2) ^ 2;
-  player.mults[5] = Math.log10(player.money) / 2;
-}
-
 
 function display() {
   getMPS();
@@ -171,8 +142,8 @@ function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(getMPS(), 2));
-  updateElement("moneyMax", formatValue(player.moneyMax, 0));
   updateElement("money", formatValue(player.money, 2));
+  updateElement("layers", formatValue(player.layers, 2));
 
   if (tab == "workers") {
      hideElement('statstab')
@@ -181,24 +152,8 @@ function display() {
      hideElement('achievestab')
      hideElement('inftab')
   
-    if (player.materialNum > 1) {
-      showElement("resetbtn")
-      updateElement("minMult", formatValue(player.minLayerForMult, 0));
-      updateElement("dMult", formatValue(player.mults[3], places));
-      updateElement("sMult", formatValue(player.mults[4], places));
-      updateElement("mMult", formatValue(player.mults[5], places));
-    } 
-    updateElement("buyMult", "Until " + buyMult);
-    updateElement("cDMult", "x" + formatValue(player.mults[0], places));
-    updateElement("cSMult", "x" + formatValue(player.mults[1], places));
-    updateElement("cMMult", "x" + formatValue(player.mults[2], places));
-    updateElement("dCost", "Cost: " + formatValue(player.costs[0], places));
-    updateElement("dAmount", formatValue(player.amounts[0], 0));
-    updateElement("sCost", "Cost: " + formatValue(player.costs[1], places));
-    updateElement("sAmount", formatValue(player.amounts[1], 0));
-    updateElement("mCost", "Cost: " + formatValue(player.costs[2], places)); 
-    updateElement("mAmount", formatValue(player.amounts[2], 0)); 
-    updateElement("material", player.material);
+    updateElement("wCost", "Cost: " + formatValue(player.workers.cost, places));
+    updateElement("wAmount", formatValue(player.workers.amount, 0));
   } else
   
    if (tab == "stats") { //stats tab
@@ -209,7 +164,7 @@ function display() {
     hideElement("inftab");
     
     updateElement("totalTimeStat", player.totalTimePlayed);
-    updateElement("totalLayerStat", formatValue(player.totalMoney, 1));
+    updateElement("totalMoneyStat", formatValue(player.totalMoney, 1));
     updateElement("infinitiedStat", formatValue(player.infinitied, 1));
     updateElement("resetStat", formatValue(player.resets, 1));
   } else
