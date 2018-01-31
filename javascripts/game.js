@@ -134,6 +134,11 @@ function buyWorker() {
   display();
 }
 
+function sellLayers() {
+	player.money += player.layers
+	player.layers = 0
+}
+
 function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
