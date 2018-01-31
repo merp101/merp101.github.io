@@ -3,7 +3,11 @@
 
 var player = {
   money: 0,
+  mps: 0,
   layers: 0,
+  lps: 0,
+  layerMult: 1,
+  sellMult: 1,
   workers: {
 	  cost: 10,
     affection: 0,
@@ -28,6 +32,7 @@ var player = {
 var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
+var currentAction='none'
 
 /*
 function setTheme(name) {
@@ -113,9 +118,18 @@ function switchTab(tabid) {
   display()
 }
 
+function changeAction(action) {
+	currentAction=action
+  if (currentAction=="layers") {
+    player.lps += (1 * player.layerMult)
+  } else if (currentAction=="sell") {
+    player.mps += (1 * player.sellMult)
+    player.subLayers += 1
+  } 
+}
+
 function getMPS() {
-  let ret=player.workers.amount * (player.workers.mult * (player.workers.affection * 1.1))
-  return ret;
+  player.mps=player.workers.amount * (player.workers.mult * (Math.pow(1.1, player.workers.affection)))
 }
 getMPS();
 
@@ -126,11 +140,6 @@ function buyWorker() {
       player.workers.cost = Math.pow(1.1,player.workers.cost);
   } 
   display();
-}
-
-function sellLayers() {
-	player.money += player.layers
-	player.layers = 0
 }
 
 function display() {
@@ -193,26 +202,6 @@ function display() {
   }
 }
 
-
-function reset() {
-  player.resets ++;
-  player.money = 10;
-  player.workers.cost = 10;
-  player.worker.amount = 0;
-  player.worker.mult = 1;
-  display();
-}
-
-function infinity() {
-  if (player.money==Number.MAX_VALUE) {
-    player.qld ++;
-    player.infinitied ++;
-    player.resets = 0;
-    showElement('qlds')
-    display();
-  }
-}
-
 function gameInit() {
 	load(localStorage.getItem("layerSave"))
 	
@@ -223,8 +212,11 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-					var increase=(getMPS())/1000;
+        getMPS();
+					var increase=(player.mps)/1000;
 					player.money+=increase
+          player.layers+=player.lps
+          player.layers-=player.subLayers
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
