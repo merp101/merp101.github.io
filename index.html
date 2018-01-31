@@ -32,7 +32,9 @@
             <button id="infinitybtn" style="display:none" style="font-size:25px" class="tabbtn" onclick="switchTab("inf");">Infinity</button>
             
         </div>
-     <button id="sellbtn" onclick="sellLayers()">Sell all your layers.</button>
+     <button id="layerbtn" onclick="changeAction("layers"); showElement('sellbtn');">Start gathering layers.</button>
+     <button id="sellbtn" onclick="changeAction("sell");">Sell all your layers.</button>
+     
   <div id="workertab">
    <tr style="font-size: 150%" class="workerRow" id="dRow"> 
     <td id="dWorkers" width="32%" font-size="200%">
