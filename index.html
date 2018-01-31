@@ -3,31 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113313017-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
- <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-77268961-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+  gtag('config', 'UA-113313017-1');
+</script>
+
     <script type="text/javascript" src="javascripts/game.js"></script>
 
   </head>
    <body align="center" font-family="sans-serif" font-size="150%" onload="gameInit();">
     <div style="font-size:200%" id="logo"> Infinite Layers </div>
      
-    <div id="currentLayers"> You have <span id="money"> x</span> layers. </div>
+    <div id="currentLayers"> You have <span id="layers"> x</span> layers. </div>
        <div> You are getting <span id="mps">x</span> layers per second. </div>
-       <div> You can have a maximum of <span id="moneyMax">x</span> layers.</div>
+     <div> You have $<span id="money">x</span>. </div>
      <div id="qlds" style="display:none" position="auto"> You have x Quantum Layering Devices (QLD's). </div>
      
      <div>
@@ -39,40 +33,17 @@
             
         </div>
   <div id="workertab">
-    <button id="buyMult" style="position:relative;" onclick="changeBuyMults();">x0</button> <br>
    <tr style="font-size: 150%" class="workerRow" id="dRow"> 
     <td id="dWorkers" width="32%" font-size="200%">
-      Depressed workers <span id="cDMult">0</span><br> You have:<span id="dAmount" font-size="200%"> x </span> <br>
+      Depressed workers <br> You have:<span id="wAmount" font-size="200%"> x </span> <br>
     </td>
     <td width="10%">
-      <button id="dCost" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" style="align:right" onclick="buyWorker(0);">Cost: x</button>
+      <button id="wCost" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" style="align:right" onclick="buyWorker();">Cost: x</button>
     </td>
    </tr>
-     <br>
-   <tr id="sRow" class="workerRow" style="display: none; font-size: 150%">
-    <td id="sWorkers" font-size="200%">
-      Satisfied workers <span id="cSMult">0</span><br> You have:<span id="sAmount" font-size="200%"> x </span> <br>
-    </td>
-    <td>
-      <button id="sCost" style="color:black; height: auto;  width: auto; margin: 10px; font-size:150%" class="storebtn" onclick="buyWorker(1);">Cost: x</button>
-    </td>
   </tr>
      <br>
-   <tr id="mRow" class="workerRow" style="display: none; font-size: 150%">
-    <td id="mWorkers" font-size="200%">
-      Motivated workers <span id="cMMult">0</span> <br>You have:<span id="mAmount">x </span> <br>
-    </td>
-    <td>
-      <button id="mCost" style="color:black; height: auto;  width: auto; margin: 10px; font-size:150%" class="storebtn" onclick="buyWorker(2);">Cost: x</button>
-    </td>
-    
-  </tr>
-    <br>
-<button id="resetbtn" style="display:none; width:230px; height:auto" onclick="getMults();">
-      Reset your progress to increase your production. Keep in mind that you can only do this if you have more than <span id="minMult">100</span> layers. <br> Multiplier on depressed workers: <span id="dMult">0</span>x <br> Multiplier on satisfied workers: <span id="sMult">0</span>x <br> Multiplier on motivated workers: <span id="mMult">0</span>x 
-     </button>
-     <br>
-     <button id="new-clay-button" onclick="newMaterial();"  style="margin:10px">
+     <button id="new-clay-button" onclick="changeWorkplace();"  style="margin:10px">
      Reset your progress to get a tougher material, in order to <br>increase the maximum layers you can have.  You can <br>only do this when you are at your current limit. Current material: <span id="material">thing</span>
     </button>
      <br>
