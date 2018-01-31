@@ -135,8 +135,6 @@ function buyWorker() {
 }
 
 function display() {
-  getMPS();
-  getNextMults();
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(getMPS(), 2));
