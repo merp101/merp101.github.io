@@ -74,13 +74,10 @@ function save() {
 function load(savefile) {
 
 	  player=JSON.parse(atob(savefile));
-    
 	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
  	  if (player.options.notation==undefined) player.options.notation="scientific";
-	  if (player.money==(Infinity))switchTab('empty');
-  	
+	  if (player.money==(Infinity))switchTab('empty');  	
     if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
- 	 
 	  if (player.workers.cost==undefined||player.workers.cost==NaN) player.workers.cost=10;
   
 }
