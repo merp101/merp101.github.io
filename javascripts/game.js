@@ -67,22 +67,16 @@ function save() {
 
 
 function load(savefile) {
-  try {
+
 	  player=JSON.parse(atob(savefile));
     
 	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
  	  if (player.options.notation==undefined) player.options.notation="scientific";
 	  if (player.money==(Infinity))switchTab('empty');
-	  if (player.moneyMax==undefined)setMoneyMax();
   	
-     	  if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
+    if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
  	 
 	  if (player.workers.cost==undefined||player.workers.cost==NaN) player.workers.cost=10;
-	 
-	  
-	  console.log('Game loaded!')
-  } catch (e) {
-	  console.log('Your save failed to load:\n'+e)
   }
 }
 
@@ -229,12 +223,8 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-				try {
-					var increase=(getMPS())/tickspeed;
-					player.money+=increase;
-				} catch (e) {
-					console.log('A game error has occured: '+e)
-				}
+					var increase=(getMPS())/1000;
+					player.money+=increase
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 			},tickspeed)
