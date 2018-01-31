@@ -74,12 +74,10 @@ function load(savefile) {
  	  if (player.options.notation==undefined) player.options.notation="scientific";
 	  if (player.money==(Infinity))switchTab('empty');
 	  if (player.moneyMax==undefined)setMoneyMax();
-  	for (var i=0;i<3;i++) {
-     if (player.amounts[i]==(undefined)||player.amounts[i]==(NaN)) player.amounts[i] = 0;
- 	  }
-	  if (player.costs[0]==(undefined)||player.costs[0]==(NaN)) player.costs[0]=10;
-	  if (player.costs[1]==(undefined)||player.costs[1]==(NaN)) player.costs[1]=100;
-	  if (player.costs[2]==(undefined)||player.costs[2]==(NaN)) player.costs[2]=1000;
+  	
+     	  if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
+ 	 
+	  if (player.workers.cost==undefined||player.workers.cost==NaN) player.workers.cost=10;
 	 
 	  
 	  console.log('Game loaded!')
@@ -202,56 +200,20 @@ function display() {
 function reset() {
   player.resets ++;
   player.money = 10;
-  player.moneyMax = undefined;
-  player.costs[0] = 10;
-  player.costs[1] = 100;
-  player.costs[2] = 1000;
-  player.amounts[0] = 0;
-  player.amounts[1] = 0;
-  player.amounts[2] = 0;
-  player.mults[0] = 1;
-  player.mults[1] = 1;
-  player.mults[2] = 1; 
-  setMoneyMax();
+  player.workers.cost = 10;
+  player.worker.amount = 0;
+  player.worker.mult = 1;
   display();
-}
-
-function newMaterial() {
-   if (player.money==player.moneyMax && player.moneyMax != Number.MAX_VALUE) {
-     reset();
-     getMaterialWord();
-     setMoneyMax();
-     getNextMults();
-   }  else if (player.moneyMax == Number.MAX_VALUE && player.money==player.moneyMax) infinity();
 }
 
 function infinity() {
   if (player.money==Number.MAX_VALUE) {
     player.qld ++;
     player.infinitied ++;
-    player.materialNum = 0;
     player.resets = 0;
     showElement('qlds')
     display();
-    setMoneyMax();
   }
-}
-
-function changeBuyMult() {
-  if (buyMult == 1) {
-    buyMult = 5;
-  } else if (buyMult == 5) {
-    buyMult = 10;
-  } else if (buyMult == 10) {
-    buyMult = 25;
-  } else if (buyMult == 25) {
-    buyMult = 50;
-  } else if (buyMult == 50) {
-    buyMult = 100;
-  } else if (buyMult == 100) {
-    buyMult = 1;
-  }
-  display();
 }
 
 function gameInit() {
