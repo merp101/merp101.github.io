@@ -8,14 +8,11 @@ var player = {
   lps: 0,
   layerMult: 1,
   sellMult: 1,
-  workers: {
-	  cost: 10,
-    affection: 0,
-    amount: 0,
-    mult: 1,
-    max: 1,
-  },
-  minLayerForMult: 1e+5,
+  workerscost: 10,
+  workersaffection: 0,
+  workersamount: 0,
+  workersmult: 1,
+  workersmax: 1,
   achievements: [],
   resets: 0,
   infinitied: 0,
@@ -77,8 +74,8 @@ function load(savefile) {
 	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
  	  if (player.options.notation==undefined) player.options.notation="scientific";
 	  if (player.money==(Infinity))switchTab('empty');  	
-    if (player.workers.amount==undefined||player.workers.amount==NaN) player.workers.amount = 0;
-	  if (player.workers.cost==undefined||player.workers.cost==NaN) player.workers.cost=10;
+    if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
+	  if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
   
 }
 
@@ -97,12 +94,12 @@ function hideElement(elementID) {
 
 function changeWorkplace() {
   switch (player.workplace) {
-    case "home": player.workplace = "small office"; player.workers.max = 5;
-    case "small office": player.workplace = "bigger office"; player.workers.max = 10;
-    case "bigger office": player.workplace = "office complex"; player.workers.max = 25;
-    case "office complex": player.workplace = "factory"; player.workers.max = 100;
-    case "factory": player.workplace = "government facility"; player.workers.max = 1000;
-    case "government facility": player.workplace = "Martian facility"; player.workers.max = 10000;
+    case "home": player.workplace = "small office"; player.workersmax = 5;
+    case "small office": player.workplace = "bigger office"; player.workersmax = 10;
+    case "bigger office": player.workplace = "office complex"; player.workersmax = 25;
+    case "office complex": player.workplace = "factory"; player.workersmax = 100;
+    case "factory": player.workplace = "government facility"; player.workersmax = 1000;
+    case "government facility": player.workplace = "Martian facility"; player.workersmax = 10000;
   }
 }  
 
@@ -116,7 +113,7 @@ function switchTab(tabid) {
 }
 
 function changeAction(action) {
-	currentAction=action
+  currentAction=action
   if (currentAction=="layers") {
     player.lps += (1 * player.layerMult)
   } else if (currentAction=="sell") {
@@ -126,15 +123,15 @@ function changeAction(action) {
 }
 
 function getMPS() {
-  player.mps=player.workers.amount * (player.workers.mult * (Math.pow(1.1, player.workers.affection)))
+  player.mps=player.workersamount * (player.workersmult * (Math.pow(1.1, player.workersaffection)))
 }
 getMPS();
 
 function buyWorker() {
-  if (player.money>=player.workers.cost) {
-      player.workers.amount++;    
-      player.money -= player.workers.cost;
-      player.workers.cost = Math.pow(1.1,player.workers.cost);
+  if (player.money>=player.workerscost) {
+      player.workersamount++;    
+      player.money -= player.workerscost;
+      player.workerscost = Math.pow(1.1,player.workerscost);
   } 
   display();
 }
@@ -153,8 +150,8 @@ function display() {
      hideElement('achievestab')
      hideElement('inftab')
   
-    updateElement("wCost", "Cost: " + formatValue(player.workers.cost, places));
-    updateElement("wAmount", formatValue(player.workers.amount, 0));
+    updateElement("wCost", "Cost: " + formatValue(player.workerscost, places));
+    updateElement("wAmount", formatValue(player.workersamount, 0));
 		if (player.workplace == "home") {
 			updateElement("workplace", "your home.");
 		} else updateElement("workplace", "a " + player.workplace);
