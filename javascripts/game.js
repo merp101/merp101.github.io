@@ -69,14 +69,30 @@ function save() {
 
 
 function load(savefile) {
-
-	  player=JSON.parse(atob(savefile));
-	  if (player.money==(undefined)||player.money==(NaN))player.money=10;
- 	  if (player.options.notation==undefined) player.options.notation="scientific";
-	  if (player.money==(Infinity))switchTab('empty');  	
-    if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
-	  if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
-  
+	if (localStorage.getItem(savefile) != undefined) 	player=JSON.parse(atob(savefile));
+	
+	 if (player.money==(undefined)||player.money==(NaN))player.money=10;
+ 	 if (player.options.notation==undefined) player.options.notation="scientific";
+	 if (player.money==(Infinity))switchTab('empty');  	
+   if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
+	 if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
+	 player.money=new Number(player.money)
+	 player.mps=new Number(player.mps)
+	 player.layers=new Number(player.layers)
+	 player.lps=new Number(player.lps)
+	 player.sellMult=new Number(player.sellMult)
+	 player.layerMult=new Number(player.layerMult)
+	 player.workerscost=new Number(player.workerscost)
+	 player.workersaffection=new Number(player.workersaffection)
+	 player.workersamount=new Number(player.workersamount)
+	 player.workersmult=new Number(player.workersmult)
+	 player.workersmax=new Number(player.workersmax)
+	 player.resets=new Number(player.resets)
+	 player.qld=new Number(player.qld)
+	 player.infinitied=new Number(player.infinitied)
+	 player.totalTimePlayed=new Number(player.totalTimePlayed)
+	 player.totalMoney=new Number(player.totalMoney)
+	 player.totalLayers=new Number(player.totalLayers)  
 }
 
 function updateElement(elementID,value) {
