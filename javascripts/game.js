@@ -139,9 +139,11 @@ function buyWorker() {
 function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
-  updateElement("mps", formatValue(getMPS(), 2));
+  updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
+	updateElement("lps", formatValue(player.lps, 2));
   updateElement("layers", formatValue(player.layers, 2));
+	
 
   if (tab == "workers") {
      hideElement('statstab')
@@ -207,10 +209,10 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
         getMPS();
-					var increase=(player.mps)/1000;
-					player.money+=increase
-          player.layers+=player.lps
-          player.layers-=player.subLayers
+				var increase=(player.mps)/1000;
+				player.money+=increase
+        player.layers+=player.lps*player.layerMult
+        player.layers-=player.subLayers
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
