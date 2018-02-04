@@ -72,11 +72,13 @@ function save() {
 function load(savefile) {
 	if (localStorage.getItem(savefile) != undefined) 	player=JSON.parse(atob(savefile));
 	
-	 if (player.money==(undefined)||player.money==(NaN))player.money=10;
+	 if (player.money==undefined||player.money==NaN)player.money=0;
+	 if (player.layers==undefined||player.layers==NaN)player.layers=0;
  	 if (player.options.notation==undefined) player.options.notation="scientific";
 	 if (player.money==(Infinity))switchTab('empty');  	
    if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
 	 if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
+	 if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
 	 player.money=new Number(player.money)
 	 player.mps=new Number(player.mps)
 	 player.layers=new Number(player.layers)
