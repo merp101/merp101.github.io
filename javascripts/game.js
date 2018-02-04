@@ -225,6 +225,11 @@ function display() {
   }
 	
 	if (tab == "empty") { //Big Crunch thing
+		hideElement("statstab");
+    hideElement("workertab");
+    hideElement("optionstab");
+    hideElement("achievestab");
+    hideElement("inftab");
 		showElement('infButton')
 	}
 }
