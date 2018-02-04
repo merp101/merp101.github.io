@@ -6,6 +6,7 @@ var player = {
   mps: 0,
   layers: 0,
   lps: 0,
+	subLayers:0,
   layerMult: 1,
   sellMult: 1,
   workerscost: 10,
