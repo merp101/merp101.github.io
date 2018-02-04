@@ -248,9 +248,9 @@ function gameInit() {
 				var increase=(player.mps)/1000;
 				player.money+=increase
 				player.totalMoney+=increase
-        player.layers+=player.lps*player.layerMult
-				player.totalLayers+=player.lps*player.layerMult
-        player.layers-=player.subLayers
+        player.layers+=(player.lps*player.layerMult)/1000
+				player.totalLayers+=(player.lps*player.layerMult)/1000
+        player.layers-=player.subLayers/1000
 				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
