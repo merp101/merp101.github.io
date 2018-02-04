@@ -21,6 +21,7 @@ var player = {
   totalMoney:0,
   totalLayers:0,
   workplace:"home",
+	workplaceCost:1e+5,
   options: {
     notation: "scientific",
     theme: "normal",
@@ -93,6 +94,7 @@ function load(savefile) {
 	 player.totalTimePlayed=new Number(player.totalTimePlayed)
 	 player.totalMoney=new Number(player.totalMoney)
 	 player.totalLayers=new Number(player.totalLayers)  
+	 player.workplaceCost=new Number(player.workplaceCost)
 }
 
 function updateElement(elementID,value) {
@@ -109,15 +111,17 @@ function hideElement(elementID) {
 
 
 function changeWorkplace() {
-  switch (player.workplace) {
-    case "home": player.workplace = "small office"; player.workersmax = 5;
-    case "small office": player.workplace = "bigger office"; player.workersmax = 10;
-    case "bigger office": player.workplace = "office complex"; player.workersmax = 25;
-    case "office complex": player.workplace = "factory"; player.workersmax = 100;
-    case "factory": player.workplace = "government facility"; player.workersmax = 1000;
-    case "government facility": player.workplace = "Martian facility"; player.workersmax = 10000;
-  }
-}  
+	if (player.money>=player.workplaceCost) {
+  	switch (player.workplace) {
+    	case "home": player.workplace = "small office"; player.workersmax = 5; player.workplaceCost=1e+10;
+    	case "small office": player.workplace = "bigger office"; player.workersmax = 10; player.workplaceCost=1e+25;
+    	case "bigger office": player.workplace = "office complex"; player.workersmax = 25; player.workplaceCost=1e+50;
+    	case "office complex": player.workplace = "factory"; player.workersmax = 100; player.workplaceCost=1e+100;
+    	case "factory": player.workplace = "government facility"; player.workersmax = 1000; player.workplaceCost=1e+200;
+    	case "government facility": player.workplace = "Martian facility"; player.workersmax = 10000; player.workplaceCost=Number.MAX_VALUE;
+  	}	
+	}  
+}
 
 
  
