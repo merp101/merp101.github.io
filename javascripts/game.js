@@ -84,6 +84,7 @@ function load(savefile) {
 	 player.mps=new Number(player.mps)
 	 player.layers=new Number(player.layers)
 	 player.lps=new Number(player.lps)
+	 player.subLayers=new Number(player.subLayers)
 	 player.sellMult=new Number(player.sellMult)
 	 player.layerMult=new Number(player.layerMult)
 	 player.workerscost=new Number(player.workerscost)
@@ -190,6 +191,7 @@ function display() {
     hideElement("inftab");
     
     updateElement("totalTimeStat", player.totalTimePlayed);
+		updateElement("totalLayerStat", formatValue(player.totalLayers, 1));
     updateElement("totalMoneyStat", formatValue(player.totalMoney, 1));
     updateElement("infinitiedStat", formatValue(player.infinitied, 1));
     updateElement("resetStat", formatValue(player.resets, 1));
@@ -201,6 +203,8 @@ function display() {
     showElement("optionstab");
     hideElement("achievestab");
     hideElement("inftab"); 
+		
+		showElement('savebtn');
 
   } else
   
@@ -219,12 +223,16 @@ function display() {
     hideElement("achievestab");
     showElement("inftab");
   }
+	
+	if (tab == "empty") { //Big Crunch thing
+		showElement('infButton')
+	}
 }
 
 function gameInit() {
 	load(localStorage.getItem("layerSave"))
 	
-	var tickspeed=0 //speed at which it increases money
+	var tickspeed=0 // distance from last game tick?
 	updated=true
 	setInterval(function(){
 		if (updated) {
@@ -234,8 +242,11 @@ function gameInit() {
         getMPS();
 				var increase=(player.mps)/1000;
 				player.money+=increase
+				player.totalMoney+=increase
         player.layers+=player.lps*player.layerMult
+				player.totalLayers+=player.lps*player.layerMult
         player.layers-=player.subLayers
+				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
