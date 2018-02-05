@@ -140,15 +140,6 @@ function switchTab(tabid) {
 function changeAction(action) {
 	if (currentAction!=action) {
   	currentAction=action
-  	if (currentAction=="layers") {
-    	player.lps+=player.layerMult
-			if (prevAction=="sell")player.mps-=player.sellMult;player.subLayers-=player.sellMult;
-			prevAction="layers"
-  	} else if (currentAction=="sell") {
-    	player.subLayers+=player.sellMult
-			if (prevAction=="layers")player.lps-=player.layerMult
-			prevAction=="sell"
-  	} 
 	}
 }
 
@@ -250,14 +241,22 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-        player.layers+=(player.lps*player.layerMult)/100
-				player.totalLayers+=(player.lps*player.layerMult)/100
-				if (player.layers>=player.subLayers) {
-        	player.layers-=player.subLayers
-					player.money+=(player.subLayers*player.sellMult)
-					player.totalMoney+=(player.subLayers*player.sellMult)
-				}
-				
+				if (currentAction=="layers") {
+    			player.lps+=player.layerMult
+					if (prevAction=="sell")player.subLayers-=player.sellMult;
+					prevAction="layers"
+					player.layers+=(player.lps*player.layerMult)/100
+					player.totalLayers+=(player.lps*player.layerMult)/100
+  			} else if (currentAction=="sell") {
+    				player.subLayers+=player.sellMult
+						if (prevAction=="layers")player.lps-=player.layerMult;
+						prevAction=="sell"
+						if (player.layers>=player.subLayers) {
+        			player.layers-=player.subLayers
+							player.money+=(player.subLayers*player.sellMult)
+							player.totalMoney+=(player.subLayers*player.sellMult)
+						}
+  			}       				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
