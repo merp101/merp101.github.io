@@ -246,8 +246,8 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-				player.money+=player.subLayers*player.sellMult
-				player.totalMoney+=player.subLayers
+				player.money+=(player.subLayers*player.sellMult)/100
+				player.totalMoney+=(player.subLayers*player.sellMult)/100
         player.layers+=(player.lps*player.layerMult)/100
 				player.totalLayers+=(player.lps*player.layerMult)/100
 				if (player.layers>=player.subLayers/100) {
