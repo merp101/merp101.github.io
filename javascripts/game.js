@@ -167,7 +167,7 @@ function display() {
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
-	updateElement("lps", formatValue(player.lps, 2));
+	updateElement("lps", formatValue(player.lps-player.subLayers, 2));
   updateElement("layers", formatValue(player.layers, 2));
 	
 
@@ -246,10 +246,8 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-        getMPS();
-				var increase=(player.mps)/100;
-				player.money+=increase
-				player.totalMoney+=increase
+				player.money+=player.subLayers*player.sellMult
+				player.totalMoney+=player.subLayers
         player.layers+=(player.lps*player.layerMult)/100
 				player.totalLayers+=(player.lps*player.layerMult)/100
 				if (player.layers>=player.subLayers/100) {
