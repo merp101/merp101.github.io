@@ -154,6 +154,21 @@ function buyWorker() {
   display();
 }
 
+function increaseAffection(type) {
+	switch (type) {
+		case 1: if (player.money>=player.affectionCosts[0])player.workersaffection++;player.money-=player.affectionCosts[0];//coffee
+		case 2: if (player.money>=player.affectionCosts[1])player.workersaffection+=2;player.money-=player.affectionCosts[1];//buy a coffee machine
+		case 3: if (player.money>=player.affectionCosts[2])player.workersaffection+=5;player.money-=player.affectionCosts[2];//boys' night out(bar)
+	}
+}
+
+function increaseMults(mult) {
+	switch (mult) {
+		case "sell": player.sellMult++;
+		case "layer":player.layerMult++;
+	}
+}
+
 function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
