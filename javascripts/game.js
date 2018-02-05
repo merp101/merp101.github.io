@@ -243,6 +243,7 @@ function gameInit() {
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
 						player.money+=player.layers
+						player.totalMoney+=player.layers
 						player.layers=0
   			}       				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
