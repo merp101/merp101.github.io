@@ -6,7 +6,6 @@ var player = {
   mps: 0,
   layers: 0,
   lps: 0,
-	subLayers:0,
   layerMult: 1,
   sellMult: 1,
   workerscost: 10,
@@ -32,7 +31,6 @@ var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
-var prevAction='none'
 
 /*
 function setTheme(name) {
@@ -85,7 +83,6 @@ function load(savefile) {
 	 player.mps=new Number(player.mps)
 	 player.layers=new Number(player.layers)
 	 player.lps=new Number(player.lps)
-	 player.subLayers=new Number(player.subLayers)
 	 player.sellMult=new Number(player.sellMult)
 	 player.layerMult=new Number(player.layerMult)
 	 player.workerscost=new Number(player.workerscost)
@@ -162,7 +159,7 @@ function display() {
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
-	updateElement("lps", formatValue(player.lps-player.subLayers, 2));
+	updateElement("lps", formatValue(player.lps, 2));
   updateElement("layers", formatValue(player.layers, 2));
 	
 
@@ -242,18 +239,11 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
-					if (prevAction=="sell")player.subLayers-=player.sellMult;player.lps+=player.layerMult;
-					prevAction="layers"
 					player.layers+=(player.lps*player.layerMult)/100
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
-						if (prevAction=="layers")player.lps-=player.layerMult;player.subLayers+=player.sellMult
-						prevAction=="sell"
-						if (player.layers>=player.subLayers) {
-        			player.layers-=player.subLayers
-							player.money+=(player.subLayers*player.sellMult)
-							player.totalMoney+=(player.subLayers*player.sellMult)
-						}
+						player.money+=player.layers
+						player.layers=0
   			}       				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
