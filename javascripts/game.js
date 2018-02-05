@@ -245,12 +245,12 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
         getMPS();
-				var increase=(player.mps)/10;
+				var increase=(player.mps)/100;
 				player.money+=increase
 				player.totalMoney+=increase
-        player.layers+=(player.lps*player.layerMult)/10
-				player.totalLayers+=(player.lps*player.layerMult)/10
-        player.layers-=player.subLayers/10
+        player.layers+=(player.lps*player.layerMult)/100
+				player.totalLayers+=(player.lps*player.layerMult)/100
+        player.layers-=player.subLayers/100
 				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
