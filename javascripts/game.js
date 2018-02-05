@@ -250,8 +250,8 @@ function gameInit() {
 				player.totalLayers+=(player.lps*player.layerMult)/100
 				if (player.layers>=player.subLayers) {
         	player.layers-=player.subLayers
-					player.money+=(player.subLayers*player.sellMult)/100
-					player.totalMoney+=(player.subLayers*player.sellMult)/100
+					player.money+=(player.subLayers*player.sellMult)
+					player.totalMoney+=(player.subLayers*player.sellMult)
 				}
 				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
