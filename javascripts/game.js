@@ -32,6 +32,7 @@ var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
+var prevAction='none'
 
 /*
 function setTheme(name) {
@@ -140,10 +141,12 @@ function changeAction(action) {
 	if (currentAction!=action) {
   	currentAction=action
   	if (currentAction=="layers") {
-    	player.lps += (1 * player.layerMult)
+    	player.lps+=player.layerMult
+			if (prevAction=="sell")player.mps-=player.sellMult
   	} else if (currentAction=="sell") {
-    	player.mps += (1 * player.sellMult)
-    	player.subLayers += 1
+    	player.mps+=player.sellMult
+    	player.subLayers+=1
+			if (prevAction=="layers")player.lps-=player.layerMult
   	} 
 	}
 }
