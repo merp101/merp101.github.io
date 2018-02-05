@@ -142,11 +142,10 @@ function changeAction(action) {
   	currentAction=action
   	if (currentAction=="layers") {
     	player.lps+=player.layerMult
-			if (prevAction=="sell")player.mps-=player.sellMult
+			if (prevAction=="sell")player.mps-=player.sellMult;player.subLayers-=player.sellMult;
 			prevAction="layers"
   	} else if (currentAction=="sell") {
-    	player.mps+=player.sellMult
-    	player.subLayers+=1
+    	player.subLayers+=player.sellMult
 			if (prevAction=="layers")player.lps-=player.layerMult
 			prevAction=="sell"
   	} 
