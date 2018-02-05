@@ -148,10 +148,10 @@ function changeAction(action) {
 	}
 }
 
-function getMPS() {
-  player.mps=player.workersamount * (player.workersmult * (Math.pow(1.1, player.workersaffection)))
+function getLPS() {
+  player.lps=player.workersamount * (player.workersmult * (Math.pow(1.1, player.workersaffection)))
 }
-getMPS();
+getLPS();
 
 function buyWorker() {
   if (player.money>=player.workerscost) {
@@ -246,11 +246,10 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-				
         player.layers+=(player.lps*player.layerMult)/100
 				player.totalLayers+=(player.lps*player.layerMult)/100
-				if (player.layers>=player.subLayers/100) {
-        	player.layers-=player.subLayers/100
+				if (player.layers>=player.subLayers) {
+        	player.layers-=player.subLayers
 					player.money+=(player.subLayers*player.sellMult)/100
 					player.totalMoney+=(player.subLayers*player.sellMult)/100
 				}
