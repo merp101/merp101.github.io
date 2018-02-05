@@ -143,10 +143,12 @@ function changeAction(action) {
   	if (currentAction=="layers") {
     	player.lps+=player.layerMult
 			if (prevAction=="sell")player.mps-=player.sellMult
+			prevAction="layers"
   	} else if (currentAction=="sell") {
     	player.mps+=player.sellMult
     	player.subLayers+=1
 			if (prevAction=="layers")player.lps-=player.layerMult
+			prevAction=="sell"
   	} 
 	}
 }
