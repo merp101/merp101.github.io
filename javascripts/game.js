@@ -242,14 +242,12 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
-    			player.lps+=player.layerMult
-					if (prevAction=="sell")player.subLayers-=player.sellMult;
+					if (prevAction=="sell")player.subLayers-=player.sellMult;player.lps+=player.layerMult;
 					prevAction="layers"
 					player.layers+=(player.lps*player.layerMult)/100
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
-    				player.subLayers+=player.sellMult
-						if (prevAction=="layers")player.lps-=player.layerMult;
+						if (prevAction=="layers")player.lps-=player.layerMult;player.subLayers+=player.sellMult
 						prevAction=="sell"
 						if (player.layers>=player.subLayers) {
         			player.layers-=player.subLayers
