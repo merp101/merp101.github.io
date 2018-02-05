@@ -137,13 +137,15 @@ function switchTab(tabid) {
 }
 
 function changeAction(action) {
-  currentAction=action
-  if (currentAction=="layers") {
-    player.lps += (1 * player.layerMult)
-  } else if (currentAction=="sell") {
-    player.mps += (1 * player.sellMult)
-    player.subLayers += 1
-  } 
+	if (currentAction!=action) {
+  	currentAction=action
+  	if (currentAction=="layers") {
+    	player.lps += (1 * player.layerMult)
+  	} else if (currentAction=="sell") {
+    	player.mps += (1 * player.sellMult)
+    	player.subLayers += 1
+  	} 
+	}
 }
 
 function getMPS() {
@@ -250,7 +252,9 @@ function gameInit() {
 				player.totalMoney+=increase
         player.layers+=(player.lps*player.layerMult)/100
 				player.totalLayers+=(player.lps*player.layerMult)/100
-        player.layers-=player.subLayers/100
+				if (player.layers>=player.subLayers/100) {
+        	player.layers-=player.subLayers/100
+				}
 				
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
