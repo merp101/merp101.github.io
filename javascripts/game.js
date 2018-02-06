@@ -10,6 +10,7 @@ var player = {
   sellMult: 1,
   workerscost: 10,
   workersaffection: 0,
+	affectionCosts: [10,1000,10000],
   workersamount: 0,
   workersmult: 1,
   workersmax: 1,
