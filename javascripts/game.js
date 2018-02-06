@@ -2,21 +2,21 @@
 //Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
-  money: 0,
-  mps: 0,
-  layers: 0,
-  lps: 0,
+  money: new Decimal(0),
+  mps: new Decimal(0),
+  layers: new Decimal(0),
+  lps: new Decimal(0),
   layerMult: 1,
   sellMult: 1,
-  workerscost: 10,
+  workerscost: new Decimal(10),
   workersaffection: 0,
 	affectionCosts: [10,1000,10000],
   workersamount: 0,
   workersmult: 1,
   workersmax: 1,
   achievements: [],
-  resets: 0,
-  infinitied: 0,
+  resets: new Decimal(0),
+  infinitied: new Decimal(0),
   qld: 0,
   totalTimePlayed: 0,
   totalMoney:0,
@@ -51,7 +51,7 @@ function setTheme(name) {
     var link = document.createElement('link');
 
     link.type = 'text/css';
-    link.rel = 'stylesheet';
+    link.rel = 'stylesheet';F
     link.href = "stylesheets/theme-" + name + ".css";
 
     head.appendChild(link);
@@ -59,10 +59,7 @@ function setTheme(name) {
 */
 
 function formatValue(x, places) {
-  var power = Math.floor(Math.log10(x))
-  var matissa = x / Math.pow(10, power)
-  if (x < 1000) return x.toFixed(0)
-  else return ((matissa).toFixed(places) + "e" + power)
+  if (player.options.notation=="scientific") return Decimal.toString(x.mantissa + "e" + x.e);
 }
 
 function save() {
@@ -142,7 +139,7 @@ function changeAction(action) {
 }
 
 function getLPS() {
-  player.lps=player.workersamount * (player.workersmult * (Math.pow(1.1, player.workersaffection)))
+  player.lps=player.workersamount * (player.workersmult * (Decimal.pow(1.1, player.workersaffection)))
 }
 getLPS();
 
@@ -150,7 +147,7 @@ function buyWorker() {
   if (player.money>=player.workerscost) {
       player.workersamount++;    
       player.money -= player.workerscost;
-      player.workerscost = Math.pow(1.1,player.workerscost);
+      player.workerscost = Decimal.pow(1.1,player.workerscost);
   } 
   display();
 }
