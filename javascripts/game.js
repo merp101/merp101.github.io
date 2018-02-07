@@ -126,6 +126,7 @@ function changeWorkplace() {
     	case "factory": player.workplace = "government facility"; player.workersmax = 1000; player.workplaceCost=1e+200;
     	case "government facility": player.workplace = "Martian facility"; player.workersmax = 10000; player.workplaceCost=Number.MAX_VALUE;
   	}	
+		player.money-=player.workplaceCost;
 	}  
 }
 
@@ -195,6 +196,7 @@ function display() {
 		if (player.workplace == "home") {
 			updateElement("workplace", "your home.");
 		} else updateElement("workplace", "a " + player.workplace);
+		updateElement("workplacecost", player.workplaceCost)
   } else
   
    if (tab == "stats") { //stats tab
