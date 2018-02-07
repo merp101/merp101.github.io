@@ -152,6 +152,7 @@ function buyWorker() {
       player.workersamount++;    
       player.money -= player.workerscost;
       player.workerscost = Math.pow(player.workerscost,1.1);
+      getLPS();
   } 
   display();
 }
