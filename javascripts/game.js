@@ -32,6 +32,7 @@ var tab="workers"
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
+var prevAction='none'
 
 /*
 function setTheme(name) {
