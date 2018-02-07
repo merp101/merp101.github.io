@@ -151,7 +151,7 @@ function buyWorker() {
   if (player.money>=player.workerscost) {
       player.workersamount++;    
       player.money -= player.workerscost;
-      player.workerscost = Decimal.pow(1.1,player.workerscost);
+      player.workerscost = Decimal.pow(player.workerscost,1.1);
   } 
   display();
 }
