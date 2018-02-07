@@ -6,6 +6,7 @@ var player = {
   mps: 0,//new Decimal(0),
   layers: 0,//new Decimal(0),
   lps: 0,//new Decimal(0),
+  playerlps: 0,//new Decimal(0)
   layerMult: 1,
   sellMult: 1,
   workerscost: 10,//new Decimal(10),
@@ -85,6 +86,7 @@ function load(savefile) {
 	 player.mps=new Number(player.mps)
 	 player.layers=new Number(player.layers)
 	 player.lps=new Number(player.lps)
+	 player.playerlps=new Number(player.playerlps)
 	 player.sellMult=new Number(player.sellMult)
 	 player.layerMult=new Number(player.layerMult)
 	 player.workerscost=new Number(player.workerscost)
@@ -257,15 +259,16 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
-					if (prevAction=="none"||prevAction=="sell")player.lps++;prevAction="layers"
-					player.layers+=(player.lps*player.layerMult)/100
-					player.totalLayers+=(player.lps*player.layerMult)/100
+					if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
+					player.layers+=(player.playerlps*player.layerMult)/100
+					player.totalLayers+=player.layers
   			} else if (currentAction=="sell") {
-						if (prevAction=="layers")player.lps--;prevAction="sell"
+						if (prevAction=="layers")player.playerlps--;prevAction="sell"
 						player.money+=player.layers
-						player.totalMoney+=player.layers
+						player.totalMoney+=player.money
 						player.layers=0
-  			}       				
+  			}       	
+				player.layers+=player.lps
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
