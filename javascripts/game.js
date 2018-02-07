@@ -59,7 +59,10 @@ function setTheme(name) {
 */
 
 function formatValue(x, places) {
-  if (player.options.notation=="scientific") return Decimal.toString(x.mantissa + "e" + x.e);
+  var power = Math.floor(Math.log10(x))
+  var matissa = x / Math.pow(10, power)
+  if (x < 1000) return x.toFixed(0)
+  else return ((matissa).toFixed(places) + "e" + power)
 }
 
 function save() {
@@ -77,20 +80,20 @@ function load(savefile) {
    if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
 	 if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
 	 if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
-	 player.money=new Number(player.money)
-	 player.mps=new Number(player.mps)
-	 player.layers=new Number(player.layers)
-	 player.lps=new Number(player.lps)
+	 player.money=new Decimal(player.money)
+	 player.mps=new Decimal(player.mps)
+	 player.layers=new Decimal(player.layers)
+	 player.lps=new Decimal(player.lps)
 	 player.sellMult=new Number(player.sellMult)
 	 player.layerMult=new Number(player.layerMult)
-	 player.workerscost=new Number(player.workerscost)
+	 player.workerscost=new Decimal(player.workerscost)
 	 player.workersaffection=new Number(player.workersaffection)
 	 player.workersamount=new Number(player.workersamount)
 	 player.workersmult=new Number(player.workersmult)
 	 player.workersmax=new Number(player.workersmax)
-	 player.resets=new Number(player.resets)
+	 player.resets=new Decimal(player.resets)
 	 player.qld=new Number(player.qld)
-	 player.infinitied=new Number(player.infinitied)
+	 player.infinitied=new Decimal(player.infinitied)
 	 player.totalTimePlayed=new Number(player.totalTimePlayed)
 	 player.totalMoney=new Number(player.totalMoney)
 	 player.totalLayers=new Number(player.totalLayers)  
@@ -252,9 +255,11 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
+					if (prevAction=="none"||prevAction=="none")player.lps++;prevAction="layers"
 					player.layers+=(player.lps*player.layerMult)/100
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
+						if (prevAction=="layers")player.lps--;prevAction="sell"
 						player.money+=player.layers
 						player.totalMoney+=player.layers
 						player.layers=0
