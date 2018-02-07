@@ -268,7 +268,7 @@ function gameInit() {
 						player.totalMoney+=player.money
 						player.layers=0
   			}       	
-				player.layers+=player.lps
+				player.layers+=player.lps/100
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
 				display();
