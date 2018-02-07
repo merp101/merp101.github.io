@@ -266,6 +266,7 @@ function gameInit() {
 					player.layers+=(player.playerlps*player.layerMult)/100
 					player.totalLayers+=player.layers
 					player.mps=0;
+					displayLayers=true
   			} else if (currentAction=="sell") {
 						if (prevAction=="layers")player.playerlps--;prevAction="sell"
 						player.money+=player.layers
