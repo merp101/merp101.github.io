@@ -5,10 +5,13 @@
 }
 
  #logo {
-   color:black;
+   color:rgb(0,0,0);
    font-size: 250%;
 }
 
- #money {
-   color: rgb(200, 100, 10);
+ .actionbtn {
+  font-size:150%;
+  width:auto;
+  height:auto;
+  margin:10px;
 }
