@@ -256,7 +256,7 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
-					if (prevAction=="none"||prevAction=="none")player.lps++;prevAction="layers"
+					if (prevAction=="sell"||prevAction=="none")player.lps++;prevAction="layers"
 					player.layers+=(player.lps*player.layerMult)/100
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
