@@ -265,6 +265,7 @@ function gameInit() {
 					if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
 					player.layers+=(player.playerlps*player.layerMult)/100
 					player.totalLayers+=player.layers
+					player.mps=0;
   			} else if (currentAction=="sell") {
 						if (prevAction=="layers")player.playerlps--;prevAction="sell"
 						player.money+=player.layers
