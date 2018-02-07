@@ -2,21 +2,21 @@
 //Make it more like Idle Wizard ( https://www.kongregate.com/games/TwoWizards/idle-wizard?haref=HP_NG_idle-wizard )
 
 var player = {
-  money: new Decimal(0),
-  mps: new Decimal(0),
-  layers: new Decimal(0),
-  lps: new Decimal(0),
+  money: 0,//new Decimal(0),
+  mps: 0,//new Decimal(0),
+  layers: 0,//new Decimal(0),
+  lps: 0,//new Decimal(0),
   layerMult: 1,
   sellMult: 1,
-  workerscost: new Decimal(10),
+  workerscost: 0,//new Decimal(10),
   workersaffection: 0,
 	affectionCosts: [10,1000,10000],
   workersamount: 0,
   workersmult: 1,
   workersmax: 1,
   achievements: [],
-  resets: new Decimal(0),
-  infinitied: new Decimal(0),
+  resets: 0,//new Decimal(0),
+  infinitied: 0,//new Decimal(0),
   qld: 0,
   totalTimePlayed: 0,
   totalMoney:0,
@@ -81,20 +81,20 @@ function load(savefile) {
    if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
 	 if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
 	 if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
-	 player.money=new Decimal(player.money)
-	 player.mps=new Decimal(player.mps)
-	 player.layers=new Decimal(player.layers)
-	 player.lps=new Decimal(player.lps)
+	 player.money=new Number(player.money)
+	 player.mps=new Number(player.mps)
+	 player.layers=new Number(player.layers)
+	 player.lps=new Number(player.lps)
 	 player.sellMult=new Number(player.sellMult)
 	 player.layerMult=new Number(player.layerMult)
-	 player.workerscost=new Decimal(player.workerscost)
+	 player.workerscost=new Number(player.workerscost)
 	 player.workersaffection=new Number(player.workersaffection)
 	 player.workersamount=new Number(player.workersamount)
 	 player.workersmult=new Number(player.workersmult)
 	 player.workersmax=new Number(player.workersmax)
-	 player.resets=new Decimal(player.resets)
+	 player.resets=new Number(player.resets)
 	 player.qld=new Number(player.qld)
-	 player.infinitied=new Decimal(player.infinitied)
+	 player.infinitied=new Number(player.infinitied)
 	 player.totalTimePlayed=new Number(player.totalTimePlayed)
 	 player.totalMoney=new Number(player.totalMoney)
 	 player.totalLayers=new Number(player.totalLayers)  
