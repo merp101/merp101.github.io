@@ -256,11 +256,11 @@ function gameInit() {
 			setTimeout(function(){
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
-					if (prevAction=="sell"||prevAction=="none")player.lps++;prevAction="layers"
+					if (prevAction=="none")player.lps++;prevAction="layers"
 					player.layers+=(player.lps*player.layerMult)/100
 					player.totalLayers+=(player.lps*player.layerMult)/100
   			} else if (currentAction=="sell") {
-						if (prevAction=="layers")player.lps--;prevAction="sell"
+						
 						player.money+=player.layers
 						player.totalMoney+=player.layers
 						player.layers=0
