@@ -8,7 +8,7 @@ var player = {
   lps: 0,//new Decimal(0),
   layerMult: 1,
   sellMult: 1,
-  workerscost: 0,//new Decimal(10),
+  workerscost: 10,//new Decimal(10),
   workersaffection: 0,
 	affectionCosts: [10,1000,10000],
   workersamount: 0,
