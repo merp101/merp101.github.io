@@ -74,7 +74,7 @@ function save() {
 
 
 function load(savefile) {
-	if (localStorage.getItem(savefile) != undefined) 	player=JSON.parse(atob(savefile));
+	if (savefile != undefined) 	player=JSON.parse(atob(savefile));
 	
 	 if (player.money==undefined||player.money==NaN)player.money=0;
 	 if (player.layers==undefined||player.layers==NaN)player.layers=0;
