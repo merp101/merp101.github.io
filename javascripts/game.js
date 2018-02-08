@@ -280,6 +280,7 @@ function gameInit() {
 						
 					  
   			}       	
+				getLPS();
 				player.layers+=player.lps/100
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
 				updated=true
