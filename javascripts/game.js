@@ -263,6 +263,7 @@ function gameInit() {
 				var startTime=new Date().getTime()
 				if (currentAction=="layers") {
 					if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
+					getLPS();
 					player.layers+=(player.playerlps*player.layerMult)/100
 					player.totalLayers+=player.layers
 					player.mps=0;
