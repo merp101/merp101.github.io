@@ -273,8 +273,8 @@ function gameInit() {
 						player.layers=0
 						if (prevAction=="layers"){
 							player.playerlps--;
-							player.lps=0;
 							player.mps=player.lps
+							player.lps=0;
 							prevAction="sell"
 						}
 						
