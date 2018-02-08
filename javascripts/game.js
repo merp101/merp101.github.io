@@ -268,12 +268,13 @@ function gameInit() {
 					player.mps=0;
 					
   			} else if (currentAction=="sell") {
-						if (prevAction=="layers")player.playerlps--;prevAction="sell"
+						
 						player.money+=player.layers
 						player.totalMoney+=player.money
 						player.layers=0
 						player.mps=player.lps
-						player.lps=0
+						if (prevAction=="layers")player.playerlps--;player.lps=0;prevAction="sell"
+						
 					  
   			}       	
 				player.layers+=player.lps/100
