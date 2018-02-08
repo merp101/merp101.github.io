@@ -34,7 +34,7 @@ const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
 var prevAction='none'
-var displayLayers=true
+var displayLps=true
 
 /*
 function setTheme(name) {
@@ -181,7 +181,7 @@ function display() {
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
-	if (displayLayers) updateElement("lps", formatValue(player.lps+player.playerlps, 2));
+	if (displayLps=="true") updateElement("lps", formatValue(player.lps+player.playerlps, 2));
   updateElement("layers", formatValue(player.layers, 2));
 	
 
@@ -266,14 +266,14 @@ function gameInit() {
 					player.layers+=(player.playerlps*player.layerMult)/100
 					player.totalLayers+=player.layers
 					player.mps=0;
-					displayLayers=true
+					displayLps="true"
   			} else if (currentAction=="sell") {
 						if (prevAction=="layers")player.playerlps--;prevAction="sell"
 						player.money+=player.layers
 						player.totalMoney+=player.money
 						player.layers=0
 						player.mps=player.lps
-						displayLayers=false
+						displayLps="false"
   			}       	
 				player.layers+=player.lps/100
 				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
