@@ -28,7 +28,7 @@
      <div> You are getting $<span id="mps">x</span> per second.</div>
      <div id="qlds" style="display:none" position="auto"> You have x Quantum Layering Devices (QLD's). </div>
      
-     <div>
+     <div id='tabbtns' style='display:none'>
             <button id="workersbtn"  style="font-size:25px" class="tabbtn" onclick="switchTab('worker');">Workers</button>
             <button id="optionsbtn"  style="font-size:25px" class="tabbtn" onclick="switchTab('options');">Options</button>
             <button id="statsbtn" style="font-size:25px" class="tabbtn" onclick="switchTab('stats');">Statistics</button>
@@ -36,6 +36,7 @@
             <button id="infinitybtn" style="display:none" style="font-size:25px" class="tabbtn" onclick="switchTab('inf');">Infinity</button>
             
         </div>
+     <button id="randomAct"> Do actions! </button>
      <button id="layerbtn" class="actionbtn" onclick="changeAction('layers');">Start gathering layers.</button>
      <button id="sellbtn" class="actionbtn" onclick="changeAction('sell');">Sell all your layers.</button> <br>
      
@@ -86,6 +87,7 @@
         
         
       </div>
+  <div id="storyText"></div>
   <script> gameInit(); </script>
 </body>
 </html>
