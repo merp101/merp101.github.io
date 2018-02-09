@@ -19,6 +19,7 @@ var player = {
   resets: 0,//new Decimal(0),
   infinitied: 0,//new Decimal(0),
   qld: 0,
+	story: 0,
   totalTimePlayed: 0,
   totalMoney:0,
   totalLayers:0,
@@ -30,6 +31,7 @@ var player = {
   }
 }
 var tab="workers"
+const storyMessages=['You have a block of clay. You feel the urge to play with it.','','','']
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
@@ -116,6 +118,34 @@ function hideElement(elementID) {
 	document.getElementById(elementID).style.display='none'
 }
 
+function updateStory(num) {
+	document.getElementById('storyText').innerHTML=storyMessages[num];
+	player.story++;
+}
+
+function doAction() {
+	if (currentAction=="layers") {
+		if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
+		getLPS();
+		player.layers+=(player.playerlps*player.layerMult)/10
+		player.totalLayers+=player.layers
+		player.mps=0;
+  } else if (currentAction=="sell") {
+		player.money+=player.layers
+		player.totalMoney+=player.money
+		player.layers=0
+		if (prevAction=="layers"){
+			player.playerlps--;
+			player.mps=player.lps
+			player.lps=0;
+			prevAction="sell"
+		}
+	}
+	player.layers+=player.lps/10
+	if (player.story==0) updateStory(0); updateElement('randomAct','Play with some clay');
+	if (player.layers>=10&&player.story==1) updateStory(1);	updateElement('randomAct', 'Get a job');				
+	if (player.money>=100&&player.story==2) updateStory(2); updateElement('randomAct','Buy the Quantum Layering Device');
+}
 
 function changeWorkplace() {
 	if (player.money>=player.workplaceCost) {
@@ -254,38 +284,16 @@ function display() {
 function gameInit() {
 	load(localStorage.getItem("layerSave"))
 	
-	var tickspeed=0 // distance from last game tick?
 	updated=true
 	setInterval(function(){
 		if (updated) {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-				if (currentAction=="layers") {
-					if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
-					getLPS();
-					player.layers+=(player.playerlps*player.layerMult)/100
-					player.totalLayers+=player.layers
-					player.mps=0;
-  			} else if (currentAction=="sell") {
-						player.money+=player.layers
-						player.totalMoney+=player.money
-						player.layers=0
-						if (prevAction=="layers"){
-							player.playerlps--;
-							player.mps=player.lps
-							player.lps=0;
-							prevAction="sell"
-						}
-						
-					  
-  			}       	
-				getLPS();
-				player.layers+=player.lps/100
-				tickspeed=(new Date().getTime()-startTime)*0.2+tickspeed*0.8
+				doAction();
 				updated=true
 				display();
-			},tickspeed)
+			},100)
 		}
 	},0)
 	setInterval(save(),15000);
