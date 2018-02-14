@@ -118,12 +118,12 @@ function hideElement(elementID) {
 	document.getElementById(elementID).style.display='none'
 }
 
-function updateStory(num) {
+function updateStory(num,elementid) {
 	document.getElementById('storyText').innerHTML=storyMessages[num];
-	player.story++;
+	if (elementid!=undefined)showElement(elementid);
 }
 
-function doAction() {
+function gameLoop() {
 	if (currentAction=="layers") {
 		if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
 		getLPS();
@@ -290,7 +290,7 @@ function gameInit() {
 			updated=false
 			setTimeout(function(){
 				var startTime=new Date().getTime()
-				doAction();
+				gameLoop();
 				updated=true
 				display();
 			},100)
