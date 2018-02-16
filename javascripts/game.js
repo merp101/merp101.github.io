@@ -31,12 +31,13 @@ var player = {
   }
 }
 var tab="workers"
-const storyMessages=['You have a block of clay. You feel the urge to play with it.','','','']
+const storyMessages=['You have a block of clay. You feel the urge to play with it.','This is oddly satisfying, but you need to get a job.','','']
 const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
 var prevAction='none'
-var displayLps=true
+var qld=false;
+
 
 /*
 function setTheme(name) {
@@ -123,30 +124,6 @@ function updateStory(num,elementid) {
 	if (elementid!=undefined)showElement(elementid);
 }
 
-function gameLoop() {
-	if (currentAction=="layers") {
-		if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
-		getLPS();
-		player.layers+=(player.playerlps*player.layerMult)/10
-		player.totalLayers+=player.layers
-		player.mps=0;
-  } else if (currentAction=="sell") {
-		player.money+=player.layers
-		player.totalMoney+=player.money
-		player.layers=0
-		if (prevAction=="layers"){
-			player.playerlps--;
-			player.mps=player.lps
-			player.lps=0;
-			prevAction="sell"
-		}
-	}
-	player.layers+=player.lps/10
-	if (player.story==0) updateStory(0); updateElement('randomAct','Play with some clay');
-	if (player.layers>=10&&player.story==1) updateStory(1);	updateElement('randomAct', 'Get a job');				
-	if (player.money>=100&&player.story==2) updateStory(2); updateElement('randomAct','Buy the Quantum Layering Device');
-}
-
 function changeWorkplace() {
 	if (player.money>=player.workplaceCost) {
   	switch (player.workplace) {
@@ -211,7 +188,7 @@ function display() {
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
   updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
-	if (displayLps=="true") updateElement("lps", formatValue(player.lps+player.playerlps, 2));
+  updateElement("lps", formatValue(player.lps+player.playerlps, 2));
   updateElement("layers", formatValue(player.layers, 2));
 	
 
@@ -281,15 +258,52 @@ function display() {
 	}
 }
 
+function increaseCurrency(currency) {
+	if (currency == "layers") {
+		player.layers+=(player.playerlps*player.layerMult)/10
+		player.totalLayers+=player.layers
+	}
+	if (currency == "money") {
+		player.money+=player.layers
+		player.totalMoney+=player.money
+	}
+}		
+
+function randAct(story) {
+	if (story==0) if (player.layers==0){player.layers+=1;}else player.layers*=2;
+	if (story==1) player.lps=1;changeAction("sell");
+	if (story==2) player.money-=100;showElement("smashbtn");
+}
+
+function gameLoop() {
+	if (currentAction=="layers") {
+		if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
+		increaseCurrency("layers");
+		player.mps=0;
+  } else if (currentAction=="sell") {
+		increaseCurrency("money");
+		player.layers=0
+		if (prevAction=="layers"){
+			player.playerlps--;
+			player.mps=player.lps
+			player.lps=0;
+			prevAction="sell"
+		}
+	}
+	getLPS();
+	player.layers+=player.lps/10
+	if (player.story==0) updateStory(0); updateElement('randomAct','Play with some clay');
+	if (player.layers>=10 && player.story==1) updateStory(1);	updateElement('randomAct', 'Get a job');				
+	if (player.money>=100 && player.story==2) updateStory(2); updateElement('randomAct','Buy the Quantum Layering Device');
+}
+
 function gameInit() {
 	load(localStorage.getItem("layerSave"))
-	
 	updated=true
 	setInterval(function(){
 		if (updated) {
 			updated=false
 			setTimeout(function(){
-				var startTime=new Date().getTime()
 				gameLoop();
 				updated=true
 				display();
