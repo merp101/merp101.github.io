@@ -9,6 +9,7 @@ var player = {
   playerlps: 0,//new Decimal(0)
   layerMult: 1,
   sellMult: 1,
+  clay: 1,
   workerscost: 10,//new Decimal(10),
   workersaffection: 0,
 	affectionCosts: [10,1000,10000],
@@ -260,8 +261,10 @@ function display() {
 
 function increaseCurrency(currency) {
 	if (currency == "layers") {
-		player.layers+=(player.playerlps*player.layerMult)/10
-		player.totalLayers+=player.layers
+		if (player.layers+((player.playerlps*player.layerMult)/10)<=player.clay*50){
+			player.layers+=(player.playerlps*player.layerMult)/10
+			player.totalLayers+=player.layers
+		} else player.layers=player.clay*50;
 	}
 	if (currency == "money") {
 		player.money+=player.layers
