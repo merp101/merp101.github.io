@@ -36,7 +36,7 @@
             <button id="infinitybtn" style="display:none" style="font-size:25px" class="tabbtn" onclick="switchTab('inf');">Infinity</button>
             
         </div>
-     <button id="randomAct"> Do actions! </button> <br>
+     <button id="randomAct" onclick="randAct(player.story);"> Do actions! </button> <br>
      <div id="storyUnlocks" style="display:none">
      <button id="layerbtn" class="actionbtn" onclick="changeAction('layers');">Start gathering layers.</button>
      <button id="sellbtn" class="actionbtn" onclick="changeAction('sell');">Sell all your layers.</button> <br>
@@ -56,7 +56,7 @@
       Upgrade to a better location. You are currently working in <span id="workplace">thing</span> It will cost you $<span id="workplacecost">x</span>.
     </button>
      <br>
-       <button id="smashbtn" onclick="randAct(player.story);">Smash your layers into a block of clay.</button>
+       <button id="smashbtn" onclick="player.layers=0; player.clay+=1">Smash your layers into a block of clay.</button>
 <br>
      </div> 
      <br>
