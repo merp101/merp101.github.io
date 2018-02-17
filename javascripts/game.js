@@ -80,32 +80,34 @@ function save() {
 function load(savefile) {
 	if (savefile != undefined) 	player=JSON.parse(atob(savefile));
 	
-	 if (player.money==undefined||player.money==NaN)player.money=0;
-	 if (player.layers==undefined||player.layers==NaN)player.layers=0;
- 	 if (player.options.notation==undefined) player.options.notation="scientific";
-	 if (player.money==(Infinity))switchTab('empty');  	
-   if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
-	 if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
-	 if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
-	 player.money=new Number(player.money)
-	 player.mps=new Number(player.mps)
-	 player.layers=new Number(player.layers)
-	 player.lps=new Number(player.lps)
-	 player.playerlps=new Number(player.playerlps)
-	 player.sellMult=new Number(player.sellMult)
-	 player.layerMult=new Number(player.layerMult)
-	 player.workerscost=new Number(player.workerscost)
-	 player.workersaffection=new Number(player.workersaffection)
-	 player.workersamount=new Number(player.workersamount)
-	 player.workersmult=new Number(player.workersmult)
-	 player.workersmax=new Number(player.workersmax)
-	 player.resets=new Number(player.resets)
-	 player.qld=new Number(player.qld)
-	 player.infinitied=new Number(player.infinitied)
-	 player.totalTimePlayed=new Number(player.totalTimePlayed)
-	 player.totalMoney=new Number(player.totalMoney)
-	 player.totalLayers=new Number(player.totalLayers)  
-	 player.workplaceCost=new Number(player.workplaceCost)
+	if (player.money==undefined||player.money==NaN)player.money=0;
+	if (player.layers==undefined||player.layers==NaN)player.layers=0;
+	if (player.mps==undefined||player.mps==NaN)player.mps=0;
+	if (player.lps==undefined||player.lps==NaN)player.lps=0;
+ 	if (player.options.notation==undefined) player.options.notation="scientific";
+	if (player.money==(Infinity))switchTab('empty');  	
+  if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
+	if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
+	if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
+	player.money=new Number(player.money)
+	player.mps=new Number(player.mps)
+	player.layers=new Number(player.layers)
+	player.lps=new Number(player.lps)
+	player.playerlps=new Number(player.playerlps)
+	player.sellMult=new Number(player.sellMult)
+	player.layerMult=new Number(player.layerMult)
+	player.workerscost=new Number(player.workerscost)
+	player.workersaffection=new Number(player.workersaffection)
+	player.workersamount=new Number(player.workersamount)
+	player.workersmult=new Number(player.workersmult)
+	player.workersmax=new Number(player.workersmax)
+	player.resets=new Number(player.resets)
+	player.qld=new Number(player.qld)
+	player.infinitied=new Number(player.infinitied)
+	player.totalTimePlayed=new Number(player.totalTimePlayed)
+	player.totalMoney=new Number(player.totalMoney)
+	player.totalLayers=new Number(player.totalLayers)  
+	player.workplaceCost=new Number(player.workplaceCost)
 }
 
 function updateElement(elementID,value) {
@@ -295,9 +297,9 @@ function gameLoop() {
 	}
 	getLPS();
 	player.layers+=player.lps/10
-	if (player.story==0) updateStory(0); updateElement('randomAct','Play with some clay');
-	if (player.layers>=10 && player.story==1) updateStory(1);	updateElement('randomAct', 'Get a job');				
-	if (player.money>=100 && player.story==2) updateStory(2); updateElement('randomAct','Buy the Quantum Layering Device');
+	//if (player.story==0) updateStory(0); updateElement('randomAct','Play with some clay');
+	//if (player.layers>=10 && player.story==1) updateStory(1);	updateElement('randomAct', 'Get a job');				
+	//if (player.money>100 && player.story==2) updateStory(2); updateElement('randomAct','Buy the Quantum Layering Device');
 }
 
 function gameInit() {
