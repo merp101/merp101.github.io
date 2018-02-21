@@ -33,7 +33,6 @@ var player = {
 }
 var tab="workers"
 const storyMessages=['You have a block of clay. You feel the urge to play with it.','This is oddly satisfying, but you need to get a job.','','']
-const TIER_NAMES=["d", "s", "m"]
 var places=1;
 var currentAction='none'
 var prevAction='none'
