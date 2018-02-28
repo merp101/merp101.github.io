@@ -151,12 +151,12 @@ function switchTab(tabid) {
 
 function changeAction(action) {
 	if (currentAction!=action) {
-  	currentAction=action
+  	currentAction=action;
 	}
 }
 
 function getLPS() {
-  player.lps=player.workersamount * (player.workersmult * (Decimal.pow(1.1, player.workersaffection)))
+  player.lps=player.workersamount * (player.workersmult * (Math.pow(1.1, player.workersaffection)));
 }
 getLPS();
 
