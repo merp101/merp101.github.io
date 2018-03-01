@@ -25,7 +25,6 @@
     <div id="currentLayers"> You have <span id="layers"> x</span> layers. </div>
        <div> You are getting <span id="lps">0</span> layers per second. </div>
      <div> You have $<span id="money">x</span>. </div>
-     <div> You are getting $<span id="mps">x</span> per second.</div>
      <div id="qlds" style="display:none" position="auto"> You have x Quantum Layering Devices (QLD's). </div>
      
      <div id='tabbtns'>
@@ -47,7 +46,8 @@
       Workers <br> You have:<span id="wAmount" font-size="200%"> x </span> <br>
     </td>
     <td width="10%">
-      <button id="wCost" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" style="align:right" onclick="buyWorker();">Cost: x</button>
+      <button id="wCost" style="color:black; height: auto; width: auto; margin:10px; font-size:150%" class="storebtn" style="align:right" onclick="buyWorker();">Cost: 
+        x</button>
     </td>
    </tr>
   </tr>
@@ -56,7 +56,7 @@
       Upgrade to a better location. You are currently working in <span id="workplace">thing</span> It will cost you $<span id="workplacecost">x</span>.
     </button>
      <br>
-       <button id="smashbtn" onclick="player.layers=0; player.clay+=1">Smash your layers into a block of clay.</button>
+       <button id="smashbtn" onclick="smash();">Smash your layers into a block of clay.</button>
 <br>
      </div> 
      <br>
