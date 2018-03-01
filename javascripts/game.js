@@ -167,7 +167,7 @@ function increaseMults(mult) {
 function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
-  updateElement("money", formatValue(player.money, 2));
+  updateElement("money", formatValue("$"+player.money, 2));
   updateElement("lps", formatValue(player.lps+player.playerlps, 2));
   updateElement("layers", formatValue(player.layers, 2));
 	
