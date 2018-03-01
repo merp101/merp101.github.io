@@ -3,7 +3,6 @@
 
 var player = {
   money: 0,//new Decimal(0),
-  mps: 0,//new Decimal(0),
   layers: 0,//new Decimal(0),
   lps: 0,//new Decimal(0),
   playerlps: 0,//new Decimal(0)
@@ -81,32 +80,12 @@ function load(savefile) {
 	
 	if (player.money==undefined||player.money==NaN)player.money=0;
 	if (player.layers==undefined||player.layers==NaN)player.layers=0;
-	if (player.mps==undefined||player.mps==NaN)player.mps=0;
 	if (player.lps==undefined||player.lps==NaN)player.lps=0;
  	if (player.options.notation==undefined) player.options.notation="scientific";
 	if (player.money==(Infinity))switchTab('empty');  	
   if (player.workersamount==undefined||player.workersamount==NaN) player.workersamount = 0;
 	if (player.workerscost==undefined||player.workerscost==NaN) player.workerscost=10;
 	if (player.workersaffection==undefined||player.workersaffection==NaN) player.workersaffection=0;
-	player.money=new Number(player.money)
-	player.mps=new Number(player.mps)
-	player.layers=new Number(player.layers)
-	player.lps=new Number(player.lps)
-	player.playerlps=new Number(player.playerlps)
-	player.sellMult=new Number(player.sellMult)
-	player.layerMult=new Number(player.layerMult)
-	player.workerscost=new Number(player.workerscost)
-	player.workersaffection=new Number(player.workersaffection)
-	player.workersamount=new Number(player.workersamount)
-	player.workersmult=new Number(player.workersmult)
-	player.workersmax=new Number(player.workersmax)
-	player.resets=new Number(player.resets)
-	player.qld=new Number(player.qld)
-	player.infinitied=new Number(player.infinitied)
-	player.totalTimePlayed=new Number(player.totalTimePlayed)
-	player.totalMoney=new Number(player.totalMoney)
-	player.totalLayers=new Number(player.totalLayers)  
-	player.workplaceCost=new Number(player.workplaceCost)
 }
 
 function updateElement(elementID,value) {
@@ -188,7 +167,6 @@ function increaseMults(mult) {
 function display() {
 
   updateElement("qlds", "You have " + formatValue(player.qld, 0) + " Quantum Layering Devices (QLD's).");
-  updateElement("mps", formatValue(player.mps, 2));
   updateElement("money", formatValue(player.money, 2));
   updateElement("lps", formatValue(player.lps+player.playerlps, 2));
   updateElement("layers", formatValue(player.layers, 2));
@@ -283,13 +261,11 @@ function gameLoop() {
 	if (currentAction=="layers") {
 		if (prevAction=="none"||prevAction=="sell")player.playerlps++;prevAction="layers"
 		increaseCurrency("layers");
-		player.mps=0;
   } else if (currentAction=="sell") {
 		increaseCurrency("money");
 		player.layers=0
 		if (prevAction=="layers"){
 			player.playerlps--;
-			player.mps=player.lps
 			player.lps=0;
 			prevAction="sell"
 		}
