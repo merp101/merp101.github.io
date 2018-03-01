@@ -170,7 +170,7 @@ function display() {
   updateElement("money", formatValue("$"+player.money, 2));
   updateElement("lps", formatValue(player.lps+player.playerlps, 2));
   updateElement("layers", formatValue(player.layers, 2));
-	
+	updateElement("clay", formatValue(player.clay, 0));
 
   if (tab == "workers") {
      hideElement('statstab')
@@ -250,6 +250,15 @@ function increaseCurrency(currency) {
 		player.totalMoney+=player.money
 	}
 }		
+
+function smash() {
+	function clay() {
+		let clay = Math.floor(2*Math.log10(player.layers));
+		if (clay>=1) return clay;
+		else return 1;
+	}
+	player.clay=clay();
+}
 
 function randAct(story) {
 	if (story==0) if (player.layers==0){player.layers+=1;}else player.layers*=2;
