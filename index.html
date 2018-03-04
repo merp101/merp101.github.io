@@ -4,20 +4,28 @@
   <script type="script/javascript" src="javascripts/main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="stylesheets/normal.css">
+  <datalist id="locations">
+    <option value="Cellar">
+    <option value="Plains">
+    <option value="Desert">
+    <option value="Dungeon">
+	</datalist>
 </head>
 <body>
   <div id="title">The Cave</div>
   <ul id="nav-bar">
-    <li id="invBtn"><button onclick="changeTab('inv')">Inventory</button></li>
-    <li id="mapBtn"><button onclick="changeTab('map')">Map</button></li>
+    <li id="storyli"><button id="storybtn" onclick="changeTab('text');">Text-y stuff(will change)</button></li>
+    <li id="invli"><button id="invbtn" onclick="changeTab('inv');">Inventory</button></li>
+    <li id="mapli"><button id="mapbtn" onclick="changeTab('map');">Map</button></li>
   </ul>
-  <div id="worldtab">
+  <div id="invtab" style="display:none;"></div>
+  <div id="maptab" style="display:none;">
+    <button id="fightbtn" onclick="fight();">Go fight</button> at <input list="locations">
     <div id="w1"></div>
     <div id="w2"></div>
     <div id="w3"></div>
     <div id="w4"></div>
   </div>
-  <div id="invtab"></div>
-  <div id="maptab"></div>
+  <div id="texttab">Hey, you! Yes, you, right there! I need some help, will you help me? Go to the map tab, and then to the cellar. I'll see you there!</div>
 </body>
 </html>
