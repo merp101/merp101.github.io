@@ -11,5 +11,12 @@ li {
 .active {
 	background-color: rgb(0,0,0);
 }
+#title {
+	font-size: 50px;
+}
+body {
+	text-align: center;
+	font-family:"Inconsolata", monospace;
+}
 
 </style>
