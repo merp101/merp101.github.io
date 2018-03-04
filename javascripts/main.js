@@ -21,7 +21,7 @@ function Weapon(name, attack, speed, cost) {
 
 function changeTab(tab) {
 	hide(currentTab+"tab");
-	show(tab+"tab",inline);
+	show(tab+"tab","inline");
 }
 
 function hide(elemID) {
