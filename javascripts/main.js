@@ -3,7 +3,7 @@ var player = {
 	weapon: new Weapon("fists",1,2,0),
 }
 const worlds = {}
-var currentTab = "text";//Tabs: world, inv, map, text(will be changed),
+var currentTab = "story";//Tabs: world, inv, map, text(will be changed),
 
 function displayWorld(world) {
   for (let i = 1;i < world.length; i++) {
@@ -20,7 +20,7 @@ function Weapon(name, attack, speed, cost) {
 }
 
 function changeTab(tab) {
-	hide(currentTab);
+	hide(currentTab+"tab");
 	show(tab+"tab",inline);
 }
 
