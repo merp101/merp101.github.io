@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 10;
+}
+li {
+  display: inline;
+  border: 1px;
+}
+.active {
+  background-color: rgb(0,0,0);
+}
+</head>
+<body>
+  <div id="title">The Cave</div>
+  <ul id="nav-bar">
+    <li id="invBtn" onclick="changeTab('inv')">Inventory</li>
+    <li id="mapBtn" onclick="changeTab('map')">Map</li>
+  </ul>
+  <div id="world">
+    <div id="w1"></div>
+    <div id="w2"></div>
+    <div id="w3"></div>
+    <div id="w4"></div>
+  </div>
+  
+</body>
+</html>
