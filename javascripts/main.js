@@ -25,9 +25,13 @@ function changeTab(tab) {
 }
 
 function hide(elemID) {
-	document.getElementById(elemID).display="none";
+	let elem = document.getElementById(elemID);
+	if (elem != undefined) elem.display = "none";
+	else console.log("Element " + elemID + " not defined.");
 }
 function show(elemID,type) {
-	document.getElementById(elemID).display=type;
+	let elem = document.getElementById(elemID);
+	if (elem != undefined) elem.display = type;
+	else console.log("Element " + elemID + " not defined.");
 }
   
