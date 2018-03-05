@@ -1,8 +1,11 @@
 var player = {
 	money: 0,
 	weapon: new Weapon("fists",1,2,0),
+	inventory: [],
+	
 }
 const worlds = {}
+var currentWorld = "none";
 var currentTab = "story";//Tabs: world, inv, map, text(will be changed),
 
 function displayWorld(world) {
@@ -10,6 +13,12 @@ function displayWorld(world) {
     let place = document.getElementById("w"+i);
     place.innerHTML=world[i-1];
   }
+	currentWorld=world;
+}
+
+function startFight(startPos) {
+	function move() {
+		
 }
 
 function Weapon(name, attack, speed, cost) {
