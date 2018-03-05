@@ -4,19 +4,28 @@ var player = {
 	inventory: [],
 	
 }
-const worlds = {}
+const worlds = {
+	cave: ["  -----------------     ",
+				 " /                 \____",
+				 "|                       ",
+				 "|                       ",
+				 "|                   ____",
+				 "\  \o/             /    "],
+	
+}
 var currentWorld = "none";
 var currentTab = "story";//Tabs: world, inv, map, text(will be changed),
 
-function displayWorld(world) {
+function displayWorld() {
+	let world = worlds[document.getElementById("fight-location").value];
   for (let i = 1;i < world.length; i++) {
     let place = document.getElementById("w"+i);
     place.innerHTML=world[i-1];
   }
-	currentWorld=world;
 }
 
 function startFight(startPos) {
+	
 	function move() {
 		
 }
