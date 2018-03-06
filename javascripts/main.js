@@ -1,4 +1,4 @@
-import {enemies} from 'javascripts/enemies.js';
+import enemies from 'javascripts/enemies.js';
 
 var player = {
 	money: 0,
