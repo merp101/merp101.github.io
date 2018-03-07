@@ -1,5 +1,3 @@
-import enemies from 'javascripts/enemies.js';
-
 var player = {
 	money: 0,
 	weapon: new Weapon("fists",1,2,0),//name, attack, speed, cost
