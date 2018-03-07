@@ -16,4 +16,4 @@ var enemies = {
     dmg: 15
   }
 }
-export enemies;
+
