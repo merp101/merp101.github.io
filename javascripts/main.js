@@ -54,7 +54,7 @@ const worlds = {
 		this.display();
 		let xpos = 1;
 		function move(xPos) {
-			if (lastWorld.charAt(xPos+1) == "*") this.fight(xPos+1); return false;
+			if (lastWorld.charAt(xPos+1) == "*") {this.fight(xPos+1); return false;}
 			else xPos++;
 			this.display(xPos);
 		}
