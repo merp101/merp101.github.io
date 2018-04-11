@@ -1,5 +1,4 @@
 import {game} from "javascripts/config.js"
-import {enemies} from "javascripts/enemies.js"
 
 var currentTab = "cave";//Tabs: inv, map, cave,
 
