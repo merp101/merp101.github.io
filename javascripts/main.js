@@ -1,23 +1,11 @@
-import {game} from "javascripts/config.js"
-
-var currentTab = "cave";//Tabs: inv, map, cave,
-
-function Weapon(name, attack, speed, cost) {
-	this.name = name;
-	this.attack = attack;
-	this.speed = speed;
-	this.cost = cost;
-}
-
-function Enemy(world, i) {
-	this.hp = enemies[world].hp;
-	this.attack = enemies[world].dmg;
-	this.pos = worlds[world].monstPos[i];
-}
+var currentTab = "cave";//Tabs: inv, map, cave
+var player = game.player;
+var enemies = game.enemies;
+var zone = game.zone;
 
 function changeTab(tab) {
 	hide(currentTab+"tab");
-	show(tab+"tab","inline");
+	show(tab+"tab","block");
 }
 
 function hide(elemID) {
@@ -30,4 +18,11 @@ function show(elemID,type) {
 	if (elem != undefined) elem.display = type;
 	else console.log("Element " + elemID + " not defined.");
 }
-  
+ 
+function gameTick() {
+	game.player.money ++;
+	//Fighting
+	if (game.player.combat.fighting) quest.fight(enemies.stats["n"+quest.enemyNum][0],enemies.stats["n"+quest.enemyNum][1],1); return;
+}
+
+game.init();
