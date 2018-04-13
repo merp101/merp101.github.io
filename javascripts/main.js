@@ -25,4 +25,3 @@ function gameTick() {
 	if (game.player.combat.fighting) quest.fight(enemies.stats["n"+quest.enemyNum][0],enemies.stats["n"+quest.enemyNum][1],1); return;
 }
 
-game.init();
