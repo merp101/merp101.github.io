@@ -30,8 +30,9 @@ var game = {
 	
 	init: function() {
 		this.enemies.init();
-		if (this.zone.max < 1) this.zone.max = 1;
+		if (this.zone.max < 1 || typeof this.zone.max == "NaN" || typeof this.zone.max == "undefined") this.zone.max = 1;
 		if (this.money < 0) this.money = 0;
+		
 		window.setInterval(gameTick(), 10);
 	}
 	
@@ -46,3 +47,6 @@ var quest = {
 		if (enemyHP < 1) this.enemyNum ++; return;
 	}
 }
+
+export game;
+export quest;
