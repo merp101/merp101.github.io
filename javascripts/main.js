@@ -1,3 +1,6 @@
+import game from "./objects.js";
+import quest from "./objects.js";
+
 var currentTab = "cave";//Tabs: inv, map, cave
 var player = game.player;
 var enemies = game.enemies;
