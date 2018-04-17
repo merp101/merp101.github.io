@@ -28,3 +28,10 @@ function gameTick() {
 	if (game.player.combat.fighting) quest.fight(enemies.stats["n"+quest.enemyNum][0],enemies.stats["n"+quest.enemyNum][1],1); return;
 }
 
+game.init = function() {
+		enemies.init();
+		if (this.zone.max < 1 || typeof this.zone.max == "NaN" || typeof this.zone.max == "undefined") this.zone.max = 1;
+		if (this.money < 0) this.money = 0;
+		
+		window.setInterval(gameTick(), 10);
+}
