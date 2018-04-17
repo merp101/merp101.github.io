@@ -26,16 +26,7 @@ var game = {
       	this.stats["n"+(i+1)] = [atk, hp, i+1];
     	}
   	}
-	},
-	
-	init: function() {
-		this.enemies.init();
-		if (this.zone.max < 1 || typeof this.zone.max == "NaN" || typeof this.zone.max == "undefined") this.zone.max = 1;
-		if (this.money < 0) this.money = 0;
-		
-		window.setInterval(gameTick(), 10);
-	}
-	
+	},	
 }
 
 var quest = {
