@@ -17,17 +17,15 @@
   <ul id="nav-bar">
     <li id="caveli"><button id="cavebtn" onclick="changeTab('cave');">The Cave</button></li>
     <li id="invli"><button id="invbtn" onclick="changeTab('inv');">Inventory</button></li>
-    <li id="mapli"><button id="mapbtn" onclick="changeTab('map');">Map</button></li>
+    <li id="fightli"><button id="fightbtn" onclick="changeTab('fight');">Fight</button></li>
   </ul>
-  <div id="invtab" style="display:none;"></div>
-  <div id="maptab">
-    <button id="fightbtn" onclick="quest.startFight();">Go fight</button> at <input id="fight-location" list="locations">
-    <div id="world"></div>
-
-		<div id="battleStats">
-			<text id="playerStats">You: xHP, xATK, xSPD</text> <br>
-			<text id="enemyStats">Enemy: xHP, xATK, xSPD</text> <br>
-  </div>
+  <div id="fighttab">
+	  <div id="stats">
+			<text id="playerstats" style="width: 25%;height:30%;position:fixed;top:100px;left:25%;">You: <span id="playerhp">x</span> HP, <span id="playeratk">x</span> ATK, <span id="playerspeed">x</span> SPD.</text> <br>
+			<text id="enemystats" style="width: 25%;height:30%;position:fixed;top:100px;right:25%;">Enemy: <span id="enemyhp">x</span> HP, <span id="enemyatk">x</span ATK, <span id="enemyspeed">x</span> SPD. </text>
+		</div>
+		<div> You are fighting <span id="enemyname">
+	</div>
   <div id="cavetab" style="width:300px;height:auto;>You wake up in a cave. You decide to start picking up rocks, because you hear deep grumbles coming from through the walls. You might be able to defend yourself... or something.</div>
 </body>
 			   <script>game.init();</script>
