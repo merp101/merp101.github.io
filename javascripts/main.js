@@ -1,14 +1,16 @@
-import game from "./objects.js";
-import quest from "./objects.js";
+import game from "./config.js";
 
 var currentTab = "cave";//Tabs: inv, map, cave
-var player = game.player;
+var stats = game.stats;
+var items = game.items;
 var enemies = game.enemies;
-var zone = game.zone;
+var conditions = game.conditions;
+var options = game.options;
 
 function changeTab(tab) {
 	hide(currentTab+"tab");
 	show(tab+"tab","block");
+	currentTab=tab;
 }
 
 function hide(elemID) {
@@ -23,15 +25,15 @@ function show(elemID,type) {
 }
  
 function gameTick() {
-	game.player.money ++;
-	//Fighting
-	if (game.player.combat.fighting) quest.fight(enemies.stats["n"+quest.enemyNum][0],enemies.stats["n"+quest.enemyNum][1],1); return;
+	//If you're questing, don't do anything else (probably will change)
+	if (conditions.questing) return;
+	else {
+		
+	}
 }
 
-game.init = function() {
-		enemies.init();
-		if (this.zone.max < 1 || typeof this.zone.max == "NaN" || typeof this.zone.max == "undefined") this.zone.max = 1;
-		if (this.money < 0) this.money = 0;
-		
-		window.setInterval(gameTick(), 10);
+function init() {
+	window.setInterval(function(){
+		window.setTimeout(gameTick(), 100);
+	}, 0);
 }
