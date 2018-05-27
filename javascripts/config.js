@@ -28,7 +28,12 @@ var game = {
 		range: 0,
 		magic: 0
 	},
-	misc: {
+	
+	conditions: {
+		fighting: false,
+		questing: false
+	},
+	options: {
 		
 	}
 }
