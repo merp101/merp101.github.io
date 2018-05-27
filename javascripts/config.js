@@ -13,7 +13,10 @@ var game = {
 			chest: "",
 			legs: "",
 			boots: "",
-			weapon: "",
+			weapon: {
+				name: "",
+				type: "",
+			},
 			accessory: ""
 		},
 		consumable: [""],
