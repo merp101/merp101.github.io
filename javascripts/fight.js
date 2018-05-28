@@ -37,9 +37,9 @@ function startFight(difficulty=0) {
 	var array = [damage,interval];
 	return array;
 }
-function fight(array, attack,buffs) {
-	var damage = array[0];
-	var interval = array[1];
+function fight(attack,buffs=[]) {
+	var damage = game.stats.array[0];
+	var interval = game.stats.array[1];
 	var dmgMult;
 	switch (attack) {
 		case "basic": dmgMult = 1;
