@@ -26,6 +26,7 @@ var game = {
 	},
 	enemies: {
 		num: 0,
+		numDefeated: 0,
 		level: 0,
 		hp: {
 			max: 0,
