@@ -47,3 +47,6 @@ var game = {
 		
 	}
 }
+var enemies = {}
+export {game};
+export {enemies};
