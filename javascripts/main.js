@@ -24,6 +24,13 @@ function show(elemID,type) {
 	else console.log("Element " + elemID + " not defined.");
 }
  
+
+function quest(type) {
+	switch (type) {
+		case "fight": game.stats.array = startFight();
+	}
+}
+
 function gameTick() {
 	//If you're questing, don't do anything else (probably will change)
 	if (conditions.questing) return;
