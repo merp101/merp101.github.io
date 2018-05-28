@@ -1,4 +1,4 @@
-import game from "./config.js";
+import {game, enemies} from "./config.js";
 const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //can add more later, don't need to yet
 let maxhp = game.stats.hp.max;
 let hp = game.stats.hp.current;
@@ -17,7 +17,7 @@ function setEnemies(difficulty) {
 	game.enemies.atk = Math.round(Math.pow(difficulty, 1.5)) + 1;
 	game.enemies.def = Math.round(Math.pow(difficulty, 1.1)) + 1;
 	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
-	var enemies = {}
+	
 	for (let i = 0; i < game.enemies.num; i++) {
 		enemies[SPELLED[i]+"Enemy"].level = game.enemies.level;
 		enemies[SPELLED[i]+"Enemy"].hp.max = game.enemies.hp.max;
@@ -40,8 +40,9 @@ function startFight(difficulty=0) {
 function fight(array) {
 	var damage = array[0];
 	var interval = array[1];
-	
-	if (game.conditions.fighting) {
-		
+	var enemy = enemies[SPELLED[(game.enemies.num-(game.enemies.num - game.enemies.numDefeated))+1]
+	enemy.hp.current -= damage - enemy.def; //can be changed
+	if (enemy.hp.current <= 0) {
+		game.enemies.numDefeated++;
 	}
 }
