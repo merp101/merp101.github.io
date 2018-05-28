@@ -24,7 +24,7 @@ var game = {
 		consumable: [""],
 		special: [""]
 	},
-	enemies: {
+	enemies: { //this is master stats
 		num: 0,
 		numDefeated: 0,
 		level: 0,
