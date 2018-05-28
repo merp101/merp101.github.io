@@ -7,6 +7,20 @@ var enemies = game.enemies;
 var conditions = game.conditions;
 var options = game.options;
 
+function save() {
+	localStorage.setItem("caveSave",atob(game));
+}
+
+function load() {
+	try {
+		game = btoa(localStorage.getItem("caveSave"))
+	} catch (e) {
+		console.log(e);
+		alert("There was a problem while loading your save.");
+		//reset();
+	}
+}
+
 function changeTab(tab) {
 	hide(currentTab+"tab");
 	show(tab+"tab","block");
