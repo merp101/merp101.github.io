@@ -37,11 +37,21 @@ function startFight(difficulty=0) {
 	var array = [damage,interval];
 	return array;
 }
-function fight(array) {
+function fight(array, attack,buffs) {
 	var damage = array[0];
 	var interval = array[1];
+	var dmgMult;
+	switch (attack) {
+		case "basic": dmgMult = 1;
+		case "strong": dmgMult = 2;
+		case "fire": dmgMult = 1.5;
+	}
+	if (buffs.includes("ice")) dmgMult *= 1.25;
+	if (buffs.includes("fire")) dmgMult *= 1.5;
+	if (buffs.includes("electricity")) dmgMult *= 2;
+		
 	var enemy = enemies[SPELLED[(game.enemies.num-(game.enemies.num - game.enemies.numDefeated))+1]
-	enemy.hp.current -= damage - enemy.def; //can be changed
+	enemy.hp.current -= (damage * dmgMult) - enemy.def; //can be changed
 	if (enemy.hp.current <= 0) {
 		game.enemies.numDefeated++;
 	}
