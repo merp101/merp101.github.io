@@ -1,5 +1,6 @@
 var game = {
 	stats: {
+		array: [],
 		level: 0,
 		hp: {
 			max: 0,
