@@ -1,5 +1,5 @@
 var game = {
-	stats: {
+	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		array: [],
 		level: 0,
 		hp: {
@@ -11,7 +11,9 @@ var game = {
 		spd: 0,
 		tact: 0,
 		range: 0,
-		magic: 0
+		magic: 0,
+		buffs: 0,
+		skills: ["basic"]
 	},
 	items: {
 		equips: {
