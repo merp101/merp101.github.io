@@ -38,7 +38,22 @@ function show(elemID,type) {
 	else console.log("Element " + elemID + " not defined.");
 }
  
+function updateQuests(id, title, text) {
+	//have to add unlock conditions, like levels or other quests
+	var questlist = document.getElementById("questlist");
+	var quest = document.createElement("li");
+	var h1 = quest.createElement("h1");
+	var p = quest.createElement("p");
+	var questtitle = h1.innerHTML(title)
+	var questtext = p.innerHTML(text);
+	var questHTML = questtitle + questtext;
+	var questList = game.quests.list;
 
+	quest.id = "quest-"+id;
+	quest.appendChild(questHTML);
+	questlist.appendChild(quest);
+	game.quest.list.push(id);
+}
 function quest(type) {
 	switch (type) {
 		case "fight": game.stats.array = startFight();
