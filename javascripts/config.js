@@ -42,7 +42,9 @@ var game = {
 		range: 0,
 		magic: 0
 	},
-	
+	quest: {
+		list: [],
+	},	
 	conditions: {
 		fighting: false,
 		questing: false
