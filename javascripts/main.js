@@ -1,4 +1,3 @@
-import game from "./config.js";
 
 var currentTab = "cave";//Tabs: inv, map, cave
 var stats = game.stats;
