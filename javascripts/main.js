@@ -59,16 +59,29 @@ function quest(type) {
 	}
 }
 
-function gameTick() {
-	//If you're questing, don't do anything else (probably will change)
-	if (conditions.questing) return;
-	else {
-		
-	}
+function tick(letter=0) {
+	if (letter == 0) return;
+	function move() {
+		if (letter == "w") char.pos.y += 1;
+		else if (letter == "a") char.pos.x -= 1;
+		else if (letter == "s") char.pos.y -= 1;
+		else if (letter == "d") char.pos.x += 1;
 }
 
 function init() {
 	window.setInterval(function(){
 		window.setTimeout(gameTick(), 100);
 	}, 0);
+}
+
+document.onKeyDown=function() {
+	var letter = 0;
+	switch (e.keyCode) {
+		case 87: letter = "w";
+		case 65: letter = "a";
+		case 83: letter = "s";
+		case 68: letter = "d";
+		
+	}
+	tick(letter);
 }
