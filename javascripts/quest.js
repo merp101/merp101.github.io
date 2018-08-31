@@ -3,7 +3,7 @@ var quest = {
 		let location=document.getElementById("fight-location").value; //cave, plains,
 		if (typeof location == "undefined") alert("Please choose a destination!"); return;
 		document.getElementById("fight-location").innerHTML = "The " + location;
-		let world = location;
+		let world.place = location;
 		let lastWorld= world.level[world.level.length-1];
 		if (typeof xPos == "undefined") xPos = 1;
 		world.playable[xPos]="o";
