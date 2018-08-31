@@ -66,6 +66,9 @@ function tick(letter=0) {
 		else if (letter == "a") char.pos.x -= 1;
 		else if (letter == "s") char.pos.y -= 1;
 		else if (letter == "d") char.pos.x += 1;
+	}
+	move();
+	if (char.pos.x == enemy.pos.x && char.pos.y == enemy.pos.y) {startFight();}
 }
 
 function init() {
