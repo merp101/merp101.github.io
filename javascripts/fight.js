@@ -1,4 +1,3 @@
-import {game, enemies} from "./config.js";
 const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //can add more later, don't need to yet
 let maxhp = game.stats.hp.max;
 let hp = game.stats.hp.current;
