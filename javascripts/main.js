@@ -79,12 +79,21 @@ function init() {
 
 document.onKeyDown=function() {
 	var letter = 0;
-	switch (e.keyCode) {
-		case 87: letter = "w";
-		case 65: letter = "a";
-		case 83: letter = "s";
-		case 68: letter = "d";
+	if (!game.conditions.fighting) {
+		switch (e.keyCode) {
+			case 87: letter = "w";
+			case 65: letter = "a";
+			case 83: letter = "s";
+			case 68: letter = "d";
 		
+		}
+		tick(letter);
+	} else {
+		switch (e.keyCode) {
+			case 49: letter = "1";
+			case 50: letter = "2";
+			case 51: letter = "3";
+			case 52: letter = "4";
+		}
 	}
-	tick(letter);
 }
