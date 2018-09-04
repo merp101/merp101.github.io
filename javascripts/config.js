@@ -12,7 +12,7 @@ var game = {
 		tact: 0,
 		range: 0,
 		magic: 0,
-		buffs: 0,
+		buffs: [],
 		skills: ["basic"]
 	},
 	items: {
@@ -54,3 +54,38 @@ var game = {
 	}
 }
 var enemies = {}
+var consts = { //skill damages, whatever else
+	skills: {
+		basic: {
+			damage: 1, // damage mult
+			effects: { // special effect the move has
+				name: "none", //what it's called
+				chance: 0 // the probability of it happening (divide by 10 to get random() threshold, <=)
+			}
+		},
+		fire: {
+			damage: 1.5,
+			effects: {
+				name: "fire",
+				chance: 10
+			}
+		},
+		ice: {
+			damage: .75,
+			effects: {
+				name: "freeze",
+				chance: 10
+			}
+		},
+		electricity: {
+			damage: 2,
+			effects: {
+				name: "none",
+				chance: 0
+			}
+		}
+		
+				
+	}
+	
+}
