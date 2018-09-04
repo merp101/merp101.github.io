@@ -54,6 +54,12 @@ var game = {
 	}
 }
 var enemies = {}
+var char = {
+	pos: {
+		x: 0,
+		y: 0
+	}
+}
 var consts = { //skill damages, whatever else
 	skills: {
 		basic: {
