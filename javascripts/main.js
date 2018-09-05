@@ -2,9 +2,9 @@
 var currentTab = "cave";//Tabs: inv, map, cave
 var stats = game.stats;
 var items = game.items;
-var enemies = game.enemies;
 var conditions = game.conditions;
 var options = game.options;
+
 
 function save() {
 	localStorage.setItem("caveSave",atob(game));
@@ -12,11 +12,12 @@ function save() {
 
 function load() {
 	try {
-		game = btoa(localStorage.getItem("caveSave"))
+		game = btoa(localStorage.getItem("caveSave"));
+		return true;
 	} catch (e) {
 		console.log(e);
 		alert("There was a problem while loading your save.");
-		//reset();
+		return false;
 	}
 }
 
@@ -68,13 +69,9 @@ function tick(letter=0) {
 		else if (letter == "d") char.pos.x += 1;
 	}
 	move();
-	if (char.pos.x == enemy.pos.x && char.pos.y == enemy.pos.y) {startFight();}
-}
-
-function init() {
-	window.setInterval(function(){
-		window.setTimeout(gameTick(), 100);
-	}, 0);
+	for (let i = 0; i < game.enemies.num; i++) {
+		if (char.pos.x == enemies[SPELLED[i]+"Enemy"].pos.x && char.pos.y == enemy.pos.y) {startFight();}
+	}
 }
 
 document.onKeyDown=function() {
@@ -90,10 +87,18 @@ document.onKeyDown=function() {
 		tick(letter);
 	} else {
 		switch (e.keyCode) {
-			case 49: letter = "1";
-			case 50: letter = "2";
-			case 51: letter = "3";
-			case 52: letter = "4";
+			case 49: letter = 1;
+			case 50: letter = 2;
+			case 51: letter = 3;
+			case 52: letter = 4;
 		}
+		var numToLettersAtk = ["basic","fire","ice","electricity"];
+		fight(numToLettersAtk[letter-1]);
 	}
+}
+
+function init() {
+	if (!load()) return;
+	if (items.equips.weapon.name != "none") items.equips.weapon.name = "fists"; items.equips.weapon.dmg = 1; items.equips.weapon.type = "fists";
+	
 }
