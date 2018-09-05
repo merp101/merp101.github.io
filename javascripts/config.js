@@ -92,6 +92,25 @@ var consts = { //skill damages, whatever else
 		}
 		
 				
+	},
+	
+	weaponTypeModifiers: {
+		fists: {
+			speed: 2,
+			dmg: 1
+		},
+		oneHandSword: {
+			speed: 1.25,
+			dmg: 1.5
+		},
+		twoHandSword: {
+			speed: 0.75,
+			dmg: 2
+		},
+		bow: {
+			speed: .5,
+			dmg: 5
+		}
 	}
 	
 }
