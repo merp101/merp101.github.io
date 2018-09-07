@@ -5,6 +5,13 @@ var items = game.items;
 var conditions = game.conditions;
 var options = game.options;
 
+function element(id) {
+	return document.getElementById(id);
+}
+
+function changeText(id, text) {
+	return element(id).innerHTML = text;
+}
 
 function save() {
 	localStorage.setItem("caveSave",atob(game));
@@ -28,19 +35,19 @@ function changeTab(tab) {
 }
 
 function hide(elemID) {
-	let elem = document.getElementById(elemID);
+	let elem = element(elemID);
 	if (elem != undefined) elem.display = "none";
 	else console.log("Element " + elemID + " not defined.");
 }
-function show(elemID,type) {
-	let elem = document.getElementById(elemID);
+function show(elemID,type="block") {
+	let elem = element(elemID);
 	if (elem != undefined) elem.display = type;
 	else console.log("Element " + elemID + " not defined.");
 }
  
 function updateQuests(id, title, text) {
 	//have to add unlock conditions, like levels or other quests
-	var questlist = document.getElementById("questlist");
+	var questlist = element("questlist");
 	var quest = document.createElement("li");
 	var h1 = quest.createElement("h1");
 	var p = quest.createElement("p");
@@ -60,6 +67,12 @@ function quest(type) {
 	}
 }
 
+function setItemType(name,type,dmg) {
+	items.equips.weapon.name = name; 
+	items.equips.weapon.dmg = dmg; 
+	items.equips.weapon.type = type;
+}
+
 function tick(letter=0) {
 	if (letter == 0) return;
 	function move() {
@@ -72,7 +85,16 @@ function tick(letter=0) {
 	for (let i = 0; i < game.enemies.num; i++) {
 		if (char.pos.x == enemies[SPELLED[i]+"Enemy"].pos.x && char.pos.y == enemy.pos.y) {startFight();}
 	}
+	
 }
+
+function draw(thing) {
+	if (thing === "world") {
+		
+	}
+}
+
+
 
 document.onKeyDown=function() {
 	var letter = 0;
@@ -82,7 +104,6 @@ document.onKeyDown=function() {
 			case 65: letter = "a";
 			case 83: letter = "s";
 			case 68: letter = "d";
-		
 		}
 		tick(letter);
 	} else {
@@ -98,7 +119,11 @@ document.onKeyDown=function() {
 }
 
 function init() {
-	if (!load()) return;
-	if (items.equips.weapon.name != "none") items.equips.weapon.name = "fists"; items.equips.weapon.dmg = 1; items.equips.weapon.type = "fists";
+	load();
+	if (items.equips.weapon.name != "none") 
+	changeText("playerhp",game.stats.hp.current);
+	changeText("playeratk",game.stats.atk);
+	changeText("playerspd",game.stats.spd);
+	changeText("playerdef",game.stats.def);
 	
 }
