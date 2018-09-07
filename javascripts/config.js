@@ -42,7 +42,7 @@ var game = {
 		range: 0,
 		magic: 0
 	},
-	quest: {
+	quest: { //unused, will add later
 		list: [],
 	},	
 	conditions: {
@@ -53,8 +53,8 @@ var game = {
 		
 	}
 }
-var enemies = {}
-var char = {
+var enemies = {} //placeholder until used in fights
+var char = { //character IN FIGHTS (positon, mostly)
 	pos: {
 		x: 0,
 		y: 0
