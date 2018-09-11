@@ -67,7 +67,7 @@ function quest(type) {
 	}
 }
 
-function setItemType(name,type,dmg) {
+function setPlayerItem(name,type,dmg) {
 	items.equips.weapon.name = name; 
 	items.equips.weapon.dmg = dmg; 
 	items.equips.weapon.type = type;
@@ -118,12 +118,23 @@ document.onKeyDown=function() {
 	}
 }
 
-function init() {
-	load();
-	if (items.equips.weapon.name != "none") 
+function display() { 
 	changeText("playerhp",game.stats.hp.current);
+	changeText("playermaxhp",game.stats.hp.max);
 	changeText("playeratk",game.stats.atk);
 	changeText("playerspd",game.stats.spd);
 	changeText("playerdef",game.stats.def);
+	//updateQuests(69);
+	changeText("enemyhp",enemies[game.stats.currentEnemy].hp.current);
+	changeText("enemymaxhp",enemies[game.stats.currentEnemy].hp.max);
+	changeText("enemyatk",enemies[game.stats.currentEnemy].atk);
+	changeText("enemyspd",enemies[game.stats.currentEnemy].spd);
+	changeText("enemydef",enemies[game.stats.currentEnemy].def);
+}
+
+function init() {
+	load();
+	if (items.equips.weapon.name != "none") 
+	
 	
 }
