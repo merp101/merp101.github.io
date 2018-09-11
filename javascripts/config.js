@@ -1,6 +1,8 @@
+const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //can add more later, don't need to yet
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		array: [],
+		currentEnemy: 0,
 		level: 0,
 		hp: {
 			max: 0,
