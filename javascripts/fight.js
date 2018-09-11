@@ -1,4 +1,3 @@
-const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //can add more later, don't need to yet
 let maxhp = game.stats.hp.max;
 let hp = game.stats.hp.current;
 let atk = game.stats.atk;
@@ -33,6 +32,7 @@ function startFight(difficulty=0) {
 	
 	setEnemies(difficulty);
 	game.conditions.fighting = true;
+	game.stats.currentEnemy = 1;
 	var array = [damage,interval];
 	return array;
 }
