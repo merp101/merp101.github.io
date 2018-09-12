@@ -20,6 +20,7 @@ function save() {
 function load() {
 	try {
 		game = btoa(localStorage.getItem("caveSave"));
+		display();
 		return true;
 	} catch (e) {
 		console.log(e);
@@ -134,7 +135,6 @@ function display() {
 
 function init() {
 	load();
-	if (items.equips.weapon.name != "none") 
-	
+	if (items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
 }
