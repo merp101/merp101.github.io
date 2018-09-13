@@ -17,12 +17,12 @@ function setEnemies(difficulty) {
 	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
 	
 	for (let i = 0; i < game.enemies.num; i++) {
-		enemies[SPELLED[i]+"Enemy"].level = game.enemies.level;
-		enemies[SPELLED[i]+"Enemy"].hp.max = game.enemies.hp.max;
-		enemies[SPELLED[i]+"Enemy"].hp.current = game.enemies.hp.current;
-		enemies[SPELLED[i]+"Enemy"].atk = game.enemies.atk;
-		enemies[SPELLED[i]+"Enemy"].def = game.enemies.def;
-		enemies[SPELLED[i]+"Enemy"].spd = game.enemies.spd;
+		enemies[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
+		enemies[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
+		enemies[SPELLED[i]+"Enemy"].prototype.hp.current = game.enemies.hp.current;
+		enemies[SPELLED[i]+"Enemy"].prototype.atk = game.enemies.atk;
+		enemies[SPELLED[i]+"Enemy"].prototype.def = game.enemies.def;
+		enemies[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd;
 	}
 }
 function startFight(difficulty=1) {
