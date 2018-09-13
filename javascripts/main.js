@@ -84,7 +84,7 @@ function tick(letter=0) {
 	}
 	move();
 	for (let i = 0; i < game.enemies.num; i++) {
-		if (char.pos.x == enemies[SPELLED[i]+"Enemy"].pos.x && char.pos.y == enemy.pos.y) {startFight();}
+		if (char.pos.x == enemies[SPELLED[i]+"Enemy"].pos.x && char.pos.y == enemies[SPELLED[i]+"Enemy"].pos.y) {startFight();}
 	}
 	
 }
