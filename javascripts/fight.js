@@ -45,7 +45,7 @@ function fight(attack,buffs=[]) {
 	if (buffs.includes("fire")) dmgMult *= 1.5;
 	if (buffs.includes("electricity")) dmgMult *= 2;
 		
-	var enemy = enemies[SPELLED[game.enemies.num-(game.enemies.num - game.enemies.numDefeated)];
+	var enemy = enemies[SPELLED[game.enemies.num-(game.enemies.num - game.enemies.numDefeated)]+"Enemy"];
 	enemy.hp.current -= (damage * dmgMult) - enemy.def; //can be changed
 	if (enemy.hp.current <= 0) {
 		//end the fight, rewards
