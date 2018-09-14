@@ -31,6 +31,7 @@ function setEnemies(difficulty) {
 	for (let i= 0; i < game.enemies.num; i++) {
 		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
+	currentEnemy = "first";
 	/*for (let i = 0; i < game.enemies.num; i++) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
