@@ -83,7 +83,7 @@ function tick(letter=0) {
 		else if (letter == "d") char.pos.x += 1;
 	}
 	move();
-	if (char.pos.x == Enemy.pos.x && char.pos.y == Enemy.pos.y) {startFight();}
+	if (char.pos.x == currentEnemy.pos.x && char.pos.y == currentEnemy.pos.y) {startFight();}
 	
 }
 
