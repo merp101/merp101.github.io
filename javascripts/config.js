@@ -55,7 +55,7 @@ var game = {
 		
 	}
 }
-var enemies = {} //placeholder until used in fights
+
 var char = { //character IN FIGHTS (positon, mostly)
 	pos: {
 		x: 0,
