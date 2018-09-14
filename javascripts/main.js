@@ -83,9 +83,7 @@ function tick(letter=0) {
 		else if (letter == "d") char.pos.x += 1;
 	}
 	move();
-	for (let i = 0; i < game.enemies.num; i++) {
-		if (char.pos.x == enemies[SPELLED[i]+"Enemy"].pos.x && char.pos.y == enemies[SPELLED[i]+"Enemy"].pos.y) {startFight();}
-	}
+	if (char.pos.x == Enemy.pos.x && char.pos.y == Enemy.pos.y) {startFight();}
 	
 }
 
@@ -126,11 +124,11 @@ function display() {
 	changeText("playerspd",game.stats.spd);
 	changeText("playerdef",game.stats.def);
 	//updateQuests(69);
-	changeText("enemyhp",enemies[game.stats.currentEnemy].hp.current);
-	changeText("enemymaxhp",enemies[game.stats.currentEnemy].hp.max);
-	changeText("enemyatk",enemies[game.stats.currentEnemy].atk);
-	changeText("enemyspd",enemies[game.stats.currentEnemy].spd);
-	changeText("enemydef",enemies[game.stats.currentEnemy].def);
+	changeText("enemyhp",currentEnemy.hp.current);
+	changeText("enemymaxhp",currentEnemy.hp.max);
+	changeText("enemyatk",currentEnemy.atk);
+	changeText("enemyspd",currentEnemy.spd);
+	changeText("enemydef",currentEnemy.def);
 }
 
 function init() {
