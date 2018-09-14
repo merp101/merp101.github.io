@@ -7,6 +7,7 @@ let tact = game.stats.tact;
 let range = game.stats.range;
 let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
+var currentEnemy;
 
 function Enemies(level,hpmax,atk,def,spd) {
 	this.level = level;
@@ -17,15 +18,19 @@ function Enemies(level,hpmax,atk,def,spd) {
 	this.spd = spd;
 }
 function setEnemies(difficulty) {
+	if (difficulty === 0) {
+		game.enemies.level = 1;
+	} else game.enemies.level = (difficulty * 2) /game.enemies.num)
 	game.enemies.num = difficulty;
-	game.enemies.level = (difficulty * 2) / game.enemies.num;
 	game.enemies.hp.max = Math.round(Math.pow(game.stats.hp.max, 0.25) + 1) * Math.pow(difficulty, 2);
 	game.enemies.hp.current = game.enemies.hp.max;
 	game.enemies.atk = Math.round(Math.pow(difficulty, 1.5)) + 1;
 	game.enemies.def = Math.round(Math.pow(difficulty, 1.1)) + 1;
 	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
 	
-	Enemies(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
+	for (let i= 0; i < game.enemies.num; i++) {
+		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
+	}
 	/*for (let i = 0; i < game.enemies.num; i++) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
