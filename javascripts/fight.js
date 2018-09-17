@@ -9,7 +9,7 @@ let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
 var currentEnemy;
 
-function Enemies(level,hpmax,atk,def,spd) {
+function Enemy(level,hpmax,atk,def,spd) {
 	this.level = level;
 	this.hp.max = hpmax;
 	this.hp.current = hpmax;
@@ -18,10 +18,10 @@ function Enemies(level,hpmax,atk,def,spd) {
 	this.spd = spd;
 }
 function setEnemies(difficulty) {
+	game.enemies.num = difficulty;
 	if (difficulty === 0) {
 		game.enemies.level = 1;
 	} else game.enemies.level = (difficulty * 2) /game.enemies.num;
-	game.enemies.num = difficulty;
 	game.enemies.hp.max = Math.round(Math.pow(game.stats.hp.max, 0.25) + 1) * Math.pow(difficulty, 2);
 	game.enemies.hp.current = game.enemies.hp.max;
 	game.enemies.atk = Math.round(Math.pow(difficulty, 1.5)) + 1;
