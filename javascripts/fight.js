@@ -11,8 +11,10 @@ var currentEnemy;
 
 function Enemy(level,hpmax,atk,def,spd) {
 	this.level = level;
-	this.hp.max = hpmax;
-	this.hp.current = hpmax;
+	this.hp = {
+		max: hpmax,
+		current: hpmax
+	}
 	this.atk = atk;
 	this.def = def;
 	this.spd = spd;
