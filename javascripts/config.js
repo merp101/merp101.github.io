@@ -56,6 +56,9 @@ var game = {
 	}
 }
 
+var enemies = {};
+
+
 var char = { //character IN FIGHTS (positon, mostly)
 	pos: {
 		x: 0,
