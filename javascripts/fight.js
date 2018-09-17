@@ -43,7 +43,7 @@ function setEnemies(difficulty) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd;
 	}*/
 }
-function startFight(difficulty=1) {
+function startFight(difficulty=1, type="melee") {
 	var damage;
 	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
 	var interval = (10 / spd) * difficulty; //time in seconds to complete task
