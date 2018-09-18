@@ -52,7 +52,7 @@ function startFight(difficulty=1, type="melee") {
 	game.conditions.fighting = true;
 	game.stats.currentEnemy = 1;
 	var array = [damage,interval];
-	return array;
+	game.stats.array = array;
 }
 function fight(attack,buffs=[]) {
 	var damage = game.stats.array[0];
