@@ -129,6 +129,7 @@ function display() {
 	changeText("enemyatk",currentEnemy.atk);
 	changeText("enemyspd",currentEnemy.spd);
 	changeText("enemydef",currentEnemy.def);
+	changeText("enemyname",currentEnemy.name);
 }
 
 function init() {
