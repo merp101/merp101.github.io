@@ -5,13 +5,13 @@ var items = game.items;
 var conditions = game.conditions;
 var options = game.options;
 
-function element(id) {
+/*function element(id) {
 	return document.getElementById(id);
 }
 
 function changeText(id, text) {
 	return document.getElementById(id).innerHTML = text;
-}
+}*/
 
 function save() {
 	localStorage.setItem("caveSave",atob(game));
@@ -118,18 +118,18 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	changeText("playerhp",game.stats.hp.current);
-	changeText("playermaxhp",game.stats.hp.max);
-	changeText("playeratk",game.stats.atk);
-	changeText("playerspd",game.stats.spd);
-	changeText("playerdef",game.stats.def);
+	document.getElementById("playerhp").innerHTML = game.stats.hp.current;
+	document.getElementById("playermaxhp").innerHTML = game.stats.hp.max;
+	document.getElementById("playeratk").innerHTML = game.stats.atk;
+	document.getElementById("playerspd").innerHTML = game.stats.spd;
+	document.getElementById("playerdef").innerHTML = game.stats.def;
 	//updateQuests(69);
-	changeText("enemyhp",currentEnemy.hp.current);
-	changeText("enemymaxhp",currentEnemy.hp.max);
-	changeText("enemyatk",currentEnemy.atk);
-	changeText("enemyspd",currentEnemy.spd);
-	changeText("enemydef",currentEnemy.def);
-	changeText("enemyname",currentEnemy.name);
+	document.getElementById("enemyhp").innerHTML = currentEnemy.hp.current;
+	document.getElementById("enemymaxhp").innerHTML = currentEnemy.hp.max;
+	document.getElementById("enemyatk").innerHTML = currentEnemy.atk;
+	document.getElementById("enemyspd").innerHTML = currentEnemy.spd;
+	document.getElementById("enemydef").innerHTML = currentEnemy.def;
+	document.getElementById("enemyname").innerHTML = currentEnemy.name;
 }
 
 function init() {
