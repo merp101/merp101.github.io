@@ -18,6 +18,15 @@ function Enemy(level,hpmax,atk,def,spd) {
 	this.atk = atk;
 	this.def = def;
 	this.spd = spd;
+	//determining the name
+	var random = Math.random();
+	var name;
+	if (random <= 0.01) {name = "TREASURE!!!"}
+	else if (random <= 0.05) {name = "Aragog the Mighty}
+	else if (random <= 0.1) {name = "Goblin"}
+	else if (random <= 0.5) {name = "Imp"}
+	else if (random <= 1) {name = "Spooder"}
+	
 }
 function setEnemies(difficulty) {
 	game.enemies.num = difficulty;
@@ -33,7 +42,7 @@ function setEnemies(difficulty) {
 	for (let i= 0; i < game.enemies.num; i++) {
 		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
-	currentEnemy = "first";
+	currentEnemy = enemies["first"];
 	/*for (let i = 0; i < game.enemies.num; i++) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
