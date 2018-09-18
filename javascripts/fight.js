@@ -22,7 +22,7 @@ function Enemy(level,hpmax,atk,def,spd) {
 	var random = Math.random();
 	var name;
 	if (random <= 0.01) {name = "TREASURE!!!"}
-	else if (random <= 0.05) {name = "Aragog the Mighty}
+	else if (random <= 0.05) {name = "Aragog the Mighty"}
 	else if (random <= 0.1) {name = "Goblin"}
 	else if (random <= 0.5) {name = "Imp"}
 	else if (random <= 1) {name = "Spooder"}
