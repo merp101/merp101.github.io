@@ -10,7 +10,7 @@ function element(id) {
 }
 
 function changeText(id, text) {
-	return element(id).innerHTML = text;
+	return document.getElementById(id).innerHTML = text;
 }
 
 function save() {
