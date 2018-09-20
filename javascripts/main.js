@@ -10,7 +10,7 @@ function element(id) {
 }
 
 function changeText(id, text) {
-	return document.getElementById(id).text = text;
+	return document.getElementById(id).innerHTML = text;
 }
 
 function save() {
@@ -118,7 +118,8 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	changeText("playerhp",game.stats.hp.current);
+	//changeText("playerhp",game.stats.hp.current);
+	document.getElementById("playerhp").innerHTML = game.stats.hp.current;
 	changeText("playermaxhp",game.stats.hp.max);
 	changeText("playeratk",game.stats.atk);
 	changeText("playerspd",game.stats.spd);
