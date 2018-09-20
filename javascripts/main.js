@@ -118,18 +118,20 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	element("playerhp",game.stats.hp.current);
-	element("playermaxhp",game.stats.hp.max);
-	element("playeratk",game.stats.atk);
-	element("playerspd").innerHTML = game.stats.spd;
-	element("playerdef").innerHTML = game.stats.def;
+	changeText("playerhp",game.stats.hp.current);
+	changeText("playermaxhp",game.stats.hp.max);
+	changeText("playeratk",game.stats.atk);
+	changeText("playerspd",game.stats.spd);
+	changeText("playerdef",game.stats.def);
 	//updateQuests(69);
-	element("enemyhp").innerHTML = currentEnemy.hp.current;
-	element("enemymaxhp").innerHTML = currentEnemy.hp.max;
-	element("enemyatk").innerHTML = currentEnemy.atk;
-	element("enemyspd").innerHTML = currentEnemy.spd;
-	element("enemydef").innerHTML = currentEnemy.def;
-	element("enemyname").innerHTML = currentEnemy.name;
+	if (currentEnemy != "undefined") {
+		changeText("enemyhp",currentEnemy.hp.current);
+		changeText("enemymaxhp",currentEnemy.hp.max);
+		changeText("enemyatk",currentEnemy.atk);
+		changeText("enemyspd",currentEnemy.spd);
+		changeText("enemydef",currentEnemy.def);
+		changeText("enemyname",currentEnemy.name);
+	} else if (currentEnemy == "undefined") {hide("stats")}
 }
 
 function init() {
