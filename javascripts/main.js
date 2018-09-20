@@ -124,14 +124,14 @@ function display() {
 	changeText("playerspd",game.stats.spd);
 	changeText("playerdef",game.stats.def);
 	//updateQuests(69);
-	if (currentEnemy != "undefined") {
+	if (currentEnemy != undefined) {
 		changeText("enemyhp",currentEnemy.hp.current);
 		changeText("enemymaxhp",currentEnemy.hp.max);
 		changeText("enemyatk",currentEnemy.atk);
 		changeText("enemyspd",currentEnemy.spd);
 		changeText("enemydef",currentEnemy.def);
 		changeText("enemyname",currentEnemy.name);
-	} else if (currentEnemy == "undefined") {hide("stats")}
+	} else if (currentEnemy == undefined) {hide("stats")}
 }
 
 function init() {
