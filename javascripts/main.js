@@ -118,20 +118,20 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	changeText("playerhp",game.stats.hp.current);
+	changeText("playerhp",game.stats.hp.current.toString());
 	//document.getElementById("playerhp").innerHTML = game.stats.hp.current;
-	changeText("playermaxhp",game.stats.hp.max);
-	changeText("playeratk",game.stats.atk);
-	changeText("playerspd",game.stats.spd);
-	changeText("playerdef",game.stats.def);
+	changeText("playermaxhp",game.stats.hp.max.toString());
+	changeText("playeratk",game.stats.atk.toString());
+	changeText("playerspd",game.stats.spd.toString());
+	changeText("playerdef",game.stats.def.toString());
 	//updateQuests(69);
 	if (currentEnemy != undefined) {
-		changeText("enemyhp",currentEnemy.hp.current);
-		changeText("enemymaxhp",currentEnemy.hp.max);
-		changeText("enemyatk",currentEnemy.atk);
-		changeText("enemyspd",currentEnemy.spd);
-		changeText("enemydef",currentEnemy.def);
-		changeText("enemyname",currentEnemy.name);
+		changeText("enemyhp",currentEnemy.hp.current.toString());
+		changeText("enemymaxhp",currentEnemy.hp.max.toString());
+		changeText("enemyatk",currentEnemy.atk.toString());
+		changeText("enemyspd",currentEnemy.spd.toString());
+		changeText("enemydef",currentEnemy.def.toString());
+		changeText("enemyname",currentEnemy.name.toString());
 	} else if (currentEnemy == undefined) {hide("stats")}
 }
 
