@@ -131,7 +131,7 @@ function display() {
 		changeText("enemyatk",currentEnemy.atk.toString());
 		changeText("enemyspd",currentEnemy.spd.toString());
 		changeText("enemydef",currentEnemy.def.toString());
-		changeText("enemyname",currentEnemy.name.toString());
+		changeText("enemyname",currentEnemy.name);
 	} else if (currentEnemy == undefined) {hide("stats")}
 }
 
