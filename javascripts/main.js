@@ -132,6 +132,7 @@ function display() {
 		changeText("enemyspd",currentEnemy.spd.toString());
 		changeText("enemydef",currentEnemy.def.toString());
 		changeText("enemyname",currentEnemy.name);
+		changeText("turn",game.conditions.turn);
 	} else if (currentEnemy == undefined) {hide("stats")}
 }
 
