@@ -138,6 +138,8 @@ function display() {
 
 function init() {
 	load();
+	display();
+	
 	if (items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
 }
