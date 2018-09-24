@@ -144,3 +144,5 @@ function init() {
 	if (items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
 }
+
+init();
