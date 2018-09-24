@@ -10,7 +10,7 @@ function element(id) {
 }
 
 function changeText(id, text) {
-	document.getElementById(id).innerHTML = text;
+	element(id).innerHTML = text;
 }
 
 function save() {
@@ -118,6 +118,7 @@ document.onKeyDown=function() {
 }
 
 function display() { 
+	if (currentEnemy == undefined) {hide("stats")}
 	changeText("playerhp",game.stats.hp.current.toString());
 	//document.getElementById("playerhp").innerHTML = game.stats.hp.current;
 	changeText("playermaxhp",game.stats.hp.max.toString());
@@ -133,7 +134,7 @@ function display() {
 		changeText("enemydef",currentEnemy.def.toString());
 		changeText("enemyname",currentEnemy.name);
 		changeText("turn",game.conditions.turn);
-	} else if (currentEnemy == undefined) {hide("stats")}
+	}
 }
 
 function init() {
