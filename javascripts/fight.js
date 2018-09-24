@@ -80,5 +80,10 @@ function fight(attack,buffs=[]) {
 	enemy.hp.current -= (damage * dmgMult) - enemy.def; //can be changed
 	if (enemy.hp.current <= 0) {
 		//end the fight, rewards
+		return;
+		
 	}
+	game.conditions.turn = "the enemy's";
+	display();
+	
 }
