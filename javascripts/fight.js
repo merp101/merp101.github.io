@@ -26,6 +26,7 @@ function Enemy(level,hpmax,atk,def,spd) {
 	else if (random <= 0.1) {name = "Goblin"}
 	else if (random <= 0.5) {name = "Imp"}
 	else if (random <= 1) {name = "Spooder"}
+	this.name = name;
 	
 }
 function setEnemies(difficulty) {
