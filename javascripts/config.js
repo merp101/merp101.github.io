@@ -49,7 +49,8 @@ var game = {
 	},	
 	conditions: {
 		fighting: false,
-		questing: false
+		questing: false,
+		turn: "your"
 	},
 	options: {
 		
