@@ -120,7 +120,7 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	if (currentEnemy == undefined) {hide("stats")}
+	if (currentEnemy == undefined) {hide("stats"); return();}
 	changeText("playerhp",game.stats.hp.current.toString());
 	//document.getElementById("playerhp").innerHTML = game.stats.hp.current;
 	changeText("playermaxhp",game.stats.hp.max.toString());
