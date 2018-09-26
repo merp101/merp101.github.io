@@ -147,4 +147,7 @@ function init() {
 	
 }
 
+setInterval(save(),30000);
+
+
 init();
