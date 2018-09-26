@@ -14,12 +14,12 @@ function changeText(id, text) {
 }
 
 function save() {
-	localStorage.setItem("caveSave",atob(game));
+	localStorage.setItem("caveSave",btoa(game));
 }
 
 function load() {
 	try {
-		game = btoa(localStorage.getItem("caveSave"));
+		game = atob(localStorage.getItem("caveSave"));
 		display();
 		return true;
 	} catch (e) {
