@@ -15,7 +15,7 @@ function changeText(id, text) {
 //The next functions until changeTab() are shamelessly copied from antimatter dimension's code, sry hevi
 
 
-function set_save() {
+function save() {
     localStorage.setItem("caveSave", btoa(JSON.stringify(game)));
 }
 
