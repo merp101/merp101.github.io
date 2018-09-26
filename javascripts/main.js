@@ -12,14 +12,16 @@ function element(id) {
 function changeText(id, text) {
 	element(id).innerHTML = text;
 }
+//The next functions until changeTab() are shamelessly copied from antimatter dimension's code, sry hevi
 
-function save() {
-	localStorage.setItem("caveSave",game);
+
+function set_save() {
+    localStorage.setItem("caveSave", btoa(JSON.stringify(game)));
 }
 
 function load() {
 	try {
-		game = localStorage.getItem("caveSave");
+		game = JSON.parse(atob(localStorage.getItem("caveSave")));
 		display();
 		return true;
 	} catch (e) {
