@@ -44,7 +44,7 @@ function hide(elemID) {
 }
 function show(elemID,type="block") {
 	let elem = document.getElementById(elemID);
-	if (elem != undefined) elem.style.display = type; return true;
+	if (elem != undefined) {elem.style.display = type; return true;}
 	else console.log("Element '" + elemID + "' not defined."); return false;
 }
  
