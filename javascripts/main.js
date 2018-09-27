@@ -38,14 +38,14 @@ function changeTab(tab) {
 }
 
 function hide(elemID) {
-	let elem = element(elemID);
-	if (elem != undefined) elem.display = "none";
-	else console.log("Element " + elemID + " not defined.");
+	let elem = document.getElementById(elemID);
+	if (elem != undefined) elem.style.display = "none"; return true;
+	else console.log("Element '" + elemID + "' not defined."); return false;
 }
 function show(elemID,type="block") {
-	let elem = element(elemID);
-	if (elem != undefined) elem.display = type;
-	else console.log("Element " + elemID + " not defined.");
+	let elem = document.getElementById(elemID);
+	if (elem != undefined) elem.style.display = type; return true;
+	else console.log("Element '" + elemID + "' not defined."); return false;
 }
  
 function updateQuests(id, title, text) {
@@ -120,9 +120,8 @@ document.onKeyDown=function() {
 }
 
 function display() { 
-	if (currentEnemy == undefined) {hide("stats"); return;}
+	if (currentEnemy == undefined) hide("stats"); return;
 	changeText("playerhp",game.stats.hp.current.toString());
-	//document.getElementById("playerhp").innerHTML = game.stats.hp.current;
 	changeText("playermaxhp",game.stats.hp.max.toString());
 	changeText("playeratk",game.stats.atk.toString());
 	changeText("playerspd",game.stats.spd.toString());
