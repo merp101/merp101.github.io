@@ -22,7 +22,6 @@ function save() {
 function load() {
 	try {
 		game = JSON.parse(atob(localStorage.getItem("caveSave")));
-		display();
 		return true;
 	} catch (e) {
 		console.log(e);
