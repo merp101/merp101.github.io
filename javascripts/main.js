@@ -39,13 +39,23 @@ function changeTab(tab) {
 
 function hide(elemID) {
 	let elem = document.getElementById(elemID);
-	if (elem != undefined) {elem.style.display = "none"; return true;}
-	else console.log("Element '" + elemID + "' not defined."); return false;
+	if (elem != undefined) {
+		elem.style.display = "none"; 
+		return true;
+	}   else {
+		console.log("Element '" + elemID + "' not defined.");
+		return false;
+	}
 }
 function show(elemID,type="block") {
 	let elem = document.getElementById(elemID);
-	if (elem != undefined) {elem.style.display = type; return true;}
-	else console.log("Element '" + elemID + "' not defined."); return false;
+	if (elem != undefined) {
+		elem.style.display = type; 
+		return true;
+	}   else {
+		console.log("Element '" + elemID + "' not defined."); 
+		return false;
+	}
 }
  
 function updateQuests(id, title, text) {
