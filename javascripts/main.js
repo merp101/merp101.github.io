@@ -38,9 +38,8 @@ function changeTab(tab) {
 }
 
 function hide(elemID) {
-	let elem = document.getElementById(elemID);
-	if (elem != undefined) {
-		elem.style.display = "none"; 
+	if (document.getElementById(elemId) != undefined) {
+		document.getElementById(elemId).style.display = "none"; 
 		return true;
 	}   else {
 		console.log("Element '" + elemID + "' not defined.");
