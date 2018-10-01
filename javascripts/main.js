@@ -36,6 +36,7 @@ function changeTab(tab) {
 
 function hide(elemID) {
 	elemId = elemId.toString();
+	return elemID;
 	if (document.getElementById(elemId) != undefined) {
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
