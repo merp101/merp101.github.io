@@ -12,8 +12,6 @@ function element(id) {
 function changeText(id, text) {
 	element(id).innerHTML = text;
 }
-//The next functions until changeTab() are shamelessly copied from antimatter dimension's code, sry hevi
-
 
 function save() {
     localStorage.setItem("caveSave", btoa(JSON.stringify(game)));
@@ -37,6 +35,7 @@ function changeTab(tab) {
 }
 
 function hide(elemID) {
+	console.log(elemID);
 	if (document.getElementById(elemId) != undefined) {
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
@@ -45,6 +44,8 @@ function hide(elemID) {
 		return false;
 	}
 }
+
+
 function show(elemID,type="block") {
 	let elem = document.getElementById(elemID);
 	if (elem != undefined) {
