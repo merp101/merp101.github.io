@@ -157,4 +157,4 @@ function init() {
 setInterval(save(),30000);
 
 
-document.getElementById("body").onload=init();
+document.getElementById("body").onload="init()";
