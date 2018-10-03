@@ -34,14 +34,12 @@ function changeTab(tab) {
 	currentTab=tab;
 }
 
-function hide(elemID) {
-	elemId = elemId.toString();
-	return elemID;
+function hide(elemId) {
 	if (document.getElementById(elemId) != undefined) {
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
 	}   else {
-		console.log("Element '" + elemID + "' not defined.");
+		console.log("Element '" + elemId + "' not defined.");
 		return false;
 	}
 }
