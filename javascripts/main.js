@@ -35,13 +35,13 @@ function changeTab(tab) {
 }
 
 function hide(elemId) {
-	if (document.getElementById(elemId) != undefined) {
+	//if (document.getElementById(elemId) != undefined) {
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
-	}   else {
-		console.log("Element '" + elemId + "' not defined.");
-		return false;
-	}
+	//}   else {
+	//	console.log("Element '" + elemId + "' not defined.");
+	//	return false;
+	//}
 }
 
 
