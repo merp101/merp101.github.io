@@ -36,6 +36,7 @@ function changeTab(tab) {
 
 function hide(elemId) {
 	if (document.getElementById(elemId) != undefined) {
+		return elemId;
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
 	}   else {
