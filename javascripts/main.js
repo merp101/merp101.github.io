@@ -45,13 +45,12 @@ function hide(elemId) {
 }
 
 
-function show(elemID,type="block") {
-	let elem = document.getElementById(elemID);
-	if (elem != undefined) {
-		elem.style.display = type; 
+function show(elemId,type="block") {
+	if (document.getElementById(elemId) != undefined) {
+		document.getElementById(elemId).style.display = type; 
 		return true;
 	}   else {
-		console.log("Element '" + elemID + "' not defined."); 
+		console.log("Element '" + elemId + "' not defined."); 
 		return false;
 	}
 }
