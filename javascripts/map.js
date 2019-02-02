@@ -9,3 +9,4 @@ function loadMap(r,c) { //rows, columns
       map.appendChild("column");
     }
   }
+}
