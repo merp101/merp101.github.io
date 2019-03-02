@@ -108,14 +108,16 @@ function drawWorld(level) {
 	let node;
 	let br;
 	let textNode;
+	let worldnum = 1;
 	for (let y = maps[level].length; y > 0; y++) {
 		node = document.createElement("SPAN");
 		br = document.createElement("BR");
-		node.id = "world-" + y;
+		node.id = "world-" + worldnum;
 	  textNode = document.createTextNode(maps[level][y]);
 		node.appendChild(textNode);
 		map.appendChild(node);
 		map.appendChild(br);
+		worldnum++;
 	}
 	worldDrawn = true;
 	drawPlayer();
