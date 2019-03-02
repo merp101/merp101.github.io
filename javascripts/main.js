@@ -4,6 +4,7 @@ var stats = game.stats;
 var items = game.items;
 var conditions = game.conditions;
 var options = game.options;
+var worldDrawn = false;
 
 function element(id) {
 	return document.getElementById(id);
@@ -86,21 +87,49 @@ function setPlayerItem(name,type,dmg) {
 function tick(letter=0) {
 	if (letter == 0) return;
 	function move() {
+		switch(letter) {
+			case "a": char.pos.x -= 1;
+			case "d": char.pos.x += 1;
+		}
+		/*
 		if (letter == "w") char.pos.y += 1;
 		else if (letter == "a") char.pos.x -= 1;
 		else if (letter == "s") char.pos.y -= 1;
 		else if (letter == "d") char.pos.x += 1;
+		*/
 	}
 	move();
 	if (char.pos.x == currentEnemy.pos.x && char.pos.y == currentEnemy.pos.y) {startFight();}
 	
 }
 
-function draw(thing) {
-	if (thing === "world") {
-		
+function drawWorld(level) {
+	let map = document.getElementById("map");
+	let node;
+	let textNode;
+	for (let y = 0; y < maps[level].length; y++) {
+		node = document.createElement("SPAN");
+		node.id = "world-" + (y + 1);
+	  textNode = document.createTextNode(maps[level][y]);
+		node.appendChild(textNode);
+		map.appendChild(node);
 	}
+	worldDrawn = true;
 }
+
+function drawPlayer() {
+	let xPos = char.pos.x;
+	let yPos = char.pos.y;
+	let world = document.getElementById("world-"+(yPos + 1));
+	let start = world.slice(0,xPos - 1); // before player
+	let pos = start.slice(xPos-1,xPos); // player position
+	let end = world.slice(xPos); // the rest of the string
+	pos = "o";
+	let newString = start.concat(pos); //add the 'o' to the end of the 'start' string, assign it to a var
+	newString.concat(end); //add the rest of the string
+	world = newString; //set the actual HTML to the new string
+}
+	
 
 
 
