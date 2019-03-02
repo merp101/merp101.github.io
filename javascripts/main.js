@@ -126,12 +126,11 @@ function drawPlayer() {
 	let yPos = char.pos.y + 1;
 	let world = document.getElementById("world-"+(yPos + 1));
 	let worldStr = world.innerHTML;
-	let start = worldStr.slice(0,xPos - 1); // before player
-	let end = worldStr.slice(xPos); // the rest of the string
-	let pos = "o"; //player
-	let newString = start.concat(pos); //add the 'o' to the end of the 'start' string, assign it to a var
-	newString.concat(end); //add the rest of the string
-	world = newString; //set the actual HTML to the new string
+	let str1 = worldStr.slice(0,xPos - 1); // before player
+	let str2 = worldStr.slice(xPos); // the rest of the string
+	let str3 = "o"; //player
+	str1.concat(str2,str3); //add the 'o' to the end of the 'start' string, then the rest of it
+	worldStr = str1; //set the actual HTML to the new string
 }
 	
 
