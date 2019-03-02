@@ -104,8 +104,7 @@ function tick(letter=0) {
 }
 
 function drawWorld(level) {
-	let map = document.getElementById("map").value;
-	let mapElem = document.getElementById("map");
+	let map = document.getElementById("map");
 	let node;
 	let br;
 	let textNode;
@@ -115,8 +114,8 @@ function drawWorld(level) {
 		node.id = "world-" + (y + 1);
 	  textNode = document.createTextNode(maps[level][y]);
 		node.appendChild(textNode);
-		mapElem.appendChild(node);
-		mapElem.appendChild(br);
+		map.appendChild(node);
+		map.appendChild(br);
 	}
 	worldDrawn = true;
 	drawPlayer();
@@ -126,9 +125,10 @@ function drawPlayer() {
 	let xPos = char.pos.x + 1;
 	let yPos = char.pos.y;
 	let world = document.getElementById("world-"+(yPos + 1));
-	let start = world.slice(0,xPos - 1); // before player
+	let worldStr = world.value;
+	let start = worldStr.slice(0,xPos - 1); // before player
 	let pos = start.slice(xPos-1,xPos); // player position
-	let end = world.slice(xPos); // the rest of the string
+	let end = worldStr.slice(xPos); // the rest of the string
 	pos = "o";
 	let newString = start.concat(pos); //add the 'o' to the end of the 'start' string, assign it to a var
 	newString.concat(end); //add the rest of the string
