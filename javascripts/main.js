@@ -129,8 +129,10 @@ function drawPlayer() {
 	let str1 = worldStr.slice(0,xPos - 1); // before player
 	let str2 = worldStr.slice(xPos); // the rest of the string
 	let str3 = "o"; //player
-	str1.concat(str2,str3); //add the 'o' to the end of the 'start' string, then the rest of it
-	worldStr = str1; //set the actual HTML to the new string
+	str1.concat(str2); //add the 'o' to the end of the 'start' string
+	console.log(str1);
+	str1.concat(str3); // the rest
+	world.innerHTML = str1; //set the actual HTML to the new string
 }
 	
 
