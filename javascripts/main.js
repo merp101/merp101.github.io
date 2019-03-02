@@ -104,7 +104,7 @@ function tick(letter=0) {
 }
 
 function drawWorld(level) {
-	let map = document.getElementById("map");
+	let map = document.getElementById("map").value.toString();
 	let node;
 	let br;
 	let textNode;
