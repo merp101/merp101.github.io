@@ -106,13 +106,16 @@ function tick(letter=0) {
 function drawWorld(level) {
 	let map = document.getElementById("map");
 	let node;
+	let br;
 	let textNode;
 	for (let y = 0; y < maps[level].length; y++) {
 		node = document.createElement("SPAN");
+		br = document.createElement("BR");
 		node.id = "world-" + (y + 1);
 	  textNode = document.createTextNode(maps[level][y]);
 		node.appendChild(textNode);
 		map.appendChild(node);
+		map.appendChild(br);
 	}
 	worldDrawn = true;
 }
