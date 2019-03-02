@@ -125,7 +125,7 @@ function drawPlayer() {
 	let xPos = char.pos.x + 1;
 	let yPos = char.pos.y;
 	let world = document.getElementById("world-"+(yPos + 1));
-	let worldStr = world.value;
+	let worldStr = world.innerHTML;
 	let start = worldStr.slice(0,xPos - 1); // before player
 	let pos = start.slice(xPos-1,xPos); // player position
 	let end = worldStr.slice(xPos); // the rest of the string
