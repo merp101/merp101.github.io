@@ -108,10 +108,10 @@ function drawWorld(level) {
 	let node;
 	let br;
 	let textNode;
-	for (let y = 0; y < maps[level].length; y++) {
+	for (let y = maps[level].length; y > 0; y++) {
 		node = document.createElement("SPAN");
 		br = document.createElement("BR");
-		node.id = "world-" + (y + 1);
+		node.id = "world-" + y;
 	  textNode = document.createTextNode(maps[level][y]);
 		node.appendChild(textNode);
 		map.appendChild(node);
@@ -123,13 +123,12 @@ function drawWorld(level) {
 
 function drawPlayer() {
 	let xPos = char.pos.x + 1;
-	let yPos = char.pos.y;
+	let yPos = char.pos.y + 1;
 	let world = document.getElementById("world-"+(yPos + 1));
 	let worldStr = world.innerHTML;
 	let start = worldStr.slice(0,xPos - 1); // before player
-	let pos = start.slice(xPos-1,xPos); // player position
 	let end = worldStr.slice(xPos); // the rest of the string
-	pos = "o";
+	let pos = "o"; //player
 	let newString = start.concat(pos); //add the 'o' to the end of the 'start' string, assign it to a var
 	newString.concat(end); //add the rest of the string
 	world = newString; //set the actual HTML to the new string
