@@ -17,6 +17,7 @@ li {
 body {
 	text-align: center;
 	font-family:"Inconsolata", monospace;
+	white-space:pre;
 }
 
 </style>
