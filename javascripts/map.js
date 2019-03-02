@@ -1,4 +1,4 @@
-function loadMap(r,c) { //rows, columns
+/*function loadMap(r,c) { //rows, columns
   var map = document.getElementById("map");
   for (r; r--; r>0) {
     let row = document.createElement("ul");
@@ -10,4 +10,14 @@ function loadMap(r,c) { //rows, columns
       map.appendChild("column");
     }
   }
+}*/
+var maps = { // (length x height) chars
+  cave: [" ________________ ", // 18x5
+         "/                \",
+         "|                 ",
+         "|                 ",
+         "|_________________"],
+  forest: [],
+  desert: [],
 }
+         
