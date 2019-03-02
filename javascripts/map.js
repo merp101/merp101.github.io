@@ -13,10 +13,10 @@
 }*/
 var maps = { // (length x height) chars
   cave: [" ________________ ", // 18x5
-         "/                \",
-         "|                 ",
-         "|                 ",
-         "|_________________"],
+         "/                \\", // the backslash is an escape character, it'll only output one
+         "|                 ", // 
+         "|                 ", // 
+         "|_________________"], //
   forest: [],
   desert: [],
 }
