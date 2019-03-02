@@ -118,6 +118,7 @@ function drawWorld(level) {
 		map.appendChild(br);
 	}
 	worldDrawn = true;
+	drawPlayer();
 }
 
 function drawPlayer() {
