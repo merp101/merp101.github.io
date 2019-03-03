@@ -166,7 +166,7 @@ document.getElementById("body").onkeydown = function() {
 };
 
 function display() { 
-	if (currentEnemy == undefined) hide("stats"); return;
+	if (currentEnemy == undefined) hide("stats"); hide("fighting..."); return;
 	changeText("playerhp",game.stats.hp.current.toString());
 	changeText("playermaxhp",game.stats.hp.max.toString());
 	changeText("playeratk",game.stats.atk.toString());
