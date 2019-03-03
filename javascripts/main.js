@@ -183,8 +183,8 @@ function tick(letter=0) {
 	if (letter == 0) return;
 	function move() {
 		switch(letter) {
-			case "a": char.pos.x -= 1; break;
-			case "d": char.pos.x += 1; break;
+			case "a": if (char.pos.x > 0) char.pos.x -= 1; break;
+			case "d": if (char.pos.y > 0) char.pos.x += 1; break;
 		}
 		drawPlayer();
 		/*
