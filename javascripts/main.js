@@ -145,23 +145,25 @@ function drawPlayer() {
 
 document.getElementById("body").onkeydown = function() {
 	var letter = 0;
-	if (!game.conditions.fighting) {
-		switch (e.keyCode) {
-			case 87: letter = "w";
-			case 65: letter = "a";
-			case 83: letter = "s";
-			case 68: letter = "d";
+	if (currentTab == "fight") {
+		if (!game.conditions.fighting) {
+			switch (e.keyCode) {
+				case 87: letter = "w";
+				case 65: letter = "a";
+				case 83: letter = "s";
+				case 68: letter = "d";
+			}
+			tick(letter);
+		} else {
+			switch (e.keyCode) {
+				case 49: letter = 1;
+				case 50: letter = 2;
+				case 51: letter = 3;
+				case 52: letter = 4;
+			}
+			var numToLettersAtk = ["basic","fire","ice","electricity"];
+			fight(numToLettersAtk[letter-1]);
 		}
-		tick(letter);
-	} else {
-		switch (e.keyCode) {
-			case 49: letter = 1;
-			case 50: letter = 2;
-			case 51: letter = 3;
-			case 52: letter = 4;
-		}
-		var numToLettersAtk = ["basic","fire","ice","electricity"];
-		fight(numToLettersAtk[letter-1]);
 	}
 };
 
