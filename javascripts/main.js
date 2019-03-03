@@ -17,9 +17,9 @@ let range = game.stats.range;
 let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
 var currentEnemy;
-var iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-var iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-var iForEnemyDiff = Number(maps[currentLevel + "Diff"]);
+var iForEnemyXPos;
+var iForEnemyYPos;
+var iForEnemyDiff;
 
 
 function element(id) {
@@ -219,6 +219,7 @@ function drawWorld(level) {
 		worldDrawn = true;
 		currentLevel = level;
 		drawPlayer();
+		defineVars();
 	}
 }
 
@@ -255,6 +256,11 @@ function drawEnemies() {
 	
 }
 	
+function defineVars() {
+	iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+	iForEnemyDiff = Number(maps[currentLevel + "Diff"]);
+}
 
 
 
