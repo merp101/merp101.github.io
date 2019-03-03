@@ -143,7 +143,7 @@ function drawPlayer() {
 
 
 
-document.onKeyDown=function() {
+document.getElementById("body").addEventListener("onkeydown",function() {
 	var letter = 0;
 	if (!game.conditions.fighting) {
 		switch (e.keyCode) {
@@ -163,7 +163,7 @@ document.onKeyDown=function() {
 		var numToLettersAtk = ["basic","fire","ice","electricity"];
 		fight(numToLettersAtk[letter-1]);
 	}
-}
+});
 
 function display() { 
 	if (currentEnemy == undefined) hide("stats"); return;
