@@ -126,14 +126,16 @@ function drawWorld(level) {
 function drawPlayer() {
 	let xPos = char.pos.x + 1;
 	let yPos = char.pos.y + 1;
+	console.log(xPos + ", " + yPos);
 	let world = document.getElementById("world-"+(yPos + 1));
 	let worldStr = world.innerHTML;
 	let str1 = worldStr.slice(0,xPos - 1); // before player
-	let str2 = worldStr.slice(xPos); // the rest of the string
-	let str3 = "o"; //player
-	str1.concat(str2); //add the 'o' to the end of the 'start' string
 	console.log(str1);
-	str1.concat(str3); // the rest
+	let str2 = worldStr.slice(xPos); // the rest of the string
+	console.log(str2);
+	let str3 = "o"; //player
+	str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+	console.log(str1);
 	world.innerHTML = str1; //set the actual HTML to the new string
 }
 	
