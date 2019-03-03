@@ -186,5 +186,5 @@ function init() {
 	if (items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
 }
-document.getElementById("quest1").onclick = drawWorld("cave");
+document.getElementById("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
