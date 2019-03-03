@@ -108,16 +108,15 @@ function drawWorld(level) {
 	let node;
 	let br;
 	let textNode;
-	let worldnum = 1;
+	let defaultNode = document.getElementById("default");
 	for (let y = maps[level].length; y > 0; y--) {
 		node = document.createElement("SPAN");
 		br = document.createElement("BR");
-		node.id = "world-" + worldnum;
-	  textNode = document.createTextNode(maps[level][y]);
+		node.id = "world-" + y;
+	  textNode = document.createTextNode(maps[level][y-1]);
 		node.appendChild(textNode);
-		map.appendChild(node);
-		map.appendChild(br);
-		worldnum++;
+		defaultNode.insertBefore(node);
+		defaultNode.insertBefore(br);
 	}
 	worldDrawn = true;
 	drawPlayer();
@@ -125,7 +124,7 @@ function drawWorld(level) {
 
 function drawPlayer() {
 	let xPos = char.pos.x + 1;
-	let yPos = char.pos.y + 1;
+	let yPos = char.pos.y;
 	let world = document.getElementById("world-"+(yPos + 1));
 	let worldStr = world.innerHTML;
 	let str1 = worldStr.slice(0,xPos - 1); // before player
