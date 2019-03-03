@@ -143,7 +143,7 @@ function drawPlayer() {
 
 
 
-document.getElementById("body").onkeypress = function() {
+document.getElementById("body").onkeydown = function() {
 	var x = event.which || event.keyCode;
 	if (currentTab == "fight") {
 		if (!game.conditions.fighting) {
