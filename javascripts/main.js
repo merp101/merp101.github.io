@@ -101,7 +101,7 @@ function tick(letter=0) {
 		*/
 	}
 	move();
-	if (char.pos.x == currentEnemy.pos.x && char.pos.y == currentEnemy.pos.y) {startFight();}
+	// if (char.pos.x == currentEnemy.pos.x && char.pos.y == currentEnemy.pos.y) {startFight();}
 	
 }
 
