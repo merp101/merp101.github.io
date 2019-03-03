@@ -20,6 +20,7 @@ var currentEnemy;
 var iForEnemyXPos;
 var iForEnemyYPos;
 var iForEnemyDiff;
+var numToLettersAtk = ["basic","fire","ice","electricity"];
 
 
 function element(id) {
@@ -275,16 +276,13 @@ document.getElementById("body").onkeydown = function() {
 				case 83: tick("s"); break;
 				case 68: tick("d"); break;
 			}
-			;
 		} else {
 			switch (x) {
-				case 49: letter = 1; break;
-				case 50: letter = 2; break;
-				case 51: letter = 3; break;
-				case 52: letter = 4; break;
-			}
-			var numToLettersAtk = ["basic","fire","ice","electricity"];
-			fight(numToLettersAtk[letter-1]);
+				case 49: fight(numToLettersAtk[0]);; break; // 1
+				case 50: fight(numToLettersAtk[1]);; break; // 2
+				case 51: fight(numToLettersAtk[2]);; break; // 3
+				case 52: fight(numToLettersAtk[3]);; break; // 4
+			}		
 		}
 	}
 };
