@@ -17,6 +17,7 @@ var maps = { // (length x height) chars
          "|                 ", // 
          "|                 ", // 
          "|_________________"], //
+  caveEnemyPos: ["5,1","8,5"], //x,y
   forest: [],
   desert: [],
 }
