@@ -112,7 +112,7 @@ function drawWorld(level) {
 		node = document.createElement("SPAN");
 		br = document.createElement("BR");
 		node.id = "world-" + y;
-	  	textNode = document.createTextNode(maps[level][y-1]);
+	  	textNode = document.createTextNode(maps[level][maps[level].length - y]);
 		node.appendChild(textNode);
 		map.appendChild(node);
 		map.appendChild(br);
