@@ -104,21 +104,23 @@ function tick(letter=0) {
 }
 
 function drawWorld(level) {
-	let map = document.getElementById("map");
-	let node;
-	let br;
-	let textNode;
-	for (let y = maps[level].length; y > 0; y--) {
-		node = document.createElement("SPAN");
-		br = document.createElement("BR");
-		node.id = "world-" + y;
-	  	textNode = document.createTextNode(maps[level][maps[level].length - y]);
-		node.appendChild(textNode);
-		map.appendChild(node);
-		map.appendChild(br);
+	if (!worldDrawn) {
+		let map = document.getElementById("map");
+		let node;
+		let br;
+		let textNode;
+		for (let y = maps[level].length; y > 0; y--) {
+			node = document.createElement("SPAN");
+			br = document.createElement("BR");
+			node.id = "world-" + y;
+	  		textNode = document.createTextNode(maps[level][maps[level].length - y]);
+			node.appendChild(textNode);
+			map.appendChild(node);
+			map.appendChild(br);
+		}
+		worldDrawn = true;
+		drawPlayer();
 	}
-	worldDrawn = true;
-	drawPlayer();
 }
 
 function drawPlayer() {
