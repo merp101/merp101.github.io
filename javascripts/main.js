@@ -89,8 +89,8 @@ function tick(letter=0) {
 	if (letter == 0) return;
 	function move() {
 		switch(letter) {
-			case "a": char.pos.x -= 1;
-			case "d": char.pos.x += 1;
+			case "a": char.pos.x -= 1; return;
+			case "d": char.pos.x += 1; return;
 		}
 		drawPlayer();
 		/*
@@ -148,18 +148,18 @@ document.getElementById("body").onkeydown = function() {
 	if (currentTab == "fight") {
 		if (!game.conditions.fighting) {
 			switch (x) {
-				case 87: tick("w");
-				case 65: tick("a");
-				case 83: tick("s");
-				case 68: tick("d");
+				case 87: tick("w"); return;
+				case 65: tick("a"); return;
+				case 83: tick("s"); return;
+				case 68: tick("d"); return;
 			}
 			;
 		} else {
 			switch (x) {
-				case 49: letter = 1;
-				case 50: letter = 2;
-				case 51: letter = 3;
-				case 52: letter = 4;
+				case 49: letter = 1; return;
+				case 50: letter = 2; return;
+				case 51: letter = 3; return;
+				case 52: letter = 4; return;
 			}
 			var numToLettersAtk = ["basic","fire","ice","electricity"];
 			fight(numToLettersAtk[letter-1]);
