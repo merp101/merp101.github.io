@@ -1,5 +1,6 @@
 
 var currentTab = "cave";//Tabs: inv, map, cave
+let i;
 var stats = game.stats;
 var items = game.items;
 var conditions = game.conditions;
@@ -16,7 +17,9 @@ let range = game.stats.range;
 let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
 var currentEnemy;
-
+var iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+var iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+var iForEnemyDiff = Number(maps[currentLevel + "Diff"]);
 
 
 function element(id) {
@@ -122,10 +125,10 @@ function setEnemies(difficulty, level) {
 	game.enemies.def = Math.round(Math.pow(difficulty, 1.1)) + 1;
 	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
 	
-	for (let i= 0; i < game.enemies.num; i++) {
+	for (i= 0; i < game.enemies.num; i++) {
 		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
-	/*for (let i = 0; i < game.enemies.num; i++) {
+	/*for (i = 0; i < game.enemies.num; i++) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.current = game.enemies.hp.current;
@@ -192,8 +195,8 @@ function tick(letter=0) {
 		*/
 	}
 	move();
-	for (let i = 0; i < game.enemies.num; i++) {
-		if (char.pos.x == (Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1) && char.pos.y == Number(maps[currentLevel + "EnemyPos"][i].charAt(3)) + 1) {startFight(Number(maps[currentLevel + "Diff"]), currentLevel)}
+	for (i = 0; i < game.enemies.num; i++) {
+		if (char.pos.x == iForEnemyXPos && char.pos.y == iForEnemyYPos) {startFight(iForEnemyDiff, currentLevel)}
 	}
 	
 }
@@ -230,12 +233,13 @@ function drawPlayer() {
 		let str3 = "o"; //player
 		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
+		startFight(iForEnemyDiff, currentLevel);
 	}
 }
 
 function drawEnemies() {
 	if (conditions.fighting) {
-		for (let i = 0; i < game.enemies.num; i++) {
+		for (i = 0; i < game.enemies.num; i++) {
 			let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
 			let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
 			let world = document.getElementById("world-"+(yPos));
