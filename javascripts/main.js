@@ -144,17 +144,16 @@ function drawPlayer() {
 
 
 document.getElementById("body").onkeydown = function() {
-	var letter = 0;
 	var x = event.which || event.keyCode;
 	if (currentTab == "fight") {
 		if (!game.conditions.fighting) {
 			switch (x) {
-				case 87: letter = "w";
-				case 65: letter = "a";
-				case 83: letter = "s";
-				case 68: letter = "d";
+				case 87: tick("w");
+				case 65: tick("a");
+				case 83: tick("s");
+				case 68: tick("d");
 			}
-			tick(letter);
+			;
 		} else {
 			switch (x) {
 				case 49: letter = 1;
