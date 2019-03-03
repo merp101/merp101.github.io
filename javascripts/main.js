@@ -259,9 +259,11 @@ function drawEnemies() {
 }
 	
 function defineVars() {
-	iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-	levelDiff = Number(maps[currentLevel + "Diff"]);
+	if (currentLevel != undefined) {
+		iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+		iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+		levelDiff = Number(maps[currentLevel + "Diff"]);
+	}
 }
 
 
