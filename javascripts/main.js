@@ -91,6 +91,7 @@ function tick(letter=0) {
 			case "a": char.pos.x -= 1;
 			case "d": char.pos.x += 1;
 		}
+		drawPlayer();
 		/*
 		if (letter == "w") char.pos.y += 1;
 		else if (letter == "a") char.pos.x -= 1;
