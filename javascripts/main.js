@@ -143,12 +143,13 @@ function startFight(difficulty=1, type="melee") {
 	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
 	var interval = (10 / spd) * difficulty; //time in seconds to complete task
 	
-	setEnemies(difficulty);
+	setEnemies(difficulty, currentLevel);
 	game.conditions.fighting = true;
 	var array = [damage,interval];
 	game.stats.array = array;
 	
 	display();
+	drawEnemies();
 }
 function fight(attack,buffs=[]) {
 	var damage = game.stats.array[0];
