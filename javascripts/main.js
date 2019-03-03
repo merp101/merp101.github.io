@@ -19,7 +19,7 @@ let type = game.items.equips.weapon.type;
 var currentEnemy;
 var iForEnemyXPos;
 var iForEnemyYPos;
-var iForEnemyDiff;
+var levelDiff;
 var numToLettersAtk = ["basic","fire","ice","electricity"];
 
 
@@ -152,6 +152,7 @@ function startFight(difficulty=1, type="melee") {
 	display();
 	drawEnemies();
 }
+
 function fight(attack,buffs=[]) {
 	var damage = game.stats.array[0];
 	var interval = game.stats.array[1];
@@ -172,8 +173,6 @@ function fight(attack,buffs=[]) {
 	display();
 	
 }
-
-
 
 function setPlayerItem(name,type,dmg) {
 	items.equips.weapon.name = name; 
@@ -198,7 +197,8 @@ function tick(letter=0) {
 	}
 	move();
 	for (i = 0; i < game.enemies.num; i++) {
-		if (char.pos.x == iForEnemyXPos && char.pos.y == iForEnemyYPos) {startFight(iForEnemyDiff, currentLevel)}
+		defineVars();
+		if (char.pos.x == iForEnemyXPos && char.pos.y == iForEnemyYPos) {startFight(levelDiff, currentLevel)}
 	}
 	
 }
@@ -236,7 +236,7 @@ function drawPlayer() {
 		let str3 = "o"; //player
 		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
-		startFight(iForEnemyDiff, currentLevel);
+		startFight(Number(maps[currentLevel + "Diff"]), currentLevel);
 	}
 }
 
@@ -261,7 +261,7 @@ function drawEnemies() {
 function defineVars() {
 	iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
 	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-	iForEnemyDiff = Number(maps[currentLevel + "Diff"]);
+	levelDiff = Number(maps[currentLevel + "Diff"]);
 }
 
 
