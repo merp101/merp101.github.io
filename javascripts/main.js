@@ -5,6 +5,7 @@ var items = game.items;
 var conditions = game.conditions;
 var options = game.options;
 var worldDrawn = false;
+var currentLevel = "none";
 
 function element(id) {
 	return document.getElementById(id);
@@ -120,24 +121,23 @@ function drawWorld(level) {
 			map.appendChild(br);
 		}
 		worldDrawn = true;
+		currentLevel = level;
 		drawPlayer();
 	}
 }
 
 function drawPlayer() {
-	let xPos = char.pos.x + 1;
-	let yPos = char.pos.y + 1;
-	console.log(xPos + ", " + yPos);
-	let world = document.getElementById("world-"+(yPos));
-	let worldStr = world.innerHTML;
-	let str1 = worldStr.slice(0,xPos); // before player
-	console.log(str1);
-	let str2 = worldStr.slice(xPos + 1); // the rest of the string
-	console.log(str2);
-	let str3 = "o"; //player
-	let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
-	console.log(newStr);
-	world.innerHTML = newStr; //set the actual HTML to the new string
+	if (currentLevel != "none") {
+		let xPos = char.pos.x + 1;
+		let yPos = char.pos.y + 1;
+		let world = document.getElementById("world-"+(yPos));
+		let worldStr = maps[currentLevel][yPos-1];
+		let str1 = worldStr.slice(0,xPos); // before player
+		let str2 = worldStr.slice(xPos + 1); // the rest of the string
+		let str3 = "o"; //player
+		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+		world.innerHTML = newStr; //set the actual HTML to the new string
+	}
 }
 	
 
