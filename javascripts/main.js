@@ -17,9 +17,11 @@ let range = game.stats.range;
 let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
 var currentEnemy;
-var iForEnemyXPos;
-var iForEnemyYPos;
-var levelDiff;
+var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+var levelDiff;	// =	levelDiff = Number(maps[currentLevel + "Diff"]);
+
+
 var numToLettersAtk = ["basic","fire","ice","electricity"];
 
 
@@ -197,8 +199,7 @@ function tick(letter=0) {
 	}
 	move();
 	for (i = 0; i < game.enemies.num; i++) {
-		defineVars();
-		if (char.pos.x == iForEnemyXPos && char.pos.y == iForEnemyYPos) {startFight(levelDiff, currentLevel)}
+		if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1 && char.pos.y == Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1) {startFight(levelDiff, currentLevel)}
 	}
 	
 }
@@ -221,7 +222,7 @@ function drawWorld(level) {
 		worldDrawn = true;
 		currentLevel = level;
 		drawPlayer();
-		defineVars();
+		levelDiff = Number(maps[currentLevel + "Diff"]);
 	}
 }
 
@@ -236,7 +237,7 @@ function drawPlayer() {
 		let str3 = "o"; //player
 		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
-		startFight(Number(maps[currentLevel + "Diff"]), currentLevel);
+		startFight(levelDiff, currentLevel);
 	}
 }
 
@@ -257,16 +258,6 @@ function drawEnemies() {
 	}
 	
 }
-	
-function defineVars() {
-	if (currentLevel != undefined) {
-		iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-		iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-		levelDiff = Number(maps[currentLevel + "Diff"]);
-	}
-}
-
-
 
 document.getElementById("body").onkeydown = function() {
 	var x = event.which || event.keyCode;
