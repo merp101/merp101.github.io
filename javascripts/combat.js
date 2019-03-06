@@ -1,0 +1,84 @@
+function Enemy(level,hpmax,atk,def,spd) {
+	this.level = level;
+	this.hp = {
+		max: hpmax,
+		current: hpmax
+	}
+	this.atk = atk;
+	this.def = def;
+	this.spd = spd;
+	//determining the name
+	var random = Math.random();
+	var name;
+	if (random <= 0.01) {name = "TREASURE!!!"}
+	else if (random <= 0.05) {name = "Aragog the Mighty"}
+	else if (random <= 0.1) {name = "Goblin"}
+	else if (random <= 0.5) {name = "Imp"}
+	else if (random <= 1) {name = "Spooder"}
+	this.name = name;
+	
+}
+function setEnemies(difficulty, level) {
+	game.enemies.num = maps[level + "EnemyPos"].length;
+	if (difficulty === 0) {
+		game.enemies.level = 1;
+	} else game.enemies.level = (difficulty * 2) - 1;
+	game.enemies.hp.max = Math.round(Math.pow(game.stats.hp.max, 0.25) + 1) * Math.pow(difficulty, 2);
+	game.enemies.hp.current = game.enemies.hp.max;
+	game.enemies.atk = Math.round(Math.pow(difficulty, 1.5)) + 1;
+	game.enemies.def = Math.round(Math.pow(difficulty, 1.1)) + 1;
+	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
+	
+	for (i= 0; i < game.enemies.num; i++) {
+		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
+	}
+	/*for (i = 0; i < game.enemies.num; i++) {
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.current = game.enemies.hp.current;
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.atk = game.enemies.atk;
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.def = game.enemies.def;
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd;
+	}*/
+}
+function startFight(difficulty=1, type="melee") {
+	//setting up basic conditions for fight: base damage and interval
+	var damage;
+	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
+	var interval = (10 / spd) * difficulty; //time in seconds to complete task
+	
+	setEnemies(difficulty, currentLevel);
+	game.conditions.fighting = true;
+	var array = [damage,interval];
+	game.stats.array = array;
+	
+	display();
+	drawEnemies();
+}
+
+function fight(attack,buffs=[]) {
+	var damage = game.stats.array[0];
+	var interval = game.stats.array[1];
+	var dmgMult = consts.skills[attack].dmg
+
+	if (buffs.includes("ice")) dmgMult *= 1.25;
+	if (buffs.includes("fire")) dmgMult *= 1.5;
+	if (buffs.includes("electricity")) dmgMult *= 2;
+		
+	var enemy = enemies[SPELLED[game.enemies.num-(game.enemies.num - game.enemies.numDefeated)]+"Enemy"];
+	enemy.hp.current -= (damage * dmgMult) - enemy.def; //can be changed
+	if (enemy.hp.current <= 0) {
+		//end the fight, rewards
+		return;
+		
+	}
+	game.conditions.turn = "the enemy's";
+	display();
+	
+}
+
+function setPlayerItem(name,type,dmg) {
+	items.equips.weapon.name = name; 
+	items.equips.weapon.dmg = dmg; 
+	items.equips.weapon.type = type;
+}
