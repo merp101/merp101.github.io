@@ -1,5 +1,4 @@
 // basic vars
-const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //etc
 var worldDrawn = false;
 var currentLevel = "none";
 let maxhp = game.stats.hp.max;
