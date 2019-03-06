@@ -1,3 +1,23 @@
+// basic vars
+const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //etc
+var worldDrawn = false;
+var currentLevel = "none";
+let maxhp = game.stats.hp.max;
+let hp = game.stats.hp.current;
+let atk = game.stats.atk;
+let def = game.stats.def;
+let spd = game.stats.spd;
+let tact = game.stats.tact;
+let range = game.stats.range;
+let magic = game.stats.magic;
+let type = game.items.equips.weapon.type;
+var currentEnemy;
+var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+var levelDiff;	// =	levelDiff = Number(maps[currentLevel + "Diff"]);
+var numToLettersAtk = ["basic","fire","ice","electricity"];
+
+// Enemy creator function
 function Enemy(level,hpmax,atk,def,spd) {
 	this.level = level;
 	this.hp = {
@@ -18,6 +38,8 @@ function Enemy(level,hpmax,atk,def,spd) {
 	this.name = name;
 	
 }
+
+// sets enemies' stats for the level/difficulty
 function setEnemies(difficulty, level) {
 	game.enemies.num = maps[level + "EnemyPos"].length;
 	if (difficulty === 0) {
@@ -38,9 +60,10 @@ function setEnemies(difficulty, level) {
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.current = game.enemies.hp.current;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.atk = game.enemies.atk;
 		enemies.prototype[SPELLED[i]+"Enemy"].prototype.def = game.enemies.def;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd;
-	}*/
+		enemies.prototype[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd; 
+	}*/ //this is old codeaa
 }
+
 function startFight(difficulty=1, type="melee") {
 	//setting up basic conditions for fight: base damage and interval
 	var damage;
@@ -52,7 +75,6 @@ function startFight(difficulty=1, type="melee") {
 	var array = [damage,interval];
 	game.stats.array = array;
 	
-	display();
 	drawEnemies();
 }
 
@@ -78,7 +100,64 @@ function fight(attack,buffs=[]) {
 }
 
 function setPlayerItem(name,type,dmg) {
-	items.equips.weapon.name = name; 
-	items.equips.weapon.dmg = dmg; 
-	items.equips.weapon.type = type;
+	game.items.equips.weapon.name = name; 
+	game.items.equips.weapon.dmg = dmg; 
+	game.items.equips.weapon.type = type;
+}
+
+// Draw functions
+
+function drawWorld(level) {
+	if (!worldDrawn) {
+		let map = document.getElementById("map");
+		let node;
+		let br;
+		let textNode;
+		for (let y = maps[level].length; y > 0; y--) {
+			node = document.createElement("SPAN");
+			br = document.createElement("BR");
+			node.id = "world-" + y;
+	  		textNode = document.createTextNode(maps[level][maps[level].length - y]);
+			node.appendChild(textNode);
+			map.appendChild(node);
+			map.appendChild(br);
+		}
+		worldDrawn = true;
+		currentLevel = level;
+		drawPlayer();
+		levelDiff = Number(maps[currentLevel + "Diff"]);
+	}
+}
+
+function drawPlayer() {
+	if (currentLevel != "none") {
+		let xPos = char.pos.x + 1;
+		let yPos = char.pos.y + 1;
+		let world = document.getElementById("world-"+(yPos));
+		let worldStr = maps[currentLevel][yPos-1];
+		let str1 = worldStr.slice(0,xPos); // before player
+		let str2 = worldStr.slice(xPos + 1); // the rest of the string
+		let str3 = "o"; //player
+		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+		world.innerHTML = newStr; //set the actual HTML to the new string
+		startFight(levelDiff, currentLevel);
+	}
+}
+
+function drawEnemies() {
+	if (conditions.fighting) {
+		for (i = 0; i < game.enemies.num; i++) {
+			let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+			let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+			let world = document.getElementById("world-"+(yPos));
+			let worldStr = world.innerHTML;
+			let str1 = worldStr.slice(0,xPos); // before enemy
+			let str2 = worldStr.slice(xPos + 1); // the rest of the string
+			let str3 = "x"; //enemy
+			let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+			world.innerHTML = newStr; //set the actual HTML to the new string
+		}
+		
+	}
+	
 }
