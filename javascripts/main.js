@@ -104,21 +104,18 @@ function tick(letter=0) {
 document.getElementById("body").onkeydown = function() {
 	var x = event.which || event.keyCode;
 	if (currentTab == "fight") {
-		if (!game.conditions.fighting) {
+		if (game.conditions.fighting) {
 			switch (x) {
-				case 87: tick("w"); break;
-				case 65: tick("a"); break;
-				case 83: tick("s"); break;
-				case 68: tick("d"); break;
-			}
-		} else {
-			switch (x) {
+				case 87: tick("w"); break; // w
+				case 65: tick("a"); break; // a
+				case 83: tick("s"); break; // s
+				case 68: tick("d"); break; // d
 				case 49: fight(numToLettersAtk[0]);; break; // 1
 				case 50: fight(numToLettersAtk[1]);; break; // 2
 				case 51: fight(numToLettersAtk[2]);; break; // 3
 				case 52: fight(numToLettersAtk[3]);; break; // 4
-			}		
-		}
+			}
+		} 
 	}
 };
 
