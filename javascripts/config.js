@@ -18,7 +18,11 @@ var game = {
 		skills: ["basic"]
 	},
 	items: {
-		inventory: [],
+		inventory: {
+			normal: [],
+			consumable: [""],
+			special: [""],
+		},
 		equips: {
 			head: {name: "none", def: 0},
 			chest: {name: "none", def: 0},
@@ -27,8 +31,6 @@ var game = {
 			weapon: {name: "none", type: "", atk: 0},
 			accessory: {name: "none", atk: 0, def: 0}
 		},
-		consumable: [""],
-		special: [""]
 	},
 	enemies: { //this is master stats
 		num: 0,
