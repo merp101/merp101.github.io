@@ -18,6 +18,7 @@ var game = {
 		skills: ["basic"]
 	},
 	items: {
+		inventory: [],
 		equips: {
 			head: {name: "none", def: 0},
 			chest: {name: "none", def: 0},
