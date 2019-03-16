@@ -101,7 +101,7 @@ function tick(letter=0) {
 	
 }
 
-document.getElementById("body").onkeydown = function() {
+document.getElementById("body").onkeyup = function() {
 	var x = event.which || event.keyCode;
 	if (currentTab == "fight") {
 		if (game.conditions.fighting) {
