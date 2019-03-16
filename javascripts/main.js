@@ -4,6 +4,7 @@ var stats = game.stats;
 var items = game.items;
 var conditions = game.conditions;
 var options = game.options;
+var moved = false;
 
 function element(id) {
 	return document.getElementById(id);
@@ -102,23 +103,29 @@ function tick(letter=0) {
 }
 
 document.getElementById("body").onkeypress = function() {
-	var x = event.which || event.keyCode;
-	console.log(x);
-	if (currentTab == "fight") {
-		if (game.conditions.fighting) {
-			switch (x) {
-				case 119: tick("w"); break; // w
-				case 97: tick("a"); break; // a
-				case 115: tick("s"); break; // s
-				case 100: tick("d"); break; // d
-				case 49: fight(numToLettersAtk[0]);; break; // 1
-				case 50: fight(numToLettersAtk[1]);; break; // 2
-				case 51: fight(numToLettersAtk[2]);; break; // 3
-				case 52: fight(numToLettersAtk[3]);; break; // 4
-			}
-		} 
+	if (!moved) {
+		var x = event.which || event.keyCode;
+		if (currentTab == "fight") {
+			if (game.conditions.fighting) {
+				switch (x) {
+					case 119: tick("w"); break; // w
+					case 97: tick("a"); break; // a
+					case 115: tick("s"); break; // s
+					case 100: tick("d"); break; // d
+					case 49: fight(numToLettersAtk[0]);; break; // 1
+					case 50: fight(numToLettersAtk[1]);; break; // 2
+					case 51: fight(numToLettersAtk[2]);; break; // 3
+					case 52: fight(numToLettersAtk[3]);; break; // 4
+				}
+			} 
+		}
+		moved = true;
 	}
 };
+
+document.getElementById("body").onkeyup = function() {
+	moved = false;
+}
 
 function display() { 
 	if (conditions.fighting == false) hide("stats"); hide("fighting..."); hide("turn..."); return;
