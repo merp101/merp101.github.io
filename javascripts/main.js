@@ -103,6 +103,7 @@ function tick(letter=0) {
 
 document.getElementById("body").onkeypress = function() {
 	var x = event.which || event.keyCode;
+	console.log(x);
 	if (currentTab == "fight") {
 		if (game.conditions.fighting) {
 			switch (x) {
