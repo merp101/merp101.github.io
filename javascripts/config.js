@@ -60,7 +60,7 @@ var game = {
 	}
 }
 
-var enemies = {};
+var enemies = [];
 
 
 var char = { //character IN FIGHTS (positon, mostly)
