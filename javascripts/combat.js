@@ -135,8 +135,8 @@ function drawWorld(level) {
 
 function drawPlayer() {
 	if (currentLevel != "none") {
-		let xPos = char.pos.x + 1;
-		let yPos = char.pos.y + 1;
+		let xPos = char.pos.x;
+		let yPos = char.pos.y;
 		let world = document.getElementById("world-"+(yPos));
 		let worldStr = maps[currentLevel][maps[currentLevel].length - yPos];
 		let str1 = worldStr.slice(0,xPos); // before player
