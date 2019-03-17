@@ -72,7 +72,7 @@ function startFight(difficulty=0) {
 	game.conditions.fighting = true;
 	currentEnemyNum = 0;
 	currentEnemy = enemies[currentEnemyNum];
-
+	show("stats"); show("fighting..."); show("turn");
 	
 }
 
