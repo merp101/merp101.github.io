@@ -55,7 +55,7 @@ function setEnemies(difficulty, level=currentLevel) {
 	game.enemies.spd = Math.round(Math.pow(difficulty, 1.05)) + 1;
 	
 	for (i= 0; i < game.enemies.num; i++) {
-		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
+		enemies[i] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
 	enemiesSet = true;
 	if (!enemiesDrawn) {drawEnemies();}
@@ -69,28 +69,36 @@ function startFight(difficulty=0) {
 		setEnemies(difficulty, currentLevel);
 	}
 	game.conditions.fighting = true;
+	currentEnemyNum = 0;
+	currentEnemy = enemies[currentEnemyNum];
+
 	
 }
 
 function fight(attack,buffs=[],type) {
-	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
-	var damage = game.stats.array[0];
-	var interval = game.stats.array[1];
-	var dmgMult = consts.skills[attack].dmg
+	damage = atk;
+	var dmgMult;
+	if (!attack.includes("buff")) { 
+		dmgMult = consts.skills[attack].dmg;
+	} else {
+		buffs.push(attack);
+	}
 
-	if (buffs.includes("ice")) dmgMult *= 1.25;
-	if (buffs.includes("fire")) dmgMult *= 1.5;
-	if (buffs.includes("electricity")) dmgMult *= 2;
+	if (buffs.includes("ice")) dmgMult += 1.25;
+	if (buffs.includes("fire")) dmgMult += 1.5;
+	if (buffs.includes("electricity")) dmgMult += 2;
 		
-	var enemy = enemies[SPELLED[game.enemies.num-(game.enemies.num - game.enemies.numDefeated)]+"Enemy"];
-	enemy.hp.current -= (damage * dmgMult) - enemy.def; //can be changed
-	if (enemy.hp.current <= 0) {
+	
+	currentEnemy.hp.current -= (damage * dmgMult) - currentEnemy.def; //can be changed
+	if (currentEnemy.hp.current <= 0) {
+		enemy.hp.current = 0;
 		//end the fight, rewards
+		currentEnemyNum++;
+		currentEnemy = enemies[currentEnemyNum];
 		return;
 		
 	}
 	game.conditions.turn = "the enemy's";
-	display();
 	
 }
 
