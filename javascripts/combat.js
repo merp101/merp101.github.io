@@ -143,7 +143,7 @@ function drawEnemies() {
 		if (enemiesSet) {
 			for (i = 0; i < game.enemies.num; i++) {
 				let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-				let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+				let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2));
 				let world = document.getElementById("world-"+(yPos));
 				let worldStr = world.innerHTML;
 				let str1 = worldStr.slice(0,xPos); // before enemy
