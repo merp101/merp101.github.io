@@ -92,7 +92,7 @@ function tick(letter=0) {
 	move();
 	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) && char.pos.y == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
 		startFight(levelDiff, currentLevel);
-		if (letter == "w") {
+		if (letter == "d") {
 			char.pos.x--;
 		}
 	}
