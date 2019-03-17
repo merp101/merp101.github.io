@@ -90,7 +90,7 @@ function tick(letter=0) {
 		drawPlayer();
 	}
 	move();
-	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
+	if (char.pos.x + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
 		startFight(levelDiff, currentLevel)
 		char.pos.x--;
 	}
