@@ -152,8 +152,8 @@ function init() {
 	
 }
 
-setInterval(
-	setTimeout(
+window.setInterval(
+	window.setTimeout(
 		display(),
 		1),
 	0);
