@@ -84,7 +84,7 @@ function tick(letter=0) {
 	if (letter == 0) return;
 	function move() {
 		switch(letter) {
-			case "a": if (char.pos.x > 0) char.pos.x -= 1; break;
+			case "a": if (char.pos.x > 1) char.pos.x -= 1; break;
 			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 1) char.pos.x += 1; break;
 		}
 		drawPlayer();
