@@ -155,5 +155,11 @@ function init() {
 	
 }
 
+setInterval(
+	setTimeout(
+		display(),
+		1),
+	0);
+
 element("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
