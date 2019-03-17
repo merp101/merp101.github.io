@@ -64,8 +64,8 @@ var enemies = [];
 
 var char = { //character IN FIGHTS (positon, mostly)
 	pos: {
-		x: 0,
-		y: 0,
+		x: 1,
+		y: 1,
 	}
 }
 var consts = { //skill damages, whatever else
