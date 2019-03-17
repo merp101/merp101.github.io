@@ -133,7 +133,7 @@ function display() {
 	changeText("playerdef",game.stats.def.toString());
 	//updateQuests(69);
 	if (currentEnemy != undefined) {
-		show("stats"); show("fighting..."); show("turn");
+		show("stats"); show("fighting..."); show("turn...");
 		changeText("enemyhp",currentEnemy.hp.current.toString());
 		changeText("enemymaxhp",currentEnemy.hp.max.toString());
 		changeText("enemyatk",currentEnemy.atk.toString());
