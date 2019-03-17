@@ -87,7 +87,6 @@ function tick(letter=0) {
 			case "a": if (char.pos.x > 1) char.pos.x -= 1; break;
 			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 1) char.pos.x += 1; break;
 		}
-		drawPlayer();
 	}
 	move();
 	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) && char.pos.y == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
@@ -96,6 +95,7 @@ function tick(letter=0) {
 			char.pos.x--;
 		}
 	}
+	drawPlayer();
 	
 }
 
