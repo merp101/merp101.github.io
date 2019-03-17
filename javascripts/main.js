@@ -91,8 +91,10 @@ function tick(letter=0) {
 	}
 	move();
 	if (char.pos.x + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
-		startFight(levelDiff, currentLevel)
-		char.pos.x--;
+		startFight(levelDiff, currentLevel);
+		if (letter == "w") {
+			char.pos.x--;
+		}
 	}
 	
 }
