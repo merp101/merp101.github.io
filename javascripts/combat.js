@@ -65,9 +65,10 @@ function startFight(difficulty=0) {
 	//setting up the "fighting" part of stuff
 	interval = (10 / spd) * difficulty; //time in seconds to complete task
 	
-	setEnemies(difficulty, currentLevel);
+	if (!enemiesSet) {
+		setEnemies(difficulty, currentLevel);
+	}
 	game.conditions.fighting = true;
-	
 	
 }
 
