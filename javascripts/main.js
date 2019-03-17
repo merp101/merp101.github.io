@@ -96,11 +96,9 @@ function tick(letter=0) {
 		*/
 	}
 	move();
-	for (i = 0; i < game.enemies.num; i++) {
-		if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1 && char.pos.y == Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1) {
-			startFight(levelDiff, currentLevel)
-			char.pos.x--;
-		}
+	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2)) + 1) {
+		startFight(levelDiff, currentLevel)
+		char.pos.x--;
 	}
 	
 }
