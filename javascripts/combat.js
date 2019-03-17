@@ -10,7 +10,11 @@ let tact = game.stats.tact;
 let range = game.stats.range;
 let magic = game.stats.magic;
 let type = game.items.equips.weapon.type;
+var interval;
+var damage;
 var currentEnemy;
+var enemiesDrawn = false;
+var enemiesSet = false;
 var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
 var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
 var levelDiff;	// =	levelDiff = Number(maps[currentLevel + "Diff"]);
@@ -39,7 +43,7 @@ function Enemy(level,hpmax,atk,def,spd) {
 }
 
 // sets enemies' stats for the level/difficulty
-function setEnemies(difficulty, level) {
+function setEnemies(difficulty, level=currentLevel) {
 	game.enemies.num = maps[level + "EnemyPos"].length;
 	if (difficulty === 0) {
 		game.enemies.level = 1;
@@ -53,31 +57,22 @@ function setEnemies(difficulty, level) {
 	for (i= 0; i < game.enemies.num; i++) {
 		enemies[SPELLED[i]] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
-	/*for (i = 0; i < game.enemies.num; i++) {
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.level = game.enemies.level;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.max = game.enemies.hp.max;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.hp.current = game.enemies.hp.current;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.atk = game.enemies.atk;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.def = game.enemies.def;
-		enemies.prototype[SPELLED[i]+"Enemy"].prototype.spd = game.enemies.spd; 
-	}*/ //this is old codeaa
+	enemiesSet = true;
+	if (!enemiesDrawn) {drawEnemies();}
 }
 
-function startFight(difficulty=1, type="melee") {
-	//setting up basic conditions for fight: base damage and interval
-	var damage;
-	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
-	var interval = (10 / spd) * difficulty; //time in seconds to complete task
+function startFight(difficulty=0) {
+	//setting up the "fighting" part of stuff
+	interval = (10 / spd) * difficulty; //time in seconds to complete task
 	
 	setEnemies(difficulty, currentLevel);
 	game.conditions.fighting = true;
-	var array = [damage,interval];
-	game.stats.array = array;
 	
-	drawEnemies();
+	
 }
 
-function fight(attack,buffs=[]) {
+function fight(attack,buffs=[],type) {
+	if (type == "melee") damage = atk * tact; else if (type == "ranged") damage = range * tact; else if (type == "magic") damage = magic * tact;
 	var damage = game.stats.array[0];
 	var interval = game.stats.array[1];
 	var dmgMult = consts.skills[attack].dmg
@@ -139,23 +134,25 @@ function drawPlayer() {
 		let str3 = "o"; //player
 		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
-		startFight(levelDiff, currentLevel);
+		drawEnemies();
 	}
 }
 
 function drawEnemies() {
-	if (conditions.fighting) {
-		for (i = 0; i < game.enemies.num; i++) {
-			let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-			let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-			let world = document.getElementById("world-"+(yPos));
-			let worldStr = world.innerHTML;
-			let str1 = worldStr.slice(0,xPos); // before enemy
-			let str2 = worldStr.slice(xPos + 1); // the rest of the string
-			let str3 = "x"; //enemy
-			let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
-			world.innerHTML = newStr; //set the actual HTML to the new string
-		}
+	if (!enemiesDrawn) {
+		if (enemiesSet) {
+			for (i = 0; i < game.enemies.num; i++) {
+				let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
+				let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+				let world = document.getElementById("world-"+(yPos));
+				let worldStr = world.innerHTML;
+				let str1 = worldStr.slice(0,xPos); // before enemy
+				let str2 = worldStr.slice(xPos + 1); // the rest of the string
+				let str3 = "x"; //enemy
+				let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+				world.innerHTML = newStr; //set the actual HTML to the new string
+			}
+		} else setEnemies(levelDiff, currentLevel);
 		
 	}
 	
