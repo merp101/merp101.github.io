@@ -106,7 +106,7 @@ document.getElementById("body").onkeypress = function() {
 	if (!moved) {
 		var x = event.which || event.keyCode;
 		if (currentTab == "fight") {
-			if (game.conditions.fighting) {
+			if (worldDrawn) {
 				switch (x) {
 					case 119: tick("w"); break; // w
 					case 97: tick("a"); break; // a
