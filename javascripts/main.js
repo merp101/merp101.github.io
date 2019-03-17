@@ -88,15 +88,9 @@ function tick(letter=0) {
 			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 2) char.pos.x += 1; break;
 		}
 		drawPlayer();
-		/*
-		if (letter == "w") char.pos.y += 1;
-		else if (letter == "a") char.pos.x -= 1;
-		else if (letter == "s") char.pos.y -= 1;
-		else if (letter == "d") char.pos.x += 1;
-		*/
 	}
 	move();
-	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2)) + 1) {
+	if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) + 1 && char.pos.y + 1 == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2)) + 1) {
 		startFight(levelDiff, currentLevel)
 		char.pos.x--;
 	}
