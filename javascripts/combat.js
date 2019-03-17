@@ -13,6 +13,7 @@ let type = game.items.equips.weapon.type;
 var interval;
 var damage;
 var currentEnemy;
+var currentEnemyNum;
 var enemiesDrawn = false;
 var enemiesSet = false;
 var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
