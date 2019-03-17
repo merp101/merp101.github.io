@@ -36,7 +36,7 @@ function changeTab(tab) {
 }
 
 function hide(elemId) {
-	if (document.getElementById(elemId) != undefined) {
+	if (element(elemId) != undefined) {
 		document.getElementById(elemId).style.display = "none"; 
 		return true;
 	}   else {
@@ -47,8 +47,8 @@ function hide(elemId) {
 
 
 function show(elemId,type="block") {
-	if (document.getElementById(elemId) != undefined) {
-		document.getElementById(elemId).style.display = type; 
+	if (element(elemId) != undefined) {
+		element(elemId).style.display = type; 
 		return true;
 	}   else {
 		console.log("Element '" + elemId + "' not defined."); 
@@ -85,7 +85,7 @@ function tick(letter=0) {
 	function move() {
 		switch(letter) {
 			case "a": if (char.pos.x > 0) char.pos.x -= 1; break;
-			case "d": if (char.pos.x < document.getElementById("world-"+(char.pos.y+1)).innerHTML.length - 2) char.pos.x += 1; break;
+			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 2) char.pos.x += 1; break;
 		}
 		drawPlayer();
 		/*
@@ -102,7 +102,7 @@ function tick(letter=0) {
 	
 }
 
-document.getElementById("body").onkeypress = function() {
+element("body").onkeypress = function() {
 	if (!moved) {
 		var x = event.which || event.keyCode;
 		if (currentTab == "fight") {
@@ -123,7 +123,7 @@ document.getElementById("body").onkeypress = function() {
 	}
 };
 
-document.getElementById("body").onkeyup = function() {
+element("body").onkeyup = function() {
 	moved = false;
 }
 
@@ -155,5 +155,5 @@ function init() {
 	
 }
 
-document.getElementById("quest1").onclick = function() {drawWorld("cave");}
+element("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
