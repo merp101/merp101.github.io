@@ -4,14 +4,12 @@ var game = {
 		currentEnemy: 0,
 		level: 0,
 		hp: {
-			max: 0,
-			current: 0,
+			max: 10,
+			current: this.max,
 		},
 		atk: 1,
 		def: 1,
 		spd: 1,
-		tact: 1,
-		range: 1,
 		magic: 1,
 		buffs: [],
 		skills: ["basic"]
@@ -68,17 +66,19 @@ var char = { //character IN FIGHTS (positon, mostly)
 		y: 1,
 	}
 }
-var consts = { //skill damages, whatever else
+var consts = { //attack skill damages, whatever else
 	skills: {
 		basic: {
 			damage: 1, // damage mult
+			type: "melee", // the type of damage it uses
 			effects: { // special effect the move has
 				name: "none", //what it's called
-				chance: 0 // the probability of it happening (divide by 10 to get random() threshold, <=)
+				chance: 0 // the probability of it happening in percent (divide by 100 to get random() threshold, <=)
 			}
 		},
 		fire: {
 			damage: 1.5,
+			type: "magic",
 			effects: {
 				name: "fire",
 				chance: 10
@@ -86,6 +86,7 @@ var consts = { //skill damages, whatever else
 		},
 		ice: {
 			damage: .75,
+			type: "magic",
 			effects: {
 				name: "freeze",
 				chance: 10
@@ -93,6 +94,7 @@ var consts = { //skill damages, whatever else
 		},
 		electricity: {
 			damage: 2,
+			type: "magic",
 			effects: {
 				name: "none",
 				chance: 0
@@ -104,7 +106,7 @@ var consts = { //skill damages, whatever else
 	
 	weaponTypeModifiers: {
 		fists: {
-			speed: 2,
+			speed: 1.5,
 			dmg: 1
 		},
 		oneHandSword: {
@@ -116,7 +118,7 @@ var consts = { //skill damages, whatever else
 			dmg: 2
 		},
 		bow: {
-			speed: .5,
+			speed: .25,
 			dmg: 5
 		}
 	}
