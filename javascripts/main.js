@@ -88,7 +88,7 @@ function tick(letter=0) {
 			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 1) char.pos.x += 1; break;
 		}
 	}
-	if (!conditions.fighting) {
+	if (!game.conditions.fighting) {
 		move();
 		if (char.pos.x == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(0)) && char.pos.y == Number(maps[currentLevel + "EnemyPos"][currentEnemyNum].charAt(2))) {
 			startFight(levelDiff, currentLevel);
