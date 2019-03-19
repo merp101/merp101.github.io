@@ -55,7 +55,7 @@ function setEnemies(difficulty, level=currentLevel) {
 
 function startFight(difficulty=0) {
 	//setting up the "fighting" part of stuff
-	interval = (10 / game.stats.spd) * difficulty; //time in seconds to complete task
+	interval = difficulty / game.stats.spd; //time in seconds to complete task
 	
 	if (!enemiesSet) {
 		setEnemies(difficulty, currentLevel);
