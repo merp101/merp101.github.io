@@ -1,15 +1,6 @@
 // basic vars
 var worldDrawn = false;
 var currentLevel = "none";
-let maxhp = game.stats.hp.max;
-let hp = game.stats.hp.current;
-let atk = game.stats.atk;
-let def = game.stats.def;
-let spd = game.stats.spd;
-let tact = game.stats.tact;
-let range = game.stats.range;
-let magic = game.stats.magic;
-let type = game.items.equips.weapon.type;
 var interval;
 var damage;
 var currentEnemy;
@@ -77,7 +68,7 @@ function startFight(difficulty=0) {
 }
 
 function fight(attack,buffs=[],type) {
-	damage = atk;
+	damage = game.stats.atk;
 	var dmgMult;
 	if (!attack.includes("buff")) { 
 		dmgMult = consts.skills[attack].dmg;
