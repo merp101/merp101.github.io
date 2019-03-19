@@ -2,10 +2,10 @@ const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","ei
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		currentEnemy: 0,
-		level: 0,
+		level: 1,
 		hp: {
 			max: 10,
-			current: this.max,
+			current: 10,
 		},
 		atk: 1,
 		def: 1,
