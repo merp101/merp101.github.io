@@ -40,7 +40,7 @@ function setEnemies(difficulty, level=currentLevel) {
 	if (difficulty === 0) {
 		game.enemies.level = 1;
 	} else game.enemies.level = (difficulty * 2) - 1;
-	game.enemies.hp.max = Math.round(Math.pow(game.stats.hp.max, 0.25) + 1) * Math.pow(difficulty, 2);
+	game.enemies.hp.max = Math.round(Math.pow(game.stats.hp.max, 0.25) + 1) * Math.pow(difficulty, 2) + 1;
 	game.enemies.hp.current = game.enemies.hp.max;
 	game.enemies.atk = Math.round(Math.pow(difficulty, 1.5)) + 1;
 	game.enemies.def = Math.round(Math.pow(difficulty, 1.1)) + 1;
