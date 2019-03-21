@@ -130,10 +130,9 @@ function drawPlayer() {
 		let yPos = char.pos.y;
 		let world = document.getElementById("world-"+(yPos));
 		let worldStr = maps[currentLevel][maps[currentLevel].length - yPos];
-		let str1 = worldStr.slice(0,xPos); // before player
-		let str2 = worldStr.slice(xPos + 1); // the rest of the string
-		let str3 = "o"; //player
-		let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+		let str1 = worldStr.slice(0,xPos - 1); // before player
+		let str2 = worldStr.slice(xPos + 2); // the rest of the string
+		let newStr = str1.concat(generalArt.player,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
 		drawEnemies();
 	}
