@@ -16,7 +16,7 @@ li {
 }
 body {
 	text-align: center;
-	font-fa-mily:"Inconsolata", monospace;
+	font-family:"Inconsolata", monospace;
 }
 .whitespace {
 	white-space: pre;
