@@ -16,10 +16,10 @@ li {
 }
 body {
 	text-align: center;
-	font-family:"Inconsolata", monospace;
+	font-fa-mily:"Inconsolata", monospace;
 }
-#map {
-	white-space:pre;
+.whitespace {
+	white-space: pre;
 }
 
 </style>
