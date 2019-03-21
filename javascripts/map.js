@@ -11,6 +11,12 @@
     }
   }
 }*/
+
+var art = {
+  player: "o",
+  enemy: "x",
+}
+
 var maps = { // (length x height) chars
   cave: [" ________________ ", // 18x5
          "/                \\", // the backslash is an escape character, it'll only output one
