@@ -122,7 +122,7 @@ element("body").onkeyup = function() {
 	moved = false;
 }
 
-function display(first) { 
+function display(first=false) { 
 	if (!game.conditions.fighting) hide("stats"); hide("fighting..."); hide("turn..."); return;
 	if (game.conditions.fighting) {
 		if (first) {
