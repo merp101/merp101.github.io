@@ -123,7 +123,7 @@ element("body").onkeyup = function() {
 }
 
 function display(first=false) { 
-	if (!game.conditions.fighting) hide("stats"); hide("fighting..."); hide("turn..."); return;
+	if (!game.conditions.fighting && first) hide("stats"); hide("fighting..."); hide("turn..."); return;
 	if (game.conditions.fighting) {
 		if (first) {
 			show("stats"); show("fighting..."); show("turn..."); show("fightingplatform"); hide("map");
