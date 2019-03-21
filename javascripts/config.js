@@ -69,7 +69,7 @@ var char = { //character IN FIGHTS (positon, mostly)
 var consts = { //attack skill damages, whatever else
 	skills: {
 		basic: {
-			damage: 1, // damage mult
+			dmg: 1, // damage mult
 			type: "melee", // the type of damage it uses
 			effects: { // special effect the move has
 				name: "none", //what it's called
@@ -77,7 +77,7 @@ var consts = { //attack skill damages, whatever else
 			}
 		},
 		fire: {
-			damage: 1.5,
+			dmg: 1.5,
 			type: "magic",
 			effects: {
 				name: "fire",
@@ -85,7 +85,7 @@ var consts = { //attack skill damages, whatever else
 			}
 		},
 		ice: {
-			damage: .75,
+			dmg: .75,
 			type: "magic",
 			effects: {
 				name: "freeze",
@@ -93,7 +93,7 @@ var consts = { //attack skill damages, whatever else
 			}
 		},
 		electricity: {
-			damage: 2,
+			dmg: 2,
 			type: "magic",
 			effects: {
 				name: "none",
