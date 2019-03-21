@@ -35,7 +35,7 @@ function Enemy(level,hpmax,atk,def,spd) {
 }
 
 // sets enemies' stats for the level/difficulty
-function setEnemies(difficulty, level=currentLevel) {
+function setEnemies(difficulty=0, level=currentLevel) {
 	game.enemies.num = maps[level + "EnemyPos"].length;
 	if (difficulty === 0) {
 		game.enemies.level = 1;
@@ -58,7 +58,7 @@ function startFight(difficulty=0) {
 	interval = difficulty / game.stats.spd; //time in seconds to complete task
 	
 	if (!enemiesSet) {
-		setEnemies(difficulty, currentLevel);
+		setEnemies(difficulty);
 	}
 	game.conditions.fighting = true;
 	currentEnemyNum = 0;
