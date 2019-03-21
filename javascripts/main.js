@@ -146,6 +146,8 @@ function init() {
 	load();
 	display();
 	
+	document.getElementById("invtab").innerHTML = invArt;
+	
 	if (game.items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
 }
