@@ -158,3 +158,4 @@ setInterval(function(){ display(false) },100);
 
 element("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
+init();
