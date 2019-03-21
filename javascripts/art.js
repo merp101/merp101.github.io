@@ -13,7 +13,7 @@
 }*/
 
 var generalArt = {
-  player: "o",
+  player: "\\o/",
   enemy: "x",
 }
 
