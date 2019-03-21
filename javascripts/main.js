@@ -122,16 +122,18 @@ element("body").onkeyup = function() {
 	moved = false;
 }
 
-function display() { 
+function display(first) { 
 	if (!game.conditions.fighting) hide("stats"); hide("fighting..."); hide("turn..."); return;
-	changeText("playerhp",game.stats.hp.current.toString());
-	changeText("playermaxhp",game.stats.hp.max.toString());
-	changeText("playeratk",game.stats.atk.toString());
-	changeText("playerspd",game.stats.spd.toString());
-	changeText("playerdef",game.stats.def.toString());
-	//updateQuests(69);
 	if (game.conditions.fighting) {
-		show("stats"); show("fighting..."); show("turn..."); show("fightingplatform"); hide("map");
+		if (first) {
+			show("stats"); show("fighting..."); show("turn..."); show("fightingplatform"); hide("map");
+		}
+		changeText("playerhp",game.stats.hp.current.toString());
+		changeText("playermaxhp",game.stats.hp.max.toString());
+		changeText("playeratk",game.stats.atk.toString());
+		changeText("playerspd",game.stats.spd.toString());
+		changeText("playerdef",game.stats.def.toString());
+		
 		changeText("enemyhp",currentEnemy.hp.current.toString());
 		changeText("enemymaxhp",currentEnemy.hp.max.toString());
 		changeText("enemyatk",currentEnemy.atk.toString());
