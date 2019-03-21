@@ -146,7 +146,7 @@ function display(first) {
 
 function init() {
 	load();
-	display();
+	display(true);
 	
 	document.getElementById("invtab").innerHTML = invArt;
 	
@@ -154,7 +154,7 @@ function init() {
 	
 }
 
-window.setInterval(display(),100);
+window.setInterval(display(false),100);
 
 element("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
