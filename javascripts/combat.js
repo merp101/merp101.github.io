@@ -92,6 +92,7 @@ function fight(attack,buffs=[]) {
 		game.conditions.fighting = false;
 		display();
 		drawEnemies();
+		drawPlayer();
 		return;
 		
 	}
