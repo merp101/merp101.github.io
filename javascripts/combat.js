@@ -67,7 +67,7 @@ function startFight(difficulty=0) {
 	
 }
 
-function fight(attack,buffs=[],type) {
+function fight(attack,buffs=[]) {
 	damage = game.stats.atk;
 	var dmgMult;
 	if (!attack.includes("buff")) { 
@@ -83,10 +83,11 @@ function fight(attack,buffs=[],type) {
 	
 	currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 	if (currentEnemy.hp.current <= 0) {
-		enemy.hp.current = 0;
-		//end the fight, rewards
+		currentEnemy.hp.current = 0;
 		currentEnemyNum++;
 		currentEnemy = enemies[currentEnemyNum];
+		game.conditions.fighting = false;
+		display(true);
 		return;
 		
 	}
