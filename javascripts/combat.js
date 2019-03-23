@@ -148,9 +148,10 @@ function drawPlayer() {
 function drawEnemies() {
 	if (!enemiesDrawn) {
 		if (enemiesSet) {
-			for (i = 0; i < maps[currentLevel + "EnemyPos"].length; i++) {;
-				let xPos = Number(levelEnemies[0].charAt(0)) + 3;
-				let yPos = Number(levelEnemies[0].charAt(2));
+			for (i = 0; i < maps[currentLevel + "EnemyPos"].length; i++) {
+				if (levelEnemies[i] == undefined) return;
+				let xPos = Number(levelEnemies[i].charAt(0)) + 3;
+				let yPos = Number(levelEnemies[i].charAt(2));
 				let world = document.getElementById("world-"+(yPos));
 				let worldStr = world.innerHTML;
 				let str1 = worldStr.slice(0,xPos); // before enemy
