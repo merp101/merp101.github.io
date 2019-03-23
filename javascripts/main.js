@@ -86,10 +86,12 @@ function tick(letter=0) {
 	}
 	if (!game.conditions.fighting) {
 		move();
-		if ((char.pos.x - 1 == Number(levelEnemies[0].charAt(0)) || char.pos.x + 2 == Number(levelEnemies[0].charAt(0))) && char.pos.y == Number(levelEnemies[0].charAt(2))) {
-			startFight(levelDiff, currentLevel);
-			if (letter == "d") {
-				char.pos.x--;
+		if (levelEnemies[0] != undefined) {
+			if ((char.pos.x - 1 == Number(levelEnemies[0].charAt(0)) || char.pos.x + 2 == Number(levelEnemies[0].charAt(0))) && char.pos.y == Number(levelEnemies[0].charAt(2))) {
+				startFight(levelDiff, currentLevel);
+				if (letter == "d") {
+					char.pos.x--;
+				}
 			}
 		}
 		drawPlayer();
