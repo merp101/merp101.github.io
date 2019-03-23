@@ -146,8 +146,10 @@ function drawPlayer() {
 function drawEnemies() {
 	if (!enemiesDrawn) {
 		if (enemiesSet) {
+			let thingy; //this is to account for the <u> tags that take up space on the string
 			for (i = 0; i < game.enemies.num; i++) {
-				let xPos = Number(levelEnemies[i].charAt(0));
+				thingy = ((i + 1) * 6) + (i + 1);
+				let xPos = Number(levelEnemies[i].charAt(0)) + thingy;
 				let yPos = Number(levelEnemies[i].charAt(2));
 				let world = document.getElementById("world-"+(yPos));
 				let worldStr = world.innerHTML;
