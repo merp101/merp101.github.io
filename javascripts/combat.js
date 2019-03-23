@@ -81,7 +81,7 @@ function fight(attack,buffs=[],type) {
 	if (buffs.includes("electricity")) dmgMult += 2;
 		
 	
-	currentEnemy.hp.current -= (damage * dmgMult) - currentEnemy.def; //can be changed
+	currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 	if (currentEnemy.hp.current <= 0) {
 		enemy.hp.current = 0;
 		//end the fight, rewards
