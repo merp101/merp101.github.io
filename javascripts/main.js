@@ -123,7 +123,7 @@ element("body").onkeyup = function() {
 }
 
 function display() { 
-	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("turn..."); return;}
+	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("fightplatform); show("map"); hide("turn..."); return;}
 	if (game.conditions.fighting) {
 		show("stats"); show("fighting..."); show("turn..."); show("fightplatform"); hide("map");
 		changeText("playerhp",game.stats.hp.current.toString());
