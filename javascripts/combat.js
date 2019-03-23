@@ -7,6 +7,7 @@ var currentEnemy;
 var currentEnemyNum = 0;
 var enemiesDrawn = false;
 var enemiesSet = false;
+var levelEnemies;
 var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
 var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
 var levelDiff;	// =	levelDiff = Number(maps[currentLevel + "Diff"]);
@@ -63,6 +64,7 @@ function startFight(difficulty=0) {
 	game.conditions.fighting = true;
 	currentEnemyNum = 0;
 	currentEnemy = enemies[currentEnemyNum];
+	levelEnemies = maps[currentLevel + "EnemyPos"];
 	show("stats"); show("fighting..."); show("turn");
 	
 }
@@ -86,6 +88,7 @@ function fight(attack,buffs=[]) {
 		currentEnemy.hp.current = 0;
 		currentEnemyNum++;
 		currentEnemy = enemies[currentEnemyNum];
+		levelEnemies.shift();
 		game.conditions.fighting = false;
 		display();
 		return;
@@ -143,8 +146,8 @@ function drawEnemies() {
 	if (!enemiesDrawn) {
 		if (enemiesSet) {
 			for (i = 0; i < game.enemies.num; i++) {
-				let xPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0));
-				let yPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2));
+				let xPos = Number(levelEnemies[i].charAt(0));
+				let yPos = Number(levelEnemies[i].charAt(2));
 				let world = document.getElementById("world-"+(yPos));
 				let worldStr = world.innerHTML;
 				let str1 = worldStr.slice(0,xPos); // before enemy
