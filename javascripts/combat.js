@@ -64,7 +64,6 @@ function startFight(difficulty=0) {
 	game.conditions.fighting = true;
 	currentEnemyNum = 0;
 	currentEnemy = enemies[currentEnemyNum];
-	levelEnemies = maps[currentLevel + "EnemyPos"];
 	show("stats"); show("fighting..."); show("turn");
 	
 }
@@ -125,6 +124,7 @@ function drawWorld(level) {
 		currentLevel = level;
 		drawPlayer();
 		levelDiff = Number(maps[currentLevel + "Diff"]);
+		levelEnemies = maps[currentLevel + "EnemyPos"];
 	}
 }
 
