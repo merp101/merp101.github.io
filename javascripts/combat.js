@@ -149,8 +149,7 @@ function drawEnemies() {
 				let worldStr = world.innerHTML;
 				let str1 = worldStr.slice(0,xPos); // before enemy
 				let str2 = worldStr.slice(xPos + 1); // the rest of the string
-				let str3 = "x"; //enemy
-				let newStr = str1.concat(str3,str2); //add the 'o' to the end of the 'start' string, then the rest
+				let newStr = str1.concat(generalArt.enemy,str2); //add the 'o' to the end of the 'start' string, then the rest
 				world.innerHTML = newStr; //set the actual HTML to the new string
 			}
 		} else setEnemies(levelDiff, currentLevel);
