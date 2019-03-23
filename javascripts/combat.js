@@ -87,7 +87,7 @@ function fight(attack,buffs=[]) {
 		currentEnemyNum++;
 		currentEnemy = enemies[currentEnemyNum];
 		game.conditions.fighting = false;
-		display(true);
+		display();
 		return;
 		
 	}
