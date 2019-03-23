@@ -139,7 +139,11 @@ function display(first=false) {
 		changeText("enemyatk",currentEnemy.atk.toString());
 		changeText("enemyspd",currentEnemy.spd.toString());
 		changeText("enemydef",currentEnemy.def.toString());
-		changeText("enemyname",currentEnemy.name);
+		if (currentEnemy.name.charAt(0) === "a" || currentEnemy.name.charAt(0) === "e" || currentEnemy.name.charAt(0) === "i" || currentEnemy.name.charAt(0) === "o" || currentEnemy.name.charAt(0) === "u" || currentEnemy.name.charAt(0) === "A" || currentEnemy.name.charAt(0) === "E" || currentEnemy.name.charAt(0) === "I" || currentEnemy.name.charAt(0) === "O" || currentEnemy.name.charAt(0) === "U") {
+			changeText("enemyname", "an " + currentEnemy.name);
+		} else {changeText("enemyname", "a " + currentEnemy.name);}
+			
+		
 		changeText("turn",game.conditions.turn);
 	}
 }
