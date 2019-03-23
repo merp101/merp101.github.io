@@ -122,12 +122,10 @@ element("body").onkeyup = function() {
 	moved = false;
 }
 
-function display(first=false) { 
-	if (!game.conditions.fighting && first) {hide("stats"); hide("fighting..."); hide("turn..."); return;}
+function display() { 
+	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("turn..."); return;}
 	if (game.conditions.fighting) {
-		if (first) {
-			show("stats"); show("fighting..."); show("turn..."); show("fightingplatform"); hide("map");
-		}
+		show("stats"); show("fighting..."); show("turn..."); show("fightingplatform"); hide("map");
 		changeText("playerhp",game.stats.hp.current.toString());
 		changeText("playermaxhp",game.stats.hp.max.toString());
 		changeText("playeratk",game.stats.atk.toString());
@@ -150,7 +148,7 @@ function display(first=false) {
 
 function init() {
 	load();
-	display(true);
+	display();
 	
 	document.getElementById("invtab").innerHTML = invArt;
 	
@@ -158,7 +156,7 @@ function init() {
 	
 }
 
-setInterval(function(){ display(false) },100);
+setInterval(function(){ display() },100);
 
 element("quest1").onclick = function() {drawWorld("cave");}
 setInterval(save(),30000);
