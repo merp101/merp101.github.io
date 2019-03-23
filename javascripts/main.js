@@ -81,7 +81,7 @@ function tick(letter=0) {
 	function move() {
 		switch(letter) {
 			case "a": if (char.pos.x > 1) char.pos.x -= 1; break;
-			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 1) char.pos.x += 1; break;
+			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 5) char.pos.x += 1; break;
 		}
 	}
 	if (!game.conditions.fighting) {
