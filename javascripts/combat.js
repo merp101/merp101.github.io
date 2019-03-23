@@ -123,7 +123,8 @@ function drawWorld(level) {
 		}
 		worldDrawn = true;
 		currentLevel = level;
-		levelEnemies = maps[level + "EnemyPos"];
+		conv = maps[level + "EnemyPos"]
+		levelEnemies = conv;
 		drawPlayer();
 		levelDiff = Number(maps[level + "Diff"]);
 		
