@@ -1,6 +1,6 @@
 const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth"]; //can add more later, don't need to yet
 const skillOrder = ["basic","strong","fire","ice","electric"];
-const buffOrder = ["ice","fire","electric"];
+const buffOrder = ["ice","electric","fire"];
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		currentEnemy: 0,
