@@ -148,18 +148,18 @@ function display() {
 			skill = skillOrder[i]; //the attack skill it checks for
 			skillIndex = game.stats.skills.indexOf(skill) //(a var to make it easier)
 			if (game.stats.skills.includes(skill)) { //if that skill is unlocked, then
-				show(game.stats.skills[skillIndex] + "atk"); //show the element for it
+				show(skill + "atk"); //show the element for it
 			} else {
-				hide(game.stats.skills[skillIndex] + "atk");
+				hide(skill + "atk");
 			}
 		}
 		for (i = 0; i < skillOrder.length; i++) { //buffs
 			skill = buffOrder[i]; //the buff skill it checks for
 			skillIndex = game.stats.skills.indexOf(skill) //(a var to make it easier)
 			if (game.stats.skills.includes(skill)) {
-				show(game.stats.skills[skillIndex] + "buff");
+				show(skill + "buff");
 			} else {
-				hide(game.stats.skills[skillIndex] + "buff");
+				hide(skill + "buff");
 			}
 		}
 				
