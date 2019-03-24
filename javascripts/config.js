@@ -101,7 +101,7 @@ var consts = { //attack skill damages, whatever else
 				chance: 10
 			}
 		},
-		electricity: {
+		electric: {
 			dmg: 2,
 			type: "magic",
 			effects: {
