@@ -76,6 +76,14 @@ var consts = { //attack skill damages, whatever else
 				chance: 0 // the probability of it happening in percent (divide by 100 to get random() threshold, <=)
 			}
 		},
+		strong: {
+			dmg: 2,
+			type: "melee",
+			effects: {
+				name: "none",
+				chance: 0,
+			}
+		},
 		fire: {
 			dmg: 1.5,
 			type: "magic",
