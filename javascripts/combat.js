@@ -80,7 +80,7 @@ function fight(attack,buffs=[]) {
 
 		if (buffs.includes("ice")) dmgMult += 1.25;
 		if (buffs.includes("fire")) dmgMult += 1.5;
-		if (buffs.includes("electricity")) dmgMult += 2;
+		if (buffs.includes("electric")) dmgMult += 2;
 		
 	
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
