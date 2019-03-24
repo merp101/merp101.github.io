@@ -143,26 +143,32 @@ function display() {
 		
 		//attacks
 		var skill;
-		var skillIndex;
 		for (i = 0; i < skillOrder.length; i++) { //attacks
 			skill = skillOrder[i]; //the attack skill it checks for
-			skillIndex = game.stats.skills.indexOf(skill) //(a var to make it easier)
 			if (game.stats.skills.includes(skill)) { //if that skill is unlocked, then
 				show(skill + "atk"); //show the element for it
 			} else {
 				hide(skill + "atk");
 			}
 		}
-		for (i = 0; i < skillOrder.length; i++) { //buffs
+		for (i = 0; i < buffOrder.length; i++) { //buffs
 			skill = buffOrder[i]; //the buff skill it checks for
-			skillIndex = game.stats.skills.indexOf(skill) //(a var to make it easier)
 			if (game.stats.skills.includes(skill)) {
 				show(skill + "buff");
 			} else {
 				hide(skill + "buff");
 			}
 		}
-				
+		let count = 0;
+		for (i = 0; i < buffOrder.length; i++) { //hide the "buff" thing if there are no buffs unlocked (not for skills cuz you always have "basic" skill unlocked
+			if (element(skill + "buff").style.display == "none") {
+				count++;
+			}				
+		}
+		if (count == buffOrder.length) {
+			hide("buffs");
+		}
+		
 		//enemy name
 		//if it starts with a vowel (lowercase or capital) then it is "an", otherwise "a"
 		if (currentEnemy.name.charAt(0) === "a" || currentEnemy.name.charAt(0) === "e" || currentEnemy.name.charAt(0) === "i" || currentEnemy.name.charAt(0) === "o" || currentEnemy.name.charAt(0) === "u" || currentEnemy.name.charAt(0) === "A" || currentEnemy.name.charAt(0) === "E" || currentEnemy.name.charAt(0) === "I" || currentEnemy.name.charAt(0) === "O" || currentEnemy.name.charAt(0) === "U") {
