@@ -125,25 +125,47 @@ element("body").onkeyup = function() {
 }
 
 function display() { 
-	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("fightplatform"); show("map"); hide("turn..."); return;}
+	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("fightplatform"); show("map"); hide("turn..."); hide("playerattacks"); return;}
 	if (game.conditions.fighting) {
-		show("stats"); show("fighting..."); show("turn..."); show("fightplatform"); hide("map");
+		show("stats"); show("fighting..."); show("turn..."); show("fightplatform"); hide("map"); show("playerattacks");
+		
+		//stats
 		changeText("playerhp",game.stats.hp.current.toString());
 		changeText("playermaxhp",game.stats.hp.max.toString());
 		changeText("playeratk",game.stats.atk.toString());
 		changeText("playerspd",game.stats.spd.toString());
 		changeText("playerdef",game.stats.def.toString());
-		
 		changeText("enemyhp",currentEnemy.hp.current.toString());
 		changeText("enemymaxhp",currentEnemy.hp.max.toString());
 		changeText("enemyatk",currentEnemy.atk.toString());
 		changeText("enemyspd",currentEnemy.spd.toString());
 		changeText("enemydef",currentEnemy.def.toString());
+		
+		//attacks
+		var skill;
+		var skillIndex;
+		for (i = 0; i < skillOrder.length; i++) { //attacks
+			skill = skillOrder[i]; //the attack skill it checks for
+			if (game.stats.skills.includes(skill)) { //if that skill is unlocked, then
+				skillIndex = game.stats.skills.indexOf(skill) //(a var to make it easier)
+				show(game.stats.skills[skillIndex] + "atk"); //show the element for it
+			}
+		}
+		for (i = 0; i < skillOrder.length; i++) { //buffs
+			skill = buffOrder[i]; //the buff skill it checks for
+			if (game.stats.skills.includes(skill)) {
+				skillIndex = game.stats.skills.indexOf(skill);
+				show(game.stats.skills[skillIndex] + "buff");
+			}
+		}
+				
+		//enemy name
+		//if it starts with a vowel (lowercase or capital) then it is "an", otherwise "a"
 		if (currentEnemy.name.charAt(0) === "a" || currentEnemy.name.charAt(0) === "e" || currentEnemy.name.charAt(0) === "i" || currentEnemy.name.charAt(0) === "o" || currentEnemy.name.charAt(0) === "u" || currentEnemy.name.charAt(0) === "A" || currentEnemy.name.charAt(0) === "E" || currentEnemy.name.charAt(0) === "I" || currentEnemy.name.charAt(0) === "O" || currentEnemy.name.charAt(0) === "U") {
 			changeText("enemyname", "an " + currentEnemy.name);
 		} else {changeText("enemyname", "a " + currentEnemy.name);}
 			
-		
+		//turn
 		changeText("turn",game.conditions.turn);
 	}
 }
