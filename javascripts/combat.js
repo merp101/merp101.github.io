@@ -69,34 +69,36 @@ function startFight(difficulty=0) {
 }
 
 function fight(attack,buffs=[]) {
-	damage = game.stats.atk;
-	var dmgMult;
-	if (!attack.includes("buff")) { 
-		dmgMult = consts.skills[attack].dmg;
-	} else {
-		buffs.push(attack);
-	}
+	if (game.stats.skills.includes(attack)) {
+		damage = game.stats.atk;
+		var dmgMult;
+		if (!attack.includes("buff")) { 
+			dmgMult = consts.skills[attack].dmg;
+		} else {
+			buffs.push(attack);
+		}
 
-	if (buffs.includes("ice")) dmgMult += 1.25;
-	if (buffs.includes("fire")) dmgMult += 1.5;
-	if (buffs.includes("electricity")) dmgMult += 2;
+		if (buffs.includes("ice")) dmgMult += 1.25;
+		if (buffs.includes("fire")) dmgMult += 1.5;
+		if (buffs.includes("electricity")) dmgMult += 2;
 		
 	
-	currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
-	if (currentEnemy.hp.current <= 0) {
-		currentEnemy.hp.current = 0;
-		currentEnemyNum++;
-		currentEnemy = enemies[currentEnemyNum];
-		levelEnemies.shift();
-		game.enemies.num --;
-		game.conditions.fighting = false;
-		display();
-		drawEnemies();
-		drawPlayer();
-		return;
+		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
+		if (currentEnemy.hp.current <= 0) {
+			currentEnemy.hp.current = 0;
+			currentEnemyNum++;
+			currentEnemy = enemies[currentEnemyNum];
+			levelEnemies.shift();
+			game.enemies.num --;
+			game.conditions.fighting = false;
+			display();
+			drawEnemies();
+			drawPlayer();
+			return;
 		
+		}
+		game.conditions.turn = "the enemy's";
 	}
-	game.conditions.turn = "the enemy's";
 	
 }
 
