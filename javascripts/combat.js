@@ -26,11 +26,23 @@ function Enemy(level,hpmax,atk,def,spd) {
 	//determining the name
 	var random = Math.random();
 	var name;
-	if (random <= 0.01) {name = "TREASURE!!!"}
-	else if (random <= 0.05) {name = "Aragog the Mighty"}
-	else if (random <= 0.1) {name = "Goblin"}
-	else if (random <= 0.5) {name = "Imp"}
-	else if (random <= 1) {name = "Spooder"}
+	var names;
+	var rarity;
+	
+	if (random <= 0.10) {rarity = 4}
+	else if (random <= 0.25) {rarity = 3} 
+	else if (random <= 0.5) {rarity = 2}
+	else if (random <= 1) {rarity = 1}
+	this.rarity = rarity;
+	if (rarity == 1) {names = ["goblin","imp","spider"];}
+	else if (rarity == 2) {names = ["hobgoblin","fiery imp"];}
+	else if (rarity == 3) {names = ["orc","demon"];}
+	else if (rarity == 4) {names = ["treasure"];}
+	
+	random = Math.random();
+	for (i = 0; i < names.length; i++) {
+		if (random <= (i + 1) / names.length) {name = names[i]}
+	}
 	this.name = name;
 	
 }
