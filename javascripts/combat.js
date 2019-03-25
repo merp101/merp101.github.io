@@ -51,6 +51,7 @@ function setEnemies(difficulty=0, level=currentLevel) {
 		enemies[i] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
 	enemiesSet = true;
+	currentEnemy = enemies[currentEnemyNum];
 	if (!enemiesDrawn) {drawEnemies();}
 }
 
