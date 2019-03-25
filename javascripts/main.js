@@ -1,5 +1,4 @@
 var currentTab = "cave";//Tabs: inv, map, cave
-let i;
 var moved = false;
 
 function element(id) {
