@@ -2,6 +2,19 @@ const SPELLED = ["first","second","third","fourth","fifth","sixth","seventh","ei
 const skillOrder = ["basic","strong","fire","ice","electric"];
 const buffOrder = ["fire","ice","electric"];
 var i;
+function bubbleSort(numbers) {  
+    var length = numbers.length;
+    for (var i = (length - 1); i >= 0; i--) {
+        for (var j = (length - i); j > 0; j--) {
+            if (numbers[j] < numbers[j - 1]) {
+                var nmbr = numbers[j];
+                numbers[j] = numbers[j - 1];
+                numbers[j - 1] = nmbr;
+            }
+        }
+    }
+    return numbers;
+}
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		currentEnemy: 0,
