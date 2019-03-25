@@ -135,3 +135,17 @@ var consts = { //attack skill damages, whatever else
 	}
 	
 }
+
+var loot = { //gold is base amount, items is possible drops
+	cave: { //this is kind of a template
+		gold: 10, //base gold drop
+		items: [{name: "broken sword", chance: 10}, //weapon
+			{name: "ragged cap", chance: 10}, //hat
+			{name: "tattered shirt", chance: 10}, //shirt
+			{name: "", chance: 10}, //pants
+			{name: "", chance: 10}, //boots
+			{name: "a pebble", chance: 50}] //anything else
+	}
+	       	   
+	
+}
