@@ -15,6 +15,14 @@ function bubbleSort(numbers) {
     }
     return numbers;
 }
+
+function switchArrayPos(array,pos1,pos2) {
+	let value1 = array[pos1];
+	let value2 = array[pos2];
+	array[pos1] = value2;
+	array[pos2] = value1;
+}
+	
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
 		currentEnemy: 0,
