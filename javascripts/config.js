@@ -39,6 +39,7 @@ var game = {
 		skills: ["basic"]
 	},
 	items: {
+		gold: 0,
 		inventory: {
 			normal: [],
 			consumable: [""],
