@@ -1,10 +1,20 @@
 var goldGained = 0;
 var itemsGained = [];
-var message = "";
+var singleMessage = "";
+var totalMessage = "";
 var combo = []; //combination of name and chance
 var thresholds = [];
-function getTotalLoot() { 
-  
+function getTotalLoot() { //on mission complete, gain all the stuff
+  if (goldGained != 0 && itemsGained != []) {
+    totalMessage += "You have gained " + goldGained + " gold";
+    for (i = 0; i < itemsGained.length; i++) {
+      if (i != itemsGained.length - 1) {
+        totalMessage += ", a " + itemsGained[i];
+      } else { //if it's the last one
+        totalMessage += ", and a " + itemsGained[i] + ".";
+      }
+    }
+  }
 }
 function getEnemyLoot() {
   //gold
@@ -33,9 +43,18 @@ function getEnemyLoot() {
   let random = Math.random();
   for (i = 0; i < loot[currentLevel].items.length; i++) {
     if (random <= thresholds[i][1]) {
-      itemsGained.push[thresholds[i][0];
+      itemsGained.push(thresholds[i][0]);
     }
   }
-  if (goldGained == 0 && itemsGained = []) {
+  if (goldGained == 0 && itemsGained == []) {
+    singleMessage += "You have gained nothing."
+  } else if (goldGained > 0) {
+    singleMessage += "You have gained " + goldGained + " gold";
+    if (itemsGained != []) {
+      for (i = 0; i < itemsGained.length; i++) {
+        singleMessage += ", and a " + itemsGained[i];
+      }
+      singleMessage += ".";
+    }
   }
 }
