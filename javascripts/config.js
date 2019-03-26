@@ -166,7 +166,7 @@ var loot = { //gold is base amount, items is possible drops
 			{name: "tattered shirt", chance: 10}, //shirt
 			{name: "", chance: 10}, //pants
 			{name: "", chance: 10}, //boots
-			{name: "a pebble", chance: 50}] //anything else
+			{name: "pebble", chance: 50}] //anything else
 	}
 	       	   
 	
