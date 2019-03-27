@@ -44,6 +44,7 @@ function getEnemyLoot() {
   for (i = 0; i < loot[currentLevel].items.length; i++) {
     if (random <= thresholds[i][1] / 100) {
       itemsGained.push(thresholds[i][0]);
+      random = Math.random();
     }
   }
   if (goldGained == 0 && itemsGained == []) {
