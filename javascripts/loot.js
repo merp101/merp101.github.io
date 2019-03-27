@@ -6,7 +6,7 @@ var combo = []; //combination of name and chance
 var thresholds = [];
 function getTotalLoot() { //on mission complete, gain all the stuff
   if (goldGained != 0 && itemsGained != []) {
-    totalMessage += "You have gained " + goldGained + " gold";
+    totalMessage = "You have gained " + goldGained + " gold";
     for (i = 0; i < itemsGained.length; i++) {
       if (i != itemsGained.length - 1) {
         totalMessage += ", a " + itemsGained[i];
@@ -20,7 +20,7 @@ function getEnemyLoot() {
   if (enemiesSet) {
     //gold
     let rarity = currentEnemy.rarity;
-    goldGained += loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
+    goldGained = loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
   
     //items
     var itemChances = [];
