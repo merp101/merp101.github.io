@@ -57,8 +57,10 @@ function getEnemyLoot() {
         } else { //if it's the last one
           singleMessage += ", and a " + itemsGained[i] + ".";
         }
-        singleMessage += ".";
       }
+    }
+    if (singleMessage != "You have gained nothing.") {
+      singleMessage += ".";
     }
   }
 }
