@@ -3,6 +3,7 @@ var worldDrawn = false;
 var currentLevel = "none";
 var interval;
 var damage;
+var enemyDefeated = false;
 var currentEnemy;
 var currentEnemyNum = 0;
 var enemiesDrawn = false;
@@ -99,6 +100,7 @@ function fight(attack,buffs=[]) {
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 		if (currentEnemy.hp.current <= 0) {
 			currentEnemy.hp.current = 0;
+			enemyDefeated = true;
 			currentEnemyNum++;
 			currentEnemy = enemies[currentEnemyNum];
 			levelEnemies.shift();
