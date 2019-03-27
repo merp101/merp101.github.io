@@ -52,12 +52,13 @@ function getEnemyLoot() {
     singleMessage += "You have gained " + goldGained + " gold";
     if (itemsGained != []) {
       for (i = 0; i < itemsGained.length; i++) {
-      if (i != itemsGained.length - 1) {
-        singleMessage += ", a " + itemsGained[i];
-      } else { //if it's the last one
-        singleMessage += ", and a " + itemsGained[i] + ".";
+        if (i != itemsGained.length - 1) {
+          singleMessage += ", a " + itemsGained[i];
+        } else { //if it's the last one
+          singleMessage += ", and a " + itemsGained[i] + ".";
+        }
+        singleMessage += ".";
       }
-      singleMessage += ".";
     }
   }
 }
