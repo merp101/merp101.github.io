@@ -18,6 +18,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 }
 function getEnemyLoot() {
   if (currentEnemy != undefined) {
+	  var singleMessage = "";
     //gold
     let rarity = currentEnemy.rarity;
     goldGained = loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
