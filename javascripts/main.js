@@ -124,9 +124,9 @@ element("body").onkeyup = function() {
 }
 
 function display() { 
-	if (!game.conditions.fighting) {hide("stats"); hide("combatmsg"); hide("fighting..."); hide("fightplatform"); show("map"); hide("turn..."); hide("playerattacks"); return;}
+	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("fightplatform"); show("map"); hide("turn..."); hide("playerattacks"); return;}
 	if (game.conditions.fighting) {
-		show("stats"); show("fighting..."); show("combatmsg"); show("turn..."); show("fightplatform"); hide("map"); show("playerattacks");
+		show("stats"); show("fighting..."); show("turn..."); show("fightplatform"); hide("map"); show("playerattacks");
 		
 		//stats
 		changeText("playerhp",game.stats.hp.current.toString());
@@ -177,6 +177,9 @@ function display() {
 		//turn
 		changeText("turn",game.conditions.turn);
 	}
+	if (worldDrawn) {
+		show("combatmsg");
+	} else { hide("combatmsg"); }
 }
 
 function init() {
