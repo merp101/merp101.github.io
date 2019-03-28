@@ -65,5 +65,12 @@ function getEnemyLoot() {
         singleMessage += ".";
       }
     }
+    let node = document.createElement("SPAN");
+		let br = document.createElement("BR");
+		node.id = "message" + (currentEnemyNum + 1);
+	  let textNode = document.createTextNode(singleMessage);
+		node.appendChild(textNode);
+		element("combatmsg").appendChild(node);
+		element("combatmsg").appendChild(br);
   }
 }
