@@ -100,7 +100,7 @@ function fight(attack,buffs=[]) {
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 		if (currentEnemy.hp.current <= 0) {
 			currentEnemy.hp.current = 0;
-			enemyDefeated = true;
+			getEnemyLoot();
 			currentEnemyNum++;
 			currentEnemy = enemies[currentEnemyNum];
 			levelEnemies.shift();
