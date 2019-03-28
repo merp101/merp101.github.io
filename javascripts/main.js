@@ -191,10 +191,6 @@ function init() {
 
 setInterval(function(){ 
 	display();
-	if (enemyDefeated) {
-		getEnemyLoot();
-		enemyDefeated = false;
-	}
 },100);
 
 element("quest1").onclick = function() {drawWorld("cave");}
