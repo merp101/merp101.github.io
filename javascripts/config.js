@@ -41,8 +41,8 @@ var game = {
 	gold: 0,
 	inventory: {
 		normal: [],
-		consumable: [""],
-		special: [""],
+		consumable: [],
+		special: [],
 	},
 	items: {
 		equips: {
