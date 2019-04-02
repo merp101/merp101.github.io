@@ -198,6 +198,7 @@ setInterval(function(){
 		if (char.pos.x == element("world-"+(char.pos.y+1)).innerHTML.length - 3 && enemies == []) {
 			finishQuest();
 		}
+	}
 		
 },100);
 
