@@ -27,6 +27,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 			case "consumable": game.inventory.consumable.push(consumables); break;
 		}
 	}
+	game.gold += goldGained;
 }
 
 function getEnemyLoot() {
