@@ -194,6 +194,11 @@ function init() {
 
 setInterval(function(){ 
 	display();
+	if (worldDrawn) {
+		if (char.pos.x == element("world-"+(char.pos.y+1)).innerHTML.length - 3 && enemies == []) {
+			finishQuest();
+		}
+		
 },100);
 
 element("quest1").onclick = function() {drawWorld("cave");}
