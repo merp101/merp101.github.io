@@ -182,7 +182,7 @@ function display() {
 	} else { hide("combatmsg"); }
 }
 
-element("body").onload = function() { //init
+function init() {
 	load();
 	display();
 	
