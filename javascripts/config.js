@@ -38,13 +38,13 @@ var game = {
 		buffs: [],
 		skills: ["basic"]
 	},
+	gold: 0,
+	inventory: {
+		normal: [],
+		consumable: [""],
+		special: [""],
+	},
 	items: {
-		gold: 0,
-		inventory: {
-			normal: [],
-			consumable: [""],
-			special: [""],
-		},
 		equips: {
 			head: {name: "none", def: 0},
 			chest: {name: "none", def: 0},
