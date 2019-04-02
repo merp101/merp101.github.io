@@ -161,12 +161,12 @@ var consts = { //attack skill damages, whatever else
 var loot = { //gold is base amount, items is possible drops
 	cave: { //this is kind of a template
 		gold: 1, //base gold drop
-		items: [{name: "broken sword", chance: 1}, //weapon
-			{name: "ragged cap", chance: 1}, //hat
-			{name: "tattered shirt", chance: 1}, //shirt
-			{name: "", chance: 1}, //pants
-			{name: "", chance: 1}, //boots
-			{name: "pebble", chance: 5}] //anything else
+		items: [{name: "broken sword", chance: 5, type: "normal", desc: "A sword that is broken. What, did you expect something special?"}, //weapon
+			{name: "ragged cap", chance: 5, type: "normal", desc: "This cap is torn in multiple places. It really doesn't do much in terms of defense."} //hat
+			{name: "tattered shirt", chance: 5, type: "normal", desc: "There are holes specifically where your nipples are! Huh, it's almost like it's on purpose!"}, //shirt
+			{name: "pair of ripped jeans", chance: 5, type: "normal", desc: "Some skin is showin'. <br> I'm sorry. You know that that joke had to be made."}, //pants
+			{name: "cloth boots", chance: 5, type: "normal", desc: "I've heard these are good in NG... for U"}, //boots
+			{name: "pebble", chance: 0.01, type: "normal", desc: "It's an ordinary pebble. However, you feel an otherworldly aura emanating from this pebble... it seems to have been through a fight of gods. Its power was unaffected, though."}] //anything else
 	}
 	       	   
 	
