@@ -82,6 +82,12 @@ function startFight(difficulty=0) {
 	
 }
 
+function finishQuest() {
+	for (i = 0; i < element("map").childNodes.length; i++) {
+		hide(element("map").childNodes[i]);
+	}
+}
+
 function fight(attack,buffs=[]) {
 	if (game.stats.skills.includes(attack)) {
 		damage = game.stats.atk;
@@ -132,13 +138,20 @@ function drawWorld(level) {
 		let br;
 		let textNode;
 		for (let y = maps[level].length; y > 0; y--) {
-			node = document.createElement("SPAN");
-			br = document.createElement("BR");
-			node.id = "world-" + y;
-	  		textNode = document.createTextNode(maps[level][maps[level].length - y]);
-			node.appendChild(textNode);
-			map.appendChild(node);
-			map.appendChild(br);
+			if (element("world-" + y) == undefined) {
+				node = document.createElement("SPAN");
+				br = document.createElement("BR");
+				node.id = "world-" + y;
+	  			textNode = document.createTextNode(maps[level][maps[level].length - y]);
+				node.appendChild(textNode);
+				map.appendChild(node);
+				map.appendChild(br);
+			} else {changeText("world-" + y, maps[level][maps[level].length - y]);
+				
+			for (i = 0; i < element("map").childNodes.length; i++) {
+				show(map.childNodes[i]);
+			}
+	}
 		}
 		worldDrawn = true;
 		currentLevel = level;
