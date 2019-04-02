@@ -86,6 +86,10 @@ function finishQuest() {
 	for (i = 0; i < element("map").childNodes.length; i++) {
 		hide(element("map").childNodes[i]);
 	}
+	worldDrawn = false;
+	enemiesDrawn = false;
+	enemiesSet = false;
+	getTotalLoot();
 }
 
 function fight(attack,buffs=[]) {
