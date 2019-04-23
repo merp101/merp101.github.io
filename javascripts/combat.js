@@ -84,10 +84,12 @@ function finishQuest() {
 	for (i = 0; i < element("map").childNodes.length; i++) {
 		hide(element("map").childNodes[i]);
 	}
+	hide("combatmsg");
 	worldDrawn = false;
 	enemiesDrawn = false;
 	enemiesSet = false;
 	getTotalLoot();
+	enemiesDefeated = 0;
 }
 
 function fight(attack,buffs=[]) {
@@ -108,6 +110,8 @@ function fight(attack,buffs=[]) {
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 		if (currentEnemy.hp.current <= 0) {
 			currentEnemy.hp.current = 0;
+			enemiesDefeated++;
+			totalEnemiesDefeated++;
 			getEnemyLoot();
 			enemies.shift();
 			currentEnemy = enemies[0];
