@@ -64,7 +64,7 @@ function setEnemies(difficulty=0, level=currentLevel) {
 		enemies[i] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
 	enemiesSet = true;
-	currentEnemy = enemies[currentEnemyNum];
+	currentEnemy = enemies[0];
 	if (!enemiesDrawn) {drawEnemies();}
 }
 
@@ -76,8 +76,6 @@ function startFight(difficulty=0) {
 		setEnemies(difficulty);
 	}
 	game.conditions.fighting = true;
-	currentEnemyNum = 0;
-	currentEnemy = enemies[currentEnemyNum];
 	show("stats"); show("fighting..."); show("turn");
 	
 }
@@ -111,8 +109,8 @@ function fight(attack,buffs=[]) {
 		if (currentEnemy.hp.current <= 0) {
 			currentEnemy.hp.current = 0;
 			getEnemyLoot();
-			currentEnemyNum++;
-			currentEnemy = enemies[currentEnemyNum];
+			enemies.shift();
+			currentEnemy = enemies[0];
 			levelEnemies.shift();
 			game.enemies.num --;
 			game.conditions.fighting = false;
