@@ -41,8 +41,8 @@ function Enemy(level,hpmax,atk,def,spd) {
 	else if (rarity == 4) {names = ["treasure"];}
 	
 	random = Math.random();
-	for (i = 0; i < names.length; i++) {
-		if (random <= (i + 1) / names.length) {name = names[i]}
+	for (let j = 0; j < names.length; j++) {
+		if (random <= (j + 1) / names.length) {name = names[j]}
 	}
 	this.name = name;
 	
