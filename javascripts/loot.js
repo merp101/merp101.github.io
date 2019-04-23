@@ -15,6 +15,8 @@ function getTotalLoot() { //on mission complete, gain all the stuff
       }
     }
   }
+	
+//IT DOESN'T DISPLAY totalMessage YET!
 	var normalItems = [];
 	var specials = [];
 	var consumables = [];
@@ -82,7 +84,7 @@ function getEnemyLoot() {
     }
     let node = document.createElement("SPAN");
 		let br = document.createElement("BR");
-		node.id = "message" + (currentEnemyNum + 1);
+		node.id = "message" + (enemiesDefeated);
 	  let textNode = document.createTextNode(singleMessage);
 		node.appendChild(textNode);
 		element("combatmsg").appendChild(node);
