@@ -1,6 +1,7 @@
 // basic vars
 var worldDrawn = false;
 var currentLevel = "none";
+var enemiesDefeated = 0;
 var interval;
 var damage;
 var enemyDefeated = false;
