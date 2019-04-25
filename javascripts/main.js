@@ -139,7 +139,7 @@ function display() {
 		changeText("enemyatk",currentEnemy.atk.toString());
 		changeText("enemyspd",currentEnemy.spd.toString());
 		changeText("enemydef",currentEnemy.def.toString());
-		
+		changeText("gold",game.gold);
 		//attacks
 		var skill;
 		for (i = 0; i < skillOrder.length; i++) { //attacks
@@ -186,7 +186,8 @@ function init() {
 	load();
 	display();
 	
-	document.getElementById("invtab").innerHTML = invArt;
+	changeText("gold", game.gold);
+	changeText("inv", invArt);
 	
 	if (game.items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
