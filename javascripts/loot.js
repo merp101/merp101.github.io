@@ -16,7 +16,14 @@ function getTotalLoot() { //on mission complete, gain all the stuff
     }
   }
 	
-//IT DOESN'T DISPLAY totalMessage YET!
+  for (i = 0; i < element("combatmsg").childNodes.length; i++) {
+	  $(element("message" + (enemiesDefeated - i))).delete();
+	}
+	
+	changeText("totalmessage", totalMessage);
+       
+       
+       
 	var normalItems = [];
 	var specials = [];
 	var consumables = [];
@@ -33,6 +40,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 }
 
 function getEnemyLoot() {
+  show("lootwarning");
   if (currentEnemy != undefined) {
 	  var singleMessage = "";
     //gold
