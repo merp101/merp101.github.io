@@ -29,7 +29,13 @@ const maps = { // (length x height) chars. USE <u> TAGS INSTEAD OF UNDERLINES ON
          "|<u>                 </u>"], //
   caveEnemyPos: ["5,1","8,1"], //x,y
   caveDiff: 0,
-  forest: [],
+  fireCave: ["        .           ", //
+             "      . M           ", //
+             "     ,M M           ", //
+             "     M M:           ", //
+             "    Y M M,          ", //
+             "    'M M M,         ", //
+  ],
   desert: [],
 }
          
