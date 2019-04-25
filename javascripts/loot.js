@@ -11,10 +11,11 @@ function getTotalLoot() { //on mission complete, gain all the stuff
       if (i != itemsGained.length - 1) {
         totalMessage += ", a " + itemsGained[i];
       } else { //if it's the last one
-        totalMessage += ", and a " + itemsGained[i] + ".";
+        totalMessage += ", and a " + itemsGained[i];
       }
     }
   }
+	totalMessage += "in total.";
 	
   for (i = 0; i < element("combatmsg").childNodes.length; i++) {
 	  $(element("message" + (enemiesDefeated - i))).delete();
