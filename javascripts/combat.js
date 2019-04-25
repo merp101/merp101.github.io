@@ -87,6 +87,8 @@ function finishQuest() {
 		hide(element("map").childNodes[i]);
 	}
 	hide("combatmsg");
+	hide("lootwarning");
+	show("totalmessage");
 	worldDrawn = false;
 	enemiesDrawn = false;
 	enemiesSet = false;
