@@ -83,9 +83,7 @@ function startFight(difficulty=0) {
 }
 
 function finishQuest() {
-	for (i = 0; i < element("map").childNodes.length; i++) {
-		hide(element("map").childNodes[i]);
-	}
+	$("#map").empty();
 	hide("combatmsg");
 	hide("lootwarning");
 	show("totalmessage");
