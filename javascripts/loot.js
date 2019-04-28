@@ -15,7 +15,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
       }
     }
   }
-	totalMessage += " in total.";
+	totalMessage += " in total. Congratulations, it's yours!";
 	
 	changeText("totalmessage", totalMessage);
        
