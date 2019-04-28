@@ -94,10 +94,11 @@ function finishQuest() {
 	enemiesSet = false;
 	getTotalLoot();
 	enemiesDefeated = 0;
-	if (currentQuest = "cave") {
+	if (currentLevel = "cave") {
 		home = true;
 		drawWorld("hub");
 	} //else {show("continuedecision");}
+	
 }
 
 function fight(attack,buffs=[]) {
@@ -147,7 +148,6 @@ function setPlayerItem(name,type,dmg) {
 
 function drawWorld(level) {
 	if (!worldDrawn) {
-		currentQuest = level;
 		let map = document.getElementById("map");
 		let node;
 		let br;
@@ -161,12 +161,13 @@ function drawWorld(level) {
 				node.appendChild(textNode);
 				map.appendChild(node);
 				map.appendChild(br);
-			} else {changeText("world-" + y, maps[level][maps[level].length - y]);
+			} else {
+				changeText("world-" + y, maps[level][maps[level].length - y]);
 				
-			for (i = 0; i < element("map").childNodes.length; i++) {
-				show(map.childNodes[i]);
+				for (i = 0; i < element("map").childNodes.length; i++) {
+					show(map.childNodes[i]);
+				}
 			}
-	}
 		}
 		worldDrawn = true;
 		currentLevel = level;
@@ -188,7 +189,9 @@ function drawPlayer() {
 		let str2 = worldStr.slice(xPos + 2); // the rest of the string
 		let newStr = str1.concat(generalArt.player,str2); //add the 'o' to the end of the 'start' string, then the rest
 		world.innerHTML = newStr; //set the actual HTML to the new string
-		drawEnemies();
+		if (currentLevel != "hub") {
+			drawEnemies();
+		}
 	}
 }
 
@@ -201,8 +204,8 @@ function drawEnemies() {
 				let yPos = Number(levelEnemies[i].charAt(2));
 				let world = document.getElementById("world-"+(yPos));
 				let worldStr = world.innerHTML;
-				let str1 = worldStr.slice(0,xPos); // before enemy
-				let str2 = worldStr.slice(xPos + 1); // the rest of the string
+				let str1 = worldStr.slice(0,xPos - Math.floor(generalArt.enemy.length / 2)); // before enemy
+				let str2 = worldStr.slice(xPos + 1 + Math.floor(generalArt.enemy.length / 2)); // the rest of the string
 				let newStr = str1.concat(generalArt.enemy,str2); //add the 'o' to the end of the 'start' string, then the rest
 				world.innerHTML = newStr; //set the actual HTML to the new string
 			}
