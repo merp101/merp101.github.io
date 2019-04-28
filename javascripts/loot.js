@@ -87,7 +87,7 @@ function getEnemyLoot() {
         singleMessage += ".";
       }
     }
-		if (element("message" + enemiesDefeated) != undefined) {
+		if (element("message" + enemiesDefeated) == undefined) {
     	let node = document.createElement("SPAN");
 			let br = document.createElement("BR");
 			node.id = "message" + (enemiesDefeated);
