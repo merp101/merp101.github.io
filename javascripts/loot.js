@@ -20,17 +20,13 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	changeText("totalmessage", totalMessage);
        
        
-       
-	var normalItems = [];
-	var specials = [];
-	var consumables = [];
 	let type;
 	for (i = 0; i < itemsGained.length; i++) {
 		type = itemsGained[i].type;
 		switch (type) {
-			case "normal": game.inventory.normal.push(normalItems); break;
-			case "special": game.inventory.special.push(specials); break;
-			case "consumable": game.inventory.consumable.push(consumables); break;
+			case "normal": game.inventory.normal.push(itemsGained[i]); break;
+			case "special": game.inventory.special.push(itemsGained[i]); break;
+			case "consumable": game.inventory.consumable.push(itemsGained[i]); break;
 		}
 	}
 	game.gold += goldGained;
