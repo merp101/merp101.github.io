@@ -22,6 +22,7 @@ var invArt = "__________________________________________________________________
 
 var conv;
 const maps = { // (length x height) chars. USE <u> TAGS INSTEAD OF UNDERLINES ON FLOORS
+  hub: [],
   cave: [" ________________ ", // 18x5
          "/                \\", // the backslash is an escape character, it'll only output one
          "|                 ", // 
