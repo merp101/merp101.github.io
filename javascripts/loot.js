@@ -91,12 +91,14 @@ function getEnemyLoot() {
         singleMessage += ".";
       }
     }
-    let node = document.createElement("SPAN");
-		let br = document.createElement("BR");
-		node.id = "message" + (enemiesDefeated);
-	  let textNode = document.createTextNode(singleMessage);
-		node.appendChild(textNode);
-		element("combatmsg").appendChild(node);
-		element("combatmsg").appendChild(br);
+		if (element("message" + enemiesDefeated) != undefined) {
+    	let node = document.createElement("SPAN");
+			let br = document.createElement("BR");
+			node.id = "message" + (enemiesDefeated);
+	  	let textNode = document.createTextNode(singleMessage);
+			node.appendChild(textNode);
+			element("combatmsg").appendChild(node);
+			element("combatmsg").appendChild(br);
+		} else {changeText("message" + enemiesDefeated, singleMessage);}
   }
 }
