@@ -1,5 +1,7 @@
 // basic vars
 var worldDrawn = false;
+var currentQuest;
+var home = false;
 var currentLevel = "none";
 var enemiesDefeated = 0;
 var totalEnemiesDefeated = 0;
@@ -92,6 +94,10 @@ function finishQuest() {
 	enemiesSet = false;
 	getTotalLoot();
 	enemiesDefeated = 0;
+	if (currentQuest = "cave") {
+		home = true;
+		drawWorld("hub");
+	} //else {show("continuedecision");}
 }
 
 function fight(attack,buffs=[]) {
@@ -141,6 +147,7 @@ function setPlayerItem(name,type,dmg) {
 
 function drawWorld(level) {
 	if (!worldDrawn) {
+		currentQuest = level;
 		let map = document.getElementById("map");
 		let node;
 		let br;
