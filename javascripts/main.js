@@ -179,7 +179,7 @@ function display() {
 	}
 	if (worldDrawn) {
 		show("combatmsg");
-	} else { hide("combatmsg"); }
+	}
 }
 
 function init() {
