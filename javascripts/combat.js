@@ -92,6 +92,8 @@ function finishQuest() {
 	worldDrawn = false;
 	enemiesDrawn = false;
 	enemiesSet = false;
+	char.pos.x = 1;
+	char.pos.y = 1
 	getTotalLoot();
 	enemiesDefeated = 0;
 	if (currentLevel = "cave") {
