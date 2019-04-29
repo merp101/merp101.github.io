@@ -107,10 +107,14 @@ element("body").onkeypress = function() {
 		if (currentTab == "fight") {
 			if (worldDrawn) {
 				switch (x) {
+						// movement
 					case 119: tick("w"); break; // w
 					case 97: tick("a"); break; // a
 					case 115: tick("s"); break; // s
 					case 100: tick("d"); break; // d
+						
+						//hotkeys
+					//attacks
 					case 49: fight(numToLettersAtk[0]);; break; // 1
 					case 50: fight(numToLettersAtk[1]);; break; // 2
 					case 51: fight(numToLettersAtk[2]);; break; // 3
