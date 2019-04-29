@@ -10,3 +10,4 @@ var npcs = {
     shop: [{name:"", cost:1}]
   }
 }
+
