@@ -1,5 +1,6 @@
 var npcs = {
   nurse: {
+    pos: 
     dialogue: [],
     dialoguecycle: 0,
     shop: [{name:"",cost:1}]
@@ -10,4 +11,9 @@ var npcs = {
     shop: [{name:"", cost:1}]
   }
 }
+
+function cycleNPCDialogue() {
+  
+}
+  
 
