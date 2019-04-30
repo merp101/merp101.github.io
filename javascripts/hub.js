@@ -1,3 +1,4 @@
+var npcList = ["nurse","blacksmith"];
 var npcs = {
   nurse: {
     pos: 
