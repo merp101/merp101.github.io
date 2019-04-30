@@ -92,6 +92,10 @@ function tick(letter=0) {
 			}
 		}
 	}
+	for (i = 0; i < npcs.length; i++) {
+		npc = npcs[npcList[i]];
+		if (char.pos.x - 2 > npc.pos) {hide("npcdialogue");}
+	}
 	if (!game.conditions.fighting) {
 		move();
 		if (currentLevel != "hub") {
