@@ -4,18 +4,18 @@ var npcs = {
     pos: 20,
     dialogue: ["i","a","m"],
     dialoguecycle: 0,
-    shop: [{name:"",cost:1}]
+    shop: [{name:"potion",cost:1}]
   },
   blacksmith: {
     pos: 42,
     dialogue: ["d","e","a","d"],
     dialoguecycle: 0,
-    shop: [{name:"", cost:1}]
+    shop: [{name:"sword", cost:1}]
   }
 }
 
 function cycleNPCDialogue(npc) {
-  if (npc.dialoguecycle != npc.dialogue.length - 1) {
+  if (npc.dialoguecycle != npc.dialogue.length) {
     changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
     show("npcdialogue");
     npc.dialoguecycle++;
