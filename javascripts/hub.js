@@ -15,7 +15,7 @@ var npcs = {
 }
 
 function cycleNPCDialogue(npc) {
-  if (npc.dialoguecycle == npc.dialogue.length - 1) {
+  if (npc.dialoguecycle != npc.dialogue.length - 1) {
     changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
     show("npcdialogue");
     npc.dialoguecycle++;
