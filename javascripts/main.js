@@ -83,6 +83,15 @@ function tick(letter=0) {
 			case "d": if (char.pos.x < element("world-"+(char.pos.y+1)).innerHTML.length - 3) char.pos.x += 1; break;
 		}
 	}
+	if (letter == "w") { //interact
+		let npc;
+		for (i = 0; i < npcs.length; i++) {
+			npc = npcs[npcList[i]];
+			if (char.pos.x + 1 == npc.pos) {
+				cycleNPCDialogue(npc)
+			}
+		}
+	}
 	if (!game.conditions.fighting) {
 		move();
 		if (currentLevel != "hub") {
