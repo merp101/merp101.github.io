@@ -1,7 +1,7 @@
 var npcList = ["nurse","blacksmith"];
 var npcs = {
   nurse: {
-    pos: 19,
+    pos: 20,
     dialogue: ["i","a","m"],
     dialoguecycle: 0,
     shop: [{name:"",cost:1}]
