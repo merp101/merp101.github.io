@@ -161,6 +161,16 @@ function drawWorld(level) {
 				br = document.createElement("BR");
 				node.id = "world-" + y;
 	  			textNode = document.createTextNode(maps[level][maps[level].length - y]);
+				let a;
+				for (i = 0; i < textNode.length; i++) {
+					if (textNode.charAt(i) == "//") {
+						array.push(i);
+					}
+				}
+				for (i = 0; i < textNode.length; i++) {
+					textNode = textNode.slice(0,array[i] + "//" + textNode.slice(array[i]);
+					array.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
+				}
 				node.appendChild(textNode);
 				map.appendChild(node);
 				map.appendChild(br);
