@@ -19,6 +19,7 @@ function cycleNPCDialogue(npc) {
     changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
     show("npcdialogue");
     npc.dialoguecycle++;
+    hide("totalmessage");
   } else {hide("npcdialogue");}
 }
   
