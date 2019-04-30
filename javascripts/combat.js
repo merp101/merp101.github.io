@@ -168,9 +168,10 @@ function drawWorld(level) {
 					}
 				}
 				for (i = 0; i < textNode.length; i++) {
-					textNode = textNode.slice(0,array[i] + "//" + textNode.slice(array[i]);
+					textNode = textNode.slice(0,array[i]) + "//" + textNode.slice(array[i]);
 					array.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
+				if (y = 1) {textNode = textNode.slice(0,2) + "<u>" + textNode.slice(2); textNode = textNode.slice(0, textNode.length - 1) + "</u>" + textNode.slice(textNode.length - 1);}
 				node.appendChild(textNode);
 				map.appendChild(node);
 				map.appendChild(br);
