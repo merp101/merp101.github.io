@@ -87,7 +87,7 @@ function tick(letter=0) {
 		let npc;
 		for (i = 0; i < npcs.length; i++) {
 			npc = npcs[npcList[i]];
-			if (char.pos.x + 1 == npc.pos) {
+			if (char.pos.x + 2 == npc.pos || char.pos.x + 1 == npc.pos || char.pos.x == npc.pos || char.pos.x - 1 == npc.pos || char.pos.x - 2 == npc.pos) {
 				cycleNPCDialogue(npc)
 			}
 		}
