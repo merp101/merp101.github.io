@@ -33,11 +33,11 @@ const maps = { // (length x height) chars. USE <u> TAGS INSTEAD OF UNDERLINES ON
         "|     |bbbbbbb|      |   O      __     |   |   O        __    | ",
         "|     |bbbbbbb|      |  \|/    |  |    |   |  \|/      |  |   | ",
         "|                    |  / \    |° |    |   |  / \      |° |   | "],
-  cave: [" ________________ ", // 18x5
-         "/                \", 
-         "|                 ",  
-         "|                 ",  
-         "|                 "], 
+  cave: [" ________________  ", // 18x5
+         "/                \ ", 
+         "|                  ",  
+         "|                  ",  
+         "|                  "], 
   caveEnemyPos: ["5,1","8,1"], //x,y
   caveDiff: 0,
   fireCave: ["        .           ", 
