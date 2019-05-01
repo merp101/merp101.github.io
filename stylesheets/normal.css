@@ -8,9 +8,13 @@ ul {
 li {
 	display: inline;
 }
+#npcd {
+	
+}
 button {
 	border-style: dashed;
-	border-width: 3px;
+	border-width: 2px;
+	border-color: rgb(0,0,0);
 	font-family:"Inconsolata", monospace;
 	display: inline;
 	background-color: rgb(255,255,255);
