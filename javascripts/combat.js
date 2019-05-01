@@ -164,12 +164,12 @@ function drawWorld(level) {
 				let a;
 				for (i = 0; i < textNode.textContent.length; i++) {
 					if (textNode.textContent.charAt(i) == "//") {
-						array.push(i);
+						a.push(i);
 					}
 				}
 				for (i = 0; i < textNode.textContent.length; i++) {
-					textNode.textContent = textNode.textContent.slice(0,array[i]) + "//" + textNode.textContent.slice(array[i]);
-					array.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
+					textNode.textContent = textNode.textContent.slice(0,a[i]) + "//" + textNode.textContent.slice(array[i]);
+					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 				if (y = 1) {
 					textNode.textContent = textNode.textContent.slice(0,2) + "<u>" + textNode.textContent.slice(2); 
