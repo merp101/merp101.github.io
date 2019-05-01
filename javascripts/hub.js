@@ -6,7 +6,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     /*1*/      "It seems a little suspicious, you say? Well, I'm a nurse! I replenish your life, which I call hearts, so my house is a heart shack! Catchy, no?",
     /*2*/   "Oh my gosh, right?! That meanie blacksmith over there thinks it's <em>weird</em> that I call my house my 'heart shack'. Well, ha, blacksmith! Oh, yeah. You can go see the blacksmith too. He might forge some weapons for you.",
     /*3*/  "Well, see you! Unless you want to browse my wares?",
-    /*4*/      "Ohoho, you'd rather spend time with <em>me</em>? How awesome! Would you like to browse my wares?"
+    /*4*/      "Ohoho, you'd rather spend time with <em>me</em>? How awesome! Would you like to browse my wares?",
     /*5*/  "Oh well. See you!",
     /*6*/ "In that case, here you go!",
     /*7*/    "Well, I'll be! You're just a meanie, aren't you? Hmph, well. I suppose I'll just have to up prices a little - a meanie tax, if you will.",
