@@ -1,7 +1,7 @@
 var npcList = ["nurse","blacksmith"];
 var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other line if it's shared))("e" if it ends the dialogue)("f" if you failed the dialogue)
   nurse: {
-    pos: 20, //-5 (to line number == array index)
+    pos: 24, //-5 (to line number == array index)
     dialogue:   ["Oh! Hello there! You look a bit dirty... and naked... Well, I'll fix you <em>right</em> up. Come inside my heart shack and find out!",
     /*1*/        "It seems a little suspicious, you say? Well, I'm a nurse! I replenish your life, which I call hearts, so my house is a heart shack! Catchy, no?",
     /*2*/        "Oh my gosh, right?! That meanie blacksmith over there thinks it's <em>weird</em> that I call my house my 'heart shack'. Well, ha, blacksmith! Oh, yeah. You can go see the blacksmith too. He might forge some weapons for you.",
@@ -43,7 +43,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     shop: [{name:"potion",cost:1}]
   },
   blacksmith: {
-    pos: 42,
+    pos: 46,
     dialogue: ["d","e","a","d"],
     dialoguecycle: 0,
     shop: [{name:"sword", cost:1}]
@@ -51,8 +51,12 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 }
 
 function cycleNPCDialogue(npc,t) {
-  changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
-  show("npcdialogue");
+	if (npc.dialoguecycle == 0) {
+  	changeText("npcdialogue",npc.dialogue[0]);
+		show("npcdialogue");
+		return;
+	}
+	changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
 	if (t) {
   	npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
 	} else {
