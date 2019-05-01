@@ -168,9 +168,11 @@ function drawWorld(level) {
 						a.push(i);
 					}
 				}
-				for (i = 0; i < str.length; i++) {
-					str = str.slice(0,a[i]) + "//" + str.slice(a[i]);
-					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
+				if (a[0] != undefined) {
+					for (i = 0; i < str.length; i++) {
+						str = str.slice(0,a[i]) + "//" + str.slice(a[i]);
+						a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
+					}
 				}
 				if (y = 1) {
 					str = str.slice(0,2) + "<u>" + str.slice(2); 
