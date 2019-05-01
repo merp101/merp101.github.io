@@ -1,4 +1,4 @@
-var currentTab = "cave";//Tabs: inv, map, cave
+var currentTab = "fight";//Tabs: inv, fight
 var moved = false;
 
 function element(id) {
