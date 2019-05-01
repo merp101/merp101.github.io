@@ -120,9 +120,9 @@ function fight(attack,buffs=[]) {
 		
 	
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
-		changeText("fightplatform","<u>\o/-|==></u>                    <u>x</u>");
+		changeText("fightplatform","<u>\\o/-|==></u>                    <u>x</u>");
 		setTimeout(function(){
-			changeText("fightplatform","<u>\o/</u>                    <u>x</u>");
+			changeText("fightplatform","<u>\\o/</u>                    <u>x</u>");
 			if (currentEnemy.hp.current <= 0) {
 				currentEnemy.hp.current = 0;
 				enemiesDefeated++;
