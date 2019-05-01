@@ -50,13 +50,15 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
   }
 }
 
-function cycleNPCDialogue(npc) {
-  if (npc.dialoguecycle != npc.dialogue.length) {
-    changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
-    show("npcdialogue");
-    npc.dialoguecycle++;
-    hide("totalmessage");
-  } else {hide("npcdialogue");}
+function cycleNPCDialogue(npc,t) {
+  changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
+  show("npcdialogue");
+	if (t) {
+  	npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
+	} else {
+		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
+	}
+  hide("totalmessage");
 }
   
 
