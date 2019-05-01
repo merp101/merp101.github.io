@@ -88,13 +88,14 @@ function tick(letter=0) {
 		for (i = 0; i < Object.keys(npcs).length; i++) {
 			npc = npcs[npcList[i]];
 			if (char.pos.x + 2 == npc.pos || char.pos.x + 1 == npc.pos || char.pos.x == npc.pos || char.pos.x - 1 == npc.pos || char.pos.x - 2 == npc.pos) {
-				cycleNPCDialogue(npc)
+				cycleNPCDialogue(npc);
+				npc.isInteracting = true;
 			}
 		}
 	}
 	for (i = 0; i < Object.keys(npcs).length; i++) {
 		npc = npcs[npcList[i]];
-		if (char.pos.x - 2 > npc.pos) {hide("npcdialogue");}
+		if (char.pos.x - 2 > npc.pos) {hide("npcdialogue"); npc.isInteracting = false;}
 	}
 	if (!game.conditions.fighting) {
 		move();
@@ -141,6 +142,26 @@ element("body").onkeypress = function() {
 
 element("body").onkeyup = function() {
 	moved = false;
+}
+
+element("yesd").onclick = function() {
+	let npc;
+	for (i = 0; i < Object.keys(npcs).length; i++) {
+		npc = npcs[npcList[i]];
+		if (npc.isInteracting) {
+			cycleNPCDialogue(npc, true)
+		}
+	}
+}
+
+element("nod").onclick = function() {
+	let npc;
+	for (i = 0; i < Object.keys(npcs).length; i++) {
+		npc = npcs[npcList[i]];
+		if (npc.isInteracting) {
+			cycleNPCDialogue(npc, false)
+		}
+	}
 }
 
 function display() { 
