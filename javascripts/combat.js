@@ -121,24 +121,26 @@ function fight(attack,buffs=[]) {
 	
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
 		changeText("fightplatform","<u>\o/-|==></u>                    <u>x</u>");
-		setTimeout(function(){changeText("fightplatform","<u>\o/</u>                    <u>x</u>");}, 1000);
-		if (currentEnemy.hp.current <= 0) {
-			currentEnemy.hp.current = 0;
-			enemiesDefeated++;
-			totalEnemiesDefeated++;
-			getEnemyLoot();
-			enemies.shift();
-			currentEnemy = enemies[0];
-			levelEnemies.shift();
-			game.enemies.num --;
-			game.conditions.fighting = false;
-			display();
-			drawEnemies();
-			drawPlayer();
-			return;
-		
-		}
-		game.conditions.turn = "the enemy's";
+		setTimeout(function(){
+			changeText("fightplatform","<u>\o/</u>                    <u>x</u>");
+			if (currentEnemy.hp.current <= 0) {
+				currentEnemy.hp.current = 0;
+				enemiesDefeated++;
+				totalEnemiesDefeated++;
+				getEnemyLoot();
+				enemies.shift();
+				currentEnemy = enemies[0];
+				levelEnemies.shift();
+				game.enemies.num --;
+				game.conditions.fighting = false;
+				display();
+				drawEnemies();
+				drawPlayer();
+				return;
+			}
+			game.conditions.turn = "the enemy's";
+			//enemy attacks
+		}, 1000);
 	}
 	
 }
