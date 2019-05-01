@@ -98,7 +98,7 @@ function finishQuest() {
 	enemiesDefeated = 0;
 	if (currentLevel = "cave") {
 		home = true;
-		char.pos.x = 10;
+		char.pos.x = 9;
 		drawWorld("hub");
 	} //else {show("continuedecision");}
 	
