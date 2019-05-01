@@ -68,8 +68,7 @@ function cycleNPCDialogue(npc,t) {
 	}
 	changeText("npcd",npc.dialogue[npc.dialoguecycle]);
 	if (npc.dialoguetrees[npc.dialoguecycle] == undefined) {
-		hide("yesd");
-		hide("nod");
+		hide("buttond");
 		if (npc == "nurse") {
 			if (npc.dialoguecycle == 3 || npc.dialoguecycle == 4 || npc.dialoguecycle == 8 || npc.dialoguecycle == 16 || npc.dialoguecycle == 18) {
 				//show the nurse's shop
