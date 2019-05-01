@@ -25,7 +25,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 								],
     dialoguetrees: { //comment 's' if it asks for a shop
       0: {yes: 14, no: 1},
-			1: {yes: 2, no: 3},
+			1: {yes: 2, no: 7},
       2: {yes: 3, no: 4},
       3: {yes: 6, no: 5}, //s
       4: {yes: 6, no: 5}, //s
@@ -68,6 +68,15 @@ function cycleNPCDialogue(npc,t) {
 		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
 	}
 	changeText("npcd",npc.dialogue[npc.dialoguecycle]);
+	if (npc.dialoguetrees[npc.dialoguecycle] == undefined) {
+		hide("yesd");
+		hide("nod");
+		if (npc == "nurse") {
+			if (npc.dialoguecycle == 3 || npc.dialoguecycle == 4 || npc.dialoguecycle == 8 || npc.dialoguecycle == 16 || npc.dialoguecycle == 18) {
+				//show the nurse's shop
+			}
+		}
+	}
   
 }
   
