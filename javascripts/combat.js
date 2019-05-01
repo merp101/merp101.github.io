@@ -160,13 +160,13 @@ function drawWorld(level) {
 			str = maps[level][maps[level].length - y];
 			let a = [];
 			for (i = 0; i < str.length; i++) {
-				if (str.charAt(i) == "//") {
+				if (str.charAt(i) == "\") {
 					a.push(i);
 				}
 			}
 			if (a[0] != undefined) {
 				for (i = 0; i < str.length; i++) {
-					str = str.slice(0,a[i]) + "//" + str.slice(a[i]);
+					str = str.slice(0,a[i]) + "\" + str.slice(a[i]);
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 			}
