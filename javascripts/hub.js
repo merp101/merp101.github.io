@@ -56,8 +56,7 @@ function cycleNPCDialogue(npc,t) {
 	if (t == undefined) {
   		changeText("npcd",npc.dialogue[0]);
 		show("npcdialogue");
-		show("yesd");
-		show("nod");
+		show("buttond");
 		hide("totalmessage");
 		return;
 	}
