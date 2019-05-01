@@ -14,7 +14,7 @@ li {
 button {
 	border-style: dashed;
 	border-width: 2px;
-	border-color: rgb(0,0,0);
+	border-color: rgb(10,10,10);
 	font-family:"Inconsolata", monospace;
 	display: inline;
 	background-color: rgb(255,255,255);
