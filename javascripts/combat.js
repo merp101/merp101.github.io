@@ -106,7 +106,7 @@ function finishQuest() {
 
 function fight(attack,buffs=[]) {
 	if (game.stats.skills.includes(attack) && game.conditions.fighting) {
-		damage = game.stats.atk;
+		damage = game.stats.atk + (game.items.equips.weapon.atk * consts.weaponTypeModifiers[game.items.equips.weapon.type].dmg);
 		var dmgMult;
 		if (!attack.includes("buff")) { 
 			dmgMult = consts.skills[attack].dmg;
