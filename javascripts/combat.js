@@ -158,7 +158,7 @@ function drawWorld(level) {
 		let str;
 		for (let y = maps[level].length; y > 0; y--) {
 			str = maps[level][maps[level].length - y];
-			let a = [];
+		/*      let a = [];
 			for (i = 0; i < str.length; i++) {
 				if (str.charAt(i) == "\\") {
 					a.push(i);
@@ -169,7 +169,7 @@ function drawWorld(level) {
 					str = str.slice(0,a[i]) + "\\" + str.slice(a[i]);
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
-			}
+			} this is all for the auto-adding backslashes, but it no work */
 			if (element("world-" + y) == undefined) {
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
