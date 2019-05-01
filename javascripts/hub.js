@@ -54,13 +54,16 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 
 function cycleNPCDialogue(npc,t) {
 	if (t == undefined) {
-  	changeText("npcdialogue",npc.dialogue[0]);
+  		changeText("npcdialogue",npc.dialogue[0]);
 		show("npcdialogue");
+		show("yesd");
+		show("nod");
 		hide("totalmessage");
 		return;
 	}
+	
 	if (t) {
-  	npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
+  		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
 	} else {
 		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
 	}
