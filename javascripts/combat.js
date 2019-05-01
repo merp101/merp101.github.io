@@ -123,7 +123,7 @@ function fight(attack,buffs=[]) {
 		switch (game.items.equips.weapon.type) {
 			case "onehandsword": changeText("fightplatform","<u>\\o-|==></u>                    <u>x</u>");
 			case "twohandsword": changeText("fightplatform","<u>\\o-|==></u>                    <u>x</u>");
-			case "fists": changeText("fightplatform","<u>\\o--3</u>                    <u>x</u>"); setTimeout(function(){changeText("fightplatform","<u><s>o/</s>-3</u>                    <u>x</u>");},200);
+			case "fists": changeText("fightplatform","<u>\\o--3</u>                    <u>x</u>"); setTimeout(function(){changeText("fightplatform","<u><s>o/</s>-3</u>                    <u>x</u>");},250);
 		} 
 		setTimeout(function(){
 			changeText("fightplatform","<u>\\o/</u>                    <u>x</u>");
@@ -144,7 +144,7 @@ function fight(attack,buffs=[]) {
 			}
 			game.conditions.turn = "the enemy's";
 			//enemy attacks
-		}, 500);
+		}, (1000 / consts.weaponTypeModifiers[game.items.equips.weapon.type].speed));
 	}
 	
 }
