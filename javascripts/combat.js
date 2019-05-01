@@ -170,8 +170,8 @@ function drawWorld(level) {
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 			}
-			if (y = 1) {
-				str = str.slice(0,2) + "<u>" + str.slice(2); 
+			if (y == 1) {
+				str = str.slice(0,1) + "<u>" + str.slice(1); 
 				str = str.slice(0, str.length - 1) + "</u>" + str.slice(str.length - 1);
 			}
 			if (element("world-" + y) == undefined) {
