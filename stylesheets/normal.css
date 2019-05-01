@@ -10,9 +10,10 @@ li {
 }
 button {
 	border-style: dashed;
-	border-width: 1px;
+	border-width: 5px;
 	font-family:"Inconsolata", monospace;
 	display: inline;
+	background-color: rgb(255,255,255);
 }
 .active {
 	background-color: rgb(0,0,0);
