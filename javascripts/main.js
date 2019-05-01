@@ -95,7 +95,12 @@ function tick(letter=0) {
 	}
 	for (i = 0; i < Object.keys(npcs).length; i++) {
 		npc = npcs[npcList[i]];
-		if (char.pos.x - 2 > npc.pos || char.pos.x + 2 < npc.pos) {hide("npcdialogue"); npc.isInteracting = false;}
+		if (npc.isInteracting) {
+			if (char.pos.x - 2 > npc.pos || char.pos.x + 2 < npc.pos) {
+				hide("npcdialogue"); 
+				npc.isInteracting = false;
+			}
+		}
 	}
 	if (!game.conditions.fighting) {
 		move();
