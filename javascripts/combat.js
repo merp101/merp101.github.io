@@ -162,7 +162,7 @@ function drawWorld(level) {
 				br = document.createElement("BR");
 				node.id = "world-" + y;
 	  			str = maps[level][maps[level].length - y];
-				let a;
+				let a = [];
 				for (i = 0; i < str.length; i++) {
 					if (str.charAt(i) == "//") {
 						a.push(i);
