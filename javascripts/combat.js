@@ -120,7 +120,11 @@ function fight(attack,buffs=[]) {
 		
 	
 		currentEnemy.hp.current -= (damage * dmgMult) - Math.floor(currentEnemy.def / 2); //can be changed
-		changeText("fightplatform","<u>\\o/-|==></u>                    <u>x</u>");
+		switch (game.items.equips.weapon.type) {
+			case "onehandsword": changeText("fightplatform","<u>\\o-|==></u>                    <u>x</u>");
+			case "twohandsword": changeText("fightplatform","<u>\\o-|==></u>                    <u>x</u>");
+			case "fists": changeText("fightplatform","<u>\\o--3</u>                    <u>x</u>"); setTimeout(function(){changeText("fightplatform","<u><s>o/</s>-3</u>                    <u>x</u>");
+		} 
 		setTimeout(function(){
 			changeText("fightplatform","<u>\\o/</u>                    <u>x</u>");
 			if (currentEnemy.hp.current <= 0) {
@@ -140,7 +144,7 @@ function fight(attack,buffs=[]) {
 			}
 			game.conditions.turn = "the enemy's";
 			//enemy attacks
-		}, 1000);
+		}, 500);
 	}
 	
 }
