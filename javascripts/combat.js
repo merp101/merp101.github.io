@@ -105,7 +105,7 @@ function finishQuest() {
 }
 
 function fight(attack,buffs=[]) {
-	if (game.stats.skills.includes(attack)) {
+	if (game.stats.skills.includes(attack) && game.conditions.fighting) {
 		damage = game.stats.atk;
 		var dmgMult;
 		if (!attack.includes("buff")) { 
