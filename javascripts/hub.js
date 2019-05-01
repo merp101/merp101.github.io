@@ -40,29 +40,32 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     },
     // ^format: "n: {yes:(line),no:(line)}", go through line by line (unless it's an end)
     dialoguecycle: 0,
-    shop: [{name:"potion",cost:1}]
+    shop: [{name:"potion",cost:1}],
+		isInteracting: false
   },
   blacksmith: {
     pos: 46,
     dialogue: ["d","e","a","d"],
     dialoguecycle: 0,
-    shop: [{name:"sword", cost:1}]
+    shop: [{name:"sword", cost:1}],
+		isInteracting: false
   }
 }
 
 function cycleNPCDialogue(npc,t) {
-	if (npc.dialoguecycle == 0) {
+	if (t == undefined) {
   	changeText("npcdialogue",npc.dialogue[0]);
 		show("npcdialogue");
+		hide("totalmessage");
 		return;
 	}
-	changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
 	if (t) {
   	npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
 	} else {
 		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
 	}
-  hide("totalmessage");
+	changeText("npcdialogue",npc.dialogue[npc.dialoguecycle]);
+  
 }
   
 
