@@ -10,7 +10,7 @@ li {
 }
 button {
 	border-style: dashed;
-	border-width: 5px;
+	border-width: 3px;
 	font-family:"Inconsolata", monospace;
 	display: inline;
 	background-color: rgb(255,255,255);
