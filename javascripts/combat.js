@@ -155,26 +155,28 @@ function drawWorld(level) {
 		let node;
 		let br;
 		let textNode;
+		let str;
 		for (let y = maps[level].length; y > 0; y--) {
 			if (element("world-" + y) == undefined) {
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
 				node.id = "world-" + y;
-	  			textNode = document.createTextNode(maps[level][maps[level].length - y]);
+	  			str = maps[level][maps[level].length - y];
 				let a;
-				for (i = 0; i < textNode.textContent.length; i++) {
-					if (textNode.textContent.charAt(i) == "//") {
+				for (i = 0; i < str.length; i++) {
+					if (str.charAt(i) == "//") {
 						a.push(i);
 					}
 				}
-				for (i = 0; i < textNode.textContent.length; i++) {
-					textNode.textContent = textNode.textContent.slice(0,a[i]) + "//" + textNode.textContent.slice(array[i]);
+				for (i = 0; i < str.length; i++) {
+					str = str.slice(0,a[i]) + "//" + str.slice(array[i]);
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 				if (y = 1) {
-					textNode.textContent = textNode.textContent.slice(0,2) + "<u>" + textNode.textContent.slice(2); 
-					textNode.textContent = textNode.textContent.slice(0, textNode.textContent.length - 1) + "</u>" + textNode.textContent.slice(textNode.textContent.length - 1);
+					str = str.slice(0,2) + "<u>" + str.slice(2); 
+					str = str.slice(0, str.length - 1) + "</u>" + str.slice(str.length - 1);
 				}
+				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
 				map.appendChild(node);
 				map.appendChild(br);
