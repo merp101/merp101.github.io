@@ -23,6 +23,8 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     /*17*/       "But why? How am I suspicious? Is it the heavy smoke that you see through the window? Well... that's my... steam. From my... bath. Yes, that's it! It's the steam from my bath that I'm going to go take right now!",
 		/*18*/	     "Well, good. I was a little concerned for your mental health. Well, do you want to browse my wares, then?"
 								],
+	  secondaryDialogue: ["Oh, hello! Welcome back! Would you like to browse my wares?",
+												"Oh, then would you like to come inside my heart shack instead?"]
     dialoguetrees: { //comment 's' if it asks for a shop
       0: {yes: 14, no: 1},
 			1: {yes: 2, no: 7},
@@ -37,6 +39,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 	    15: {yes: 16, no: 18},
 			16: {yes: 10, no: 5}, //s
 			18: {yes: 10, no: 5} //s
+			//secondary: {yes: 10, no: 1s -> yes:14,no:1 }
     },
     // ^format: "n: {yes:(line),no:(line)}", go through line by line (unless it's an end)
     dialoguecycle: 0,
