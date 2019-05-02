@@ -41,14 +41,16 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     // ^format: "n: {yes:(line),no:(line)}", go through line by line (unless it's an end)
     dialoguecycle: 0,
     shop: [{name:"potion",cost:1}],
-		isInteracting: false
+		isInteracting: false,
+	  hasInteracted: false
   },
   blacksmith: {
     pos: 46,
     dialogue: ["d","e","a","d"],
     dialoguecycle: 0,
     shop: [{name:"sword", cost:1}],
-		isInteracting: false
+		isInteracting: false,
+		hasInteracted: false
   }
 }
 
