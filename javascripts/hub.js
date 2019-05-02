@@ -24,7 +24,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 		/*18*/	     "Well, good. I was a little concerned for your mental health. Well, do you want to browse my wares, then?"
 								],
 	  secondaryDialogue: ["Oh, hello! Welcome back! Would you like to browse my wares?",
-												"Oh, then would you like to come inside my heart shack instead?"]
+												"Oh, then would you like to come inside my heart shack instead?"],
     dialoguetrees: { //comment 's' if it asks for a shop
       0: {yes: 14, no: 1},
 			1: {yes: 2, no: 7},
