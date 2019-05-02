@@ -90,7 +90,6 @@ function tick(letter=0) {
 			if (char.pos.x + 2 == npc.pos || char.pos.x + 1 == npc.pos || char.pos.x == npc.pos || char.pos.x - 1 == npc.pos || char.pos.x - 2 == npc.pos) {
 				cycleNPCDialogue(npc);
 				npc.isInteracting = true;
-				npc.hasInteracted = true;
 			}
 		}
 	}
@@ -99,7 +98,8 @@ function tick(letter=0) {
 		if (npc.isInteracting) {
 			if (char.pos.x - 2 > npc.pos || char.pos.x + 2 < npc.pos) {
 				hide("npcdialogue"); 
-				npc.isInteracting = false;				
+				npc.isInteracting = false;
+				npc.hasInteracted = true;
 			}
 		}
 	}
