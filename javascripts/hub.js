@@ -83,6 +83,7 @@ function cycleNPCDialogue(npc,t) {
 		} else {
 			changeText("npcd", npc.secondaryDialogue[1]);
 		}
+	}
 	if (npc.dialoguetrees[npc.dialoguecycle] == undefined) {
 		hide("buttond");
 		if (npc == "nurse") {
