@@ -59,19 +59,30 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
 
 function cycleNPCDialogue(npc,t) {
 	if (t == undefined) {
-  		changeText("npcd",npc.dialogue[0]);
-		show("npcdialogue");
-		show("buttond");
-		hide("totalmessage");
-		return;
+		if (!npc.hasInteracted) {
+  			changeText("npcd",npc.dialogue[0]);
+			show("npcdialogue");
+			show("buttond");
+			hide("totalmessage");
+			return;
+		} else {
+			changeText("npcd",npc.secondaryDialogue[0]);
+			npc.dialoguecycle = 0;
+		}
 	}
-	
-	if (t) {
-  		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
+	if (!npc.hasInteracted) {
+		if (t) {
+  			npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].yes;
+		} else {
+			npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
+		}
+		changeText("npcd",npc.dialogue[npc.dialoguecycle]);
 	} else {
-		npc.dialoguecycle = npc.dialoguetrees[npc.dialoguecycle].no;
-	}
-	changeText("npcd",npc.dialogue[npc.dialoguecycle]);
+		if (t) {
+			changeText("npcd", npc.dialogue[10]);
+		} else {
+			changeText("npcd", npc.secondaryDialogue[1]);
+		}
 	if (npc.dialoguetrees[npc.dialoguecycle] == undefined) {
 		hide("buttond");
 		if (npc == "nurse") {
