@@ -84,12 +84,19 @@ function tick(letter=0) {
 		}
 	}
 	if (letter == "w") { //interact
+		//npc dialogue
 		let npc;
 		for (i = 0; i < Object.keys(npcs).length; i++) {
 			npc = npcs[npcList[i]];
 			if (char.pos.x + 2 == npc.pos || char.pos.x + 1 == npc.pos || char.pos.x == npc.pos || char.pos.x - 1 == npc.pos || char.pos.x - 2 == npc.pos) {
 				cycleNPCDialogue(npc);
 				npc.isInteracting = true;
+			}
+		}
+		//enter area
+		if (currentLevel == "hub") {
+			if (char.pos x == 6 || char.pos x == 7 || char.pos x == 8 || char.pos x == 9 || char.pos x == 10 || char.pos x == 11 || char.pos x == 12) {
+				drawWorld("cave");
 			}
 		}
 	}
