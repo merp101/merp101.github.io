@@ -95,7 +95,7 @@ function tick(letter=0) {
 		}
 		//enter area
 		if (currentLevel == "hub") {
-			if (char.pos x == 6 || char.pos x == 7 || char.pos x == 8 || char.pos x == 9 || char.pos x == 10 || char.pos x == 11 || char.pos x == 12) {
+			if (char.pos.x == 6 || char.pos.x == 7 || char.pos.x == 8 || char.pos.x == 9 || char.pos.x == 10 || char.pos.x == 11 || char.pos.x == 12) {
 				drawWorld("cave");
 			}
 		}
