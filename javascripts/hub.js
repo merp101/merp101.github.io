@@ -61,14 +61,14 @@ function cycleNPCDialogue(npc,t) {
 	if (t == undefined) {
 		if (!npc.hasInteracted) {
   			changeText("npcd",npc.dialogue[0]);
-			show("npcdialogue");
-			show("buttond");
-			hide("totalmessage");
-			return;
 		} else {
 			changeText("npcd",npc.secondaryDialogue[0]);
 			npc.dialoguecycle = 0;
 		}
+		show("npcdialogue");
+		show("buttond");
+		hide("totalmessage");
+		return;
 	}
 	if (!npc.hasInteracted) {
 		if (t) {
