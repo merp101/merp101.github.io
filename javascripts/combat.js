@@ -186,7 +186,7 @@ function drawWorld(level) {
 				node.id = "world-" + y;
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
-				if (map.childNodes[0] != undefined) {
+				if (str.length > maps[currentLevel].length) {
 					map.insertBefore(node,map.childNodes[0]);
 					map.insertBefore(br,map.childNodes[1]);
 				} else {
