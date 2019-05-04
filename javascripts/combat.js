@@ -192,12 +192,12 @@ function drawWorld(level) {
 				node.id = "world-" + ((maps[level].length - y) + 1);
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
-				if (maps[level].length > maps[currentLevel].length) {
-					map.insertBefore(br,map.childNodes[0]);
-					map.insertBefore(node,map.childNodes[0]);					
-				} else {
+				if (map.childNodes[0] == undefined) {
 					map.appendChild(node);
 					map.appendChild(br);
+				} else {
+					map.insertBefore(br,map.childNodes[0]);
+					map.insertBefore(node,map.childNodes[0]);	
 				}
 			}
 		}
