@@ -201,6 +201,9 @@ function drawWorld(level) {
 				}
 			}
 		}
+		for (i = 0; i < (maps[currentLevel].length - maps[level].length); i++) {
+			
+		}
 		worldDrawn = true;
 		currentLevel = level;
 		conv = maps[level + "EnemyPos"]
