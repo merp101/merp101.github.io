@@ -98,7 +98,7 @@ function finishQuest() {
 	char.pos.y = 1
 	getTotalLoot();
 	enemiesDefeated = 0;
-	if (currentLevel = "cave") {
+	if (currentLevel == "cave") {
 		home = true;
 		char.pos.x = 9;
 		drawWorld("hub");
