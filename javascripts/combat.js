@@ -192,10 +192,7 @@ function drawWorld(level) {
 				map.appendChild(br);
 			} else {
 				changeText("world-" + y, str);
-				
-				for (i = 0; i < element("map").childNodes.length; i++) {
-					show(map.childNodes[i]);
-				}
+				show("world-" + y);
 			}
 		}
 		worldDrawn = true;
