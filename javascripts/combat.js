@@ -161,7 +161,7 @@ function setPlayerItem(name,type,dmg) {
 
 function drawWorld(level) {
 	if (!worldDrawn) {
-		if (currentLevel == undefined) {
+		if (currentLevel == "none") {
 			currentLevel = "cave";
 		}
 		let map = document.getElementById("map");
