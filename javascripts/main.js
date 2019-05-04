@@ -243,6 +243,7 @@ function init() {
 	
 	changeText("gold", game.gold);
 	changeText("inv", invArt);
+	drawWorld("cave");
 	
 	if (game.items.equips.weapon.name == "none") setPlayerItem("fists","fists",1);
 	
