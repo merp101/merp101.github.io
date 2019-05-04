@@ -184,12 +184,15 @@ function drawWorld(level) {
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
 				node.id = "world-" + y;
-	  			
-				
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
-				map.insertBefore(node,map.childNodes[0]);
-				map.appendChild(br,map.childNodes[1]);
+				if (map.childNodes[0] != undefined) {
+					map.insertBefore(node,map.childNodes[0]);
+					map.appendChild(br,map.childNodes[1]);
+				} else {
+					map.appendChild(node);
+					map.appendChild(br);
+				}
 			} else {
 				changeText("world-" + y, str);
 				show("world-" + y);
