@@ -82,6 +82,7 @@ function cycleNPCDialogue(npc,t) {
 			changeText("npcd", npc.dialogue[10]);
 		} else {
 			changeText("npcd", npc.secondaryDialogue[1]);
+			npc.hasInteracted = false;
 		}
 	}
 	if (npc.dialoguetrees[npc.dialoguecycle] == undefined) {
