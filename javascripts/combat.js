@@ -170,7 +170,7 @@ function drawWorld(level) {
 		let textNode;
 		let str;
 		for (let y = maps[level].length; y > 0; y--) {
-			str = maps[level][maps[level].length - y];
+			str = maps[level][y - 1];
 		/*      let a = [];
 			for (i = 0; i < str.length; i++) {
 				if (str.charAt(i) == "\\") {
@@ -183,22 +183,22 @@ function drawWorld(level) {
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 			} this is all for the auto-adding backslashes/underlines, but it no work */
-			if (element("world-" + y) == undefined) {
+			if (element("world-" + ((maps[level].length - y) + 1)) != undefined) {
+				changeText("world-" + ((maps[level].length - y) + 1), str);
+				show("world-" + ((maps[level].length - y) + 1));
+			} else {
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
-				node.id = "world-" + y;
+				node.id = "world-" + ((maps[level].length - y) + 1);
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
 				if (maps[level].length > maps[currentLevel].length) {
-					map.insertBefore(node,map.childNodes[0]);
-					map.insertBefore(br,map.childNodes[1]);
+					map.insertBefore(br,map.childNodes[0]);
+					map.insertBefore(node,map.childNodes[0]);					
 				} else {
 					map.appendChild(node);
 					map.appendChild(br);
 				}
-			} else {
-				changeText("world-" + y, str);
-				show("world-" + y);
 			}
 		}
 		worldDrawn = true;
