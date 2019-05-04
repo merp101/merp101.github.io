@@ -179,7 +179,7 @@ function drawWorld(level) {
 					str = str.slice(0,a[i]) + "\\" + str.slice(a[i]);
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
-			} this is all for the auto-adding backslashes, but it no work */
+			} this is all for the auto-adding backslashes/underlines, but it no work */
 			if (element("world-" + y) == undefined) {
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
@@ -188,8 +188,8 @@ function drawWorld(level) {
 				
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
-				map.appendChild(node);
-				map.appendChild(br);
+				map.insertBefore(node,map.childNodes[0]);
+				map.appendChild(br,map.childNodes[1]);
 			} else {
 				changeText("world-" + y, str);
 				show("world-" + y);
