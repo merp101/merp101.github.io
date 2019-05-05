@@ -201,7 +201,7 @@ function drawWorld(level) {
 				}
 			}
 		}
-		for (i = 0; i < (maps[currentLevel].length - maps[level].length); i++) { //prev length - cur length
+		for (i = 1; i < (maps[currentLevel].length - maps[level].length) + 1; i++) { //prev length - cur length
 			hide("world-"+(maps[level].length + i));
 		}
 		worldDrawn = true;
