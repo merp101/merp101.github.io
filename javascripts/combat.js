@@ -185,7 +185,9 @@ function drawWorld(level) {
 			} this is all for the auto-adding backslashes/underlines, but it no work */
 			if (element("world-" + ((maps[level].length - y) + 1)) != undefined) { //if the element's already there
 				changeText("world-" + ((maps[level].length - y) + 1), str);
-				show("world-" + ((maps[level].length - y) + 1));
+				if (element("world-" + ((maps[level].length - y) + 1)).display == "none") {
+					show("world-" + ((maps[level].length - y) + 1));
+				}
 			} else { // if it's not
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
