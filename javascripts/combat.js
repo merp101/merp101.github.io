@@ -183,16 +183,16 @@ function drawWorld(level) {
 					a.forEach(function(num,index,arr) {arr[index] = num + 1;});			  
 				}
 			} this is all for the auto-adding backslashes/underlines, but it no work */
-			if (element("world-" + ((maps[level].length - y) + 1)) != undefined) {
+			if (element("world-" + ((maps[level].length - y) + 1)) != undefined) { //if the element's already there
 				changeText("world-" + ((maps[level].length - y) + 1), str);
 				//show("world-" + ((maps[level].length - y) + 1));
-			} else {
+			} else { // if it's not
 				node = document.createElement("SPAN");
 				br = document.createElement("BR");
 				node.id = "world-" + ((maps[level].length - y) + 1);
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);
-				if (map.childNodes[0] == undefined) {
+				if (map.childNodes[0] == undefined) { //if it's the first element it's making (for the entire game)
 					map.appendChild(node);
 					map.appendChild(br);
 				} else {
@@ -201,8 +201,8 @@ function drawWorld(level) {
 				}
 			}
 		}
-		for (i = 0; i < (maps[currentLevel].length - maps[level].length); i++) {
-			
+		for (i = 0; i < (maps[currentLevel].length - maps[level].length); i++) { //prev length - cur length
+			hide("world-"+(maps[level].length + i));
 		}
 		worldDrawn = true;
 		currentLevel = level;
