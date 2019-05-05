@@ -210,9 +210,7 @@ function drawWorld(level) {
 		currentLevel = level;
 		conv = maps[level + "EnemyPos"]
 		levelEnemies = conv;
-		drawPlayer();
-		levelDiff = Number(maps[level + "Diff"]);
-		
+		drawPlayer();		
 	}
 }
 
@@ -246,7 +244,7 @@ function drawEnemies() {
 				let newStr = str1.concat(generalArt.enemy,str2); //add the 'o' to the end of the 'start' string, then the rest
 				world.innerHTML = newStr; //set the actual HTML to the new string
 			}
-		} else setEnemies(levelDiff, currentLevel);
+		} else setEnemies(maps[currentlevel + "Diff"], currentLevel);
 		
 	}
 	
