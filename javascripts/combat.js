@@ -185,7 +185,7 @@ function drawWorld(level) {
 			} this is all for the auto-adding backslashes/underlines, but it no work */
 			if (element("world-" + ((maps[level].length - y) + 1)) != undefined) { //if the element's already there
 				changeText("world-" + ((maps[level].length - y) + 1), str);
-				if (element("world-" + ((maps[level].length - y) + 1)).display == "none") {
+				if (element("world-" + ((maps[level].length - y) + 1)).style.display == "none") {
 					show("world-" + ((maps[level].length - y) + 1));
 				}
 			} else { // if it's not
