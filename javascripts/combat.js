@@ -1,5 +1,6 @@
 // basic vars
 var worldDrawn = false;
+var levelEnemies;
 var currentQuest;
 var home = false;
 var currentLevel = "none";
@@ -15,7 +16,6 @@ var enemiesSet = false;
 var levelEnemies;
 var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
 var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
-var levelDiff;	// =	levelDiff = Number(maps[currentLevel + "Diff"]);
 var numToLettersAtk = ["basic","fire","ice","electricity"];
 
 // Enemy creator function
@@ -208,7 +208,7 @@ function drawWorld(level) {
 		}
 		worldDrawn = true;
 		currentLevel = level;
-		conv = maps[level + "EnemyPos"]
+		let conv = maps[level + "EnemyPos"];
 		levelEnemies = conv;
 		drawPlayer();		
 	}
