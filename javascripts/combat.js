@@ -14,8 +14,7 @@ var currentEnemyNum = 0;
 var enemiesDrawn = false;
 var enemiesSet = false;
 var levelEnemies;
-var iForEnemyXPos; // = iForEnemyXPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(0)) + 1;
-var iForEnemyYPos; // =	iForEnemyYPos = Number(maps[currentLevel + "EnemyPos"][i].charAt(2)) + 1;
+var levelDiff;
 var numToLettersAtk = ["basic","fire","ice","electricity"];
 
 // Enemy creator function
@@ -210,6 +209,7 @@ function drawWorld(level) {
 		currentLevel = level;
 		let conv = maps[level + "EnemyPos"];
 		levelEnemies = conv;
+		levelDiff = Number(maps[level + "Diff"]);
 		drawPlayer();		
 	}
 }
@@ -244,7 +244,7 @@ function drawEnemies() {
 				let newStr = str1.concat(generalArt.enemy,str2); //add the 'o' to the end of the 'start' string, then the rest
 				world.innerHTML = newStr; //set the actual HTML to the new string
 			}
-		} else setEnemies(maps[currentLevel + "Diff"], currentLevel);
+		} else setEnemies(levelDiff, currentLevel);
 		
 	}
 	
