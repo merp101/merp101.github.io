@@ -41,6 +41,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
       			18: {yes: 10, no: 5} //s
       			//secondary: {yes: 10, no: 1s -> yes:14,no:1 }
     		},
+		toShop: 10,
    		// ^format: "n: {yes:(line),no:(line)}", go through line by line (unless it's an end)
    		dialoguecycle: 0,
    		shop: [{name:"potion",cost:1}],
@@ -50,18 +51,24 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
   	blacksmith: {
  	 	pos: 46,
  	 	dialogue: ["Hi! I'm the blacksmith. Would you like to buy a this wooden sword? Because it is made of wood it is only 1 gold! <br> (It looks like a toy.)",
-  /*1*/ 		"Here you go! If you would like to buy some of my other equipment you can come in my smithy.",
-  /*2*/	        	"Ok. well, good luck not dying. Let me know if you change your mind.",
-  /*3*/         	"Great! Just go in that door right there and you will meet my brother. He has much better gear to sell you.",
-  /*4*/	       		"Good choice. This is a dangerous world, after all. The wooden sword costs 1 gold.",
-  /*5*/         	"Okay, bye.",
+  /*1*/ 	  	   "Here you go! Would you like to buy some of my other equipment?",
+  /*2*/	        	   "Ok. well, good luck not dying. Let me know if you change your mind.",
+  /*3*/         	   "Great! Here you go.",
+  /*4*/	       		   "Good choice. This is a dangerous world, after all. The wooden sword costs 1 gold.",
+  /*5*/         	   "Okay, bye.",
+			   "
+			   
          	],	
 		dialoguecycle: 0,
+		toShop: 3,
 	  	dialoguetrees: {
 	       		0: {yes: 1, no: 2},
 	       		1: {yes: 3, no: 5},
 	       		2: {yes: 4, no: 5},
 		},
+		secondaryDialogue: ["Oh! Hello again! Care to stop and talk to this lonely old geezer?",
+				    "Well, then, would you like to buy this wooden sword?"
+		],
    		shop: [{name:"wooden sword", cost:1}],
 		isInteracting: false,
 		hasInteracted: false
@@ -90,7 +97,7 @@ function cycleNPCDialogue(npc,t) {
 		changeText("npcd",npc.dialogue[npc.dialoguecycle]);
 	} else {
 		if (t) {
-			changeText("npcd", npc.dialogue[10]);
+			changeText("npcd", npc.dialogue[npc.toShop]);
 		} else {
 			changeText("npcd", npc.secondaryDialogue[1]);
 			npc.hasInteracted = false;
