@@ -55,8 +55,9 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
   /*3*/         	"Great! Just go in that door right there and you will meet my brother. He has much better gear to sell you.",
   /*4*/	       		"Good choice. This is a dangerous world, after all. The wooden sword costs 1 gold.",
   /*5*/         	"Okay, bye.",
-         	],	       
-	  	dialoguecycle: {
+         	],	
+		dialoguecycle: 0,
+	  	dialoguetrees: {
 	       		0: {yes: 1, no: 2},
 	       		1: {yes: 3, no: 5},
 	       		2: {yes: 4, no: 5},
