@@ -18,7 +18,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
     /*13*/       "UGH, what do you WANT?! LEAVE ME ALONE! <br> (You have ruined your relationship with the Nurse. You may no longer access her shop.)",
     //split  -6
     /*14*/       "Oh, good, good. Here, have some of this very <em> not </em> suspicious potion, and you'll be fine! Drink up!",
-    /*15*/       "Wait, really? You're going to drink that? From a person who you don't know, who may not have a medical license, who may be giving you liquid weed?",
+    /*15*/       "Wait, really? You're going to drink that? From a person who you don't know, who may not have a medical license, who may be giving you poison?",
     /*16*/       "Okay then. Drink to your heart's content! <br> (You take a sip, nearly vomit, and chug the rest because of the horrible taste. You don't feel anything different.) <br> Wait, really? Huh. I guess that one was a dud. Well, if you have gold, you can buy some potions that'll probably do something. I have no confidence in myself anymore.",
     /*17*/       "But why? How am I suspicious? Is it the heavy smoke that you see through the window? Well... that's my... steam. From my... bath. Yes, that's it! It's the steam from my bath that I'm going to go take right now!",
 		/*18*/	     "Well, good. I was a little concerned for your mental health. Well, do you want to browse my wares, then?"
@@ -49,9 +49,20 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
   },
   blacksmith: {
     pos: 46,
-    dialogue: ["d","e","a","d"],
-    dialoguecycle: 0,
-    shop: [{name:"sword", cost:1}],
+    dialogue: ["Hi! I'm the blacksmith. Would you like to buy a this wooden sword? Because it is made of wood it is only 1 gold! <br> It looks like a toy",
+  /*1*/ 	"Here you go! If you would like to buy some of my other equipment you can come in my smithy."
+  /*2*/	        "Ok. well, good luck not dying. let me know if you change your mind."
+  /*3*/         "Great! Just go in that door right there and you will meet my brother. He has much better gear to sell you."
+  /*4*/	        "Good choice. This is a dangerous world, after all. The wooden sword costs 1 gold.
+  /*5*/         "ok, bye."
+  /*6*/	       
+  /*7*/	       
+	       
+	       dialoguecycle: 
+	       0: {yes: 1, no: 2}
+	       1: {yes: 3, no: 5}
+	       2: {yes: 4, no: 5}
+    shop: [{name:"wooden sword", cost:1}],
 		isInteracting: false,
 		hasInteracted: false
   }
