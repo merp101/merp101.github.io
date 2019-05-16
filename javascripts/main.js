@@ -235,13 +235,13 @@ function display() {
 	if (worldDrawn) {
 		show("combatmsg");
 	}
+	changeText("gold", "You have " + game.gold + " gold.");
 }
 
 function init() {
 	load();
 	display();
-	
-	changeText("gold", game.gold);
+
 	changeText("inv", invArt);
 	drawWorld("cave");
 	
