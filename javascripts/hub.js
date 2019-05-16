@@ -55,9 +55,7 @@ var npcs = { //dialogue comments format: (yes/no)(line it's responding to(/other
   /*2*/	        	   "Ok. well, good luck not dying. Let me know if you change your mind.",
   /*3*/         	   "Great! Here you go.",
   /*4*/	       		   "Good choice. This is a dangerous world, after all. The wooden sword costs 1 gold.",
-  /*5*/         	   "Okay, bye.",
-			   "
-			   
+  /*5*/         	   "Okay, bye.",			   
          	],	
 		dialoguecycle: 0,
 		toShop: 3,
