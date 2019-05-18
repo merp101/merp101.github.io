@@ -32,7 +32,7 @@ function createTextElement(text, parentid, id="", type="SPAN", br="true", first=
 		let br = document.createElement(br);
 	}
 	if (first) {
-		element(parentid).insertBefore(node, element(parentid).childNodes[0];
+		element(parentid).insertBefore(node, element(parentid).childNodes[0]);
 		if (br) {
 			element(parentid).insertBefore(br, element(parentid).childNodes[1]);
 		}
