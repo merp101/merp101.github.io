@@ -32,9 +32,16 @@ function createTextElement(text, parentid, id="", type="SPAN", br="true", first=
 		let br = document.createElement('BR');
 	}
 	if (first) {
-		element(parentid).insertBefore(node, element(parentid).childNodes[0]);
-		if (br) {
-			element(parentid).insertBefore(br, element(parentid).childNodes[1]);
+		if (element(parentid).childNodes[0] !== undefined) {
+			if (br) {
+				element(parentid).insertBefore(br, element(parentid).childNodes[0]);
+			}
+			element(parentid).insertBefore(node, element(parentid).childNodes[0]);
+		} else {
+			element(parentid).appendChild(node);
+			if (br) {
+				element(parentid).appendChild(br);
+			}
 		}
 	} else {
 		element(parentid).appendChild(node);
