@@ -1,79 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title> The Cave </title>
-	<meta name="The Cave" content="A game about escaping from death."/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" type="image/jpg" href="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/264140/fe5c9390704fdeef71cd9915269bae0573ca6888.jpg">
-  	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
-	<script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
-  	<link rel="stylesheet" type="text/css" href="stylesheets/normal.css">
-</head>
-<body id="body">
-	<div id="howto" style="position:fixed;top:10px;right:10px;font-size:15px;"><a href="howto.html">How To Play</a></div>
-	<div id="credits" style="position:fixed;top:10px;left:10px;font-size:15px;"> Game made by Evan Grzeda and Simon Weber <br> Full credits <a href="credits.html">here</a></div>
-  <div id="title">The Cave</div>
-  <ul id="nav-bar">
-    <li id="fightli"><button id="fightbtn" onclick="changeTab('fight');">The Caves</button></li>
-		<li id="invli"><button id="invbtn" onclick="changeTab('inv');">Inventory</button></li>
-  </ul>
-	<!--<img src=""></img>-->
+	<head>
+		<title> The Cave </title>
+		<meta name="The Cave" content="A game about escaping from death."/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/jpg" href="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/264140/fe5c9390704fdeef71cd9915269bae0573ca6888.jpg">
+  		<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+		<script type="text/javascript" src="javascripts/jquery-3.2.1.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="stylesheets/normal.css">
+	
+		<datalist id="weapon"> </datalist>
+		<datalist id="helmet"> </datalist>
+		<datalist id="chestplate"> </datalist>
+		<datalist id="gloves"> </datalist>
+		<datalist id="leggings"> </datalist>
+	</head>
+	<body id="body">
+		<div id="howto" style="position:fixed;top:10px;right:10px;font-size:15px;"><a href="howto.html">How To Play</a></div>
+		<div id="credits" style="position:fixed;top:10px;left:10px;font-size:15px;"> Game made by Evan Grzeda and Simon Weber <br> Full credits <a href="credits.html">here</a></div>
+  		<div id="title">The Cave</div>
+ 		<ul id="nav-bar">
+    			<li id="fightli"><button id="fightbtn" onclick="changeTab('fight');">The Caves</button></li>
+			<li id="invli"><button id="invbtn" onclick="changeTab('inv');">Inventory</button></li>
+  		</ul>
+		<!--<img src=""></img>-->
 	
 	
-  <div id="fighttab">
-	  <div id="stats">
-		<table border="1">
-			<tr>
-				<text id="playerstats" style="width: 25%;height:30%;">You: <span id="playerhp">x</span>/<span id="playermaxhp">x</span> HP, <span id="playeratk">x</span> ATK, <span id="playerspd">x</span> SPD, <span id="playerdef">x</span> DEF.</text> <br>
-			</tr>
-			<tr>
-				<text id="enemystats" style="width: 25%;height:30%;">Enemy: <span id="enemyhp">x</span>/<span id="enemymaxhp">x</span> HP, <span id="enemyatk">x</span> ATK, <span id="enemyspd">x</span> SPD, <span id="enemydef">x</span> DEF. </text>
-			</tr>
-		  </table>
-		</div>
-	  <div id="fighting..."> You are fighting <span id="enemyname"> nothing. </span> </div>
-	  <div id="turn..."> It is <span id="turn">your</span> turn. </div>
-	  <div id="map" class="whitespace"> </div>
-	  <div id="npcdialogue" style="display:none; width:30%; text-align:center;"> 
-		  <span id="npcd"> </span>
-		  <br> <br> 
-		  <ul id="buttond">
-			  <li><button id="yesd"> Yes </button></li>
-			  <li><button id="nod"> No </button></li>
-		  </ul>
-	  </div>
-	  <div id="fightplatform" class="whitespace" style="display:none;"><u>\o/</u>                    <u>x</u></div>
-	  <br> <br>
-	  <div id="combatmsg" style="display:none;"></div>
-	  <div id="lootwarning" style="display:none;"> You will not gain any loot until you complete the quest! </div>
-	  <div id="totalmessage" style="display:none;"> </div>
-	  <div id="playerattacks" style="align:center;position:relative; width:300px;">
-		<table>
-			<tr>
-				<td id="attacks"><strong> Attacks </strong> </td>
-				<td id="basicatk"><button onclick="fight('basic');"> Basic Attack </button></td>
-				<td id="strongatk"><button onclick="fight('strong');"> Strong Attack </button></td>
-				<td id="fireatk"><button onclick="fight('fire');"> Fire Swing </button></td>
-				<td id="iceatk"><button onclick="fight('ice');"> Basic Attack </button></td>
-				<td id="electricatk"><button onclick="fight('electric');"> Basic Attack </button></td>
-			</tr>
-			<tr>
-				<td id="buffs"><strong> Buffs </strong></td>
-				<td id="firebuff"><button onclick="fight("firebuff");"> Fire Touch </button></td>
-				<td id="icebuff"><button onclick="fight("icebuff");"> Icy <br>Touch </button></td>
-				<td id="electricbuff"><button onclick="fight("electricbuff");"> Electric Touch </button></td>
-			</tr>
-		  </table>
-	  </div>
-  </div>
-  <div id="invtab" style="display:none;align:center;">
+  		<div id="fighttab">
+	  		<div id="stats">
+				<table border="1">
+					<tr>
+					<text id="playerstats" style="width: 25%;height:30%;">You: <span id="playerhp">x</span>/<span id="playermaxhp">x</span> HP, <span id="playeratk">x</span> ATK, <span id="playerspd">x</span> SPD, <span id="playerdef">x</span> DEF.</text> <br>
+					</tr>
+					
+					<tr>
+					<text id="enemystats" style="width: 25%;height:30%;">Enemy: <span id="enemyhp">x</span>/<span id="enemymaxhp">x</span> HP, <span id="enemyatk">x</span> ATK, <span id="enemyspd">x</span> SPD, <span id="enemydef">x</span> DEF. </text>
+					</tr>
+		  		</table>
+			</div>
+	  		<div id="fighting..."> You are fighting <span id="enemyname"> nothing. </span> </div>
+	 		<div id="turn..."> It is <span id="turn">your</span> turn. </div>
+	  		<div id="map" class="whitespace"> </div>
+	  		<div id="npcdialogue" style="display:none; width:30%; text-align:center;"> 
+		  		<span id="npcd"> </span>
+		  		<br> <br> 
+		  		<ul id="buttond">
+			  		<li><button id="yesd"> Yes </button></li>
+			  		<li><button id="nod"> No </button></li>
+		  		</ul>
+	  		</div>
+	  		<div id="fightplatform" class="whitespace" style="display:none;"><u>\o/</u>                    <u>x</u></div>
+	  		<br> <br>
+	  		<div id="combatmsg" style="display:none;"></div>
+	  		<div id="lootwarning" style="display:none;"> You will not gain any loot until you complete the quest! </div>
+	  		<div id="totalmessage" style="display:none;"> </div>
+	  		<div id="playerattacks" style="align:center;position:relative; width:300px;">
+				<table>
+					<tr>
+						<td id="attacks"><strong> Attacks </strong> </td>
+						<td id="basicatk"><button onclick="fight('basic');"> Basic Attack </button></td>
+						<td id="strongatk"><button onclick="fight('strong');"> Strong Attack </button></td>
+						<td id="fireatk"><button onclick="fight('fire');"> Fire Swing </button></td>
+						<td id="iceatk"><button onclick="fight('ice');"> Basic Attack </button></td>
+						<td id="electricatk"><button onclick="fight('electric');"> Basic Attack </button></td>
+					</tr>
+					
+					<tr>
+						<td id="buffs"><strong> Buffs </strong></td>
+						<td id="firebuff"><button onclick="fight("firebuff");"> Fire Touch </button></td>
+						<td id="icebuff"><button onclick="fight("icebuff");"> Icy <br>Touch </button></td>
+						<td id="electricbuff"><button onclick="fight("electricbuff");"> Electric Touch </button></td>
+					</tr>
+		  		</table>
+	 		 </div>
+  		</div>
+  		<div id="invtab" style="display:none;align:center;">
 	
-	  <div id="gold" style="display:none;"> </div>
-	  <div id="inv" class="whitespace"> </div>
+	  		<div id="gold" style="display:none;"> </div>
+	  		<div id="inv" class="whitespace"> </div>
 	  
-	  </div>
+	  	</div>
 	
-			   </body>
+	</body>
 	<script type="text/javascript" src="javascripts/config.js"></script>
 	<script type="text/javascript" src="javascripts/hub.js"></script>
 	<script type="text/javascript" src="javascripts/inventory.js"></script>
