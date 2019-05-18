@@ -23,7 +23,7 @@ function switchArrayPos(array,pos1,pos2) {
 	array[pos2] = value1;
 }
 
-function createTextElement(text, parentid, id, type, br, first) {
+function createTextElement(text, parentid, id="", type="SPAN", br="true", first="false") {
 	let node = document.createElement(type);
 	let textNode = document.createTextNode(text);
 	node.id = id;
