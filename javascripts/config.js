@@ -43,6 +43,7 @@ var game = {
 		normal: [],
 		consumable: [],
 		special: [],
+		gear: []
 	},
 	items: {
 		equips: {
