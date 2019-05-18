@@ -85,13 +85,7 @@ function getEnemyLoot() {
       }
     }
 		if (element("message" + enemiesDefeated) == undefined) {
-    	let node = document.createElement("SPAN");
-			let br = document.createElement("BR");
-			node.id = "message" + (enemiesDefeated);
-	  	let textNode = document.createTextNode(singleMessage);
-			node.appendChild(textNode);
-			element("combatmsg").appendChild(node);
-			element("combatmsg").appendChild(br);
+			createTextElement(singleMessage, "combatmsg", "message" + enemiesDefeated, 'SPAN', true, false);
 		} else {changeText("message" + enemiesDefeated, singleMessage);}
   }
 }
