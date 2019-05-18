@@ -22,6 +22,29 @@ function switchArrayPos(array,pos1,pos2) {
 	array[pos1] = value2;
 	array[pos2] = value1;
 }
+
+function createTextElement(text, parentid, id, type, br, first) {
+	let node = document.createElement(type);
+	let textNode = document.createTextNode(text);
+	node.id = id;
+	node.appendChild(textNode);
+	if (br) {
+		let br = document.createElement(br);
+	}
+	if (first) {
+		element(parentid).insertBefore(node, element(parentid).childNodes[0];
+		if (br) {
+			element(parentid).insertBefore(br, element(parentid).childNodes[1]);
+		}
+	} else {
+		element(parentid).appendChild(node);
+		if (br) {
+			element(parentid).appendChild(br);
+		}
+	}
+}
+	
+
 	
 var game = {
 	stats: { //basically everything to do with combat: attack, defense, speed, level, other stats, buffs, skills unlocked, etc
