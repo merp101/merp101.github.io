@@ -188,17 +188,15 @@ function drawWorld(level) {
 					show("world-" + ((maps[level].length - y) + 1), "inline");
 				}
 			} else { // if it's not
-				node = document.createElement("SPAN");
+				/*node = document.createElement("SPAN");
 				br = document.createElement("BR");
 				node.id = "world-" + ((maps[level].length - y) + 1);
 				textNode = document.createTextNode(str);
-				node.appendChild(textNode);
+				node.appendChild(textNode);*/
 				if (map.childNodes[0] == undefined) { //if it's the first element it's making (for the entire game)
-					map.appendChild(node);
-					map.appendChild(br);
+					createTextNode(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, false); 
 				} else {
-					map.insertBefore(br,map.childNodes[0]);
-					map.insertBefore(node,map.childNodes[0]);	
+					createTextNode(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, true);	
 				}
 			}
 		}
