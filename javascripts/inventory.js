@@ -1,1 +1,5 @@
-
+function updateGear() {
+	if () {
+      
+	}
+}
