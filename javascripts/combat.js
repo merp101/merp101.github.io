@@ -194,9 +194,9 @@ function drawWorld(level) {
 				textNode = document.createTextNode(str);
 				node.appendChild(textNode);*/
 				if (map.childNodes[0] == undefined) { //if it's the first element it's making (for the entire game)
-					createTextNode(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, false); 
+					createTextElement(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, false); 
 				} else {
-					createTextNode(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, true);	
+					createTextElement(str, "map", "world-" + ((maps[level].length - y) + 1), "SPAN", true, true);	
 				}
 			}
 		}
