@@ -26,27 +26,26 @@ function switchArrayPos(array,pos1,pos2) {
 function createTextElement(text, parentid, id="", type="SPAN", br="true", first="false") {
 	let node = document.createElement(type);
 	let textNode = document.createTextNode(text);
+	let parent = element(parentid);
 	node.id = id;
 	node.appendChild(textNode);
-	if (br) {
-		let br = document.createElement('BR');
-	}
+	let brtag = document.createElement('BR');
 	if (first) {
-		if (element(parentid).childNodes[0] !== undefined) {
+		if (parent.childNodes[0] !== undefined) {
 			if (br) {
-				element(parentid).insertBefore(br, element(parentid).childNodes[0]);
+				parent.insertBefore(brtag, parent.childNodes[0]);
 			}
-			element(parentid).insertBefore(node, element(parentid).childNodes[0]);
+			parent.insertBefore(node, parent.childNodes[0]);
 		} else {
 			element(parentid).appendChild(node);
 			if (br) {
-				element(parentid).appendChild(br);
+				element(parentid).appendChild(brtag);
 			}
 		}
 	} else {
 		element(parentid).appendChild(node);
 		if (br) {
-			element(parentid).appendChild(br);
+			element(parentid).appendChild(brtag);
 		}
 	}
 }
