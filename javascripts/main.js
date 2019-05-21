@@ -137,10 +137,17 @@ element("body").onkeypress = function() {
 			if (worldDrawn) {
 				switch (x) {
 						// movement
-					case 119 || 38: tick("w"); break; // w
-					case 97 || 37: tick("a"); break; // a
-					case 115 || 40: tick("s"); break; // s
-					case 100 || 39: tick("d"); break; // d
+					case 119: 
+					case 38: tick("w"); break; // w
+						
+					case 97:
+					case 37: tick("a"); break; // a
+						
+					case 115:
+					case 40: tick("s"); break; // s
+						
+					case 100:
+					case 39: tick("d"); break; // d
 						
 						//hotkeys
 					//attacks
@@ -148,6 +155,8 @@ element("body").onkeypress = function() {
 					case 50: fight(numToLettersAtk[1]);; break; // 2
 					case 51: fight(numToLettersAtk[2]);; break; // 3
 					case 52: fight(numToLettersAtk[3]);; break; // 4
+						
+					default: break;
 				}
 			} 
 		}
