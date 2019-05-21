@@ -6,6 +6,7 @@ var totalMessage = "";
 var combo = []; //combination of name and chance
 var thresholds = [];
 function getTotalLoot() { //on mission complete, gain all the stuff
+	totalMessage = "";
   if (goldGained != 0 && itemsGained != []) {
     totalMessage = "You have gained " + totalGoldGained + " gold";
     for (i = 0; i < itemsGained.length; i++) {
@@ -39,7 +40,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	game.gold += goldGained;
 	
 	
-	setTimeout(function() {hide("totalmessage"); totalMessage = ""; changeText("totalmessage", "");}, 4000);
+	setTimeout(function() {hide("totalmessage"); changeText("totalmessage", "");}, 4000);
 }
 
 function getEnemyLoot() {
