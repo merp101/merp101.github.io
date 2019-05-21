@@ -137,10 +137,10 @@ element("body").onkeypress = function() {
 			if (worldDrawn) {
 				switch (x) {
 						// movement
-					case 119: tick("w"); break; // w
-					case 97: tick("a"); break; // a
-					case 115: tick("s"); break; // s
-					case 100: tick("d"); break; // d
+					case 119 || 38: tick("w"); break; // w
+					case 97 || 37: tick("a"); break; // a
+					case 115 || 40: tick("s"); break; // s
+					case 100 || 39: tick("d"); break; // d
 						
 						//hotkeys
 					//attacks
