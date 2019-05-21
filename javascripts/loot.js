@@ -7,20 +7,19 @@ var combo = []; //combination of name and chance
 var thresholds = [];
 function getTotalLoot() { //on mission complete, gain all the stuff
 	totalMessage = "";
-  if (goldGained != 0 && itemsGained != []) {
-    totalMessage = "You have gained " + totalGoldGained + " gold";
-    for (i = 0; i < itemsGained.length; i++) {
-      if (i != itemsGained.length - 1) {
-        totalMessage += ", a " + itemsGained[i];
-      } else { //if it's the last one
-        totalMessage += ", and a " + itemsGained[i];
-      }
-    }
-  }
+	if (goldGained != 0 && itemsGained[0] != undefined) {
+		totalMessage = "You have gained " + totalGoldGained + " gold";
+		for (i = 0; i < itemsGained.length; i++) {
+			if (i != itemsGained.length - 1) {
+				totalMessage += ", a " + itemsGained[i];
+			} else { //if it's the last one
+				totalMessage += ", and a " + itemsGained[i];
+			}
+		}
+	}
 	totalMessage += " in total. Congratulations, it's yours!";
 	
-	changeText("totalmessage", totalMessage);
-       
+	changeText("totalmessage", totalMessage);   
        
 	let type;
 	for (i = 0; i < itemsGained.length; i++) {
@@ -54,8 +53,8 @@ function getEnemyLoot() {
     //items
     var itemChances = [];
     for (i = 0; i < loot[currentLevel].items.length; i++) {
-      combo.push([loot[currentLevel].items[i].name,Math.floor(Math.pow(loot[currentLevel].items[i].chance,Math.floor(Math.pow(rarity,0.2))))]);
-    } //this formula is floor(chance^(floor(rarity^.2)))
+      combo.push([loot[currentLevel].items[i].name,Math.floor(Math.pow(loot[currentLevel].items[i].chance,Math.floor(Math.pow(rarity,0.5))))]);
+    } //this formula is floor(chance^(floor(rarity^.5))) - rarity 4 means ^2
     for (i = 0; i < combo.length; i++) {
       itemChances.push(combo[i][1]);
     }
