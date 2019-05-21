@@ -24,11 +24,17 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	let type;
 	for (i = 0; i < itemsGained.length; i++) {
 		type = itemsGained[i].type;
+		if (!game.inventory.gear[type].includes(itemsGained[i])) { 
+			game.inventory.gear[type].push(itemsGained[i]);
+		} else {
+			game.inventory.gear[itemsGained[i].name].level += itemsGained[i].level;
+		}
+		/*
 		switch (type) {
 			case "normal": game.inventory.normal.push(itemsGained[i]); break;
 			case "special": game.inventory.special.push(itemsGained[i]); break;
 			case "consumable": game.inventory.consumable.push(itemsGained[i]); break;
-		}
+		}*/
 	}
 	game.gold += goldGained;
 	
