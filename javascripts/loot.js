@@ -39,7 +39,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	game.gold += goldGained;
 	
 	
-	setTimeout(function() {hide("totalmessage"); totalMessage = "";}, 4000);
+	setTimeout(function() {hide("totalmessage"); totalMessage = ""; changeText("totalmessage", "");}, 4000);
 }
 
 function getEnemyLoot() {
