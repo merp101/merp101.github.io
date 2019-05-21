@@ -137,14 +137,14 @@ element("body").onkeydown = function() {
 			if (worldDrawn) {
 				switch (x) {
 						// movement
-					case 119: tick("w"); break;
-					case 38: tick("w"); break; // w
-					case 97: tick("a"); break;
-					case 37: tick("a"); break; // a
-					case 115: tick("s"); break;
-					case 40: tick("s"); break; // s
-					case 100: tick("d"); break;
-					case 39: tick("d"); break; // d
+					case 87: tick("w"); break;
+					case 38: tick("w"); break; 
+					case 65: tick("a"); break;
+					case 37: tick("a"); break; 
+					case 83: tick("s"); break;
+					case 40: tick("s"); break; 
+					case 68: tick("d"); break;
+					case 39: tick("d"); break; 
 						
 						//hotkeys
 					//attacks
