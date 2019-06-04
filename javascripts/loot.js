@@ -6,9 +6,8 @@ var totalMessage = "";
 var combo = []; //combination of name and chance
 var thresholds = [];
 function getTotalLoot() { //on mission complete, gain all the stuff
-	totalMessage = "";
-	if (goldGained != 0 && itemsGained[0] != undefined) {
-		totalMessage = "You have gained " + totalGoldGained + " gold";
+	totalMessage = "You have gained " + totalGoldGained + " gold";
+	if (itemsGained[0] != undefined) {
 		for (i = 0; i < itemsGained.length; i++) {
 			if (i != itemsGained.length - 1) {
 				totalMessage += ", a " + itemsGained[i];
