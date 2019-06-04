@@ -186,6 +186,7 @@ element("nod").onclick = function() {
 }
 
 function display() { 
+	changeText("gold", "You have " + game.gold + " gold.");
 	if (!game.conditions.fighting) {hide("stats"); hide("fighting..."); hide("fightplatform"); show("map"); hide("turn..."); hide("playerattacks"); return;}
 	if (game.conditions.fighting) {
 		show("stats"); show("fighting..."); show("turn..."); show("fightplatform"); hide("map"); show("playerattacks");
@@ -242,7 +243,6 @@ function display() {
 	if (worldDrawn) {
 		show("combatmsg");
 	}
-	changeText("gold", "You have " + game.gold + " gold.");
 }
 
 function init() {
