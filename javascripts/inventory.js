@@ -14,7 +14,7 @@ function updateGear() {
 		}
 		// update levels
 		for (i = 0; i < elementValue.length; i++) {
-			elementValue[i].innerHTML = "gear[i] + ", level " + gear[i].level";
+			elementValue[i].innerHTML = gear[i] + ", level " + gear[i].level;
 		}
 	}
 	
