@@ -18,7 +18,8 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	}
 	totalMessage += " in total. Congratulations, it's yours!";
 	
-	changeText("totalmessage", totalMessage);   
+	changeText("totalmessage", totalMessage); 
+	/* This is commented out because it causes an out-of-memory crash
         let gearTypes = ["weapon", "helmet", "chestplate", "gloves", "leggings", "accessory"];
 	var itemsOfType = [];
 	for (j = 0; j < gearTypes.length; i++) {
@@ -36,6 +37,7 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 			}
 		}
 	}
+	*/
 	game.gold += goldGained;
 	
 	
