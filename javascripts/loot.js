@@ -73,7 +73,6 @@ function getEnemyLoot() {
       			}
     		}
     		let random = Math.random();
-		let thresh = 0;
     		for (i = 0; i < loot[currentLevel].items.length; i++) {
 			
       			if (random <= thresholds[i][1] / 100) {
