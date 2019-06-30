@@ -42,63 +42,64 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 }
 
 function getEnemyLoot() {
-  show("lootwarning");
-  if (currentEnemy != undefined) {
+	show("lootwarning");
+	if (currentEnemy != undefined) {
 		var singleMessage = "";
-    //gold
-    let rarity = currentEnemy.rarity;
-    goldGained = loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
-    totalGoldGained += goldGained;
-    //items
-    var itemChances = [];
+    		//gold
+    		let rarity = currentEnemy.rarity;
+    		goldGained = loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
+    		totalGoldGained += goldGained;
+    		//items
+    		var itemChances = [];
 		var combo = []; //combination of name and chance
 		var thresholds = [];
-    for (i = 0; i < loot[currentLevel].items.length; i++) {
-      combo.push([loot[currentLevel].items[i].name,Math.floor(Math.pow(loot[currentLevel].items[i].chance,Math.floor(Math.pow(rarity,0.5))))]);
-    } //this formula is floor(chance^(floor(rarity^.5))) - rarity 4 means ^2
-    for (i = 0; i < combo.length; i++) {
-      itemChances.push(combo[i][1]);
-    }
-    itemChances = bubbleSort(itemChances);
-    i = 0;
-    while (i < itemChances.length) {
-      for (let j = 0; j < combo.length; j++) {
-        if (combo[j][1] == itemChances[i]) {
-          thresholds.push(combo[j]);
-					combo.shift();
-          i++;
-          break;
-        }
-      }
-    }
-    let random = Math.random();
-	  let thresh = 0;
-    for (i = 0; i < loot[currentLevel].items.length; i++) {
+    		for (i = 0; i < loot[currentLevel].items.length; i++) {
+      			combo.push([loot[currentLevel].items[i].name,Math.floor(Math.pow(loot[currentLevel].items[i].chance,Math.floor(Math.pow(rarity,0.5))))]);
+    		} 
+		//this formula is floor(chance^(floor(rarity^.5))) - rarity 4 means ^2
+    		for (i = 0; i < combo.length; i++) {
+      			itemChances.push(combo[i][1]);
+    		}
+    		itemChances = bubbleSort(itemChances);
+    		i = 0;
+    		while (i < itemChances.length) {
+      			for (let j = 0; j < combo.length; j++) {
+        			if (combo[j][1] == itemChances[i]) {
+          				thresholds.push(combo[j]);
+					deleteArrayAtPos(combo,j);
+          				i++;
+          				break;
+        			}
+      			}
+    		}
+    		let random = Math.random();
+		let thresh = 0;
+    		for (i = 0; i < loot[currentLevel].items.length; i++) {
 			thresh += thesholds[i][1] / 100;
-      if (random <= thresh) {
-        itemsGained.push(thresholds[i][0]);
-        random = Math.random();
-      }
-    }
-    if (goldGained == 0 && itemsGained == []) {
-      singleMessage += "You have gained nothing."
-    } else if (goldGained > 0) {
-      singleMessage += "You have gained " + goldGained + " gold";
-      if (itemsGained != []) {
-        for (i = 0; i < itemsGained.length; i++) {
-          if (i != itemsGained.length - 1) {
-            singleMessage += ", a " + itemsGained[i];
-          } else { //if it's the last one
-            singleMessage += ", and a " + itemsGained[i] + ".";
-          }
-        }
-      }
-      if (singleMessage.charAt(singleMessage.length - 1) != ".") {
-        singleMessage += ".";
-      }
-    }
-		if (element("message" + enemiesDefeated) == undefined) {
-			createTextElement(singleMessage, "combatmsg", "message" + enemiesDefeated, 'SPAN', true, false);
-		} else {changeText("message" + enemiesDefeated, singleMessage);}
+      			if (random <= thresh) {
+        			itemsGained.push(thresholds[i][0]);
+        			random = Math.random();
+      			}	
+    		}
+    		if (goldGained == 0 && itemsGained == []) {
+     			singleMessage += "You have gained nothing."
+    		} else if (goldGained > 0) {
+      			singleMessage += "You have gained " + goldGained + " gold";
+      			if (itemsGained != []) {
+        			for (i = 0; i < itemsGained.length; i++) {
+          				if (i != itemsGained.length - 1) {
+            					singleMessage += ", a " + itemsGained[i];
+          				} else { //if it's the last one
+            					singleMessage += ", and a " + itemsGained[i] + ".";
+          				}
+        			}
+      			}
+      			if (singleMessage.charAt(singleMessage.length - 1) != ".") {
+        		singleMessage += ".";
+      		}
+    	}
+	if (element("message" + enemiesDefeated) == undefined) {
+		createTextElement(singleMessage, "combatmsg", "message" + enemiesDefeated, 'SPAN', true, false);
+	} else {changeText("message" + enemiesDefeated, singleMessage);}
   }
 }
