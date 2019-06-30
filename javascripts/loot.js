@@ -22,17 +22,20 @@ function getTotalLoot() { //on mission complete, gain all the stuff
         let gearTypes = ["weapon", "helmet", "chestplate", "gloves", "leggings", "accessory"];
 	var itemsOfType = [];
 	for (j = 0; j < gearTypes.length; i++) {
-		for (k = 0; k < loot[currentLevel].items.length; k++) {
+		for (k = 0; k < loot[currentLevel].items.length; k++) { //sets up itemOfType
 			if (loot[currentLevel].items[k].type == gearTypes[j]) {
 				itemsOfType.push(loot[currentLevel].items[k].name);
 			}
 		}
+		
 		for (i = 0; i < totalItemsGained.length; i++) { //cycle through itemsGained and add it to inv
 			item = totalItemsGained[i];
 			if (itemsOfType.includes(item)) { 
-				game.inventory.gear[gearTypes[j]].push(loot[currentLevel].items[gearTypes[j]]);
-			} else {
-				game.inventory.gear[totalItemsGained[i].name].level += totalItemsGained[i].level;
+				if (game.inventory.gear[totalItemsGained[i].name] === undefined) {
+					game.inventory.gear[gearTypes[j]].push(loot[currentLevel].items[gearTypes[j]]);
+				} else {
+					game.inventory.gear[totalItemsGained[i].name].level += totalItemsGained[i].level;
+				}
 			}
 		}
 	}
