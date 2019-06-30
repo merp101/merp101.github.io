@@ -44,15 +44,15 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 function getEnemyLoot() {
   show("lootwarning");
   if (currentEnemy != undefined) {
-	var singleMessage = "";
+		var singleMessage = "";
     //gold
     let rarity = currentEnemy.rarity;
     goldGained = loot[currentLevel].gold * Math.round(Math.pow(rarity,1.25));
     totalGoldGained += goldGained;
     //items
     var itemChances = [];
-	var combo = []; //combination of name and chance
-	var thresholds = [];
+		var combo = []; //combination of name and chance
+		var thresholds = [];
     for (i = 0; i < loot[currentLevel].items.length; i++) {
       combo.push([loot[currentLevel].items[i].name,Math.floor(Math.pow(loot[currentLevel].items[i].chance,Math.floor(Math.pow(rarity,0.5))))]);
     } //this formula is floor(chance^(floor(rarity^.5))) - rarity 4 means ^2
@@ -65,6 +65,7 @@ function getEnemyLoot() {
       for (let j = 0; j < combo.length; j++) {
         if (combo[j][1] == itemChances[i]) {
           thresholds.push(combo[j]);
+					combo.shift();
           i++;
           break;
         }
