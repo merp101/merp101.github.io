@@ -16,6 +16,12 @@ function bubbleSort(numbers) {
     return numbers;
 }
 
+function deleteArrayAtPos(array,index) {
+	if (index > -1) {
+  		array.splice(index, 1);
+	}
+}
+
 function switchArrayPos(array,pos1,pos2) {
 	let value1 = array[pos1];
 	let value2 = array[pos2];
