@@ -30,11 +30,13 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 		
 		for (i = 0; i < totalItemsGained.length; i++) { //cycle through itemsGained and add it to inv
 			item = totalItemsGained[i];
+			itemtype = totalItemsGained[i].type;
+			itemname = totalItemsGained[i].name;
 			if (itemsOfType.includes(item)) { 
-				if (game.inventory.gear[totalItemsGained[i].name] === undefined) {
-					game.inventory.gear[gearTypes[j]].push(loot[currentLevel].items[gearTypes[j]]);
+				if (game.inventory.gear[itemtype][itemname] === undefined) {
+					game.inventory.gear[itemtype].push(loot[currentLevel].items[j]);
 				} else {
-					game.inventory.gear[totalItemsGained[i].name].level += totalItemsGained[i].level;
+					game.inventory.gear[itemname].level += item.level;
 				}
 			}
 		}
