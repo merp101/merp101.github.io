@@ -52,6 +52,7 @@ function getEnemyLoot() {
     		totalGoldGained += goldGained;
     		//items
     		var itemChances = [];
+		itemsGained = [];
 		var combo = []; //combination of name and chance
 		var thresholds = [];
     		for (i = 0; i < loot[currentLevel].items.length; i++) {
