@@ -1,6 +1,7 @@
 var goldGained = 0;
 var totalGoldGained = 0;
 var itemsGained = [];
+var totalItemsGained = [];
 var singleMessage = "";
 var totalMessage = "";
 
@@ -9,9 +10,9 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 	if (itemsGained[0] != undefined) {
 		for (i = 0; i < itemsGained.length; i++) {
 			if (i != itemsGained.length - 1) {
-				totalMessage += ", a " + itemsGained[i];
+				totalMessage += ", a " + totalItemsGained[i];
 			} else { //if it's the last one
-				totalMessage += ", and a " + itemsGained[i];
+				totalMessage += ", and a " + totalItemsGained[i];
 			}
 		}
 	}
@@ -26,12 +27,12 @@ function getTotalLoot() { //on mission complete, gain all the stuff
 				itemsOfType.push(loot[currentLevel].items[k].name);
 			}
 		}
-		for (i = 0; i < itemsGained.length; i++) { //cycle through itemsGained and add it to inv
-			item = itemsGained[i];
+		for (i = 0; i < totalItemsGained.length; i++) { //cycle through itemsGained and add it to inv
+			item = totalItemsGained[i];
 			if (itemsOfType.includes(item)) { 
 				game.inventory.gear[gearTypes[j]].push(loot[currentLevel].items[gearTypes[j]]);
 			} else {
-				game.inventory.gear[itemsGained[i].name].level += itemsGained[i].level;
+				game.inventory.gear[totalItemsGained[i].name].level += totalItemsGained[i].level;
 			}
 		}
 	}
@@ -80,6 +81,9 @@ function getEnemyLoot() {
         			random = Math.random();
       			}	
     		}
+		for (i = 0; i < itemsGained.length; i++) {
+			totalItemsGained.push(itemsGained[i]);
+		}
     		if (goldGained == 0 && itemsGained == []) {
      			singleMessage += "You have gained nothing."
     		} else if (goldGained > 0) {
@@ -96,6 +100,7 @@ function getEnemyLoot() {
       			if (singleMessage.charAt(singleMessage.length - 1) != ".") {
         		singleMessage += ".";
       		}
+		
     	}
 	if (element("message" + enemiesDefeated) == undefined) {
 		createTextElement(singleMessage, "combatmsg", "message" + enemiesDefeated, 'SPAN', true, false);
