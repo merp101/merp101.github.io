@@ -15,7 +15,7 @@ var enemiesDrawn = false;
 var enemiesSet = false;
 var levelEnemies;
 var levelDiff;
-var numToLettersAtk = ["basic","fire","ice","electricity"];
+const numToLettersAtk = ["basic","fire","ice","electricity"];
 
 // Enemy creator function
 function Enemy(level,hpmax,atk,def,spd) {
@@ -38,14 +38,14 @@ function Enemy(level,hpmax,atk,def,spd) {
 	else if (random <= 0.5) {rarity = 2}
 	else if (random <= 1) {rarity = 1}
 	this.rarity = rarity;
-	if (rarity == 1) {names = ["goblin","imp","spider"];}
-	else if (rarity == 2) {names = ["hobgoblin","fiery imp"];}
-	else if (rarity == 3) {names = ["orc","demon"];}
-	else if (rarity == 4) {names = ["treasure"];}
+	if (rarity === 1) {names = ["goblin","imp","spider"];}
+	else if (rarity === 2) {names = ["hobgoblin","fiery imp"];}
+	else if (rarity === 3) {names = ["orc","demon"];}
+	else if (rarity === 4) {names = ["treasure"];}
 	
 	random = Math.random();
 	for (let j = 0; j < names.length; j++) {
-		if (random <= (j + 1) / names.length) {name = names[j]}
+		if (random <== (j + 1) / names.length) {name = names[j]}
 	}
 	this.name = name;
 	
@@ -63,7 +63,7 @@ function setEnemies(difficulty=0, level=currentLevel) {
 	game.enemies.def = (Math.round(Math.pow(difficulty, 1.1))) + 1;
 	game.enemies.spd = (Math.round(Math.pow(difficulty, 1.05))) + 1;
 	
-	for (i= 0; i < game.enemies.num; i++) {
+	for (i = 0; i < game.enemies.num; i++) {
 		enemies[i] = new Enemy(game.enemies.level,game.enemies.hp.max,game.enemies.atk,game.enemies.def,game.enemies.spd);
 	}
 	enemiesSet = true;
@@ -97,7 +97,7 @@ function finishQuest() {
 	char.pos.y = 1
 	getTotalLoot();
 	enemiesDefeated = 0;
-	if (currentLevel == "cave") {
+	if (currentLevel === "cave") {
 		home = true;
 		char.pos.x = 9;
 		drawWorld("hub");
