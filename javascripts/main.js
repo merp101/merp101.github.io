@@ -132,7 +132,7 @@ function tick(letter=0) {
 element("body").onkeydown = function() {
 	if (!moved) {
 		var x = event.which || event.keyCode;
-		console.log(x);
+		alert(x);
 		if (currentTab == "fight") {
 			if (worldDrawn) {
 				switch (x) {
